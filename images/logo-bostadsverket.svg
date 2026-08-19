@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 120" role="img" aria-labelledby="logo-title">
+  <title id="logo-title">Bostadsverket</title>
+  <text
+    x="310"
+    y="78"
+    text-anchor="middle"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-size="56"
+    font-weight="900"
+    letter-spacing="-1"
+    fill="#050707"
+  >
+    BOST DSVERKET
+  </text>
+  <path
+    d="M224 78 L248 42 L272 78"
+    fill="none"
+    stroke="#050707"
+    stroke-width="9"
+    stroke-linecap="square"
+    stroke-linejoin="miter"
+  />
+</svg>
