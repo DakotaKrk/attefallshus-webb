@@ -19,8 +19,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
-    <link rel="preload" as="image" href="images/hero-lakeside-house.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260908m">
+    <link rel="preload" as="image" href="images/hero-video-poster.webp" fetchpriority="high">
+    <link rel="stylesheet" href="styles.css?v=20260908n">
   </head>
   <body>
     <header class="site-header">
@@ -141,7 +141,10 @@
 
     <main>
       <section class="hero">
-        <img class="hero__image" src="images/hero-lakeside-house.webp" width="1635" height="962" fetchpriority="high" decoding="async" alt="Modernt attefallshus vid sjö och klippor">
+        <video class="hero__media" autoplay muted loop playsinline preload="metadata"
+               poster="images/hero-video-poster.webp" width="1600" height="950" aria-hidden="true">
+          <source src="images/hero-video.mp4" type="video/mp4">
+        </video>
 
         <div class="hero__content-wrap">
           <div class="hero__content">
@@ -830,6 +833,18 @@
             }
           });
         }, { passive: true });
+      })();
+    </script>
+    <script>
+      // Respektera prefers-reduced-motion: da stoppas filmen och
+      // affischen, som ar filmens forsta bildruta, star kvar.
+      (function () {
+        var film = document.querySelector('.hero__media');
+        if (!film) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          film.removeAttribute('autoplay');
+          film.pause();
+        }
       })();
     </script>
   </body>
