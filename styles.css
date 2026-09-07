@@ -554,23 +554,47 @@ textarea:focus-visible {
 }
 
 .quiet-break__title {
-  margin: 0 0 26px;
+  margin: 0 0 30px;
   font-family: var(--serif);
-  font-size: clamp(36px, 3.2vw, 50px);
+  /* Ett sadant har pastaende ska bara sig sjalvt. For liten typ gor
+     det forsiktigt i stallet for lugnt. */
+  font-size: clamp(40px, 4.4vw, 72px);
+  letter-spacing: -0.012em;
   font-weight: 400;
   line-height: 1.1;
   color: var(--ink);
 }
 
 .quiet-break__text {
-  max-width: 620px;
-  margin: 0 auto 42px;
-  font-size: 16px;
-  line-height: 1.75;
+  max-width: 560px;
+  margin: 0 auto 40px;
+  font-size: 17px;
+  line-height: 1.85;
   color: var(--ink-soft);
 }
 
-.quiet-break__link,
+/* Etikett med ett kort strack over, som ankarar stycket i sidan. */
+.quiet-break__etikett {
+  margin: 0 0 26px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--logo);
+}
+
+.quiet-break__etikett::before {
+  content: "";
+  width: 1px;
+  height: 34px;
+  background: currentColor;
+  opacity: 0.45;
+}
+
 .production__link,
 .about-text__link {
   height: 46px;
@@ -587,7 +611,6 @@ textarea:focus-visible {
   transition: background 0.4s var(--ease), color 0.4s var(--ease);
 }
 
-.quiet-break__link:hover,
 .production__link:hover,
 .about-text__link:hover {
   background: var(--ink);
@@ -1955,60 +1978,110 @@ a.contact-section__meta-value:hover {
 
 .main-nav__sub {
   position: absolute;
-  top: calc(100% + 18px);
+  top: calc(100% + 20px);
   left: 50%;
   z-index: 40;
-  min-width: 232px;
-  padding: 10px;
+  width: 420px;
+  padding: 12px;
   display: grid;
+  gap: 2px;
   background: #ffffff;
   border: 1px solid var(--line);
-  border-radius: 2px;
-  box-shadow: 0 24px 48px rgba(16, 20, 17, 0.13);
-  transform: translate(-50%, -6px);
+  border-radius: var(--radie-kort);
+  box-shadow: 0 30px 60px rgba(16, 20, 17, 0.16);
+  transform: translate(-50%, -8px);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.28s var(--ease), transform 0.28s var(--ease),
-    visibility 0s linear 0.28s;
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease),
+    visibility 0s linear 0.3s;
 }
 
 .main-nav__item--open .main-nav__sub {
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 0);
-  transition: opacity 0.28s var(--ease), transform 0.28s var(--ease),
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease),
     visibility 0s;
 }
 
+/* Varje rad bar bild, namn och en rad om vad kategorin ar.
+   En lista med bara namn tvingar besokaren att gissa skillnaden. */
 .main-nav__sub a {
-  padding: 11px 14px;
-  display: flex;
+  padding: 9px 12px 9px 9px;
+  display: grid;
+  grid-template-columns: 58px 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  font-size: 14px;
-  color: var(--ink-soft);
-  border-radius: 2px;
-  transition: background 0.25s var(--ease), color 0.25s var(--ease);
+  gap: 14px;
+  border-radius: 10px;
+  transition: background 0.25s var(--ease);
 }
 
-.main-nav__sub a::after {
-  content: "\2192";
-  font-size: 13px;
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+.main-nav__sub img {
+  width: 58px;
+  height: 42px;
+  display: block;
+  object-fit: cover;
+  border-radius: 6px;
+  filter: saturate(0.93) contrast(1.03);
+}
+
+.main-nav__sub strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.main-nav__sub em {
+  display: block;
+  margin-top: 2px;
+  font-style: normal;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--ink-faint);
 }
 
 .main-nav__sub a:hover {
   background: var(--sand);
+}
+
+.main-nav__sub a:hover strong {
+  color: var(--logo);
+}
+
+/* Sista raden ar en vanlig lank, utan bild. */
+.main-nav__sub .main-nav__sub-alla {
+  margin-top: 6px;
+  padding: 14px 12px 6px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  grid-template-columns: none;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--ink);
 }
 
-.main-nav__sub a:hover::after {
-  opacity: 1;
-  transform: translateX(0);
+.main-nav__sub .main-nav__sub-alla::after {
+  content: "\2192";
+  font-size: 13px;
+  letter-spacing: 0;
+  transition: transform 0.35s var(--ease);
 }
+
+.main-nav__sub .main-nav__sub-alla:hover {
+  background: transparent;
+}
+
+.main-nav__sub .main-nav__sub-alla:hover::after {
+  transform: translateX(4px);
+}
+
 
 /* ------------------------------------------------------------
    4. Headern nar menyn viks ihop.
@@ -2044,25 +2117,47 @@ a.contact-section__meta-value:hover {
 
 /* Undermenyn i mobilmenyn */
 @media (max-width: 1040px) {
+  /* Gruppen maste vara ett rutnat. Som vanlig div blev lankarna
+     inline och rann ut over skarmkanten pa smala skarmar. */
   .mobile-nav__grupp {
-    padding: 14px 2px 4px;
+    display: grid;
+    padding: 18px 2px 10px;
     border-bottom: 1px solid rgba(222, 219, 211, 0.6);
   }
 
   .mobile-nav__grupp > span {
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
     font-size: 10px;
     font-weight: 500;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--ink-faint);
+    color: var(--logo);
   }
 
+  /* Undernivan markeras med en linje till vanster i stallet for
+     bara indrag - da syns hierarkin utan att den behover forklaras. */
   .mobile-nav .mobile-nav__grupp a {
-    padding: 9px 0 9px 14px;
-    font-size: 15px;
+    padding: 12px 0 12px 18px;
+    font-size: 16px;
     border-bottom: 0;
+    border-left: 1px solid var(--line);
+    transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+  }
+
+  .mobile-nav .mobile-nav__grupp a:hover {
+    border-left-color: var(--logo);
+    color: var(--ink);
+  }
+
+  /* Storre tryckytor pa toppnivan. */
+  .mobile-nav a {
+    padding: 16px 2px;
+    font-size: 17px;
+  }
+
+  .mobile-nav {
+    padding: 10px 0 28px;
   }
 }
 
@@ -3572,7 +3667,7 @@ p,
   align-items: start;
 }
 
-.kontakt-topp h1 {
+.kontakt-topp h2 {
   margin: 0 0 24px;
   font-family: var(--serif);
   font-size: clamp(42px, 4.2vw, 64px);
@@ -3581,7 +3676,7 @@ p,
   color: var(--ink);
 }
 
-.kontakt-topp h1 em {
+.kontakt-topp h2 em {
   font-style: italic;
   color: var(--logo);
 }
@@ -3740,4 +3835,179 @@ p,
 .process__vem--bada {
   background: var(--sand);
   color: var(--ink-soft);
+}
+
+/* ------------------------------------------------------------
+   Referensprojekt. Varje projekt far plats, kategori och en rad om
+   vad som styrde besluten - en bild utan sammanhang sager inget om
+   varfor huset ser ut som det gor.
+   ------------------------------------------------------------ */
+.referens-lista {
+  width: var(--shell);
+  margin: 0 auto;
+  padding: 0 0 96px;
+}
+
+.referens-lista__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 56px 32px;
+}
+
+/* Forsta projektet gar over hela bredden, som en huvudbild.
+   Ett rutnat dar allt ar lika stort ger ingen lasordning. */
+.referens-lista__grid .referens:first-child {
+  grid-column: 1 / -1;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 44px;
+  align-items: center;
+}
+
+.referens-lista__grid .referens:first-child .referens__media img {
+  aspect-ratio: 16 / 9;
+}
+
+.referens-lista__grid .referens:first-child h3 {
+  font-size: clamp(30px, 2.6vw, 40px);
+}
+
+.referens {
+  display: grid;
+  gap: 22px;
+  align-content: start;
+}
+
+.referens__media {
+  overflow: hidden;
+  border-radius: var(--radie-kort);
+}
+
+.referens__media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: block;
+  object-fit: cover;
+  filter: saturate(0.93) contrast(1.03);
+  transition: transform 0.7s var(--ease);
+}
+
+.referens:hover .referens__media img {
+  transform: scale(1.045);
+}
+
+.referens__kategori {
+  margin: 0 0 8px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--logo);
+}
+
+.referens h3 {
+  margin: 0 0 12px;
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.referens__text p:last-child {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 900px) {
+  .referens-lista {
+    width: min(100% - 24px, 1200px);
+    padding: 0 0 76px;
+  }
+
+  .referens-lista__grid .referens:first-child {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+@media (max-width: 620px) {
+  .referens-lista {
+    width: min(100% - 20px, 1200px);
+    padding: 0 0 60px;
+  }
+
+  .referens-lista__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .referens h3 {
+    font-size: 24px;
+  }
+}
+
+/* Textlank i stallet for piller. En fylld knapp drar blicken fran
+   pastaendet, som ar det sektionen finns for. */
+.quiet-break__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(31, 36, 32, 0.25);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: border-color 0.35s var(--ease);
+}
+
+.quiet-break__link::after {
+  content: "\2192";
+  font-size: 14px;
+  letter-spacing: 0;
+  transition: transform 0.4s var(--ease);
+}
+
+.quiet-break__link:hover {
+  border-bottom-color: var(--ink);
+}
+
+.quiet-break__link:hover::after {
+  transform: translateX(5px);
+}
+
+.quiet-break {
+  padding: 92px 24px 96px;
+}
+
+@media (max-width: 620px) {
+  .quiet-break {
+    padding: 64px 20px 68px;
+  }
+
+  .quiet-break__etikett::before {
+    height: 26px;
+  }
+}
+
+/* Kategoriraden ar en sidledsscroll pa mobil. Utan antydan ser en
+   avklippt rad trasig ut i stallet for dragbar - masken tonar ut
+   kanten och tas bort nar man scrollat hela vagen. */
+@media (max-width: 620px) {
+  .category-filter {
+    scroll-snap-type: x proximity;
+    scroll-padding-left: 0;
+  }
+
+  .category-filter a {
+    scroll-snap-align: start;
+  }
+
+  .category-filter--mer {
+    -webkit-mask-image: linear-gradient(90deg, #000 78%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 78%, transparent 100%);
+  }
 }

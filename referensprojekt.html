@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Referensprojekt | Idealhus</title>
-    <meta name="description" content="Hus vi ritat och byggt. Se hur kunderna använder sina hus.">
+    <meta name="description" content="Hus vi ritat och byggt. Se hur platsen styr besluten i varje projekt.">
     <meta name="theme-color" content="#262c27">
     <link rel="icon" href="images/idealhus.svg" type="image/svg+xml">
 
@@ -12,14 +12,14 @@
     <meta property="og:locale" content="sv_SE">
     <meta property="og:site_name" content="Idealhus">
     <meta property="og:title" content="Referensprojekt | Idealhus">
-    <meta property="og:description" content="Hus vi ritat och byggt. Se hur kunderna använder sina hus.">
+    <meta property="og:description" content="Hus vi ritat och byggt. Se hur platsen styr besluten i varje projekt.">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
     <link rel="preload" as="image" href="images/generated-house-coast-01.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260908r">
+    <link rel="stylesheet" href="styles.css?v=20260908v">
   </head>
   <body>
     <header class="site-header">
@@ -33,11 +33,42 @@
           <div class="main-nav__item" data-dropdown>
             <button class="main-nav__link main-nav__toggle" type="button" aria-expanded="false" aria-controls="undermeny-hus">Våra hus<span class="main-nav__pil" aria-hidden="true"></span></button>
             <div class="main-nav__sub" id="undermeny-hus">
-              <a href="attefallshus.html">Attefallshus</a>
-              <a href="fritidshus.html">Fritidshus</a>
-              <a href="fjallstugor.html">Fjällstugor</a>
-              <a href="villor.html">Villor</a>
-              <a href="proffs.html">Proffs</a>
+              <a href="attefallshus.html">
+                <img src="images/generated-category-attefallshus-card.webp" alt="" loading="lazy" decoding="async">
+                <span>
+                  <strong>Attefallshus</strong>
+                  <em>Upp till 30 m², utan bygglov</em>
+                </span>
+              </a>
+              <a href="fritidshus.html">
+                <img src="images/generated-category-fritidshus-card.webp" alt="" loading="lazy" decoding="async">
+                <span>
+                  <strong>Fritidshus</strong>
+                  <em>För helger och långa somrar</em>
+                </span>
+              </a>
+              <a href="fjallstugor.html">
+                <img src="images/generated-category-fjallstuga-card.webp" alt="" loading="lazy" decoding="async">
+                <span>
+                  <strong>Fjällstugor</strong>
+                  <em>Byggda för snölast och kyla</em>
+                </span>
+              </a>
+              <a href="villor.html">
+                <img src="images/generated-house-gabled-01.webp" alt="" loading="lazy" decoding="async">
+                <span>
+                  <strong>Villor</strong>
+                  <em>Permanentboende, full planlösning</em>
+                </span>
+              </a>
+              <a href="proffs.html">
+                <img src="images/generated-production-yard-01.webp" alt="" loading="lazy" decoding="async">
+                <span>
+                  <strong>Proffs</strong>
+                  <em>Väggar, block och moduler</em>
+                </span>
+              </a>
+              <a class="main-nav__sub-alla" href="attefallshus.html">Se alla modeller</a>
             </div>
           </div>
           <a class="main-nav__link" href="sa-fungerar-det.html">Så fungerar det</a>
@@ -77,7 +108,7 @@
 
     <main>
       <section class="subpage-hero">
-        <img class="subpage-hero__image" src="images/generated-house-coast-01.webp" width="1600" height="900" fetchpriority="high" decoding="async" alt="Modernt hus pa svenska klippor vid havet">
+        <img class="subpage-hero__image" src="images/generated-house-coast-01.webp" width="1600" height="900" fetchpriority="high" decoding="async" alt="Modernt hus på svenska klippor vid havet">
 
         <div class="subpage-hero__content-wrap">
           <div class="subpage-hero__content">
@@ -87,44 +118,118 @@
         </div>
       </section>
 
-      <section class="galleri">
-        <div class="process__head">
-          <h2>Se hur våra kunder använder sina hus</h2>
-          <p>
-            Samma modell blir olika hus beroende på plats, väderstreck och vad
-            det ska användas till. Här är några exempel.
+      <section class="kontakt-topp">
+        <div>
+          <h2>Samma modell, <em>olika hus</em>.</h2>
+          <p class="kontakt-topp__lead">
+            Platsen avgör mer än modellvalet. Väderstreck, lutning och utsikt
+            gör att två hus av samma modell sällan blir lika.
+          </p>
+          <p class="kontakt-topp__brod">
+            Här är ett urval. För varje projekt står vad som styrde besluten,
+            eftersom det oftast är mer användbart än en bild utan sammanhang.
           </p>
         </div>
 
-        <div class="galleri__grid">
-          <figure>
-            <img src="images/generated-house-coast-01.webp" loading="lazy" decoding="async" alt="Attefallshus vid kusten">
-            <figcaption>Attefallshus vid kusten</figcaption>
-          </figure>
-          <figure>
-            <img src="images/generated-house-winter-01.webp" loading="lazy" decoding="async" alt="Fjällstuga i vintermiljö">
-            <figcaption>Fjällstuga i vintermiljö</figcaption>
-          </figure>
-          <figure>
-            <img src="images/generated-house-forest-01.webp" loading="lazy" decoding="async" alt="Fritidshus i tallskog">
-            <figcaption>Fritidshus i tallskog</figcaption>
-          </figure>
-          <figure>
-            <img src="images/generated-house-garden-01.webp" loading="lazy" decoding="async" alt="Gästhus i trädgård">
-            <figcaption>Gästhus i trädgård</figcaption>
-          </figure>
-          <figure>
-            <img src="images/generated-house-meadow-01.webp" loading="lazy" decoding="async" alt="Villa i öppet landskap">
-            <figcaption>Villa i öppet landskap</figcaption>
-          </figure>
-          <figure>
-            <img src="images/generated-house-gabled-01.webp" loading="lazy" decoding="async" alt="Villa med sadeltak">
-            <figcaption>Villa med sadeltak</figcaption>
-          </figure>
-          <figure>
-            <img src="images/generated-interior-01.webp" loading="lazy" decoding="async" alt="Interiör med smart planlösning">
-            <figcaption>Interiör med smart planlösning</figcaption>
-          </figure>
+        <div class="kontakt-direkt">
+          <div class="kontakt-direkt__rad">
+            <span class="kontakt-direkt__namn">Skärgård</span>
+            <span class="kontakt-direkt__roll">Berg och vatten</span>
+            <span class="kontakt-direkt__lankar">
+              <a href="attefallshus.html">Se attefallshusen</a>
+            </span>
+          </div>
+
+          <div class="kontakt-direkt__rad">
+            <span class="kontakt-direkt__namn">Fjäll</span>
+            <span class="kontakt-direkt__roll">Snölast och kyla</span>
+            <span class="kontakt-direkt__lankar">
+              <a href="fjallstugor.html">Se fjällstugorna</a>
+            </span>
+          </div>
+
+          <div class="kontakt-direkt__rad">
+            <span class="kontakt-direkt__namn">Inland</span>
+            <span class="kontakt-direkt__roll">Permanentboende</span>
+            <span class="kontakt-direkt__lankar">
+              <a href="villor.html">Se villorna</a>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="referens-lista">
+        <div class="referens-lista__grid">
+          <article class="referens">
+            <div class="referens__media">
+              <img src="images/generated-house-coast-01.webp" loading="lazy" decoding="async" alt="Litet hus vid svenska klippor och vatten">
+            </div>
+            <div class="referens__text">
+              <p class="referens__kategori">Attefallshus</p>
+              <h3>Stockholms skärgård</h3>
+              <p>Placerat på berget med hela glaspartiet mot vattnet. Altanen följer bergets lutning i stället för att bygga bort den.</p>
+            </div>
+          </article>
+          <article class="referens">
+            <div class="referens__media">
+              <img src="images/generated-house-winter-01.webp" loading="lazy" decoding="async" alt="Attefallshus i ljus svensk vintermiljö">
+            </div>
+            <div class="referens__text">
+              <p class="referens__kategori">Fjällstuga</p>
+              <h3>Fjällen</h3>
+              <p>Byggd för snölast och kalla vintrar. Taket och isoleringen skiljer sig från våra övriga modeller.</p>
+            </div>
+          </article>
+          <article class="referens">
+            <div class="referens__media">
+              <img src="images/generated-house-forest-01.webp" loading="lazy" decoding="async" alt="Modernt hus med glasparti i svensk tallskog">
+            </div>
+            <div class="referens__text">
+              <p class="referens__kategori">Fritidshus</p>
+              <h3>Tallskog</h3>
+              <p>Stora glaspartier mot skogen, mörk fasad som försvinner in i stammarna.</p>
+            </div>
+          </article>
+          <article class="referens">
+            <div class="referens__media">
+              <img src="images/generated-house-garden-01.webp" loading="lazy" decoding="async" alt="Kompakt gästhus med uteplats i trädgård">
+            </div>
+            <div class="referens__text">
+              <p class="referens__kategori">Attefallshus</p>
+              <h3>Villaträdgård</h3>
+              <p>Gästhus och kontor i samma byggnad, med egen uteplats bort från huvudbyggnaden.</p>
+            </div>
+          </article>
+          <article class="referens">
+            <div class="referens__media">
+              <img src="images/generated-house-meadow-01.webp" loading="lazy" decoding="async" alt="Villa i öppet landskap">
+            </div>
+            <div class="referens__text">
+              <p class="referens__kategori">Villa</p>
+              <h3>Öppet landskap</h3>
+              <p>Permanentboende i öppet läge. Byggnadens riktning styrs av var solen står på eftermiddagen.</p>
+            </div>
+          </article>
+          <article class="referens">
+            <div class="referens__media">
+              <img src="images/generated-house-gabled-01.webp" loading="lazy" decoding="async" alt="Villa med sadeltak i svensk trädgårdsmiljö">
+            </div>
+            <div class="referens__text">
+              <p class="referens__kategori">Villa</p>
+              <h3>Inlandet</h3>
+              <p>Sadeltak och traditionell form, med planlösning och teknik från våra nyare modeller.</p>
+            </div>
+          </article>
+          <article class="referens">
+            <div class="referens__media">
+              <img src="images/generated-interior-01.webp" loading="lazy" decoding="async" alt="Ljus interiör i ett litet hus med smart planering">
+            </div>
+            <div class="referens__text">
+              <p class="referens__kategori">Attefallshus</p>
+              <h3>Interiör</h3>
+              <p>Trettio kvadratmeter som rymmer sovplats, arbetsplats och matplats utan att kännas trångt.</p>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -320,6 +425,18 @@
             }
           });
         }, { passive: true });
+      })();
+
+      (function () {
+        var rad = document.querySelector('.category-filter');
+        if (!rad) return;
+        function uppdatera() {
+          var mer = rad.scrollWidth - rad.clientWidth - rad.scrollLeft > 8;
+          rad.classList.toggle('category-filter--mer', mer);
+        }
+        uppdatera();
+        rad.addEventListener('scroll', uppdatera, { passive: true });
+        window.addEventListener('resize', uppdatera);
       })();
     </script>
   </body>

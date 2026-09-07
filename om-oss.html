@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
     <link rel="preload" as="image" href="images/generated-production-yard-01.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260908r">
+    <link rel="stylesheet" href="styles.css?v=20260908v">
   </head>
   <body>
     <header class="site-header">
@@ -33,11 +33,42 @@
           <div class="main-nav__item" data-dropdown>
             <button class="main-nav__link main-nav__toggle" type="button" aria-expanded="false" aria-controls="undermeny-hus">Våra hus<span class="main-nav__pil" aria-hidden="true"></span></button>
             <div class="main-nav__sub" id="undermeny-hus">
-              <a href="attefallshus.html">Attefallshus</a>
-              <a href="fritidshus.html">Fritidshus</a>
-              <a href="fjallstugor.html">Fjällstugor</a>
-              <a href="villor.html">Villor</a>
-              <a href="proffs.html">Proffs</a>
+              <a href="attefallshus.html">
+                <img src="images/generated-category-attefallshus-card.webp" alt="" loading="lazy" decoding="async">
+                <span>
+                  <strong>Attefallshus</strong>
+                  <em>Upp till 30 m², utan bygglov</em>
+                </span>
+              </a>
+              <a href="fritidshus.html">
+                <img src="images/generated-category-fritidshus-card.webp" alt="" loading="lazy" decoding="async">
+                <span>
+                  <strong>Fritidshus</strong>
+                  <em>För helger och långa somrar</em>
+                </span>
+              </a>
+              <a href="fjallstugor.html">
+                <img src="images/generated-category-fjallstuga-card.webp" alt="" loading="lazy" decoding="async">
+                <span>
+                  <strong>Fjällstugor</strong>
+                  <em>Byggda för snölast och kyla</em>
+                </span>
+              </a>
+              <a href="villor.html">
+                <img src="images/generated-house-gabled-01.webp" alt="" loading="lazy" decoding="async">
+                <span>
+                  <strong>Villor</strong>
+                  <em>Permanentboende, full planlösning</em>
+                </span>
+              </a>
+              <a href="proffs.html">
+                <img src="images/generated-production-yard-01.webp" alt="" loading="lazy" decoding="async">
+                <span>
+                  <strong>Proffs</strong>
+                  <em>Väggar, block och moduler</em>
+                </span>
+              </a>
+              <a class="main-nav__sub-alla" href="attefallshus.html">Se alla modeller</a>
             </div>
           </div>
           <a class="main-nav__link" href="sa-fungerar-det.html">Så fungerar det</a>
@@ -89,7 +120,7 @@
 
       <section class="kontakt-topp">
         <div>
-          <h1>Ett hus för <em>dina planer</em>.</h1>
+          <h2>Ett hus för <em>dina planer</em>.</h2>
           <p class="kontakt-topp__lead">
             Att välja och bygga ett hus innebär många beslut. Idealhus gör det
             enklare att hitta rätt bland våra husmodeller och anpassa dem efter
@@ -384,6 +415,18 @@
             }
           });
         }, { passive: true });
+      })();
+
+      (function () {
+        var rad = document.querySelector('.category-filter');
+        if (!rad) return;
+        function uppdatera() {
+          var mer = rad.scrollWidth - rad.clientWidth - rad.scrollLeft > 8;
+          rad.classList.toggle('category-filter--mer', mer);
+        }
+        uppdatera();
+        rad.addEventListener('scroll', uppdatera, { passive: true });
+        window.addEventListener('resize', uppdatera);
       })();
     </script>
   </body>

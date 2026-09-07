@@ -54,7 +54,7 @@ KROPP = f'''    <main>
 
       <section class="kontakt-topp">
         <div>
-          <h1>Sju steg, <em>i ordning</em>.</h1>
+          <h2>Sju steg, <em>i ordning</em>.</h2>
           <p class="kontakt-topp__lead">
             Ordningen spelar roll. Du kan inte bygga innan bygglovet är klart,
             och vi kan inte tillverka innan modellen är bestämd.

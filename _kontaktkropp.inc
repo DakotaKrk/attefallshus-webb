@@ -12,7 +12,7 @@
 
       <section class="kontakt-topp">
         <div>
-          <h1>Prata med oss om <em>din plats</em>.</h1>
+          <h2>Prata med oss om <em>din plats</em>.</h2>
           <p class="kontakt-topp__lead">
             Har du frågor om våra hus, vill jämföra modeller eller komma vidare
             med en offert? Skriv några rader så återkommer vi med nästa tydliga

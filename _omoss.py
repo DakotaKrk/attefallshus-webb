@@ -43,7 +43,7 @@ KROPP = f'''    <main>
 
       <section class="kontakt-topp">
         <div>
-          <h1>Ett hus för <em>dina planer</em>.</h1>
+          <h2>Ett hus för <em>dina planer</em>.</h2>
           <p class="kontakt-topp__lead">
             Att välja och bygga ett hus innebär många beslut. Idealhus gör det
             enklare att hitta rätt bland våra husmodeller och anpassa dem efter

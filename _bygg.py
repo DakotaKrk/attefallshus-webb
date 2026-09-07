@@ -2,7 +2,7 @@
 # ar identiska pa alla sidor. Kors om nar mallen andras.
 import re, io, os
 
-CSS_V = "20260908r"
+CSS_V = "20260908v"
 
 KATEGORIER = [
     ("Attefallshus", "attefallshus.html"),
@@ -11,6 +11,21 @@ KATEGORIER = [
     ("Villor", "villor.html"),
     ("Proffs", "proffs.html"),
 ]
+
+# Bild och en rad om varje kategori. En rullgardin med bara namn
+# tvingar besokaren att gissa vad skillnaden ar.
+KATEGORI_INFO = {
+    "Attefallshus": ("generated-category-attefallshus-card.webp",
+                     "Upp till 30 m², utan bygglov"),
+    "Fritidshus": ("generated-category-fritidshus-card.webp",
+                   "För helger och långa somrar"),
+    "Fjällstugor": ("generated-category-fjallstuga-card.webp",
+                    "Byggda för snölast och kyla"),
+    "Villor": ("generated-house-gabled-01.webp",
+               "Permanentboende, full planlösning"),
+    "Proffs": ("generated-production-yard-01.webp",
+               "Väggar, block och moduler"),
+}
 
 MENY = [
     ("Hem", "index.html"),
@@ -23,8 +38,20 @@ MENY = [
 
 
 def dropdown(aktiv):
-    val = "\n".join(
-        f'              <a href="{fil}">{namn}</a>' for namn, fil in KATEGORIER)
+    rader = []
+    for namn, fil in KATEGORIER:
+        bild, text = KATEGORI_INFO[namn]
+        rader.append(
+            f'              <a href="{fil}">\n'
+            f'                <img src="images/{bild}" alt="" loading="lazy" decoding="async">\n'
+            f'                <span>\n'
+            f'                  <strong>{namn}</strong>\n'
+            f'                  <em>{text}</em>\n'
+            f'                </span>\n'
+            f'              </a>')
+    rader.append('              <a class="main-nav__sub-alla" '
+                 'href="attefallshus.html">Se alla modeller</a>')
+    val = "\n".join(rader)
     klass = "main-nav__link main-nav__toggle"
     if aktiv == "Våra hus":
         klass = "main-nav__link main-nav__link--active main-nav__toggle"
@@ -269,6 +296,18 @@ def skript(extra=""):
             }
           });
         }, { passive: true });
+      })();
+
+      (function () {
+        var rad = document.querySelector('.category-filter');
+        if (!rad) return;
+        function uppdatera() {
+          var mer = rad.scrollWidth - rad.clientWidth - rad.scrollLeft > 8;
+          rad.classList.toggle('category-filter--mer', mer);
+        }
+        uppdatera();
+        rad.addEventListener('scroll', uppdatera, { passive: true });
+        window.addEventListener('resize', uppdatera);
       })();
 ''' + extra + '''    </script>
   </body>
