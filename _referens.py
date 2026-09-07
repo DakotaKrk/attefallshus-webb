@@ -72,7 +72,7 @@ kort = "\n".join(f'''          <article class="referens{(" referens--" + form) i
             </div>
           </article>''' for bild, plats, kategori, styrde, text, alt, form in PROJEKT)
 
-KROPP = f'''    <main>
+KROPP = f'''    <main id="innehall">
       <section class="subpage-hero">
         <img class="subpage-hero__image" src="images/generated-house-coast-01.webp" width="1600" height="900" fetchpriority="high" decoding="async" alt="Modernt hus på svenska klippor vid havet">
 
@@ -136,7 +136,7 @@ KROPP = f'''    <main>
 
 ut = (B.head("Referensprojekt | Idealhus",
              "Hus vi ritat och byggt. Se hur platsen styr besluten i varje projekt.",
-             "generated-house-coast-01.webp")
+             "generated-house-coast-01.webp", fil="referensprojekt.html")
       + "\n" + B.header("Referensprojekt") + "\n" + KROPP + B.SIDFOT + "\n" + B.skript())
 
 open("referensprojekt.html", "w", encoding="utf-8", newline="").write(ut.replace("\n", "\r\n"))

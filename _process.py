@@ -31,16 +31,18 @@ STEG = [
      "Du har haft samma kontakt hela vägen och vet vem du ringer."),
 ]
 
-steg = "\n".join(f'''          <li>
-            <span class="process__nr">{i:02d}</span>
-            <div>
-              <h3>{rubrik}</h3>
-              <span class="process__vem process__vem--{klass}">{vem}</span>
-            </div>
-            <p>{text}</p>
-          </li>''' for i, (rubrik, vem, klass, text) in enumerate(STEG, 1))
+steg = "\n".join(f'''            <li class="stegspar__rad">
+              <span class="stegspar__nr">{i:02d}</span>
+              <div class="stegspar__kort">
+                <div class="stegspar__topp">
+                  <h3>{rubrik}</h3>
+                  <span class="process__vem process__vem--{klass}">{vem}</span>
+                </div>
+                <p>{text}</p>
+              </div>
+            </li>''' for i, (rubrik, vem, klass, text) in enumerate(STEG, 1))
 
-KROPP = f'''    <main>
+KROPP = f'''    <main id="innehall">
       <section class="subpage-hero">
         <img class="subpage-hero__image" src="images/generated-craft-cladding-01.webp" width="1600" height="900" fetchpriority="high" decoding="async" alt="Händer som arbetar med träpanel i verkstad">
 
@@ -94,10 +96,28 @@ KROPP = f'''    <main>
         </div>
       </section>
 
-      <section class="process">
-        <ol class="process__lista">
+      <section class="process process--spar">
+        <div class="process__grid">
+          <div class="process__rail">
+            <p class="section-label">Steg för steg</p>
+            <p class="process__rail-text">
+              Färgen visar vem som håller i steget. Ordningen är densamma
+              oavsett vilket hus det gäller.
+            </p>
+
+            <div class="process__matare" aria-hidden="true"><span></span></div>
+
+            <ul class="process__legend">
+              <li><span class="prick prick--vi"></span>Vi gör det</li>
+              <li><span class="prick prick--du"></span>Du gör det</li>
+              <li><span class="prick prick--bada"></span>Tillsammans</li>
+            </ul>
+          </div>
+
+          <ol class="stegspar">
 {steg}
-        </ol>
+          </ol>
+        </div>
       </section>
 
       <section class="segment">
@@ -129,7 +149,7 @@ KROPP = f'''    <main>
 ut = (B.head("Så fungerar det | Idealhus",
              "Från första samtalet till inflyttning. Sju steg, och vem som gör "
              "vad i varje steg.",
-             "generated-craft-cladding-01.webp")
+             "generated-craft-cladding-01.webp", fil="sa-fungerar-det.html")
       + "\n" + B.header("Så fungerar det") + "\n" + KROPP + B.SIDFOT + "\n" + B.skript())
 
 open("sa-fungerar-det.html", "w", encoding="utf-8", newline="").write(ut.replace("\n", "\r\n"))

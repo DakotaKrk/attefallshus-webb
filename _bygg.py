@@ -2,7 +2,8 @@
 # ar identiska pa alla sidor. Kors om nar mallen andras.
 import re, io, os
 
-CSS_V = "20260909a"
+BAS = "https://dakotakrk.github.io/idealhus/"
+CSS_V = "20260910a"
 
 KATEGORIER = [
     ("Attefallshus", "attefallshus.html"),
@@ -85,7 +86,7 @@ def mobilmeny():
     return "\n".join(rader)
 
 
-def head(titel, beskrivning, forladdad=None):
+def head(titel, beskrivning, forladdad=None, fil=None):
     pre = f'\n    <link rel="preload" as="image" href="images/{forladdad}" fetchpriority="high">' if forladdad else ""
     return f'''<!doctype html>
 <html lang="sv">
@@ -96,24 +97,43 @@ def head(titel, beskrivning, forladdad=None):
     <meta name="description" content="{beskrivning}">
     <meta name="theme-color" content="#262c27">
     <link rel="icon" href="images/idealhus.svg" type="image/svg+xml">
+    <link rel="canonical" href="{BAS}{fil or ''}">
 
     <meta property="og:type" content="website">
     <meta property="og:locale" content="sv_SE">
     <meta property="og:site_name" content="Idealhus">
     <meta property="og:title" content="{titel}">
     <meta property="og:description" content="{beskrivning}">
+    <meta property="og:image" content="{BAS}images/{forladdad or 'hero-video-poster.webp'}">
+    <meta property="og:url" content="{BAS}{fil or ''}">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Schibsted+Grotesk:wght@400;500;600&display=swap">{pre}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap">{pre}
     <link rel="stylesheet" href="styles.css?v={CSS_V}">
+    <script type="application/ld+json">
+    {{
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "{BAS}#organisation",
+      "name": "Idealhus",
+      "legalName": "Idealhus AB",
+      "url": "{BAS}",
+      "logo": "{BAS}images/idealhus_logo.svg",
+      "image": "{BAS}images/hero-video-poster.webp",
+      "email": "ahmed@idealhus.se",
+      "description": "Idealhus formger och bygger attefallshus, fritidshus, fjallstugor och villor med skandinavisk design och svensk tillverkning.",
+      "areaServed": "SE"
+    }}
+    </script>
   </head>
   <body>'''
 
 
 def header(aktiv):
-    return f'''    <header class="site-header">
+    return f'''    <a class="skip" href="#innehall">Hoppa till innehållet</a>
+    <header class="site-header">
       <div class="site-header__inner">
         <a class="logo" href="index.html" aria-label="Till Idealhus startsida">
           <img class="logo__svg" src="images/idealhus_logo.svg" width="1024" height="279" alt="Idealhus">
@@ -205,6 +225,18 @@ SIDFOT = '''    <footer class="site-footer">
 
 def skript(extra=""):
     return '''    <script>
+      // En sidovergang som hoppas over avvisar sina loften. Utan
+      // detta hamnar "Transition was skipped" i konsolen pa varje
+      // sidbyte som webblasaren valjer bort.
+      (function () {
+        function tyst(e) {
+          if (e.viewTransition) e.viewTransition.finished.catch(function () {});
+        }
+        window.addEventListener('pageswap', tyst);
+        window.addEventListener('pagereveal', tyst);
+      })();
+    </script>
+    <script>
       (function () {
         var item = document.querySelector('[data-dropdown]');
         if (!item) return;
@@ -245,6 +277,9 @@ def skript(extra=""):
           knapp.setAttribute('aria-label', oppen ? 'Öppna meny' : 'Stäng meny');
           knapp.classList.toggle('menu-button--open', !oppen);
           panel.hidden = oppen;
+          // Sidans rullelement ar <html>. Utan last rullar sidan bakom
+          // en meny som tacker nastan hela skarmen.
+          document.documentElement.style.overflow = oppen ? '' : 'hidden';
         });
       })();
 
@@ -279,23 +314,34 @@ def skript(extra=""):
           });
         }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
         element.forEach(function (el) { obs.observe(el); });
-        var vantar = false;
-        window.addEventListener('scroll', function () {
-          if (vantar) return;
-          vantar = true;
-          window.requestAnimationFrame(function () {
-            vantar = false;
-            for (var i = element.length - 1; i >= 0; i--) {
-              var el = element[i];
-              if (el.classList.contains('reveal--inne')) continue;
-              var r = el.getBoundingClientRect();
-              if (r.top < window.innerHeight && r.bottom > 0) {
-                el.classList.add('reveal--inne');
-                obs.unobserve(el);
-              }
+        // Skyddsnatet mater bara det som ar kvar, hogst fyra ganger i
+        // sekunden, och kopplar bort sig sjalvt nar allt ar framme. Att
+        // mata alla element i varje bildruta tvingade fram en layout per
+        // bildruta - det var det som hackade under rullning.
+        var kvar = element.filter(function (el) {
+          return !el.classList.contains('reveal--inne');
+        });
+        var senast = 0;
+        function kolla() {
+          var nu = Date.now();
+          if (nu - senast < 250) return;
+          senast = nu;
+          for (var i = kvar.length - 1; i >= 0; i--) {
+            var el = kvar[i];
+            if (el.classList.contains('reveal--inne')) {
+              kvar.splice(i, 1);
+              continue;
             }
-          });
-        }, { passive: true });
+            var r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0) {
+              el.classList.add('reveal--inne');
+              obs.unobserve(el);
+              kvar.splice(i, 1);
+            }
+          }
+          if (!kvar.length) window.removeEventListener('scroll', kolla);
+        }
+        if (kvar.length) window.addEventListener('scroll', kolla, { passive: true });
       })();
 
       (function () {

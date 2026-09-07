@@ -1,4 +1,4 @@
-    <main>
+    <main id="innehall">
       <section class="subpage-hero">
         <img class="subpage-hero__image" src="images/generated-house-garden-01.webp" width="1600" height="900" fetchpriority="high" decoding="async" alt="Kompakt gästhus med uteplats i trädgård">
 

@@ -39,42 +39,7 @@ MODELLFILTER = '''
       })();
 '''
 
-KONTAKT_SEKTION = '''      <section class="contact-section" id="kontakt">
-        <div class="contact-section__inner">
-          <div class="contact-section__intro">
-            <p class="section-label section-label--accent">Kontakt</p>
-            <h2 class="contact-section__title">Låt oss börja med <em>din plats</em>.</h2>
-            <p class="contact-section__text">
-              Berätta vad du funderar på, så återkommer vi med nästa tydliga
-              steg. Utan krav och utan säljsnack.
-            </p>
-
-            <div class="contact-section__meta">
-              <div>
-                <span class="contact-section__meta-label">Ahmed</span>
-                <a class="contact-section__meta-value" href="mailto:ahmed@idealhus.se">ahmed@idealhus.se</a>
-              </div>
-              <div>
-                <span class="contact-section__meta-label">Sahand</span>
-                <a class="contact-section__meta-value" href="mailto:sahand@idealhus.se">sahand@idealhus.se</a>
-              </div>
-              <div>
-                <span class="contact-section__meta-label">Telefon</span>
-                <a class="contact-section__meta-value" href="tel:+46701234567">070-123 45 67</a>
-              </div>
-              <div>
-                <span class="contact-section__meta-label">Plats</span>
-                <span class="contact-section__meta-value contact-section__meta-value--tyst">Stockholm, Sverige</span>
-              </div>
-            </div>
-          </div>
-
-          <p class="contact-section__hanvisning">
-            <a class="model-price__button" href="kontakt.html">Till kontaktformuläret</a>
-          </p>
-        </div>
-      </section>
-'''
+KONTAKT_SEKTION = open("_kontaktsektion.inc", encoding="utf-8").read()
 
 
 def hero(bild, rubrik, meta, alt):
@@ -104,14 +69,17 @@ def kategorisida(fil, namn, herobild, meta, rubrik, ingress, modeller, spann):
     kort = "\n".join(f'''          <article class="model-card" data-yta="{yta}" data-rum="{rum}">
             <a class="model-card__media" href="huskort.html">
               <img src="images/{bild}" loading="lazy" decoding="async" alt="{titel}, {namn.lower()} i svensk natur">
+              <span class="model-card__pill" aria-hidden="true">Se huskortet</span>
             </a>
-            <h3 class="model-card__title"><a href="huskort.html">{titel}</a></h3>
-            <p class="model-card__facts"><span>{yta} m²</span><span>{rum} rum</span><span>Leverans {lev} v</span></p>
+            <div class="model-card__rad">
+              <h3 class="model-card__title"><a href="huskort.html">{titel}</a></h3>
+              <p class="model-card__yta">{yta}<span>m²</span></p>
+            </div>
+            <p class="model-card__facts"><span>{rum} rum</span><span>Leverans {lev} v</span></p>
             <p class="model-card__price">Från X kr</p>
-            <a class="model-card__link" href="huskort.html">Se huskortet</a>
           </article>''' for titel, bild, yta, rum, lev in modeller)
 
-    kropp = f'''    <main>
+    kropp = f'''    <main id="innehall">
 {hero(herobild, namn, meta, namn + " i svensk natur")}
       <section class="category">
         <div class="category__inner">
@@ -121,10 +89,9 @@ def kategorisida(fil, namn, herobild, meta, rubrik, ingress, modeller, spann):
 
           <div class="category__head">
             <h2>{rubrik}</h2>
+            <p class="category__ingress">{ingress}</p>
             <p class="category__count">{len(modeller)} modeller</p>
           </div>
-
-          <p class="model-intro__text" style="max-width:620px;margin-bottom:34px">{ingress}</p>
 
           <div class="filter" role="group" aria-label="Filtrera på boyta">
             <p class="filter__etikett">Boyta</p>
@@ -141,7 +108,7 @@ def kategorisida(fil, namn, herobild, meta, rubrik, ingress, modeller, spann):
 
 '''
     ut = (B.head(f"{namn} | Idealhus",
-                 f"{namn} från Idealhus. {ingress}", herobild)
+                 f"{namn} från Idealhus. {ingress}", herobild, fil=fil)
           + "\n" + B.header("Våra hus") + "\n" + kropp + B.SIDFOT + "\n"
           + B.skript(MODELLFILTER))
     open(fil, "w", encoding="utf-8", newline="").write(ut.replace("\n", "\r\n"))
@@ -187,5 +154,17 @@ sidor.append(kategorisida(
      ("Huskort 4", "generated-house-coast-01.webp", 140, 6, 22),
      ("Huskort 5", "generated-house-forest-01.webp", 155, 6, 24),
      ("Huskort 6", "generated-house-winter-01.webp", 170, 7, 24)], SPANN))
+
+sidor.append(kategorisida(
+    "attefallshus.html", "Attefallshus", "generated-category-attefallshus-wide-01.webp",
+    "Bygglovsbefriat · upp till 30 m² · gästhus, kontor eller uthyrning",
+    "Modeller i attefallsstorlek",
+    "Attefallshus kräver anmälan till kommunen i stället för bygglov, och får vara upp till 30 kvadratmeter. Det gör dem till den snabbaste vägen till ett extra hus på tomten.",
+    [("Huskort 1", "generated-category-attefallshus-card.webp", 25, 1, 10),
+     ("Huskort 2", "generated-house-forest-01.webp", 27, 2, 10),
+     ("Huskort 3", "generated-house-coast-01.webp", 28, 2, 12),
+     ("Huskort 4", "generated-house-garden-01.webp", 30, 2, 12),
+     ("Huskort 5", "generated-category-attefallshus-02.webp", 30, 2, 14),
+     ("Huskort 6", "generated-house-winter-01.webp", 30, 3, 14)], SPANN))
 
 print("\n".join(sidor))

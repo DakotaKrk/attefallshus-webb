@@ -29,7 +29,7 @@ principblock = "\n\n".join(f'''        <article class="segment__block">
           </div>
         </article>''' for rubrik, bild, text, alt in PRINCIPER)
 
-KROPP = f'''    <main>
+KROPP = f'''    <main id="innehall">
       <section class="subpage-hero">
         <img class="subpage-hero__image" src="images/generated-production-yard-01.webp" width="1600" height="900" fetchpriority="high" decoding="async" alt="Svensk produktionsmiljö med attefallshus och trävirke">
 
@@ -125,7 +125,7 @@ KROPP = f'''    <main>
 ut = (B.head("Om oss | Idealhus",
              "Idealhus formger och bygger attefallshus, fritidshus, fjällstugor "
              "och villor med svensk tillverkning.",
-             "generated-production-yard-01.webp")
+             "generated-production-yard-01.webp", fil="om-oss.html")
       + "\n" + B.header("Om oss") + "\n" + KROPP + B.SIDFOT + "\n" + B.skript())
 
 open("om-oss.html", "w", encoding="utf-8", newline="").write(ut.replace("\n", "\r\n"))

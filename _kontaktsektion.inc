@@ -7,6 +7,10 @@
               Berätta vad du funderar på, så återkommer vi med nästa tydliga
               steg. Utan krav och utan säljsnack.
             </p>
+          </div>
+
+          <div class="kontaktkort">
+            <p class="kontaktkort__rubrik">Hör av dig direkt</p>
 
             <div class="contact-section__meta">
               <div>
@@ -26,10 +30,8 @@
                 <span class="contact-section__meta-value contact-section__meta-value--tyst">Stockholm, Sverige</span>
               </div>
             </div>
-          </div>
 
-          <p class="contact-section__hanvisning">
-            <a class="model-price__button" href="kontakt.html">Till kontaktformuläret</a>
-          </p>
+            <a class="kontaktkort__knapp" href="kontakt.html">Till kontaktformuläret</a>
+          </div>
         </div>
       </section>

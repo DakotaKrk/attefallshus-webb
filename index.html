@@ -7,6 +7,7 @@
     <meta name="description" content="Idealhus formger och bygger attefallshus, fritidshus och fjällstugor med skandinavisk design, naturliga material och svensk tillverkning.">
     <meta name="theme-color" content="#262c27">
     <link rel="icon" href="images/idealhus.svg" type="image/svg+xml">
+    <link rel="canonical" href="https://dakotakrk.github.io/idealhus/">
 
     <meta property="og:type" content="website">
     <meta property="og:locale" content="sv_SE">
@@ -14,15 +15,32 @@
     <meta property="og:title" content="Idealhus | Attefallshus, fritidshus och fjällstugor">
     <meta property="og:description" content="Skandinavisk design, naturliga material och svensk tillverkning. Hus formade för platsen, ljuset och livet som ska rymmas.">
     <meta property="og:image" content="https://dakotakrk.github.io/idealhus/images/hero-lakeside-house.webp">
+    <meta property="og:url" content="https://dakotakrk.github.io/idealhus/">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap">
     <link rel="preload" as="image" href="images/hero-video-poster.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260909a">
+    <link rel="stylesheet" href="styles.css?v=20260910a">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://dakotakrk.github.io/idealhus/#organisation",
+      "name": "Idealhus",
+      "legalName": "Idealhus AB",
+      "url": "https://dakotakrk.github.io/idealhus/",
+      "logo": "https://dakotakrk.github.io/idealhus/images/idealhus_logo.svg",
+      "image": "https://dakotakrk.github.io/idealhus/images/hero-video-poster.webp",
+      "email": "ahmed@idealhus.se",
+      "description": "Idealhus formger och bygger attefallshus, fritidshus, fjallstugor och villor med skandinavisk design och svensk tillverkning.",
+      "areaServed": "SE"
+    }
+    </script>
   </head>
   <body>
+    <a class="skip" href="#innehall">Hoppa till innehållet</a>
     <header class="site-header">
       <div class="site-header__inner">
         <a class="logo" href="index.html" aria-label="Till Idealhus startsida">
@@ -155,16 +173,17 @@
 
     </script>
 
-    <main>
+    <main id="innehall">
       <section class="hero">
         <video class="hero__media" autoplay muted loop playsinline preload="metadata"
                poster="images/hero-video-poster.webp" width="1600" height="950" aria-hidden="true">
-          <source src="images/hero-video.mp4" type="video/mp4">
+          <source src="images/hero-video-v2.mp4" type="video/mp4">
         </video>
 
         <div class="hero__content-wrap">
           <div class="hero__content">
-            <h1 class="hero__title">Vi skapar plats<br>för livet du vill leva.</h1>
+            <p class="hero__eyebrow">Svensktillverkade hus</p>
+            <h1 class="hero__title"><span class="rad"><span>Vi skapar plats</span></span> <span class="rad"><span>för livet du vill leva.</span></span></h1>
             <p class="hero__text">
           Moderna fritidshus och permanentbostäder med genomtänkta planlösningar, möjlighet till anpassning och en tydligare väg från idé till färdigt hus.
             </p>
@@ -174,6 +193,10 @@
             </div>
           </div>
         </div>
+
+        <p class="hero__foot" aria-hidden="true">
+          <span>Attefallshus</span><span>Fritidshus</span><span>Fjällstugor</span><span>Villor</span>
+        </p>
       </section>
 
       <section class="house-types">
@@ -192,7 +215,7 @@
             <div class="house-card__content">
               <h3 class="house-card__title">Attefallshus</h3>
               <p class="house-card__text">Smarta småhus för boende, gästhus eller uthyrning.</p>
-              <a class="house-card__link" href="attefallshus.html">Se modeller</a>
+              <a class="house-card__link" href="attefallshus.html">Se alla attefallshus</a>
             </div>
           </article>
 
@@ -201,7 +224,7 @@
             <div class="house-card__content">
               <h3 class="house-card__title">Fritidshus</h3>
               <p class="house-card__text">Mer plats på tomten, byggt för livet som ska rymmas.</p>
-              <a class="house-card__link" href="attefallshus.html">Se modeller</a>
+              <a class="house-card__link" href="fritidshus.html">Se alla fritidshus</a>
             </div>
           </article>
 
@@ -210,7 +233,7 @@
             <div class="house-card__content">
               <h3 class="house-card__title">Fjällstugor</h3>
               <p class="house-card__text">En varm plats att landa på efter dagar ute.</p>
-              <a class="house-card__link" href="fritidshus.html">Se modeller</a>
+              <a class="house-card__link" href="fjallstugor.html">Se alla fjällstugor</a>
             </div>
           </article>
 
@@ -219,7 +242,7 @@
             <div class="house-card__content">
               <h3 class="house-card__title">Villor</h3>
               <p class="house-card__text">Permanentboende med full planlösning och plats för hela livet.</p>
-              <a class="house-card__link" href="fjallstugor.html">Se modeller</a>
+              <a class="house-card__link" href="villor.html">Se alla villor</a>
             </div>
           </article>
 
@@ -229,9 +252,9 @@
               <h3 class="house-card__title">Proffs</h3>
               <p class="house-card__text">För dig som bygger åt andra.</p>
               <ul class="house-card__list">
-                <li>Utfackningsväggar</li>
-                <li>Husblock</li>
-                <li>Moduler</li>
+                <li><a href="proffs.html#utfackningsvaggar">Utfackningsväggar</a></li>
+                <li><a href="proffs.html#husblock">Husblock</a></li>
+                <li><a href="proffs.html#moduler">Moduler</a></li>
               </ul>
               <a class="house-card__link" href="proffs.html">För företag</a>
             </div>
@@ -241,14 +264,20 @@
 
       <section class="quiet-break">
         <div class="quiet-break__inner">
-          <p class="quiet-break__etikett">Vår utgångspunkt</p>
-          <h2 class="quiet-break__title">Mindre yta.<em>Mer att leva i.</em></h2>
-          <p class="quiet-break__text">
-            Vi tror att ett litet hus ska kännas generöst i vardagen. Därför
-            utgår vi från platsen, människorna och livet som ska rymmas där,
-            och låter varje detalj ha en tydlig funktion.
-          </p>
-          <a class="quiet-break__link" href="om-oss.html">Så tänker vi</a>
+          <figure class="quiet-break__bild">
+            <img src="images/generated-category-fritidshus-01.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="Fritidshus i ljus furu med veranda mot en sjö i kvällsljus">
+          </figure>
+
+          <div class="quiet-break__ord">
+            <p class="quiet-break__etikett">Vår utgångspunkt</p>
+            <h2 class="quiet-break__title">Mindre yta.<em>Mer att leva i.</em></h2>
+            <p class="quiet-break__text">
+              Vi tror att ett litet hus ska kännas generöst i vardagen. Därför
+              utgår vi från platsen, människorna och livet som ska rymmas där,
+              och låter varje detalj ha en tydlig funktion.
+            </p>
+            <a class="quiet-break__link" href="om-oss.html">Så tänker vi</a>
+          </div>
         </div>
       </section>
 
@@ -267,6 +296,7 @@
 
         <div class="feature-cards__grid">
           <article class="feature-card">
+            <span class="feature-card__nr" aria-hidden="true">01</span>
             <img class="feature-card__image" src="images/generated-house-coast-01.webp" loading="lazy" decoding="async" alt="Modernt hus på svenska klippor vid havet">
             <div class="feature-card__content">
               <h3 class="feature-card__title">Arkitektur som hör hemma</h3>
@@ -275,6 +305,7 @@
           </article>
 
           <article class="feature-card">
+            <span class="feature-card__nr" aria-hidden="true">02</span>
             <img class="feature-card__image" src="images/generated-interior-01.webp" loading="lazy" decoding="async" alt="Ljus interiör i ett litet hus med smart planering">
             <div class="feature-card__content">
               <h3 class="feature-card__title">Varje kvadrat räknas</h3>
@@ -283,6 +314,7 @@
           </article>
 
           <article class="feature-card">
+            <span class="feature-card__nr" aria-hidden="true">03</span>
             <img class="feature-card__image" src="images/generated-materials-01.webp" loading="lazy" decoding="async" alt="Materialprover med träpanel och fönsterdetalj">
             <div class="feature-card__content">
               <h3 class="feature-card__title">Material som får leva</h3>
@@ -291,6 +323,7 @@
           </article>
 
           <article class="feature-card">
+            <span class="feature-card__nr" aria-hidden="true">04</span>
             <img class="feature-card__image" src="images/generated-craft-cladding-01.webp" loading="lazy" decoding="async" alt="Händer som arbetar med träpanel i verkstad">
             <div class="feature-card__content">
               <h3 class="feature-card__title">En lugnare väg till hus</h3>
@@ -323,16 +356,103 @@
         </a>
       </section>
 
-      <section class="about-text">
-        <div class="about-text__inner">
-          <h2 class="about-text__title">Ett hus för dina planer.</h2>
-          <p class="about-text__lead">
-         Att välja och bygga ett hus innebär många beslut. Idealhus gör det enklare att 
-            hitta rätt bland våra husmodeller och anpassa dem efter dina behov. 
-            Med personlig rådgivning, tydliga offerter och en strukturerad process 
-            hjälper vi dig vidare, från första idé till leverans.
-          </p>
-          <a class="about-text__link" href="om-oss.html">Läs mer om Idealhus</a>
+      <section class="about-text vagen">
+        <div class="about-text__inner vagen__inner">
+          <div class="vagen__text">
+            <p class="section-label">Vägen dit</p>
+            <h2 class="about-text__title">Ett hus för dina planer.</h2>
+            <p class="about-text__lead">
+              Att välja och bygga ett hus innebär många beslut. Vi gör det
+              enklare att hitta rätt bland modellerna, anpassa dem efter din
+              plats och veta vad som händer när.
+            </p>
+            <p class="vagen__brod">
+              Processen är sju steg lång. Vid varje steg står det vem som gör
+              vad, för det är den frågan som brukar vara otydlig när man bygger
+              för första gången.
+            </p>
+            <a class="about-text__link" href="sa-fungerar-det.html">Se hela processen</a>
+          </div>
+
+          <ol class="steg">
+            <li>
+              <details class="steg__kort" name="steg">
+                <summary>
+                  <span class="steg__nr">01</span>
+                  <span class="steg__namn">Första samtalet</span>
+                  <span class="steg__vem steg__vem--bada">Tillsammans</span>
+                  <span class="steg__pil" aria-hidden="true"></span>
+                </summary>
+                <p>Du berättar om tomten, hur huset ska användas och ungefär när du vill vara i gång. Vi säger vad som är möjligt. Kostar ingenting och förpliktigar inte till något.</p>
+              </details>
+            </li>
+            <li>
+              <details class="steg__kort" name="steg">
+                <summary>
+                  <span class="steg__nr">02</span>
+                  <span class="steg__namn">Modell och anpassning</span>
+                  <span class="steg__vem steg__vem--bada">Tillsammans</span>
+                  <span class="steg__pil" aria-hidden="true"></span>
+                </summary>
+                <p>Vi går igenom modellerna och gör de anpassningar som betyder något för just din plats. Du får en offert där det står vad som ingår och vad som tillkommer.</p>
+              </details>
+            </li>
+            <li>
+              <details class="steg__kort" name="steg">
+                <summary>
+                  <span class="steg__nr">03</span>
+                  <span class="steg__namn">Bygglov eller anmälan</span>
+                  <span class="steg__vem steg__vem--du">Du lämnar in</span>
+                  <span class="steg__pil" aria-hidden="true"></span>
+                </summary>
+                <p>Attefallshus kräver anmälan, övriga hus bygglov. Vi tar fram ritningar och underlag, men det är du som är byggherre och lämnar in till din kommun.</p>
+              </details>
+            </li>
+            <li>
+              <details class="steg__kort" name="steg">
+                <summary>
+                  <span class="steg__nr">04</span>
+                  <span class="steg__namn">Tillverkning</span>
+                  <span class="steg__vem steg__vem--vi">Vi</span>
+                  <span class="steg__pil" aria-hidden="true"></span>
+                </summary>
+                <p>Huset byggs i Sverige, under tak. Väggar, golv och tak monteras i jämn temperatur och fuktnivå i stället för ute i väder och vind.</p>
+              </details>
+            </li>
+            <li>
+              <details class="steg__kort" name="steg">
+                <summary>
+                  <span class="steg__nr">05</span>
+                  <span class="steg__namn">Grund och anslutningar</span>
+                  <span class="steg__vem steg__vem--du">Du ordnar</span>
+                  <span class="steg__pil" aria-hidden="true"></span>
+                </summary>
+                <p>Grunden ska vara gjuten och el, vatten och avlopp framdragna innan huset kommer. Vi säger vad som krävs och när det ska vara klart.</p>
+              </details>
+            </li>
+            <li>
+              <details class="steg__kort" name="steg">
+                <summary>
+                  <span class="steg__nr">06</span>
+                  <span class="steg__namn">Leverans och montage</span>
+                  <span class="steg__vem steg__vem--vi">Vi</span>
+                  <span class="steg__pil" aria-hidden="true"></span>
+                </summary>
+                <p>Huset transporteras till tomten och monteras. Framkomlighet för lastbil och kranbil är det vanligaste som behöver lösas i förväg.</p>
+              </details>
+            </li>
+            <li>
+              <details class="steg__kort" name="steg">
+                <summary>
+                  <span class="steg__nr">07</span>
+                  <span class="steg__namn">Slutbesiktning</span>
+                  <span class="steg__vem steg__vem--bada">Tillsammans</span>
+                  <span class="steg__pil" aria-hidden="true"></span>
+                </summary>
+                <p>Genomgång av huset, punktlista på det som ska rättas, och överlämning. Du har haft samma kontakt hela vägen och vet vem du ringer.</p>
+              </details>
+            </li>
+          </ol>
         </div>
       </section>
 
@@ -723,6 +843,9 @@
           button.setAttribute('aria-label', open ? 'Öppna meny' : 'Stäng meny');
           button.classList.toggle('menu-button--open', !open);
           panel.hidden = open;
+          // Sidans rullelement ar <html>. Utan last rullar sidan bakom
+          // en meny som tacker nastan hela skarmen.
+          document.documentElement.style.overflow = open ? '' : 'hidden';
         });
 
         panel.addEventListener('click', function (event) {
@@ -731,6 +854,7 @@
           button.setAttribute('aria-label', 'Öppna meny');
           button.classList.remove('menu-button--open');
           panel.hidden = true;
+          document.documentElement.style.overflow = '';
         });
       })();
     </script>
@@ -834,23 +958,34 @@
         // Skyddsnat: hoppar man i sidan, till exempel via "Begar offert",
         // hinner observatoren inte alltid se allt man passerar. Vid varje
         // scroll kontrolleras darfor om nagot synligt fortfarande ar dolt.
-        var vantar = false;
-        window.addEventListener('scroll', function () {
-          if (vantar) return;
-          vantar = true;
-          window.requestAnimationFrame(function () {
-            vantar = false;
-            for (var i = element.length - 1; i >= 0; i--) {
-              var el = element[i];
-              if (el.classList.contains('reveal--inne')) continue;
-              var r = el.getBoundingClientRect();
-              if (r.top < window.innerHeight && r.bottom > 0) {
-                el.classList.add('reveal--inne');
-                observator.unobserve(el);
-              }
+        // Skyddsnatet mater bara det som ar kvar, hogst fyra ganger i
+        // sekunden, och kopplar bort sig sjalvt nar allt ar framme. Att
+        // mata alla element i varje bildruta tvingade fram en layout per
+        // bildruta - det var det som hackade under rullning.
+        var kvar = element.filter(function (el) {
+          return !el.classList.contains('reveal--inne');
+        });
+        var senast = 0;
+        function kolla() {
+          var nu = Date.now();
+          if (nu - senast < 250) return;
+          senast = nu;
+          for (var i = kvar.length - 1; i >= 0; i--) {
+            var el = kvar[i];
+            if (el.classList.contains('reveal--inne')) {
+              kvar.splice(i, 1);
+              continue;
             }
-          });
-        }, { passive: true });
+            var r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0) {
+              el.classList.add('reveal--inne');
+              observator.unobserve(el);
+              kvar.splice(i, 1);
+            }
+          }
+          if (!kvar.length) window.removeEventListener('scroll', kolla);
+        }
+        if (kvar.length) window.addEventListener('scroll', kolla, { passive: true });
       })();
     </script>
     <script>
@@ -1013,6 +1148,18 @@
 
           visaValt();
         });
+      })();
+    </script>
+    <script>
+      // En sidovergang som hoppas over avvisar sina loften. Utan
+      // detta hamnar "Transition was skipped" i konsolen pa varje
+      // sidbyte som webblasaren valjer bort.
+      (function () {
+        function tyst(e) {
+          if (e.viewTransition) e.viewTransition.finished.catch(function () {});
+        }
+        window.addEventListener('pageswap', tyst);
+        window.addEventListener('pagereveal', tyst);
       })();
     </script>
   </body>
