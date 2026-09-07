@@ -18,9 +18,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
     <link rel="preload" as="image" href="images/hero-lakeside-house.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260907l">
+    <link rel="stylesheet" href="styles.css?v=20260908b">
   </head>
   <body>
     <header class="site-header">
@@ -47,7 +47,16 @@
 
         <nav class="main-nav" aria-label="Huvudmeny">
           <a class="main-nav__link main-nav__link--active" href="#">Hem</a>
-          <a class="main-nav__link" href="#">Våra hus</a>
+          <div class="main-nav__item" data-dropdown>
+            <button class="main-nav__link main-nav__toggle" type="button" aria-expanded="false" aria-controls="undermeny-hus">Våra hus</button>
+            <div class="main-nav__sub" id="undermeny-hus">
+              <a href="#">Attefallshus</a>
+              <a href="#">Fritidshus</a>
+              <a href="#">Fjällstugor</a>
+              <a href="#">Villor</a>
+              <a href="#">Proffs</a>
+            </div>
+          </div>
           <a class="main-nav__link" href="#">Så fungerar det</a>
           <a class="main-nav__link" href="#">Om oss</a>
           <a class="main-nav__link" href="#kontakt">Kontakt</a>
@@ -66,7 +75,14 @@
 
       <nav class="mobile-nav" id="mobile-nav" aria-label="Meny" hidden>
         <a href="#">Hem</a>
-        <a href="#">Våra hus</a>
+        <div class="mobile-nav__grupp">
+          <span>Våra hus</span>
+          <a href="#">Attefallshus</a>
+          <a href="#">Fritidshus</a>
+          <a href="#">Fjällstugor</a>
+          <a href="#">Villor</a>
+          <a href="#">Proffs</a>
+        </div>
         <a href="#">Så fungerar det</a>
         <a href="#">Referensprojekt</a>
         <a href="#">Om oss</a>
@@ -157,7 +173,7 @@
             <div class="house-card__content">
               <h3 class="house-card__title">Attefallshus</h3>
               <p class="house-card__text">Smarta småhus för boende, gästhus eller uthyrning.</p>
-              <a class="house-card__link" href="#">Attefallshus</a>
+              <a class="house-card__link" href="#">Se modeller</a>
             </div>
           </article>
 
@@ -166,7 +182,7 @@
             <div class="house-card__content">
               <h3 class="house-card__title">Fritidshus</h3>
               <p class="house-card__text">Mer plats på tomten, byggt för livet som ska rymmas.</p>
-              <a class="house-card__link" href="#">Fritidshus</a>
+              <a class="house-card__link" href="#">Se modeller</a>
             </div>
           </article>
 
@@ -175,7 +191,28 @@
             <div class="house-card__content">
               <h3 class="house-card__title">Fjällstugor</h3>
               <p class="house-card__text">En varm plats att landa på efter dagar ute.</p>
-              <a class="house-card__link" href="#">Fjällstugor</a>
+              <a class="house-card__link" href="#">Se modeller</a>
+            </div>
+          </article>
+
+          <article class="house-card">
+            <img class="house-card__image" src="images/generated-house-gabled-01.webp" loading="lazy" decoding="async" alt="Villa med sadeltak i svensk trädgårdsmiljö">
+            <div class="house-card__content">
+              <h3 class="house-card__title">Villor</h3>
+              <p class="house-card__text">Permanentboende med full planlösning och plats för hela livet.</p>
+              <a class="house-card__link" href="#">Se modeller</a>
+            </div>
+          </article>
+
+          <article class="house-card house-card--list">
+            <div class="house-card__content">
+              <h3 class="house-card__title">Proffs</h3>
+              <ul class="house-card__list">
+                <li>Utfackningsväggar</li>
+                <li>Husblock</li>
+                <li>Moduler</li>
+              </ul>
+              <a class="house-card__link" href="#">För företag</a>
             </div>
           </article>
         </div>
@@ -404,7 +441,14 @@
           <h3 class="site-footer__heading">Navigation</h3>
           <nav class="site-footer__nav" aria-label="Sidfot navigation">
             <a href="#">Hem</a>
-            <a href="#">Våra hus</a>
+            <div class="mobile-nav__grupp">
+          <span>Våra hus</span>
+          <a href="#">Attefallshus</a>
+          <a href="#">Fritidshus</a>
+          <a href="#">Fjällstugor</a>
+          <a href="#">Villor</a>
+          <a href="#">Proffs</a>
+        </div>
             <a href="#">Så fungerar det</a>
             <a href="#">Referensprojekt</a>
             <a href="#">Om oss</a>
@@ -658,6 +702,48 @@
           button.setAttribute('aria-label', 'Öppna meny');
           button.classList.remove('menu-button--open');
           panel.hidden = true;
+        });
+      })();
+    </script>
+    <script>
+      // Dropdown i huvudmenyn. Oppnar pa klick och pa hover, stanger pa
+      // Escape och pa klick utanfor. Knappen ar en <button> sa den nas
+      // med tangentbord.
+      (function () {
+        var item = document.querySelector('[data-dropdown]');
+        if (!item) return;
+
+        var knapp = item.querySelector('.main-nav__toggle');
+        var stangTimer;
+
+        function satt(oppen) {
+          item.classList.toggle('main-nav__item--open', oppen);
+          knapp.setAttribute('aria-expanded', String(oppen));
+        }
+
+        knapp.addEventListener('click', function () {
+          satt(!item.classList.contains('main-nav__item--open'));
+        });
+
+        item.addEventListener('mouseenter', function () {
+          window.clearTimeout(stangTimer);
+          if (window.matchMedia('(hover: hover)').matches) satt(true);
+        });
+
+        item.addEventListener('mouseleave', function () {
+          if (!window.matchMedia('(hover: hover)').matches) return;
+          stangTimer = window.setTimeout(function () { satt(false); }, 160);
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && item.classList.contains('main-nav__item--open')) {
+            satt(false);
+            knapp.focus();
+          }
+        });
+
+        document.addEventListener('click', function (e) {
+          if (!item.contains(e.target)) satt(false);
         });
       })();
     </script>
