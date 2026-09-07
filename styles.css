@@ -65,7 +65,7 @@ textarea:focus-visible {
 }
 
 .site-header__inner {
-  width: min(100% - 48px, 1320px);
+  width: var(--shell);
   height: 84px;
   margin: 0 auto;
   display: grid;
@@ -1278,7 +1278,7 @@ textarea:focus-visible {
 
   .mobile-nav {
     display: grid;
-    width: min(100% - 48px, 1320px);
+    width: var(--shell);
     margin: 0 auto;
     padding: 8px 0 24px;
     gap: 2px;
@@ -1395,12 +1395,7 @@ textarea:focus-visible {
 
 @media (max-width: 760px) {
   .site-header__inner {
-    width: min(100% - 32px, 1320px);
     height: 70px;
-  }
-
-  .mobile-nav {
-    width: min(100% - 32px, 1320px);
   }
 
   .hero {
