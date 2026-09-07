@@ -2,7 +2,7 @@
 # ar identiska pa alla sidor. Kors om nar mallen andras.
 import re, io, os
 
-CSS_V = "20260908x"
+CSS_V = "20260908y"
 
 KATEGORIER = [
     ("Attefallshus", "attefallshus.html"),
