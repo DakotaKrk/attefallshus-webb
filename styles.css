@@ -367,9 +367,13 @@ textarea:focus-visible {
   margin-bottom: 36px;
 }
 
+/* display: flex, inte inline-flex: som inline-box hamnar etiketten pa en
+   textbaslinje och far ~9 px radhojd ovanfor sig, sa den ritas lagre an
+   toppen av sin egen ruta. Det syns tydligast i kontaktsektionen, dar
+   "Kontakt" annars ligger 9 px under "Namn" i kolumnen bredvid. */
 .section-label {
   margin: 0 0 16px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 12px;
   font-size: 11px;
@@ -955,7 +959,10 @@ textarea:focus-visible {
   align-items: start;
 }
 
+/* Matchar formularets faltetiketter exakt (10 px, samma spärrning) sa att
+   "Kontakt" och "Namn" laser som en och samma rad tvars over sektionen. */
 .section-label--light {
+  font-size: 10px;
   color: rgba(255, 255, 255, 0.6);
 }
 
