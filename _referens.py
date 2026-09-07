@@ -1,38 +1,63 @@
 # Bygger referensprojekt.html. Kor: python _referens.py
 import _bygg as B
 
-# (bild, plats, kategori, kort text, alt)
+# (bild, plats, kategori, styrde, text, alt, form)
+#
+# form styr rytmen i listan: "bred" och "vand" gar over hela bredden med
+# bilden at var sitt hall, tomma strangen ligger i tvakolumnsrutnatet.
+# Sju lika stora rutor blir en katalog - vaxlingen ger en lasordning.
 PROJEKT = [
     ("generated-house-coast-01.webp", "Stockholms skärgård", "Attefallshus",
-     "Placerat på berget med hela glaspartiet mot vattnet. Altanen följer "
-     "bergets lutning i stället för att bygga bort den.",
-     "Litet hus vid svenska klippor och vatten"),
+     "Berget, inte ritningen",
+     "Huset är placerat på berget med hela glaspartiet mot vattnet. Altanen "
+     "följer bergets lutning i stället för att bygga bort den, vilket sparade "
+     "både sprängning och en meter höjd mot omgivningen.",
+     "Litet hus vid svenska klippor och vatten", "bred"),
+
     ("generated-house-winter-01.webp", "Fjällen", "Fjällstuga",
+     "Snölasten",
      "Byggd för snölast och kalla vintrar. Taket och isoleringen skiljer sig "
-     "från våra övriga modeller.",
-     "Attefallshus i ljus svensk vintermiljö"),
+     "från våra övriga modeller, och entrén ligger i lä från den vanligaste "
+     "vindriktningen.",
+     "Attefallshus i ljus svensk vintermiljö", ""),
+
     ("generated-house-forest-01.webp", "Tallskog", "Fritidshus",
-     "Stora glaspartier mot skogen, mörk fasad som försvinner in i stammarna.",
-     "Modernt hus med glasparti i svensk tallskog"),
-    ("generated-house-garden-01.webp", "Villaträdgård", "Attefallshus",
-     "Gästhus och kontor i samma byggnad, med egen uteplats bort från "
-     "huvudbyggnaden.",
-     "Kompakt gästhus med uteplats i trädgård"),
+     "Ljuset mellan stammarna",
+     "Stora glaspartier mot skogen och en mörk fasad som försvinner in i "
+     "stammarna. Fönstersättningen följer var ljuset faktiskt når in mellan "
+     "tallarna, inte fasadens symmetri.",
+     "Modernt hus med glasparti i svensk tallskog", ""),
+
     ("generated-house-meadow-01.webp", "Öppet landskap", "Villa",
-     "Permanentboende i öppet läge. Byggnadens riktning styrs av var solen "
-     "står på eftermiddagen.",
-     "Villa i öppet landskap"),
+     "Eftermiddagssolen",
+     "Permanentboende i öppet läge, där ingenting skuggar och allting syns. "
+     "Byggnadens riktning styrs av var solen står på eftermiddagen, eftersom "
+     "det är då rummen faktiskt används.",
+     "Villa i öppet landskap", "vand"),
+
+    ("generated-house-garden-01.webp", "Villaträdgård", "Attefallshus",
+     "Avståndet till huvudbyggnaden",
+     "Gästhus och kontor i samma byggnad, med egen uteplats vänd bort från "
+     "huvudbyggnaden. Två funktioner som sällan används samtidigt får dela "
+     "samma yta.",
+     "Kompakt gästhus med uteplats i trädgård", ""),
+
     ("generated-house-gabled-01.webp", "Inlandet", "Villa",
+     "Den befintliga bebyggelsen",
      "Sadeltak och traditionell form, med planlösning och teknik från våra "
-     "nyare modeller.",
-     "Villa med sadeltak i svensk trädgårdsmiljö"),
+     "nyare modeller. Huset skulle passa in på gatan utan att se ut som en "
+     "kopia av grannarna.",
+     "Villa med sadeltak i svensk trädgårdsmiljö", ""),
+
     ("generated-interior-01.webp", "Interiör", "Attefallshus",
+     "Var väggarna står",
      "Trettio kvadratmeter som rymmer sovplats, arbetsplats och matplats utan "
-     "att kännas trångt.",
-     "Ljus interiör i ett litet hus med smart planering"),
+     "att kännas trångt. Det handlar mindre om antalet kvadratmeter och mer om "
+     "vad man ser när man kommer in genom dörren.",
+     "Ljus interiör i ett litet hus med smart planering", "bred"),
 ]
 
-kort = "\n".join(f'''          <article class="referens">
+kort = "\n".join(f'''          <article class="referens{(" referens--" + form) if form else ""}">
             <div class="referens__media">
               <img src="images/{bild}" loading="lazy" decoding="async" alt="{alt}">
             </div>
@@ -40,8 +65,12 @@ kort = "\n".join(f'''          <article class="referens">
               <p class="referens__kategori">{kategori}</p>
               <h3>{plats}</h3>
               <p>{text}</p>
+              <dl class="referens__styrde">
+                <dt>Styrde formen</dt>
+                <dd>{styrde}</dd>
+              </dl>
             </div>
-          </article>''' for bild, plats, kategori, text, alt in PROJEKT)
+          </article>''' for bild, plats, kategori, styrde, text, alt, form in PROJEKT)
 
 KROPP = f'''    <main>
       <section class="subpage-hero">

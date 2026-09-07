@@ -181,39 +181,162 @@ textarea:focus-visible {
   transform: scaleX(1);
 }
 
-.header-button {
-  height: 44px;
-  padding: 0 26px;
+/* --- Knappar -------------------------------------------------------
+   En knapp, tre roller. Fylld for det vi vill att man gor, linje for
+   alternativet, ljus for knappar som ligger ovanpa bild. Geometrin och
+   typografin ar gemensam sa att de aldrig glider isar.
+   Tva medvetna val: gemener i lasbar grad i stallet for sparrad
+   versaltext, och ingen pil. Pilen sitter pa textlankarna - lankar
+   pekar, knappar gor. Nar bada bar pil slutar skillnaden synas.
+   ------------------------------------------------------------------- */
+.header-button,
+.hero__link,
+.contact-form button[type="submit"],
+.site-footer__button,
+.model-price__button,
+.contact-page-hero__button,
+.cta-bar__button {
+  height: 52px;
+  padding: 0 30px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border: 1px solid var(--forest);
+  border: 1px solid transparent;
   border-radius: 999px;
-  background: var(--forest);
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.004em;
+  line-height: 1;
+  text-transform: none;
   white-space: nowrap;
-  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+  cursor: pointer;
+  transition: background 0.45s var(--ease), border-color 0.45s var(--ease),
+    color 0.45s var(--ease), box-shadow 0.45s var(--ease),
+    transform 0.28s var(--ease);
 }
 
-.header-button::after {
-  content: "\2192";
-  font-size: 14px;
-  letter-spacing: 0;
-  transition: transform 0.4s var(--ease);
+/* Fylld. Skuggan ar tonad mot blacket i stallet for svart, och den
+   tunna ljusa linjen i overkant ger den morka ytan djup i stallet
+   for platt fyllning. */
+.header-button,
+.contact-form button[type="submit"],
+.site-footer__button,
+.contact-page-hero__button,
+.cta-bar__button {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: #ffffff;
+  box-shadow: 0 1px 2px rgba(18, 24, 19, 0.16),
+    0 12px 26px -14px rgba(18, 24, 19, 0.62),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.header-button:hover {
+.header-button:hover,
+.contact-form button[type="submit"]:hover,
+.site-footer__button:hover,
+.contact-page-hero__button:hover,
+.cta-bar__button:hover {
+  background: #333c34;
+  border-color: #333c34;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(18, 24, 19, 0.2),
+    0 20px 38px -16px rgba(18, 24, 19, 0.68),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.header-button:active,
+.hero__link:active,
+.contact-form button[type="submit"]:active,
+.site-footer__button:active,
+.model-price__button:active,
+.contact-page-hero__button:active,
+.cta-bar__button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(18, 24, 19, 0.22);
+}
+
+/* Linje. Alternativet bredvid den fyllda, eller ensam dar sidan redan
+   har sin tyngdpunkt nagon annanstans. */
+.model-price__button {
   background: transparent;
-  color: var(--forest);
+  border-color: #cdc7ba;
+  color: var(--ink);
 }
 
-.header-button:hover::after {
-  transform: translateX(4px);
+.model-price__button:hover {
+  background: rgba(31, 36, 32, 0.05);
+  border-color: var(--ink);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+/* Pa bild. Glaset later bilden synas igenom utan att texten slapper. */
+.hero__link {
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  -webkit-backdrop-filter: blur(14px) saturate(1.08);
+  backdrop-filter: blur(14px) saturate(1.08);
+}
+
+.hero__link:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.9);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.hero__link--solid {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: var(--ink);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: 0 2px 6px rgba(10, 14, 11, 0.18),
+    0 16px 34px -16px rgba(10, 14, 11, 0.7);
+}
+
+.hero__link--solid:hover {
+  background: #f2efe9;
+  border-color: #f2efe9;
+  color: var(--ink);
+}
+
+/* Matten skiljer sig at per plats, resten gor det inte. */
+.header-button {
+  height: 46px;
+  padding: 0 24px;
+  font-size: 14px;
+}
+
+.contact-form button[type="submit"] {
+  width: 100%;
+  height: 56px;
+}
+
+.contact-form button[type="submit"][disabled] {
+  opacity: 0.55;
+  cursor: progress;
+  transform: none;
+}
+
+.site-footer__button {
+  min-width: 0;
+  height: 48px;
+  margin-top: 22px;
+  padding: 0 28px;
+}
+
+.model-price__button {
+  height: 50px;
+}
+
+.contact-page-hero__button {
+  height: 52px;
 }
 
 .menu-button {
@@ -341,42 +464,6 @@ textarea:focus-visible {
   color: rgba(255, 255, 255, 0.88);
   text-shadow: 0 1px 18px rgba(10, 14, 11, 0.35);
   animation-delay: 0.26s;
-}
-
-.hero__link {
-  min-width: 200px;
-  height: 50px;
-  padding: 0 30px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  border-radius: 999px;
-  background: transparent;
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  transition: background 0.4s var(--ease), color 0.4s var(--ease),
-    border-color 0.4s var(--ease);
-}
-
-.hero__link:hover {
-  background: #ffffff;
-  border-color: #ffffff;
-  color: var(--ink);
-}
-
-.hero__link--solid {
-  border-color: #ffffff;
-  background: #ffffff;
-  color: var(--ink);
-}
-
-.hero__link--solid:hover {
-  background: transparent;
-  color: #ffffff;
 }
 
 .house-types {
@@ -525,22 +612,26 @@ textarea:focus-visible {
 }
 
 .house-card__link {
-  min-width: 168px;
-  height: 42px;
-  margin-top: 16px;
+  min-width: 0;
+  height: 46px;
+  margin-top: 18px;
   padding: 0 24px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.92);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.95);
   color: var(--forest);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.004em;
+  line-height: 1;
+  text-transform: none;
+  box-shadow: 0 2px 6px rgba(10, 14, 11, 0.16),
+    0 14px 30px -16px rgba(10, 14, 11, 0.6);
+  transition: background 0.4s var(--ease), color 0.4s var(--ease),
+    transform 0.28s var(--ease), box-shadow 0.4s var(--ease);
 }
 
 .house-card__link:hover {
@@ -612,18 +703,21 @@ textarea:focus-visible {
 
 .production__link,
 .about-text__link {
-  height: 46px;
-  padding: 0 32px;
+  height: 50px;
+  padding: 0 30px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--ink);
+  border: 1px solid #cdc7ba;
   border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.004em;
+  line-height: 1;
+  text-transform: none;
+  transition: background 0.4s var(--ease), border-color 0.4s var(--ease),
+    color 0.4s var(--ease), transform 0.28s var(--ease);
 }
 
 .production__link:hover,
@@ -990,8 +1084,7 @@ textarea:focus-visible {
    kort, boxade vita falt med tunn ram, etikett ovanfor varje falt, mork
    knapp i full bredd och samtycket under knappen. */
 .contact-section {
-  width: 100%;
-  margin: 0;
+  margin-block: 0;
   padding: 68px 24px 88px;
   background: var(--sand);
   color: var(--ink);
@@ -1173,52 +1266,215 @@ a.contact-section__meta-value:hover {
   color: #a33f2c;
 }
 
+/* --- Runda sektioner -------------------------------------------------
+   Heron ligger indragen med runda horn. De heltackande sandsektionerna
+   gor nu samma sak, sa att sidan blir en foljd av plattor pa vitt papper
+   i stallet for band som gar kant i kant. Bara sektioner med egen
+   bakgrund - vita sektioner har ingen kant att runda.
+   --------------------------------------------------------------------- */
+.quiet-break,
+.about-text,
+.model-price,
+.contact-section,
+.site-footer {
+  width: calc(100% - 24px);
+  margin-inline: 12px;
+  border-radius: var(--radie-hero);
+}
+
+.site-footer {
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+@media (max-width: 620px) {
+  .quiet-break,
+  .about-text,
+  .model-price,
+  .contact-section,
+  .site-footer {
+    width: calc(100% - 20px);
+    margin-inline: 10px;
+    border-radius: 18px;
+  }
+
+  .site-footer {
+    margin-bottom: 10px;
+  }
+}
+
+/* --- Egen rullgardin -------------------------------------------------
+   Webblasarens egen lista ritas av operativsystemet och gar inte att
+   forma - den blir en bla systemruta mitt i ett i ovrigt genomarbetat
+   formular. Listan byggs darfor om i JS, ovanpa en riktig select som
+   ligger kvar och bar vardet. Utan JS syns den vanliga selecten.
+   --------------------------------------------------------------------- */
+.valj {
+  position: relative;
+}
+
+.contact-form .valj select {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+
+.contact-form .valj__knapp {
+  position: relative;
+  width: 100%;
+  height: 54px;
+  padding: 0 46px 0 17px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  border: 1px solid #ddd8ce;
+  border-radius: var(--radie-falt);
+  background: #ffffff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.3;
+  text-align: left;
+  text-transform: none;
+  box-shadow: none;
+  transform: none;
+  cursor: pointer;
+  transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.contact-form .valj__knapp:hover {
+  background: #ffffff;
+  border-color: #c9c2b6;
+  color: var(--ink);
+  transform: none;
+  box-shadow: none;
+}
+
+.contact-form .valj__knapp[aria-expanded="true"],
+.contact-form .valj__knapp:focus-visible {
+  outline: none;
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(31, 36, 32, 0.1);
+  transform: none;
+}
+
+.valj__text--tom {
+  color: #a09a92;
+}
+
+.valj__pil {
+  position: absolute;
+  top: 50%;
+  right: 19px;
+  width: 7px;
+  height: 7px;
+  margin-top: -5px;
+  border-right: 1.4px solid var(--ink-faint);
+  border-bottom: 1.4px solid var(--ink-faint);
+  transform: rotate(45deg);
+  transition: transform 0.35s var(--ease), margin-top 0.35s var(--ease);
+  pointer-events: none;
+}
+
+.valj__knapp[aria-expanded="true"] .valj__pil {
+  margin-top: -1px;
+  transform: rotate(-135deg);
+}
+
+.valj__lista {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  max-height: 292px;
+  margin: 0;
+  padding: 6px;
+  overflow-y: auto;
+  list-style: none;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radie-kort);
+  box-shadow: 0 26px 52px -20px rgba(16, 20, 17, 0.32),
+    0 2px 6px rgba(16, 20, 17, 0.06);
+  animation: valjIn 0.22s var(--ease) both;
+}
+
+.valj__lista[hidden] {
+  display: none;
+}
+
+@keyframes valjIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.valj__val {
+  padding: 11px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 9px;
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 0.18s var(--ease), color 0.18s var(--ease);
+}
+
+.valj__val--markerad {
+  background: var(--sand);
+  color: var(--ink);
+}
+
+.valj__val[aria-selected="true"] {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Bocken bekraftar valet utan att lagga till en ikon som inte finns
+   nagon annanstans pa sidan. */
+.valj__val[aria-selected="true"]::after {
+  content: "";
+  width: 5px;
+  height: 9px;
+  flex: 0 0 auto;
+  border-right: 1.5px solid var(--logo);
+  border-bottom: 1.5px solid var(--logo);
+  transform: rotate(45deg) translate(-1px, -2px);
+}
+
+.field--error .valj__knapp {
+  border-color: #a33f2c;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .valj__lista {
+    animation: none;
+  }
+}
+
 /* Knappen forst, samtycket under - som pa referenssidan. */
 .contact-form__bottom {
   margin-top: 4px;
   display: grid;
   gap: 12px;
-}
-
-.contact-form button {
-  width: 100%;
-  height: 52px;
-  padding: 0 28px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  border: 1px solid var(--forest);
-  border-radius: 999px;
-  background: var(--forest);
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.4s var(--ease), color 0.4s var(--ease);
-}
-
-.contact-form button::after {
-  content: "\2192";
-  font-size: 14px;
-  letter-spacing: 0;
-  transition: transform 0.4s var(--ease);
-}
-
-.contact-form button:hover {
-  background: transparent;
-  color: var(--forest);
-}
-
-.contact-form button:hover::after {
-  transform: translateX(4px);
-}
-
-.contact-form button[disabled] {
-  opacity: 0.6;
-  cursor: progress;
 }
 
 .contact-form__check {
@@ -1324,30 +1580,6 @@ a.contact-section__meta-value:hover {
   transition: color 0.3s var(--ease);
 }
 
-.site-footer__button {
-  min-width: 176px;
-  height: 44px;
-  margin-top: 22px;
-  padding: 0 26px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--forest);
-  border-radius: 999px;
-  background: var(--forest);
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  transition: background 0.4s var(--ease), color 0.4s var(--ease);
-}
-
-.site-footer__button:hover {
-  background: transparent;
-  color: var(--forest);
-}
-
 .site-footer__bottom {
   border-top: 1px solid var(--line);
   padding: 22px max(24px, calc((100% - 1200px) / 2));
@@ -1402,26 +1634,9 @@ a.contact-section__meta-value:hover {
 
   .cta-bar__button {
     flex: 0 0 auto;
-    height: 44px;
-    padding: 0 22px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border-radius: 999px;
-    background: var(--forest);
-    color: #ffffff;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  .cta-bar__button::after {
-    content: "\2192";
+    height: 46px;
+    padding: 0 24px;
     font-size: 14px;
-    letter-spacing: 0;
   }
 }
 
@@ -1478,9 +1693,9 @@ a.contact-section__meta-value:hover {
   }
 
   .header-button {
-    height: 42px;
+    height: 44px;
     padding: 0 20px;
-    font-size: 10px;
+    font-size: 13.5px;
   }
 }
 
@@ -1524,29 +1739,26 @@ a.contact-section__meta-value:hover {
   }
 
   .mobile-nav a.mobile-nav__cta {
-    height: 50px;
-    margin-top: 14px;
+    height: 52px;
+    margin-top: 16px;
     padding: 0 26px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 11px;
     border: 1px solid var(--forest);
     border-bottom: 1px solid var(--forest);
     border-radius: 999px;
     background: var(--forest);
     color: #ffffff;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.004em;
+    line-height: 1;
+    text-transform: none;
+    box-shadow: 0 1px 2px rgba(18, 24, 19, 0.16),
+      0 12px 26px -14px rgba(18, 24, 19, 0.62);
   }
 
-  .mobile-nav a.mobile-nav__cta::after {
-    content: "\2192";
-    font-size: 14px;
-    letter-spacing: 0;
-  }
 }
 
 @media (max-width: 900px) {
@@ -1697,7 +1909,7 @@ a.contact-section__meta-value:hover {
   .house-card__link {
     height: 38px;
     padding: 0 20px;
-    font-size: 9px;
+    font-size: 13.5px;
   }
 
   .quiet-break,
@@ -1887,8 +2099,9 @@ a.contact-section__meta-value:hover {
   border-radius: 0;
   background: transparent;
   color: #ffffff;
-  font-size: 10px;
-  letter-spacing: 0.16em;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.003em;
 }
 
 .house-card__link::after {
@@ -2105,9 +2318,9 @@ a.contact-section__meta-value:hover {
 @media (max-width: 1040px) and (min-width: 621px) {
   .header-button {
     display: inline-flex !important;
-    height: 42px;
+    height: 44px;
     padding: 0 20px;
-    font-size: 10px;
+    font-size: 13.5px;
   }
 }
 
@@ -2450,38 +2663,6 @@ a.contact-section__meta-value:hover {
   color: var(--ink-soft);
 }
 
-.model-price__button {
-  height: 46px;
-  padding: 0 32px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  border: 1px solid var(--ink);
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  transition: background 0.4s var(--ease), color 0.4s var(--ease);
-}
-
-.model-price__button::after {
-  content: "\2192";
-  font-size: 14px;
-  letter-spacing: 0;
-  transition: transform 0.4s var(--ease);
-}
-
-.model-price__button:hover {
-  background: var(--ink);
-  color: #ffffff;
-}
-
-.model-price__button:hover::after {
-  transform: translateX(4px);
-}
-
 .model-price__card {
   padding: 32px 30px 34px;
   display: grid;
@@ -2699,16 +2880,16 @@ a.contact-section__meta-value:hover {
   padding: 0 20px;
   display: inline-flex;
   align-items: center;
-  border: 1px solid var(--line);
+  border: 1px solid #dcd7cc;
   border-radius: 999px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  background: #ffffff;
+  font-size: 14px;
+  letter-spacing: -0.003em;
+  text-transform: none;
   color: var(--ink-soft);
   white-space: nowrap;
   transition: border-color 0.3s var(--ease), color 0.3s var(--ease),
-    background 0.3s var(--ease);
+    background 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 
 .category-filter a:hover {
@@ -2822,10 +3003,10 @@ a.contact-section__meta-value:hover {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.003em;
+  text-transform: none;
   color: var(--ink);
 }
 
@@ -3124,22 +3305,25 @@ p,
   color: var(--ink-faint);
 }
 
+/* Filtren ar inga knappar utan vred - darfor lagre, ljusare och utan
+   den fyllda knappens skugga forran de faktiskt ar valda. */
 .filter button {
-  height: 38px;
-  padding: 0 18px;
-  border: 1px solid var(--line);
+  height: 40px;
+  padding: 0 20px;
+  border: 1px solid #dcd7cc;
   border-radius: 999px;
-  background: transparent;
+  background: #ffffff;
   font: inherit;
-  font-size: 13px;
+  font-size: 14px;
+  letter-spacing: -0.003em;
   color: var(--ink-soft);
   cursor: pointer;
   transition: border-color 0.3s var(--ease), background 0.3s var(--ease),
-    color 0.3s var(--ease);
+    color 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 
 .filter button:hover {
-  border-color: var(--ink);
+  border-color: #b6afa1;
   color: var(--ink);
 }
 
@@ -3147,6 +3331,8 @@ p,
   background: var(--forest);
   border-color: var(--forest);
   color: #ffffff;
+  box-shadow: 0 1px 2px rgba(18, 24, 19, 0.16),
+    0 10px 20px -12px rgba(18, 24, 19, 0.6);
 }
 
 .model-card[hidden] {
@@ -3437,35 +3623,6 @@ p,
   font-size: 17px;
   line-height: 1.8;
   color: var(--ink-soft);
-}
-
-.contact-page-hero__button {
-  height: 48px;
-  padding: 0 32px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  border-radius: 999px;
-  background: var(--forest);
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  border: 1px solid var(--forest);
-  transition: background 0.4s var(--ease), color 0.4s var(--ease);
-}
-
-.contact-page-hero__button::after {
-  content: "\2192";
-  font-size: 14px;
-  letter-spacing: 0;
-}
-
-.contact-page-hero__button:hover {
-  background: transparent;
-  color: var(--forest);
 }
 
 .contact-people {
@@ -3862,24 +4019,7 @@ p,
 .referens-lista__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 56px 32px;
-}
-
-/* Forsta projektet gar over hela bredden, som en huvudbild.
-   Ett rutnat dar allt ar lika stort ger ingen lasordning. */
-.referens-lista__grid .referens:first-child {
-  grid-column: 1 / -1;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 44px;
-  align-items: center;
-}
-
-.referens-lista__grid .referens:first-child .referens__media img {
-  aspect-ratio: 16 / 9;
-}
-
-.referens-lista__grid .referens:first-child h3 {
-  font-size: clamp(30px, 2.6vw, 40px);
+  gap: 72px 36px;
 }
 
 .referens {
@@ -3888,9 +4028,57 @@ p,
   align-content: start;
 }
 
+/* Breda projekt bryter rytmen och ger sidan en lasordning. Sju lika
+   stora rutor blir en katalog i stallet for ett urval. */
+.referens--bred,
+.referens--vand {
+  grid-column: 1 / -1;
+  gap: 52px;
+  align-items: center;
+}
+
+.referens--bred {
+  grid-template-columns: 1.3fr 0.7fr;
+}
+
+.referens--vand {
+  grid-template-columns: 0.7fr 1.3fr;
+}
+
+.referens--vand .referens__media {
+  order: 2;
+}
+
+.referens--bred .referens__media img,
+.referens--vand .referens__media img {
+  aspect-ratio: 16 / 10;
+}
+
+.referens--bred h3,
+.referens--vand h3 {
+  font-size: clamp(30px, 2.7vw, 42px);
+}
+
+.referens--bred .referens__text p,
+.referens--vand .referens__text p {
+  font-size: 16px;
+}
+
 .referens__media {
+  position: relative;
   overflow: hidden;
   border-radius: var(--radie-kort);
+}
+
+/* Harfin kant ovanpa bilden. Ljusa fasader mot ljus himmel flyter
+   annars ut i pappret och kortet tappar sin form. */
+.referens__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.1);
+  pointer-events: none;
 }
 
 .referens__media img {
@@ -3899,15 +4087,18 @@ p,
   display: block;
   object-fit: cover;
   filter: saturate(0.93) contrast(1.03);
-  transition: transform 0.7s var(--ease);
+  transition: transform 0.8s var(--ease);
 }
 
 .referens:hover .referens__media img {
-  transform: scale(1.045);
+  transform: scale(1.035);
 }
 
 .referens__kategori {
-  margin: 0 0 8px;
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -3915,20 +4106,61 @@ p,
   color: var(--logo);
 }
 
+/* Linjen tonar ut i stallet for att sluta tvart - den avgransar
+   etiketten utan att bli ytterligare en ram pa sidan. */
+.referens__kategori::after {
+  content: "";
+  height: 1px;
+  flex: 1 1 auto;
+  background: linear-gradient(
+    90deg,
+    rgba(130, 119, 107, 0.45),
+    rgba(130, 119, 107, 0)
+  );
+}
+
 .referens h3 {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   font-family: var(--serif);
-  font-size: 27px;
+  font-size: 28px;
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
   color: var(--ink);
 }
 
-.referens__text p:last-child {
+.referens__text p {
   margin: 0;
-  font-size: 15px;
+  font-size: 15.5px;
   line-height: 1.75;
   color: var(--ink-soft);
+}
+
+/* Ingressen lovar att det star vad som styrde besluten. Raden ar det
+   loftet, inte en dekoration - darfor en riktig definitionslista. */
+.referens__styrde {
+  margin: 20px 0 0;
+  padding-top: 16px;
+  display: grid;
+  gap: 6px;
+  border-top: 1px solid var(--line);
+}
+
+.referens__styrde dt {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.referens__styrde dd {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--ink);
 }
 
 @media (max-width: 900px) {
@@ -3937,9 +4169,23 @@ p,
     padding: 0 0 76px;
   }
 
-  .referens-lista__grid .referens:first-child {
+  .referens-lista__grid {
+    gap: 56px 28px;
+  }
+
+  .referens--bred,
+  .referens--vand {
     grid-template-columns: 1fr;
-    gap: 22px;
+    gap: 24px;
+  }
+
+  .referens--vand .referens__media {
+    order: 0;
+  }
+
+  .referens--bred .referens__media img,
+  .referens--vand .referens__media img {
+    aspect-ratio: 16 / 9;
   }
 }
 
@@ -3951,11 +4197,17 @@ p,
 
   .referens-lista__grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 48px;
   }
 
-  .referens h3 {
-    font-size: 24px;
+  .referens h3,
+  .referens--bred h3,
+  .referens--vand h3 {
+    font-size: 25px;
+  }
+
+  .referens__styrde dd {
+    font-size: 17px;
   }
 }
 
@@ -3965,12 +4217,12 @@ p,
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding-bottom: 4px;
-  border-bottom: 1px solid rgba(31, 36, 32, 0.25);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(31, 36, 32, 0.28);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.004em;
+  text-transform: none;
   color: var(--ink);
   transition: border-color 0.35s var(--ease);
 }

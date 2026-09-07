@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
     <link rel="preload" as="image" href="images/generated-category-fjallstuga-wide-01.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260908z">
+    <link rel="stylesheet" href="styles.css?v=20260909a">
   </head>
   <body>
     <header class="site-header">
@@ -407,6 +407,156 @@
         rad.addEventListener('scroll', uppdatera, { passive: true });
         window.addEventListener('resize', uppdatera);
       })();
+
+      // Egen rullgardin. Systemets egen lista gar inte att forma, sa den
+      // byggs om har. Selecten ligger kvar dold och bar vardet, vilket
+      // gor att formularets ovriga kod inte behover veta om det har.
+      (function () {
+        var listor = document.querySelectorAll('.contact-form select');
+        var lopnr = 0;
+        Array.prototype.forEach.call(listor, function (select) {
+          if (!select.options.length) return;
+          lopnr += 1;
+          var skal = document.createElement('div');
+          skal.className = 'valj';
+          select.parentNode.insertBefore(skal, select);
+          skal.appendChild(select);
+
+          var knapp = document.createElement('button');
+          knapp.type = 'button';
+          knapp.className = 'valj__knapp';
+          knapp.setAttribute('aria-haspopup', 'listbox');
+          knapp.setAttribute('aria-expanded', 'false');
+          var etikett = select.id
+            ? document.querySelector('label[for="' + select.id + '"]')
+            : null;
+          if (etikett) {
+            if (!etikett.id) etikett.id = 'valj-etikett-' + lopnr;
+            knapp.setAttribute('aria-labelledby', etikett.id + ' valj-text-' + lopnr);
+          }
+
+          var text = document.createElement('span');
+          text.className = 'valj__text';
+          text.id = 'valj-text-' + lopnr;
+          var pil = document.createElement('span');
+          pil.className = 'valj__pil';
+          knapp.appendChild(text);
+          knapp.appendChild(pil);
+
+          var lista = document.createElement('ul');
+          lista.className = 'valj__lista';
+          lista.id = 'valj-lista-' + lopnr;
+          lista.setAttribute('role', 'listbox');
+          lista.hidden = true;
+          knapp.setAttribute('aria-controls', lista.id);
+
+          var val = [];
+          Array.prototype.forEach.call(select.options, function (o, i) {
+            var li = document.createElement('li');
+            li.className = 'valj__val';
+            li.id = 'valj-' + lopnr + '-' + i;
+            li.setAttribute('role', 'option');
+            li.setAttribute('aria-selected', String(i === select.selectedIndex));
+            li.textContent = o.textContent;
+            lista.appendChild(li);
+            val.push(li);
+          });
+
+          skal.appendChild(knapp);
+          skal.appendChild(lista);
+
+          var markerad = select.selectedIndex < 0 ? 0 : select.selectedIndex;
+
+          function visaValt() {
+            var o = select.options[select.selectedIndex];
+            text.textContent = o ? o.textContent : '';
+            text.classList.toggle('valj__text--tom', !select.value);
+          }
+
+          function markera(i) {
+            if (i < 0) i = 0;
+            if (i > val.length - 1) i = val.length - 1;
+            markerad = i;
+            val.forEach(function (li, n) {
+              li.classList.toggle('valj__val--markerad', n === i);
+            });
+            knapp.setAttribute('aria-activedescendant', val[i].id);
+            if (!lista.hidden && val[i].scrollIntoView) {
+              val[i].scrollIntoView({ block: 'nearest' });
+            }
+          }
+
+          function oppna() {
+            lista.hidden = false;
+            knapp.setAttribute('aria-expanded', 'true');
+            markera(select.selectedIndex < 0 ? 0 : select.selectedIndex);
+          }
+
+          function stang(aterfokus) {
+            lista.hidden = true;
+            knapp.setAttribute('aria-expanded', 'false');
+            knapp.removeAttribute('aria-activedescendant');
+            if (aterfokus) knapp.focus();
+          }
+
+          function valj(i) {
+            select.selectedIndex = i;
+            val.forEach(function (li, n) {
+              li.setAttribute('aria-selected', String(n === i));
+            });
+            visaValt();
+            var h = document.createEvent('HTMLEvents');
+            h.initEvent('change', true, false);
+            select.dispatchEvent(h);
+          }
+
+          knapp.addEventListener('click', function () {
+            if (lista.hidden) oppna(); else stang(false);
+          });
+
+          knapp.addEventListener('keydown', function (e) {
+            var k = e.key;
+            if (lista.hidden) {
+              if (k === 'ArrowDown' || k === 'ArrowUp' || k === 'Enter' || k === ' ') {
+                e.preventDefault();
+                oppna();
+              }
+              return;
+            }
+            if (k === 'ArrowDown') { e.preventDefault(); markera(markerad + 1); }
+            else if (k === 'ArrowUp') { e.preventDefault(); markera(markerad - 1); }
+            else if (k === 'Home') { e.preventDefault(); markera(0); }
+            else if (k === 'End') { e.preventDefault(); markera(val.length - 1); }
+            else if (k === 'Enter' || k === ' ') {
+              e.preventDefault();
+              valj(markerad);
+              stang(true);
+            } else if (k === 'Escape') { e.preventDefault(); stang(true); }
+            else if (k === 'Tab') { stang(false); }
+          });
+
+          lista.addEventListener('mousedown', function (e) { e.preventDefault(); });
+
+          lista.addEventListener('click', function (e) {
+            var i = val.indexOf(e.target);
+            if (i < 0) return;
+            valj(i);
+            stang(true);
+          });
+
+          lista.addEventListener('mousemove', function (e) {
+            var i = val.indexOf(e.target);
+            if (i > -1 && i !== markerad) markera(i);
+          });
+
+          document.addEventListener('click', function (e) {
+            if (!lista.hidden && !skal.contains(e.target)) stang(false);
+          });
+
+          visaValt();
+        });
+      })();
+
 
       (function () {
         var grid = document.querySelector('.model-grid');
