@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap">
     <link rel="preload" as="image" href="images/hero-lakeside-house.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260907c">
+    <link rel="stylesheet" href="styles.css?v=20260907d">
   </head>
   <body>
     <header class="site-header">
@@ -446,11 +446,15 @@
     <script>
       // Kontaktformularet.
       //
-      // FORM_ENDPOINT ar tom tills en formulartjanst ar vald. Sa lange
-      // den ar tom oppnar formularet besokarens e-postprogram med ett
-      // ifyllt meddelande i stallet - da fungerar det utan backend.
-      // Klistra in en endpoint (Formspree, FormSubmit eller liknande) sa
-      // skickas det i bakgrunden i stallet, utan att besokaren lamnar sidan.
+      // Medvetet val: ingen extern formulartjanst. Formularet oppnar
+      // besokarens e-postprogram med forfragan ifylld, sa ingen
+      // persondata passerar en tredje part. Priset ar att besokare utan
+      // konfigurerat e-postprogram maste mejla manuellt - darfor visas
+      // adressen alltid som en klickbar lank i kvittensen.
+      //
+      // Om valet nagon gang andras: klistra in en endpoint (Formspree,
+      // FormSubmit eller liknande) i FORM_ENDPOINT nedan, sa skickas
+      // formularet i bakgrunden i stallet. Ingen annan andring behovs.
       var FORM_ENDPOINT = '';
       var FORM_MOTTAGARE = 'ahmed@idealhus.se';
 
@@ -507,8 +511,18 @@
           return fel;
         }
 
-        function visaStatus(text, typ) {
+        // medMejllank lagger till en klickbar adress sist i meddelandet,
+        // sa besokaren aldrig hamnar i en atervandsgrand.
+        function visaStatus(text, typ, medMejllank) {
           status.textContent = text;
+          if (medMejllank) {
+            var lank = document.createElement('a');
+            lank.href = 'mailto:' + FORM_MOTTAGARE;
+            lank.textContent = FORM_MOTTAGARE;
+            status.appendChild(document.createTextNode(' '));
+            status.appendChild(lank);
+            status.appendChild(document.createTextNode('.'));
+          }
           status.className = 'contact-form__status contact-form__status--' + typ;
           status.hidden = false;
         }
@@ -558,9 +572,10 @@
           if (!FORM_ENDPOINT) {
             window.location.href = byggMailto();
             visaStatus(
-              'Ditt e-postprogram öppnas med förfrågan ifylld – tryck skicka där. ' +
-              'Händer inget kan du mejla ' + FORM_MOTTAGARE + ' direkt.',
-              'ok'
+              'Ditt e-postprogram öppnas nu med förfrågan ifylld – tryck skicka där. ' +
+              'Händer ingenting kan du mejla oss direkt på',
+              'ok',
+              true
             );
             return;
           }
@@ -581,9 +596,9 @@
             })
             .catch(function () {
               visaStatus(
-                'Något gick fel när förfrågan skulle skickas. Mejla oss gärna på ' +
-                FORM_MOTTAGARE + ' så tar vi det därifrån.',
-                'fail'
+                'Något gick fel när förfrågan skulle skickas. Mejla oss gärna direkt på',
+                'fail',
+                true
               );
             })
             .then(function () {

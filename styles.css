@@ -1125,6 +1125,16 @@ textarea:focus-visible {
   color: rgba(255, 255, 255, 0.92);
 }
 
+.contact-form__status a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.3s var(--ease);
+}
+
+.contact-form__status a:hover {
+  opacity: 0.72;
+}
+
 .contact-form__status--fail {
   border-color: rgba(255, 179, 167, 0.55);
   color: #ffd5cd;
