@@ -1226,15 +1226,11 @@ textarea:focus-visible {
   gap: 64px;
 }
 
-.site-footer__brand {
-  margin: 0 0 20px;
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 400;
-  letter-spacing: 0.24em;
-  text-indent: 0.24em;
-  text-transform: uppercase;
-  color: var(--ink);
+.site-footer__logo {
+  width: auto;
+  height: 42px;
+  margin: 0 0 22px;
+  display: block;
 }
 
 .site-footer__heading {
