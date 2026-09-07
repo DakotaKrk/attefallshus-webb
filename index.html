@@ -24,19 +24,29 @@
   </head>
   <body>
     <header class="site-header">
-      <div class="site-header__logo-row">
-        <a class="logo" href="#">
+      <div class="site-header__inner">
+        <a class="logo" href="#" aria-label="Idealhus – till startsidan">
           <img class="logo__image" src="images/bostadsverket.svg" width="1893" height="176" alt="Idealhus">
-          <span class="logo__tagline">Attefallshus &amp; komplementhus</span>
         </a>
 
-        <a class="header-button" href="#kontakt">Begär offert</a>
+        <nav class="main-nav" aria-label="Huvudmeny">
+          <a class="main-nav__link main-nav__link--active" href="#">Hem</a>
+          <a class="main-nav__link" href="#">Våra hus</a>
+          <a class="main-nav__link" href="#">Så fungerar det</a>
+          <a class="main-nav__link" href="#">Referensprojekt</a>
+          <a class="main-nav__link" href="#">Om oss</a>
+          <a class="main-nav__link" href="#kontakt">Kontakt</a>
+        </nav>
 
-        <button class="menu-button" type="button" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-nav">
-          <span class="menu-button__line"></span>
-          <span class="menu-button__line"></span>
-          <span class="menu-button__line"></span>
-        </button>
+        <div class="site-header__actions">
+          <a class="header-button" href="#kontakt">Begär offert</a>
+
+          <button class="menu-button" type="button" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-nav">
+            <span class="menu-button__line"></span>
+            <span class="menu-button__line"></span>
+            <span class="menu-button__line"></span>
+          </button>
+        </div>
       </div>
 
       <nav class="mobile-nav" id="mobile-nav" aria-label="Meny" hidden>
@@ -49,19 +59,6 @@
         <a class="mobile-nav__cta" href="#kontakt">Begär offert</a>
       </nav>
     </header>
-
-    <div class="site-header__nav-row">
-      <div class="site-header__nav-inner">
-        <nav class="main-nav" aria-label="Huvudmeny">
-          <a class="main-nav__link main-nav__link--active" href="#">Hem</a>
-          <a class="main-nav__link" href="#">Våra hus</a>
-          <a class="main-nav__link" href="#">Så fungerar det</a>
-          <a class="main-nav__link" href="#">Referensprojekt</a>
-          <a class="main-nav__link" href="#">Om oss</a>
-          <a class="main-nav__link" href="#kontakt">Kontakt</a>
-        </nav>
-      </div>
-    </div>
 
     <main>
       <section class="hero">
