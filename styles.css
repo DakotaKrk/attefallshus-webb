@@ -3556,3 +3556,156 @@ p,
     padding: 56px 0 64px;
   }
 }
+
+/* ------------------------------------------------------------
+   Kontaktsidan, omgjord. De tomma portrattramarna ar borta -
+   en tom bildram laser alltid som ofardig. Kontaktuppgifterna
+   star pa ett stalle i stallet for tva.
+   ------------------------------------------------------------ */
+.kontakt-topp {
+  width: var(--shell);
+  margin: 0 auto;
+  padding: 84px 0 88px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 88px;
+  align-items: start;
+}
+
+.kontakt-topp h1 {
+  margin: 0 0 24px;
+  font-family: var(--serif);
+  font-size: clamp(42px, 4.2vw, 64px);
+  font-weight: 400;
+  line-height: 1.04;
+  color: var(--ink);
+}
+
+.kontakt-topp h1 em {
+  font-style: italic;
+  color: var(--logo);
+}
+
+.kontakt-topp__lead {
+  max-width: 460px;
+  margin: 0 0 32px;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+
+.kontakt-topp__brod {
+  max-width: 460px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+
+/* Personerna presenteras som rader, inte som kort med hal i.
+   Namnet i antikvan barpresentationen tills riktiga portratt finns. */
+.kontakt-direkt {
+  display: grid;
+  gap: 0;
+}
+
+.kontakt-direkt__rad {
+  padding: 24px 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 24px;
+  align-items: baseline;
+  border-top: 1px solid var(--line);
+}
+
+.kontakt-direkt__rad:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.kontakt-direkt__namn {
+  font-family: var(--serif);
+  font-size: 27px;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.kontakt-direkt__roll {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.kontakt-direkt__lankar {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 2px;
+  margin-top: 4px;
+}
+
+.kontakt-direkt__lankar a {
+  width: fit-content;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  transition: color 0.3s var(--ease);
+}
+
+.kontakt-direkt__lankar a:hover {
+  color: var(--logo);
+}
+
+/* Bra att ha med. Ersatter de upprepade kontaktuppgifterna i
+   formularsektionen och gor forfragningarna anvandbara direkt. */
+.kontakt-tips {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0;
+  max-width: 400px;
+}
+
+.kontakt-tips li {
+  padding: 18px 0;
+  border-top: 1px solid rgba(31, 36, 32, 0.14);
+}
+
+.kontakt-tips li:last-child {
+  border-bottom: 1px solid rgba(31, 36, 32, 0.14);
+}
+
+.kontakt-tips strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.kontakt-tips span {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 900px) {
+  .kontakt-topp {
+    width: min(100% - 24px, 1200px);
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 60px 0 64px;
+  }
+}
+
+@media (max-width: 620px) {
+  .kontakt-topp {
+    width: min(100% - 20px, 1200px);
+    padding: 48px 0 52px;
+  }
+
+  .kontakt-direkt__namn {
+    font-size: 24px;
+  }
+}
