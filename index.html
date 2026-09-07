@@ -3,22 +3,51 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idealhus</title>
+    <title>Idealhus – attefallshus, fritidshus & fjällstugor</title>
+    <meta name="description" content="Idealhus formger och bygger attefallshus, fritidshus och fjällstugor med skandinavisk design, naturliga material och svensk tillverkning.">
+    <meta name="theme-color" content="#262c27">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="sv_SE">
+    <meta property="og:site_name" content="Idealhus">
+    <meta property="og:title" content="Idealhus – attefallshus, fritidshus & fjällstugor">
+    <meta property="og:description" content="Skandinavisk design, naturliga material och svensk tillverkning. Hus formade för platsen, ljuset och livet som ska rymmas.">
+    <meta property="og:image" content="https://dakotakrk.github.io/idealhus/images/hero-lakeside-house.webp">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap">
+    <link rel="preload" as="image" href="images/hero-lakeside-house.webp" fetchpriority="high">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="site-header">
       <div class="site-header__logo-row">
         <a class="logo" href="#">
-          <img class="logo__image" src="images/bostadsverket.svg" alt="Idealhus">
+          <img class="logo__image" src="images/bostadsverket.svg" width="1893" height="176" alt="Idealhus">
+          <span class="logo__tagline">Attefallshus &amp; komplementhus</span>
         </a>
 
-        <button class="menu-button" type="button" aria-label="Öppna meny">
+        <a class="header-button" href="#kontakt">Begär offert</a>
+
+        <button class="menu-button" type="button" aria-label="Öppna meny" aria-expanded="false" aria-controls="mobile-nav">
           <span class="menu-button__line"></span>
           <span class="menu-button__line"></span>
           <span class="menu-button__line"></span>
         </button>
       </div>
+
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Meny" hidden>
+        <a href="#">Hem</a>
+        <a href="#">Våra hus</a>
+        <a href="#">Så fungerar det</a>
+        <a href="#">Referensprojekt</a>
+        <a href="#">Om oss</a>
+        <a href="#kontakt">Kontakt</a>
+        <a class="mobile-nav__cta" href="#kontakt">Begär offert</a>
+      </nav>
     </header>
 
     <div class="site-header__nav-row">
@@ -29,14 +58,14 @@
           <a class="main-nav__link" href="#">Så fungerar det</a>
           <a class="main-nav__link" href="#">Referensprojekt</a>
           <a class="main-nav__link" href="#">Om oss</a>
-          <a class="main-nav__link" href="#">Kontakt</a>
+          <a class="main-nav__link" href="#kontakt">Kontakt</a>
         </nav>
       </div>
     </div>
 
     <main>
       <section class="hero">
-        <img class="hero__image" src="images/hero-lakeside-house.png" alt="Modernt attefallshus vid sjö och klippor">
+        <img class="hero__image" src="images/hero-lakeside-house.webp" width="1635" height="962" fetchpriority="high" decoding="async" alt="Modernt attefallshus vid sjö och klippor">
 
         <div class="hero__content-wrap">
           <div class="hero__content">
@@ -53,6 +82,7 @@
       <section class="house-types">
         <div class="house-types__header">
           <div>
+            <p class="section-label">Husmodeller</p>
             <h2 class="house-types__title">Våra hus</h2>
           </div>
 
@@ -61,7 +91,7 @@
 
         <div class="house-types__grid">
           <article class="house-card">
-            <img class="house-card__image" src="images/generated-category-attefallshus-card.png" alt="Attefallshus med mörk träfasad i svensk natur vid vatten">
+            <img class="house-card__image" src="images/generated-category-attefallshus-card.webp" loading="lazy" decoding="async" alt="Attefallshus med mörk träfasad i svensk natur vid vatten">
             <div class="house-card__content">
               <h3 class="house-card__title">Attefallshus</h3>
               <p class="house-card__text">Smarta småhus för boende, gästhus eller uthyrning.</p>
@@ -70,7 +100,7 @@
           </article>
 
           <article class="house-card">
-            <img class="house-card__image" src="images/generated-category-fritidshus-card.png" alt="Fritidshus i ljus svensk natur med sjöutsikt">
+            <img class="house-card__image" src="images/generated-category-fritidshus-card.webp" loading="lazy" decoding="async" alt="Fritidshus i ljus svensk natur med sjöutsikt">
             <div class="house-card__content">
               <h3 class="house-card__title">Fritidshus</h3>
               <p class="house-card__text">Mer plats på tomten, byggt för livet som ska rymmas.</p>
@@ -79,7 +109,7 @@
           </article>
 
           <article class="house-card">
-            <img class="house-card__image" src="images/generated-category-fjallstuga-card.png" alt="Fjällstuga i svensk fjällmiljö med berg och snö">
+            <img class="house-card__image" src="images/generated-category-fjallstuga-card.webp" loading="lazy" decoding="async" alt="Fjällstuga i svensk fjällmiljö med berg och snö">
             <div class="house-card__content">
               <h3 class="house-card__title">Fjällstugor</h3>
               <p class="house-card__text">En varm plats att landa på efter dagar ute.</p>
@@ -94,7 +124,7 @@
           <h2 class="quiet-break__title">Mindre yta. Mer att leva i.</h2>
           <p class="quiet-break__text">
             Vi tror att ett litet hus ska kännas generöst i vardagen. Därför
-            utgår vi från platsen, människorna och livet som ska rymmas där -
+            utgår vi från platsen, människorna och livet som ska rymmas där –
             och låter varje detalj ha en tydlig funktion.
           </p>
           <a class="quiet-break__link" href="#">Så tänker vi</a>
@@ -104,12 +134,19 @@
       <section class="feature-cards">
         <div class="feature-cards__header">
           <div>
+            <p class="section-label">Vårt hantverk</p>
+            <h2 class="feature-cards__title">Det som gör skillnad.</h2>
           </div>
+
+          <p class="feature-cards__intro">
+            Fyra saker återkommer i varje hus vi ritar: platsen, planlösningen,
+            materialen och vägen dit. Det är där kvaliteten avgörs.
+          </p>
         </div>
 
         <div class="feature-cards__grid">
           <article class="feature-card">
-            <img class="feature-card__image" src="images/generated-house-coast-01.png" alt="Modernt hus på svenska klippor vid havet">
+            <img class="feature-card__image" src="images/generated-house-coast-01.webp" loading="lazy" decoding="async" alt="Modernt hus på svenska klippor vid havet">
             <div class="feature-card__content">
               <h3 class="feature-card__title">Arkitektur som hör hemma</h3>
               <p class="feature-card__text">Hus formade för platsen, ljuset och utsikten.</p>
@@ -117,7 +154,7 @@
           </article>
 
           <article class="feature-card">
-            <img class="feature-card__image" src="images/generated-interior-01.png" alt="Ljus interiör i ett litet hus med smart planering">
+            <img class="feature-card__image" src="images/generated-interior-01.webp" loading="lazy" decoding="async" alt="Ljus interiör i ett litet hus med smart planering">
             <div class="feature-card__content">
               <h3 class="feature-card__title">Varje kvadrat räknas</h3>
               <p class="feature-card__text">Genomtänkta planlösningar för livet som ska levas.</p>
@@ -125,7 +162,7 @@
           </article>
 
           <article class="feature-card">
-            <img class="feature-card__image" src="images/generated-materials-01.png" alt="Materialprover med träpanel och fönsterdetalj">
+            <img class="feature-card__image" src="images/generated-materials-01.webp" loading="lazy" decoding="async" alt="Materialprover med träpanel och fönsterdetalj">
             <div class="feature-card__content">
               <h3 class="feature-card__title">Material som får leva</h3>
               <p class="feature-card__text">Naturliga material och detaljer som åldras vackert.</p>
@@ -133,7 +170,7 @@
           </article>
 
           <article class="feature-card">
-            <img class="feature-card__image" src="images/generated-craft-cladding-01.png" alt="Händer som arbetar med träpanel i verkstad">
+            <img class="feature-card__image" src="images/generated-craft-cladding-01.webp" loading="lazy" decoding="async" alt="Händer som arbetar med träpanel i verkstad">
             <div class="feature-card__content">
               <h3 class="feature-card__title">En lugnare väg till hus</h3>
               <p class="feature-card__text">Tydliga val och personlig kontakt hela vägen.</p>
@@ -144,6 +181,7 @@
 
       <section class="production">
         <div class="production__content">
+          <p class="section-label">Tillverkning</p>
           <h2 class="production__title">Produktion i Sverige.<br>Nära dig.</h2>
           <p class="production__text">
             När huset byggs i Sverige kan vi följa varje moment på nära håll.
@@ -155,7 +193,7 @@
         </div>
 
         <a class="production__media" href="#" aria-label="Se produktionen">
-          <img class="production__image" src="images/generated-production-yard-01.png" alt="Svensk produktionsmiljö med attefallshus och trävirke">
+          <img class="production__image" src="images/generated-production-yard-01.webp" loading="lazy" decoding="async" alt="Svensk produktionsmiljö med attefallshus och trävirke">
           <span class="production__play" aria-hidden="true"></span>
           <span class="production__caption">
             <span>Film · Produktion i Sverige</span>
@@ -170,7 +208,7 @@
           <p class="about-text__lead">
             Idealhus skapar attefallshus och komplementhus där varje
             kvadratmeter har ett syfte. Vi förenar lugn arkitektur, naturliga
-            material och svensk tillverkning i hus som är enkla att leva med -
+            material och svensk tillverkning i hus som är enkla att leva med –
             länge.
           </p>
           <p>
@@ -191,6 +229,7 @@
       <section class="reference-projects">
         <div class="reference-projects__header">
           <div>
+            <p class="section-label">Referensprojekt</p>
             <h2 class="reference-projects__title">Se hur våra kunder använder sina hus.</h2>
           </div>
 
@@ -198,32 +237,78 @@
         </div>
 
         <div class="reference-projects__grid">
-          <img src="images/generated-house-coast-01.png" alt="Litet hus vid svenska klippor och vatten">
-          <img src="images/generated-house-winter-01.png" alt="Attefallshus i ljus svensk vintermiljö">
-          <img src="images/generated-house-forest-01.png" alt="Modernt hus med glasparti i svensk tallskog">
-          <img src="images/generated-house-garden-01.png" alt="Kompakt gästhus med uteplats i trädgård">
+          <figure>
+            <img src="images/generated-house-coast-01.webp" loading="lazy" decoding="async" alt="Litet hus vid svenska klippor och vatten">
+          </figure>
+          <figure>
+            <img src="images/generated-house-winter-01.webp" loading="lazy" decoding="async" alt="Attefallshus i ljus svensk vintermiljö">
+          </figure>
+          <figure>
+            <img src="images/generated-house-forest-01.webp" loading="lazy" decoding="async" alt="Modernt hus med glasparti i svensk tallskog">
+          </figure>
+          <figure>
+            <img src="images/generated-house-garden-01.webp" loading="lazy" decoding="async" alt="Kompakt gästhus med uteplats i trädgård">
+          </figure>
         </div>
       </section>
 
-      <section class="contact-section">
+      <section class="contact-section" id="kontakt">
         <div class="contact-section__inner">
-          <h2 class="contact-section__title">Låt oss börja med din plats.</h2>
-          <p class="contact-section__text">
-            Berätta vad du funderar på, så återkommer vi med nästa tydliga steg.
-          </p>
+          <div class="contact-section__intro">
+            <p class="section-label section-label--light">Kontakt</p>
+            <h2 class="contact-section__title">Låt oss börja<br>med din plats.</h2>
+            <p class="contact-section__text">
+              Berätta vad du funderar på, så återkommer vi med nästa tydliga
+              steg – utan krav och utan säljsnack.
+            </p>
+
+            <dl class="contact-section__meta">
+              <div>
+                <dt>Ahmed</dt>
+                <dd><a href="mailto:ahmed@idealhus.se">ahmed@idealhus.se</a></dd>
+              </div>
+              <div>
+                <dt>Sahand</dt>
+                <dd><a href="mailto:sahand@idealhus.se">sahand@idealhus.se</a></dd>
+              </div>
+              <div>
+                <dt>Telefon</dt>
+                <dd><a href="tel:+46701234567">070-123 45 67</a></dd>
+              </div>
+              <div>
+                <dt>Plats</dt>
+                <dd>Stockholm, Sverige</dd>
+              </div>
+            </dl>
+          </div>
 
           <form class="contact-form" action="#" method="post">
             <div class="contact-form__row">
-              <input type="text" name="name" placeholder="Namn">
-              <input type="email" name="email" placeholder="E-postadress">
+              <p class="field">
+                <label for="field-name">Namn</label>
+                <input id="field-name" type="text" name="name" autocomplete="name" placeholder="För- och efternamn">
+              </p>
+              <p class="field">
+                <label for="field-email">E-postadress</label>
+                <input id="field-email" type="email" name="email" autocomplete="email" placeholder="namn@exempel.se">
+              </p>
             </div>
 
             <div class="contact-form__row">
-              <input type="tel" name="phone" placeholder="Telefonnummer">
-              <input type="text" name="city" placeholder="Stad / ort">
+              <p class="field">
+                <label for="field-phone">Telefonnummer</label>
+                <input id="field-phone" type="tel" name="phone" autocomplete="tel" placeholder="070-000 00 00">
+              </p>
+              <p class="field">
+                <label for="field-city">Stad / ort</label>
+                <input id="field-city" type="text" name="city" autocomplete="address-level2" placeholder="Där huset ska stå">
+              </p>
             </div>
 
-            <textarea name="message" placeholder="Berätta kort om huset du funderar på..."></textarea>
+            <p class="field">
+              <label for="field-message">Ditt projekt</label>
+              <textarea id="field-message" name="message" placeholder="Berätta kort om huset du funderar på..."></textarea>
+            </p>
 
             <div class="contact-form__bottom">
               <label class="contact-form__check">
@@ -243,7 +328,7 @@
         <div>
           <h2 class="site-footer__brand">Idealhus</h2>
           <p class="site-footer__text">
-            Attefallshus & komplementhus med skandinavisk design och hög kvalitet.
+            Attefallshus &amp; komplementhus med skandinavisk design och hög kvalitet.
           </p>
         </div>
 
@@ -255,7 +340,7 @@
             <a href="#">Så fungerar det</a>
             <a href="#">Referensprojekt</a>
             <a href="#">Om oss</a>
-            <a href="#">Kontakt</a>
+            <a href="#kontakt">Kontakt</a>
           </nav>
         </div>
 
@@ -263,8 +348,8 @@
           <h3 class="site-footer__heading">Information</h3>
           <nav class="site-footer__nav" aria-label="Sidfot information">
             <a href="#">Vanliga frågor</a>
-            <a href="#">Leverans & betalning</a>
-            <a href="#">Bygglov & regler</a>
+            <a href="#">Leverans &amp; betalning</a>
+            <a href="#">Bygglov &amp; regler</a>
             <a href="#">Hållbarhet</a>
             <a href="#">Integritetspolicy</a>
           </nav>
@@ -273,8 +358,9 @@
         <div>
           <h3 class="site-footer__heading">Kontakta oss</h3>
           <p class="site-footer__text">
-            info@idealhus.se<br>
-            070-123 45 67<br>
+            <a href="mailto:ahmed@idealhus.se">ahmed@idealhus.se</a><br>
+            <a href="mailto:sahand@idealhus.se">sahand@idealhus.se</a><br>
+            <a href="tel:+46701234567">070-123 45 67</a><br>
             Stockholm, Sverige
           </p>
           <a class="site-footer__button" href="#">Boka rådgivning</a>
@@ -286,5 +372,29 @@
         <span>Byggda i Sverige</span>
       </div>
     </footer>
+
+    <script>
+      (function () {
+        var button = document.querySelector('.menu-button');
+        var panel = document.getElementById('mobile-nav');
+        if (!button || !panel) return;
+
+        button.addEventListener('click', function () {
+          var open = button.getAttribute('aria-expanded') === 'true';
+          button.setAttribute('aria-expanded', String(!open));
+          button.setAttribute('aria-label', open ? 'Öppna meny' : 'Stäng meny');
+          button.classList.toggle('menu-button--open', !open);
+          panel.hidden = open;
+        });
+
+        panel.addEventListener('click', function (event) {
+          if (event.target.tagName !== 'A') return;
+          button.setAttribute('aria-expanded', 'false');
+          button.setAttribute('aria-label', 'Öppna meny');
+          button.classList.remove('menu-button--open');
+          panel.hidden = true;
+        });
+      })();
+    </script>
   </body>
 </html>
