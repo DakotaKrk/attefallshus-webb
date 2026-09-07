@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idealhus – attefallshus, fritidshus & fjällstugor</title>
+    <title>Idealhus | Attefallshus, fritidshus och fjällstugor</title>
     <meta name="description" content="Idealhus formger och bygger attefallshus, fritidshus och fjällstugor med skandinavisk design, naturliga material och svensk tillverkning.">
     <meta name="theme-color" content="#262c27">
     <link rel="icon" href="images/idealhus.svg" type="image/svg+xml">
@@ -11,7 +11,7 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="sv_SE">
     <meta property="og:site_name" content="Idealhus">
-    <meta property="og:title" content="Idealhus – attefallshus, fritidshus & fjällstugor">
+    <meta property="og:title" content="Idealhus | Attefallshus, fritidshus och fjällstugor">
     <meta property="og:description" content="Skandinavisk design, naturliga material och svensk tillverkning. Hus formade för platsen, ljuset och livet som ska rymmas.">
     <meta property="og:image" content="https://dakotakrk.github.io/idealhus/images/hero-lakeside-house.webp">
     <meta name="twitter:card" content="summary_large_image">
@@ -25,7 +25,7 @@
   <body>
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="logo" href="#" aria-label="Idealhus – till startsidan">
+        <a class="logo" href="#" aria-label="Till Idealhus startsida">
           <svg class="logo__svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logo-title" viewBox="0 0 1024 279.46">
           <title id="logo-title">Idealhus</title>
           <g>
@@ -223,7 +223,7 @@
           <h2 class="quiet-break__title">Mindre yta. Mer att leva i.</h2>
           <p class="quiet-break__text">
             Vi tror att ett litet hus ska kännas generöst i vardagen. Därför
-            utgår vi från platsen, människorna och livet som ska rymmas där –
+            utgår vi från platsen, människorna och livet som ska rymmas där,
             och låter varje detalj ha en tydlig funktion.
           </p>
           <a class="quiet-break__link" href="#">Så tänker vi</a>
@@ -347,7 +347,7 @@
             <h2 class="contact-section__title">Låt oss börja med <em>din plats</em>.</h2>
             <p class="contact-section__text">
               Berätta vad du funderar på, så återkommer vi med nästa tydliga
-              steg – utan krav och utan säljsnack.
+              steg. Utan krav och utan säljsnack.
             </p>
 
             <div class="contact-section__meta">
@@ -400,7 +400,7 @@
                 <option>Attefallshus</option>
                 <option>Fritidshus</option>
                 <option>Fjällstuga</option>
-                <option>Eget projekt – egna ritningar</option>
+                <option>Eget projekt med egna ritningar</option>
                 <option>Hjälp mig välja</option>
               </select>
             </p>
@@ -616,7 +616,7 @@
             v('message') || '(inget meddelande)'
           ];
           return 'mailto:' + FORM_MOTTAGARE +
-            '?subject=' + encodeURIComponent('Förfrågan från idealhus.se – ' + v('name')) +
+            '?subject=' + encodeURIComponent('Förfrågan från idealhus.se: ' + v('name')) +
             '&body=' + encodeURIComponent(rader.join('\n'));
         }
 
@@ -647,7 +647,7 @@
           if (!FORM_ENDPOINT) {
             window.location.href = byggMailto();
             visaStatus(
-              'Ditt e-postprogram öppnas nu med förfrågan ifylld – tryck skicka där. ' +
+              'Ditt e-postprogram öppnas nu med förfrågan ifylld. Tryck skicka där. ' +
               'Händer ingenting kan du mejla oss direkt på',
               'ok',
               true
@@ -667,7 +667,7 @@
             .then(function (svar) {
               if (!svar.ok) throw new Error('HTTP ' + svar.status);
               form.reset();
-              visaStatus('Tack! Din förfrågan är skickad – vi hör av oss inom kort.', 'ok');
+              visaStatus('Tack! Din förfrågan är skickad. Vi hör av oss inom kort.', 'ok');
             })
             .catch(function () {
               visaStatus(
