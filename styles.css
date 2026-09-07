@@ -1896,30 +1896,20 @@ a.contact-section__meta-value:hover {
   transform: translateX(4px);
 }
 
-/* Proffsrutan har ingen bild utan listar segmenten, som i skissen. */
-.house-card--list {
-  display: flex;
-  background: var(--forest);
-  color: #ffffff;
-}
-
+/* Proffsrutan bar en lista i stallet for brodtext, men samma bild och
+   samma overlagg som ovriga fyra - utan bild blev den en platt yta med
+   ett dott hal mitt i, och den enda av fem som stack ut. */
 .house-card--list::after {
-  content: none;
-}
-
-.house-card--list .house-card__content {
-  position: static;
-  inset: auto;
-  flex: 1;
-  padding: 26px 24px 24px;
-}
-
-.house-card--list .house-card__title {
-  text-shadow: none;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 25, 21, 0.82) 0%,
+    rgba(20, 25, 21, 0.88) 55%,
+    rgba(20, 25, 21, 0.92) 100%
+  );
 }
 
 .house-card__list {
-  margin: 4px 0 0;
+  margin: 14px 0 0;
   padding: 0;
   list-style: none;
   display: grid;
@@ -1927,14 +1917,15 @@ a.contact-section__meta-value:hover {
 }
 
 .house-card__list li {
-  padding: 11px 0;
+  padding: 12px 0;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.82);
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.88);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .house-card__list li:first-child {
   border-top: 0;
+  padding-top: 6px;
 }
 
 /* ------------------------------------------------------------
