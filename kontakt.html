@@ -3,22 +3,21 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attefallshus | Idealhus</title>
-    <meta name="description" content="Attefallshus från Idealhus. Attefallshus kräver anmälan till kommunen i stället för bygglov, och får vara upp till 30 kvadratmeter. Det gör dem till den snabbaste vägen till ett extra hus på tomten.">
+    <title>Kontakt | Idealhus</title>
+    <meta name="description" content="Kontakta Idealhus om husmodeller, offert och nästa steg.">
     <meta name="theme-color" content="#262c27">
     <link rel="icon" href="images/idealhus.svg" type="image/svg+xml">
 
     <meta property="og:type" content="website">
     <meta property="og:locale" content="sv_SE">
     <meta property="og:site_name" content="Idealhus">
-    <meta property="og:title" content="Attefallshus | Idealhus">
-    <meta property="og:description" content="Attefallshus från Idealhus. Attefallshus kräver anmälan till kommunen i stället för bygglov, och får vara upp till 30 kvadratmeter. Det gör dem till den snabbaste vägen till ett extra hus på tomten.">
+    <meta property="og:title" content="Kontakt | Idealhus">
+    <meta property="og:description" content="Kontakta Idealhus om husmodeller, offert och nästa steg.">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
-    <link rel="preload" as="image" href="images/generated-category-attefallshus-wide-01.webp" fetchpriority="high">
     <link rel="stylesheet" href="styles.css?v=20260908p">
   </head>
   <body>
@@ -31,7 +30,7 @@
         <nav class="main-nav" aria-label="Huvudmeny">
           <a class="main-nav__link" href="index.html">Hem</a>
           <div class="main-nav__item" data-dropdown>
-            <button class="main-nav__link main-nav__link--active main-nav__toggle" type="button" aria-expanded="false" aria-controls="undermeny-hus">Våra hus<span class="main-nav__pil" aria-hidden="true"></span></button>
+            <button class="main-nav__link main-nav__toggle" type="button" aria-expanded="false" aria-controls="undermeny-hus">Våra hus<span class="main-nav__pil" aria-hidden="true"></span></button>
             <div class="main-nav__sub" id="undermeny-hus">
               <a href="attefallshus.html">Attefallshus</a>
               <a href="fritidshus.html">Fritidshus</a>
@@ -43,7 +42,7 @@
           <a class="main-nav__link" href="sa-fungerar-det.html">Så fungerar det</a>
           <a class="main-nav__link" href="referensprojekt.html">Referensprojekt</a>
           <a class="main-nav__link" href="om-oss.html">Om oss</a>
-          <a class="main-nav__link" href="kontakt.html">Kontakt</a>
+          <a class="main-nav__link main-nav__link--active" href="kontakt.html">Kontakt</a>
         </nav>
 
         <div class="site-header__actions">
@@ -76,109 +75,50 @@
     </header>
 
     <main>
-      <section class="subpage-hero">
-        <img class="subpage-hero__image" src="images/generated-category-attefallshus-wide-01.webp" width="1600" height="900" fetchpriority="high" decoding="async" alt="Attefallshus i svensk natur">
-
-        <div class="subpage-hero__content-wrap">
-          <div class="subpage-hero__content">
-            <h1 class="subpage-hero__title">Attefallshus</h1>
-            <p class="subpage-hero__meta">Bygglovsbefriat · upp till 30 m² · gästhus, kontor eller uthyrning</p>
-          </div>
+      <section class="contact-page-hero">
+        <div class="contact-page-hero__inner">
+          <h1>Hör av dig.</h1>
+          <p>
+            Har du frågor om våra hus, vill jämföra modeller eller komma vidare
+            med en offert? Skriv några rader så återkommer vi med nästa tydliga
+            steg.
+          </p>
+          <a class="contact-page-hero__button" href="#forfragan">Gör en förfrågan</a>
         </div>
       </section>
 
-      <section class="category">
-        <div class="category__inner">
-          <nav class="category-filter" aria-label="Huskategorier">
-          <a href="attefallshus.html" aria-current="page">Attefallshus</a>
-          <a href="fritidshus.html">Fritidshus</a>
-          <a href="fjallstugor.html">Fjällstugor</a>
-          <a href="villor.html">Villor</a>
-          <a href="proffs.html">Proffs</a>
-          </nav>
+      <section class="contact-people">
+        <div class="contact-people__grid">
+          <article class="contact-person">
+            <div class="contact-person__image">Plats för porträtt</div>
+            <div class="contact-person__content">
+              <h2>Ahmed</h2>
+              <p>Projektledning</p>
+              <a href="mailto:ahmed@idealhus.se">ahmed@idealhus.se</a>
+              <a href="tel:+46701234567">070-123 45 67</a>
+            </div>
+          </article>
 
-          <div class="category__head">
-            <h2>Modeller i attefallsstorlek</h2>
-            <p class="category__count">6 modeller</p>
-          </div>
-
-          <p class="model-intro__text" style="max-width:620px;margin-bottom:34px">Attefallshus kräver anmälan till kommunen i stället för bygglov, och får vara upp till 30 kvadratmeter. Det gör dem till den snabbaste vägen till ett extra hus på tomten.</p>
-
-          <div class="filter" role="group" aria-label="Filtrera på boyta">
-            <p class="filter__etikett">Boyta</p>
-          <button type="button" data-min="0" data-max="99999" aria-pressed="true">Alla</button>
-          <button type="button" data-min="0" data-max="29" aria-pressed="false">Under 30 m²</button>
-          <button type="button" data-min="30" data-max="60" aria-pressed="false">30–60 m²</button>
-          <button type="button" data-min="61" data-max="99999" aria-pressed="false">Över 60 m²</button>
-          </div>
-
-          <div class="model-grid">
-          <article class="model-card" data-yta="25" data-rum="1">
-            <a class="model-card__media" href="huskort.html">
-              <img src="images/generated-category-attefallshus-card.webp" loading="lazy" decoding="async" alt="Huskort 1, attefallshus i svensk natur">
-            </a>
-            <h3 class="model-card__title"><a href="huskort.html">Huskort 1</a></h3>
-            <p class="model-card__facts"><span>25 m²</span><span>1 rum</span><span>Leverans 10 v</span></p>
-            <p class="model-card__price">Från X kr</p>
-            <a class="model-card__link" href="huskort.html">Se huskortet</a>
+          <article class="contact-person">
+            <div class="contact-person__image">Plats för porträtt</div>
+            <div class="contact-person__content">
+              <h2>Sahand</h2>
+              <p>Projektledning</p>
+              <a href="mailto:sahand@idealhus.se">sahand@idealhus.se</a>
+              <a href="tel:+46701234567">070-123 45 67</a>
+            </div>
           </article>
-          <article class="model-card" data-yta="27" data-rum="2">
-            <a class="model-card__media" href="huskort.html">
-              <img src="images/generated-house-forest-01.webp" loading="lazy" decoding="async" alt="Huskort 2, attefallshus i svensk natur">
-            </a>
-            <h3 class="model-card__title"><a href="huskort.html">Huskort 2</a></h3>
-            <p class="model-card__facts"><span>27 m²</span><span>2 rum</span><span>Leverans 10 v</span></p>
-            <p class="model-card__price">Från X kr</p>
-            <a class="model-card__link" href="huskort.html">Se huskortet</a>
-          </article>
-          <article class="model-card" data-yta="28" data-rum="2">
-            <a class="model-card__media" href="huskort.html">
-              <img src="images/generated-house-coast-01.webp" loading="lazy" decoding="async" alt="Huskort 3, attefallshus i svensk natur">
-            </a>
-            <h3 class="model-card__title"><a href="huskort.html">Huskort 3</a></h3>
-            <p class="model-card__facts"><span>28 m²</span><span>2 rum</span><span>Leverans 12 v</span></p>
-            <p class="model-card__price">Från X kr</p>
-            <a class="model-card__link" href="huskort.html">Se huskortet</a>
-          </article>
-          <article class="model-card" data-yta="30" data-rum="2">
-            <a class="model-card__media" href="huskort.html">
-              <img src="images/generated-house-garden-01.webp" loading="lazy" decoding="async" alt="Huskort 4, attefallshus i svensk natur">
-            </a>
-            <h3 class="model-card__title"><a href="huskort.html">Huskort 4</a></h3>
-            <p class="model-card__facts"><span>30 m²</span><span>2 rum</span><span>Leverans 12 v</span></p>
-            <p class="model-card__price">Från X kr</p>
-            <a class="model-card__link" href="huskort.html">Se huskortet</a>
-          </article>
-          <article class="model-card" data-yta="30" data-rum="2">
-            <a class="model-card__media" href="huskort.html">
-              <img src="images/generated-category-attefallshus-02.webp" loading="lazy" decoding="async" alt="Huskort 5, attefallshus i svensk natur">
-            </a>
-            <h3 class="model-card__title"><a href="huskort.html">Huskort 5</a></h3>
-            <p class="model-card__facts"><span>30 m²</span><span>2 rum</span><span>Leverans 14 v</span></p>
-            <p class="model-card__price">Från X kr</p>
-            <a class="model-card__link" href="huskort.html">Se huskortet</a>
-          </article>
-          <article class="model-card" data-yta="30" data-rum="3">
-            <a class="model-card__media" href="huskort.html">
-              <img src="images/generated-house-winter-01.webp" loading="lazy" decoding="async" alt="Huskort 6, attefallshus i svensk natur">
-            </a>
-            <h3 class="model-card__title"><a href="huskort.html">Huskort 6</a></h3>
-            <p class="model-card__facts"><span>30 m²</span><span>3 rum</span><span>Leverans 14 v</span></p>
-            <p class="model-card__price">Från X kr</p>
-            <a class="model-card__link" href="huskort.html">Se huskortet</a>
-          </article>
-          </div>
         </div>
       </section>
 
-      <section class="contact-section" id="kontakt">
+      <section class="contact-section" id="forfragan">
         <div class="contact-section__inner">
           <div class="contact-section__intro">
-            <p class="section-label section-label--accent">Kontakt</p>
-            <h2 class="contact-section__title">Låt oss börja med <em>din plats</em>.</h2>
+            <p class="section-label section-label--accent">Förfrågan</p>
+            <h2 class="contact-section__title">Berätta kort om <em>ditt projekt</em>.</h2>
             <p class="contact-section__text">
-              Berätta vad du funderar på, så återkommer vi med nästa tydliga
-              steg. Utan krav och utan säljsnack.
+              Skriv några rader om vad du söker, var huset ska stå och om du
+              redan har en modell i åtanke.
             </p>
 
             <div class="contact-section__meta">
@@ -201,9 +141,60 @@
             </div>
           </div>
 
-          <p class="contact-section__hanvisning">
-            <a class="model-price__button" href="kontakt.html">Till kontaktformuläret</a>
-          </p>
+          <form class="contact-form" id="kontaktformular" method="post" novalidate>
+            <div class="contact-form__row">
+              <p class="field">
+                <label for="field-name">Namn</label>
+                <input id="field-name" type="text" name="name" autocomplete="name" required placeholder="Vad heter du?">
+              </p>
+              <p class="field">
+                <label for="field-email">E-postadress</label>
+                <input id="field-email" type="email" name="email" autocomplete="email" required placeholder="namn@exempel.se">
+              </p>
+            </div>
+
+            <div class="contact-form__row">
+              <p class="field">
+                <label for="field-phone">Telefonnummer</label>
+                <input id="field-phone" type="tel" name="phone" autocomplete="tel" placeholder="070-000 00 00">
+              </p>
+              <p class="field">
+                <label for="field-city">Kommun / ort</label>
+                <input id="field-city" type="text" name="city" autocomplete="address-level2" placeholder="Var ska huset byggas?">
+              </p>
+            </div>
+
+            <p class="field">
+              <label for="field-model">Intresserad modell</label>
+              <select id="field-model" name="model">
+                <option value="">Välj modell …</option>
+                <option>Attefallshus</option>
+                <option>Fritidshus</option>
+                <option>Fjällstuga</option>
+                <option>Eget projekt med egna ritningar</option>
+                <option>Hjälp mig välja</option>
+              </select>
+            </p>
+
+            <p class="field">
+              <label for="field-message">Ditt projekt</label>
+              <textarea id="field-message" name="message" placeholder="Berätta kort om huset du funderar på..."></textarea>
+            </p>
+
+            <!-- Lockbete for spambottar: doljs for besokare, ska alltid vara tom. -->
+            <input class="contact-form__honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="contact-form__bottom">
+              <button type="submit">Skicka förfrågan</button>
+
+              <label class="contact-form__check">
+                <input type="checkbox" name="consent" required>
+                <span>Genom att skicka godkänner du att Idealhus kontaktar dig om din förfrågan.</span>
+              </label>
+            </div>
+
+            <p class="contact-form__status" role="status" aria-live="polite" hidden></p>
+          </form>
         </div>
       </section>
     </main>
@@ -365,39 +356,167 @@
         }, { passive: true });
       })();
 
+      // Kontaktformularet.
+      //
+      // Medvetet val: ingen extern formulartjanst. Formularet oppnar
+      // besokarens e-postprogram med forfragan ifylld, sa ingen
+      // persondata passerar en tredje part. Priset ar att besokare utan
+      // konfigurerat e-postprogram maste mejla manuellt - darfor visas
+      // adressen alltid som en klickbar lank i kvittensen.
+      //
+      // Om valet nagon gang andras: klistra in en endpoint (Formspree,
+      // FormSubmit eller liknande) i FORM_ENDPOINT nedan, sa skickas
+      // formularet i bakgrunden i stallet. Ingen annan andring behovs.
+      var FORM_ENDPOINT = '';
+      var FORM_MOTTAGARE = 'ahmed@idealhus.se';
+
       (function () {
-        var grid = document.querySelector('.model-grid');
-        var filter = document.querySelector('.filter');
-        if (!grid || !filter) return;
+        var form = document.getElementById('kontaktformular');
+        if (!form) return;
 
-        var kort = Array.prototype.slice.call(grid.querySelectorAll('.model-card'));
-        var raknare = document.querySelector('.category__count');
-        var tomt = document.createElement('p');
-        tomt.className = 'model-grid__tomt';
-        tomt.hidden = true;
-        tomt.textContent = 'Ingen modell i det spannet ännu. Prova ett annat, eller hör av dig så letar vi tillsammans.';
-        grid.appendChild(tomt);
+        var button = form.querySelector('button[type="submit"]');
+        var status = form.querySelector('.contact-form__status');
+        var knappText = button.textContent;
 
-        function filtrera(min, max) {
-          var kvar = 0;
-          kort.forEach(function (k) {
-            var yta = parseInt(k.getAttribute('data-yta'), 10);
-            var med = isNaN(yta) || (yta >= min && yta <= max);
-            k.hidden = !med;
-            if (med) kvar++;
-          });
-          tomt.hidden = kvar > 0;
-          if (raknare) raknare.textContent = kvar === 1 ? '1 modell' : kvar + ' modeller';
+        function visaFel(falt, meddelande) {
+          var wrap = falt.closest('.field') || falt.closest('.contact-form__check');
+          if (!wrap) return;
+          wrap.classList.add('field--error');
+          if (wrap.querySelector('.field__error')) return;
+          var p = document.createElement('span');
+          p.className = 'field__error';
+          p.textContent = meddelande;
+          wrap.appendChild(p);
         }
 
-        filter.addEventListener('click', function (e) {
-          var knapp = e.target.closest('button');
-          if (!knapp) return;
-          filter.querySelectorAll('button').forEach(function (b) {
-            b.setAttribute('aria-pressed', String(b === knapp));
-          });
-          filtrera(parseInt(knapp.dataset.min, 10) || 0,
-                   parseInt(knapp.dataset.max, 10) || 99999);
+        function rensaFel(falt) {
+          var wrap = falt.closest('.field') || falt.closest('.contact-form__check');
+          if (!wrap) return;
+          wrap.classList.remove('field--error');
+          var p = wrap.querySelector('.field__error');
+          if (p) p.remove();
+        }
+
+        function validera() {
+          var fel = [];
+          var namn = form.elements.name;
+          var epost = form.elements.email;
+          var samtycke = form.elements.consent;
+
+          [namn, epost, samtycke].forEach(rensaFel);
+
+          if (!namn.value.trim()) {
+            visaFel(namn, 'Fyll i ditt namn.');
+            fel.push(namn);
+          }
+          if (!epost.value.trim()) {
+            visaFel(epost, 'Fyll i din e-postadress.');
+            fel.push(epost);
+          } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(epost.value.trim())) {
+            visaFel(epost, 'Kontrollera e-postadressen.');
+            fel.push(epost);
+          }
+          if (!samtycke.checked) {
+            visaFel(samtycke, 'Du behöver godkänna att vi kontaktar dig.');
+            fel.push(samtycke);
+          }
+          return fel;
+        }
+
+        // medMejllank lagger till en klickbar adress sist i meddelandet,
+        // sa besokaren aldrig hamnar i en atervandsgrand.
+        function visaStatus(text, typ, medMejllank) {
+          status.textContent = text;
+          if (medMejllank) {
+            var lank = document.createElement('a');
+            lank.href = 'mailto:' + FORM_MOTTAGARE;
+            lank.textContent = FORM_MOTTAGARE;
+            status.appendChild(document.createTextNode(' '));
+            status.appendChild(lank);
+            status.appendChild(document.createTextNode('.'));
+          }
+          status.className = 'contact-form__status contact-form__status--' + typ;
+          status.hidden = false;
+        }
+
+        function byggMailto() {
+          var v = function (namn) {
+            var f = form.elements[namn];
+            return f && f.value ? f.value.trim() : '';
+          };
+          var rader = [
+            'Namn: ' + v('name'),
+            'E-post: ' + v('email'),
+            'Telefon: ' + (v('phone') || '-'),
+            'Ort: ' + (v('city') || '-'),
+            '',
+            v('message') || '(inget meddelande)'
+          ];
+          return 'mailto:' + FORM_MOTTAGARE +
+            '?subject=' + encodeURIComponent('Förfrågan från idealhus.se: ' + v('name')) +
+            '&body=' + encodeURIComponent(rader.join('\n'));
+        }
+
+        ['name', 'email', 'consent'].forEach(function (namn) {
+          var falt = form.elements[namn];
+          if (falt) {
+            falt.addEventListener('input', function () { rensaFel(falt); });
+            falt.addEventListener('change', function () { rensaFel(falt); });
+          }
+        });
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          var fel = validera();
+          if (fel.length) {
+            visaStatus('Kontrollera de markerade fälten.', 'fail');
+            fel[0].focus();
+            return;
+          }
+
+          // Boten fyllde i lockbetet - las tyst som skickat.
+          if (form.elements._honey && form.elements._honey.value) {
+            visaStatus('Tack! Vi hör av oss inom kort.', 'ok');
+            return;
+          }
+
+          if (!FORM_ENDPOINT) {
+            window.location.href = byggMailto();
+            visaStatus(
+              'Ditt e-postprogram öppnas nu med förfrågan ifylld. Tryck skicka där. ' +
+              'Händer ingenting kan du mejla oss direkt på',
+              'ok',
+              true
+            );
+            return;
+          }
+
+          button.disabled = true;
+          button.textContent = 'Skickar …';
+          status.hidden = true;
+
+          fetch(FORM_ENDPOINT, {
+            method: 'POST',
+            headers: { Accept: 'application/json' },
+            body: new FormData(form)
+          })
+            .then(function (svar) {
+              if (!svar.ok) throw new Error('HTTP ' + svar.status);
+              form.reset();
+              visaStatus('Tack! Din förfrågan är skickad. Vi hör av oss inom kort.', 'ok');
+            })
+            .catch(function () {
+              visaStatus(
+                'Något gick fel när förfrågan skulle skickas. Mejla oss gärna direkt på',
+                'fail',
+                true
+              );
+            })
+            .then(function () {
+              button.disabled = false;
+              button.textContent = knappText;
+            });
         });
       })();
     </script>
