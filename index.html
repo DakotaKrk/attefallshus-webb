@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap">
     <link rel="preload" as="image" href="images/hero-lakeside-house.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260907g">
+    <link rel="stylesheet" href="styles.css?v=20260907i">
   </head>
   <body>
     <header class="site-header">
@@ -135,7 +135,10 @@
               Attefallshus, fritidshus och fjällstugor med skandinavisk design,
               tydliga val och hög kvalitet.
             </p>
-            <a class="hero__link" href="#">Se våra husmodeller</a>
+            <div class="hero__actions">
+              <a class="hero__link hero__link--solid" href="#kontakt">Begär offert</a>
+              <a class="hero__link" href="#">Se våra husmodeller</a>
+            </div>
           </div>
         </div>
       </section>
@@ -323,6 +326,30 @@
               steg – utan krav och utan säljsnack.
             </p>
 
+            <ol class="contact-steps">
+              <li>
+                <span class="contact-steps__nr">01</span>
+                <span class="contact-steps__text">
+                  <strong>Du berättar</strong>
+                  Om tomten, tankarna och ungefär när du vill vara i gång.
+                </span>
+              </li>
+              <li>
+                <span class="contact-steps__nr">02</span>
+                <span class="contact-steps__text">
+                  <strong>Vi återkommer</strong>
+                  Med vad som är möjligt på just din plats – och nästa steg.
+                </span>
+              </li>
+              <li>
+                <span class="contact-steps__nr">03</span>
+                <span class="contact-steps__text">
+                  <strong>Vi ritar vidare</strong>
+                  Modellval och anpassningar, med en samlad kontakt hela vägen.
+                </span>
+              </li>
+            </ol>
+
             <dl class="contact-section__meta">
               <div>
                 <dt>Ahmed</dt>
@@ -343,7 +370,8 @@
             </dl>
           </div>
 
-          <form class="contact-form" id="kontaktformular" method="post" novalidate>
+          <div class="contact-panel">
+            <form class="contact-form" id="kontaktformular" method="post" novalidate>
             <div class="contact-form__row">
               <p class="field">
                 <label for="field-name">Namn</label>
@@ -384,7 +412,8 @@
             </div>
 
             <p class="contact-form__status" role="status" aria-live="polite" hidden></p>
-          </form>
+            </form>
+          </div>
         </div>
       </section>
     </main>
@@ -438,7 +467,41 @@
       </div>
     </footer>
 
+    <div class="cta-bar" id="cta-bar" aria-hidden="true">
+      <p class="cta-bar__text">Fundera vidare tillsammans med oss</p>
+      <a class="cta-bar__button" href="#kontakt">Begär offert</a>
+    </div>
+
     <script>
+      // Fast CTA-rad pa smala skarmar. Visas nar heron ar utrullad och
+      // doljs igen nar kontaktsektionen syns - da finns knappen redan pa
+      // skarmen och raden vore bara i vagen.
+      (function () {
+        var bar = document.getElementById('cta-bar');
+        var hero = document.querySelector('.hero');
+        var kontakt = document.getElementById('kontakt');
+        if (!bar || !hero || !kontakt || !window.IntersectionObserver) return;
+
+        var heroUte = false;
+        var kontaktInne = false;
+
+        function uppdatera() {
+          var visa = heroUte && !kontaktInne;
+          bar.classList.toggle('cta-bar--synlig', visa);
+          bar.setAttribute('aria-hidden', visa ? 'false' : 'true');
+        }
+
+        new IntersectionObserver(function (poster) {
+          heroUte = !poster[0].isIntersecting;
+          uppdatera();
+        }).observe(hero);
+
+        new IntersectionObserver(function (poster) {
+          kontaktInne = poster[0].isIntersecting;
+          uppdatera();
+        }).observe(kontakt);
+      })();
+
       // Kontaktformularet.
       //
       // Medvetet val: ingen extern formulartjanst. Formularet oppnar

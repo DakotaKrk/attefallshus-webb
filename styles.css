@@ -301,8 +301,15 @@ textarea:focus-visible {
 
 .hero__title,
 .hero__text,
-.hero__link {
+.hero__actions {
   animation: riseIn 1s var(--ease) backwards;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  animation-delay: 0.4s;
 }
 
 .hero__title {
@@ -344,13 +351,23 @@ textarea:focus-visible {
   text-transform: uppercase;
   transition: background 0.4s var(--ease), color 0.4s var(--ease),
     border-color 0.4s var(--ease);
-  animation-delay: 0.4s;
 }
 
 .hero__link:hover {
   background: #ffffff;
   border-color: #ffffff;
   color: var(--ink);
+}
+
+.hero__link--solid {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: var(--ink);
+}
+
+.hero__link--solid:hover {
+  background: transparent;
+  color: #ffffff;
 }
 
 .house-types {
@@ -982,6 +999,57 @@ textarea:focus-visible {
   color: rgba(233, 237, 232, 0.7);
 }
 
+.contact-steps {
+  max-width: 380px;
+  margin: 0 0 42px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 22px;
+  counter-reset: none;
+}
+
+.contact-steps li {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.contact-steps__nr {
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.15;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.contact-steps__text {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(233, 237, 232, 0.66);
+}
+
+.contact-steps__text strong {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+/* Formularet ligger i en egen panel sa att det laser som sektionens
+   handling, inte som falt som svavar i bakgrunden.
+   Det negativa toppmarginalen motsvarar panelens egen toppadding, sa att
+   "Namn" inne i panelen hamnar pa exakt samma rad som "Kontakt" i
+   kolumnen bredvid - panelens kant far ligga nagot hogre. */
+.contact-panel {
+  margin-top: -40px;
+  padding: 40px 40px 36px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+}
+
 .contact-section__meta {
   max-width: 340px;
   margin: 0;
@@ -1311,6 +1379,82 @@ textarea:focus-visible {
   color: var(--ink-faint);
 }
 
+/* Fast CTA-rad. Visas bara pa smala skarmar, dar offertknappen i headern
+   ar gomd bakom hamburgaren och besokaren annars inte har nagon synlig
+   vag till kontakt forran langst ner pa sidan. */
+.cta-bar {
+  display: none;
+}
+
+@media (max-width: 1040px) {
+  .cta-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, 0.93);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    box-shadow: 0 -1px 0 var(--line), 0 -12px 32px rgba(16, 20, 17, 0.07);
+    transform: translateY(100%);
+    visibility: hidden;
+    transition: transform 0.45s var(--ease), visibility 0s linear 0.45s;
+  }
+
+  .cta-bar--synlig {
+    transform: translateY(0);
+    visibility: visible;
+    transition: transform 0.45s var(--ease), visibility 0s;
+  }
+
+  .cta-bar__text {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--ink-soft);
+  }
+
+  .cta-bar__button {
+    flex: 0 0 auto;
+    height: 44px;
+    padding: 0 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 999px;
+    background: var(--forest);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .cta-bar__button::after {
+    content: "\2192";
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .cta-bar__text {
+    display: none;
+  }
+
+  .cta-bar__button {
+    flex: 1 1 auto;
+  }
+}
+
 @keyframes heroSlowMove {
   from {
     transform: scale(1);
@@ -1480,6 +1624,17 @@ textarea:focus-visible {
   .contact-section__inner {
     grid-template-columns: 1fr;
     gap: 48px;
+  }
+
+  /* Kolumnerna ar staplade har, sa det finns inget att rata upp mot -
+     utan detta ater panelen 40 px av mellanrummet ovanfor sig. */
+  .contact-panel {
+    margin-top: 0;
+  }
+
+  .contact-steps {
+    max-width: 520px;
+    margin-bottom: 34px;
   }
 
   .contact-section__text {
@@ -1654,6 +1809,19 @@ textarea:focus-visible {
 
   .contact-section {
     padding: 60px 20px 64px;
+  }
+
+  .contact-panel {
+    padding: 24px 20px 22px;
+  }
+
+  .contact-steps li {
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+  }
+
+  .contact-steps__nr {
+    font-size: 18px;
   }
 
   .contact-section__meta {
