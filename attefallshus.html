@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idealhus | Attefallshus, fritidshus och fjällstugor</title>
+    <title>Attefallshus | Idealhus</title>
     <meta name="description" content="Idealhus formger och bygger attefallshus, fritidshus och fjällstugor med skandinavisk design, naturliga material och svensk tillverkning.">
     <meta name="theme-color" content="#262c27">
     <link rel="icon" href="images/idealhus.svg" type="image/svg+xml">
@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
     <link rel="preload" as="image" href="images/hero-lakeside-house.webp" fetchpriority="high">
     <link rel="stylesheet" href="styles.css?v=20260908c">
+    <link rel="stylesheet" href="exempel.css?v=1">
   </head>
   <body>
     <header class="site-header">
@@ -46,11 +47,11 @@
         </a>
 
         <nav class="main-nav" aria-label="Huvudmeny">
-          <a class="main-nav__link main-nav__link--active" href="#">Hem</a>
+          <a class="main-nav__link" href="index.html">Hem</a>
           <div class="main-nav__item" data-dropdown>
-            <button class="main-nav__link main-nav__toggle" type="button" aria-expanded="false" aria-controls="undermeny-hus">Våra hus</button>
+            <button class="main-nav__link main-nav__link--active main-nav__toggle" type="button" aria-expanded="false" aria-controls="undermeny-hus">Våra hus</button>
             <div class="main-nav__sub" id="undermeny-hus">
-              <a href="attefallshus.html">Attefallshus</a>
+              <a href="#">Attefallshus</a>
               <a href="#">Fritidshus</a>
               <a href="#">Fjällstugor</a>
               <a href="#">Villor</a>
@@ -58,6 +59,7 @@
             </div>
           </div>
           <a class="main-nav__link" href="#">Så fungerar det</a>
+          <a class="main-nav__link" href="#">Referensprojekt</a>
           <a class="main-nav__link" href="#">Om oss</a>
           <a class="main-nav__link" href="#kontakt">Kontakt</a>
         </nav>
@@ -77,7 +79,7 @@
         <a href="#">Hem</a>
         <div class="mobile-nav__grupp">
           <span>Våra hus</span>
-          <a href="attefallshus.html">Attefallshus</a>
+          <a href="#">Attefallshus</a>
           <a href="#">Fritidshus</a>
           <a href="#">Fjällstugor</a>
           <a href="#">Villor</a>
@@ -140,203 +142,88 @@
     </script>
 
     <main>
-      <section class="hero">
-        <img class="hero__image" src="images/hero-lakeside-house.webp" width="1635" height="962" fetchpriority="high" decoding="async" alt="Modernt attefallshus vid sjö och klippor">
+      <section class="subpage-hero">
+        <img class="subpage-hero__image" src="images/generated-category-attefallshus-wide-01.webp" width="1920" height="1080" fetchpriority="high" decoding="async" alt="Attefallshus i svensk natur">
 
-        <div class="hero__content-wrap">
-          <div class="hero__content">
-            <h1 class="hero__title">Vi skapar plats<br>för livet du vill leva.</h1>
-            <p class="hero__text">
-          Moderna fritidshus och permanentbostäder med genomtänkta planlösningar, möjlighet till anpassning och en tydligare väg från idé till färdigt hus.
-            </p>
-            <div class="hero__actions">
-              <a class="hero__link hero__link--solid" href="#kontakt">Begär offert</a>
-              <a class="hero__link" href="#">Se våra husmodeller</a>
-            </div>
+        <div class="subpage-hero__content-wrap">
+          <div class="subpage-hero__content">
+            <h1 class="subpage-hero__title">Attefallshus</h1>
+            <p class="subpage-hero__meta">Bygglovsbefriat · upp till 30 m² · gästhus, kontor eller uthyrning</p>
           </div>
         </div>
       </section>
 
-      <section class="house-types">
-        <div class="house-types__header">
-          <div>
-            <p class="section-label">Husmodeller</p>
-            <h2 class="house-types__title">Våra hus</h2>
+      <section class="category">
+        <div class="category__inner">
+          <nav class="category-filter" aria-label="Huskategorier">
+          <a href="#" aria-current="page">Attefallshus</a>
+          <a href="#">Fritidshus</a>
+          <a href="#">Fjällstugor</a>
+          <a href="#">Villor</a>
+          <a href="#">Proffs</a>
+          </nav>
+
+          <div class="category__head">
+            <h2>Modeller i attefallsstorlek</h2>
+            <p class="category__count">6 modeller</p>
           </div>
 
-          <a class="house-types__all" href="attefallshus.html">Se alla modeller</a>
-        </div>
-
-        <div class="house-types__grid">
-          <article class="house-card">
-            <img class="house-card__image" src="images/generated-category-attefallshus-card.webp" loading="lazy" decoding="async" alt="Attefallshus med mörk träfasad i svensk natur vid vatten">
-            <div class="house-card__content">
-              <h3 class="house-card__title">Attefallshus</h3>
-              <p class="house-card__text">Smarta småhus för boende, gästhus eller uthyrning.</p>
-              <a class="house-card__link" href="attefallshus.html">Se modeller</a>
-            </div>
+          <div class="model-grid">
+          <article class="model-card">
+            <a class="model-card__media" href="huskort.html?modell=1">
+              <img src="images/generated-category-attefallshus-card.webp" loading="lazy" decoding="async" alt="Huskort 1 i svensk natur">
+            </a>
+            <h3 class="model-card__title"><a href="huskort.html?modell=1">Huskort 1</a></h3>
+            <p class="model-card__facts"><span>25 m²</span><span>1 rum</span><span>Leverans 10 v</span></p>
+            <p class="model-card__price">Från X kr</p>
+            <a class="model-card__link" href="huskort.html?modell=1">Se huskortet</a>
           </article>
-
-          <article class="house-card">
-            <img class="house-card__image" src="images/generated-category-fritidshus-card.webp" loading="lazy" decoding="async" alt="Fritidshus i ljus svensk natur med sjöutsikt">
-            <div class="house-card__content">
-              <h3 class="house-card__title">Fritidshus</h3>
-              <p class="house-card__text">Mer plats på tomten, byggt för livet som ska rymmas.</p>
-              <a class="house-card__link" href="#">Se modeller</a>
-            </div>
+          <article class="model-card">
+            <a class="model-card__media" href="huskort.html?modell=2">
+              <img src="images/generated-house-forest-01.webp" loading="lazy" decoding="async" alt="Huskort 2 i svensk natur">
+            </a>
+            <h3 class="model-card__title"><a href="huskort.html?modell=2">Huskort 2</a></h3>
+            <p class="model-card__facts"><span>30 m²</span><span>2 rum</span><span>Leverans 10 v</span></p>
+            <p class="model-card__price">Från X kr</p>
+            <a class="model-card__link" href="huskort.html?modell=2">Se huskortet</a>
           </article>
-
-          <article class="house-card">
-            <img class="house-card__image" src="images/generated-category-fjallstuga-card.webp" loading="lazy" decoding="async" alt="Fjällstuga i svensk fjällmiljö med berg och snö">
-            <div class="house-card__content">
-              <h3 class="house-card__title">Fjällstugor</h3>
-              <p class="house-card__text">En varm plats att landa på efter dagar ute.</p>
-              <a class="house-card__link" href="#">Se modeller</a>
-            </div>
+          <article class="model-card">
+            <a class="model-card__media" href="huskort.html?modell=3">
+              <img src="images/generated-house-coast-01.webp" loading="lazy" decoding="async" alt="Huskort 3 i svensk natur">
+            </a>
+            <h3 class="model-card__title"><a href="huskort.html?modell=3">Huskort 3</a></h3>
+            <p class="model-card__facts"><span>30 m²</span><span>2 rum</span><span>Leverans 12 v</span></p>
+            <p class="model-card__price">Från X kr</p>
+            <a class="model-card__link" href="huskort.html?modell=3">Se huskortet</a>
           </article>
-
-          <article class="house-card">
-            <img class="house-card__image" src="images/generated-house-gabled-01.webp" loading="lazy" decoding="async" alt="Villa med sadeltak i svensk trädgårdsmiljö">
-            <div class="house-card__content">
-              <h3 class="house-card__title">Villor</h3>
-              <p class="house-card__text">Permanentboende med full planlösning och plats för hela livet.</p>
-              <a class="house-card__link" href="#">Se modeller</a>
-            </div>
+          <article class="model-card">
+            <a class="model-card__media" href="huskort.html?modell=4">
+              <img src="images/generated-house-garden-01.webp" loading="lazy" decoding="async" alt="Huskort 4 i svensk natur">
+            </a>
+            <h3 class="model-card__title"><a href="huskort.html?modell=4">Huskort 4</a></h3>
+            <p class="model-card__facts"><span>35 m²</span><span>2 rum</span><span>Leverans 12 v</span></p>
+            <p class="model-card__price">Från X kr</p>
+            <a class="model-card__link" href="huskort.html?modell=4">Se huskortet</a>
           </article>
-
-          <article class="house-card house-card--list">
-            <div class="house-card__content">
-              <h3 class="house-card__title">Proffs</h3>
-              <ul class="house-card__list">
-                <li>Utfackningsväggar</li>
-                <li>Husblock</li>
-                <li>Moduler</li>
-              </ul>
-              <a class="house-card__link" href="#">För företag</a>
-            </div>
+          <article class="model-card">
+            <a class="model-card__media" href="huskort.html">
+              <img src="images/generated-house-winter-01.webp" loading="lazy" decoding="async" alt="Huskort 5 i svensk natur">
+            </a>
+            <h3 class="model-card__title"><a href="huskort.html">Huskort 5</a></h3>
+            <p class="model-card__facts"><span>35 m²</span><span>3 rum</span><span>Leverans 14 v</span></p>
+            <p class="model-card__price">Från X kr</p>
+            <a class="model-card__link" href="huskort.html">Se huskortet</a>
           </article>
-        </div>
-      </section>
-
-      <section class="quiet-break">
-        <div class="quiet-break__inner">
-          <h2 class="quiet-break__title">Mindre yta. Mer att leva i.</h2>
-          <p class="quiet-break__text">
-            Vi tror att ett litet hus ska kännas generöst i vardagen. Därför
-            utgår vi från platsen, människorna och livet som ska rymmas där,
-            och låter varje detalj ha en tydlig funktion.
-          </p>
-          <a class="quiet-break__link" href="#">Så tänker vi</a>
-        </div>
-      </section>
-
-      <section class="feature-cards">
-        <div class="feature-cards__header">
-          <div>
-            <p class="section-label">Vårt hantverk</p>
-            <h2 class="feature-cards__title">Det som gör skillnad.</h2>
+          <article class="model-card">
+            <a class="model-card__media" href="huskort.html">
+              <img src="images/generated-house-gabled-01.webp" loading="lazy" decoding="async" alt="Huskort 6 i svensk natur">
+            </a>
+            <h3 class="model-card__title"><a href="huskort.html">Huskort 6</a></h3>
+            <p class="model-card__facts"><span>40 m²</span><span>3 rum</span><span>Leverans 14 v</span></p>
+            <p class="model-card__price">Från X kr</p>
+            <a class="model-card__link" href="huskort.html">Se huskortet</a>
+          </article>
           </div>
-
-          <p class="feature-cards__intro">
-            Fyra saker återkommer i varje hus vi ritar: platsen, planlösningen,
-            materialen och vägen dit. Det är där kvaliteten avgörs.
-          </p>
-        </div>
-
-        <div class="feature-cards__grid">
-          <article class="feature-card">
-            <img class="feature-card__image" src="images/generated-house-coast-01.webp" loading="lazy" decoding="async" alt="Modernt hus på svenska klippor vid havet">
-            <div class="feature-card__content">
-              <h3 class="feature-card__title">Arkitektur som hör hemma</h3>
-              <p class="feature-card__text">Hus formade för platsen, ljuset och utsikten.</p>
-            </div>
-          </article>
-
-          <article class="feature-card">
-            <img class="feature-card__image" src="images/generated-interior-01.webp" loading="lazy" decoding="async" alt="Ljus interiör i ett litet hus med smart planering">
-            <div class="feature-card__content">
-              <h3 class="feature-card__title">Varje kvadrat räknas</h3>
-              <p class="feature-card__text">Genomtänkta planlösningar för livet som ska levas.</p>
-            </div>
-          </article>
-
-          <article class="feature-card">
-            <img class="feature-card__image" src="images/generated-materials-01.webp" loading="lazy" decoding="async" alt="Materialprover med träpanel och fönsterdetalj">
-            <div class="feature-card__content">
-              <h3 class="feature-card__title">Material som får leva</h3>
-              <p class="feature-card__text">Naturliga material och detaljer som åldras vackert.</p>
-            </div>
-          </article>
-
-          <article class="feature-card">
-            <img class="feature-card__image" src="images/generated-craft-cladding-01.webp" loading="lazy" decoding="async" alt="Händer som arbetar med träpanel i verkstad">
-            <div class="feature-card__content">
-              <h3 class="feature-card__title">En lugnare väg till hus</h3>
-              <p class="feature-card__text">Tydliga val och personlig kontakt hela vägen.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="production">
-        <div class="production__content">
-          <p class="section-label">Tillverkning</p>
-          <h2 class="production__title">Produktion i Sverige.<br>Nära dig.</h2>
-          <p class="production__text">
-            När huset byggs i Sverige kan vi följa varje moment på nära håll.
-            Det ger kortare beslutsvägar, jämnare kvalitet och bättre kontroll
-            över material, detaljer och arbetsmiljö.
-          </p>
-
-          <a class="production__link" href="#">Se produktionen</a>
-        </div>
-
-        <a class="production__media" href="#" aria-label="Se produktionen">
-          <img class="production__image" src="images/generated-production-yard-01.webp" loading="lazy" decoding="async" alt="Svensk produktionsmiljö med attefallshus och trävirke">
-          <span class="production__play" aria-hidden="true"></span>
-          <span class="production__caption">
-            <span>Film · Produktion i Sverige</span>
-            <span>Sågning, träarbete och vardagen i verkstaden</span>
-          </span>
-        </a>
-      </section>
-
-      <section class="about-text">
-        <div class="about-text__inner">
-          <h2 class="about-text__title">Ett hus för dina planer.</h2>
-          <p class="about-text__lead">
-         Att välja och bygga ett hus innebär många beslut. Idealhus gör det enklare att 
-            hitta rätt bland våra husmodeller och anpassa dem efter dina behov. 
-            Med personlig rådgivning, tydliga offerter och en strukturerad process 
-            hjälper vi dig vidare, från första idé till leverans.
-          </p>
-          <a class="about-text__link" href="#">Läs mer om Idealhus</a>
-        </div>
-      </section>
-
-      <section class="reference-projects">
-        <div class="reference-projects__header">
-          <div>
-            <p class="section-label">Referensprojekt</p>
-            <h2 class="reference-projects__title">Se hur våra kunder använder sina hus.</h2>
-          </div>
-
-          <a class="reference-projects__all" href="#">Se fler projekt</a>
-        </div>
-
-        <div class="reference-projects__grid">
-          <figure>
-            <img src="images/generated-house-coast-01.webp" loading="lazy" decoding="async" alt="Litet hus vid svenska klippor och vatten">
-          </figure>
-          <figure>
-            <img src="images/generated-house-winter-01.webp" loading="lazy" decoding="async" alt="Attefallshus i ljus svensk vintermiljö">
-          </figure>
-          <figure>
-            <img src="images/generated-house-forest-01.webp" loading="lazy" decoding="async" alt="Modernt hus med glasparti i svensk tallskog">
-          </figure>
-          <figure>
-            <img src="images/generated-house-garden-01.webp" loading="lazy" decoding="async" alt="Kompakt gästhus med uteplats i trädgård">
-          </figure>
         </div>
       </section>
 
@@ -443,7 +330,7 @@
             <a href="#">Hem</a>
             <div class="mobile-nav__grupp">
           <span>Våra hus</span>
-          <a href="attefallshus.html">Attefallshus</a>
+          <a href="#">Attefallshus</a>
           <a href="#">Fritidshus</a>
           <a href="#">Fjällstugor</a>
           <a href="#">Villor</a>
