@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap">
     <link rel="preload" as="image" href="images/hero-lakeside-house.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260907b">
+    <link rel="stylesheet" href="styles.css?v=20260907c">
   </head>
   <body>
     <header class="site-header">
@@ -347,15 +347,15 @@
             </dl>
           </div>
 
-          <form class="contact-form" action="#" method="post">
+          <form class="contact-form" id="kontaktformular" method="post" novalidate>
             <div class="contact-form__row">
               <p class="field">
                 <label for="field-name">Namn</label>
-                <input id="field-name" type="text" name="name" autocomplete="name" placeholder="För- och efternamn">
+                <input id="field-name" type="text" name="name" autocomplete="name" required placeholder="För- och efternamn">
               </p>
               <p class="field">
                 <label for="field-email">E-postadress</label>
-                <input id="field-email" type="email" name="email" autocomplete="email" placeholder="namn@exempel.se">
+                <input id="field-email" type="email" name="email" autocomplete="email" required placeholder="namn@exempel.se">
               </p>
             </div>
 
@@ -375,14 +375,19 @@
               <textarea id="field-message" name="message" placeholder="Berätta kort om huset du funderar på..."></textarea>
             </p>
 
+            <!-- Lockbete for spambottar: doljs for besokare, ska alltid vara tom. -->
+            <input class="contact-form__honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
             <div class="contact-form__bottom">
               <label class="contact-form__check">
-                <input type="checkbox" name="consent">
+                <input type="checkbox" name="consent" required>
                 <span>Jag godkänner att Idealhus kontaktar mig om min förfrågan.</span>
               </label>
 
               <button type="submit">Skicka förfrågan</button>
             </div>
+
+            <p class="contact-form__status" role="status" aria-live="polite" hidden></p>
           </form>
         </div>
       </section>
@@ -439,6 +444,155 @@
     </footer>
 
     <script>
+      // Kontaktformularet.
+      //
+      // FORM_ENDPOINT ar tom tills en formulartjanst ar vald. Sa lange
+      // den ar tom oppnar formularet besokarens e-postprogram med ett
+      // ifyllt meddelande i stallet - da fungerar det utan backend.
+      // Klistra in en endpoint (Formspree, FormSubmit eller liknande) sa
+      // skickas det i bakgrunden i stallet, utan att besokaren lamnar sidan.
+      var FORM_ENDPOINT = '';
+      var FORM_MOTTAGARE = 'ahmed@idealhus.se';
+
+      (function () {
+        var form = document.getElementById('kontaktformular');
+        if (!form) return;
+
+        var button = form.querySelector('button[type="submit"]');
+        var status = form.querySelector('.contact-form__status');
+        var knappText = button.textContent;
+
+        function visaFel(falt, meddelande) {
+          var wrap = falt.closest('.field') || falt.closest('.contact-form__check');
+          if (!wrap) return;
+          wrap.classList.add('field--error');
+          if (wrap.querySelector('.field__error')) return;
+          var p = document.createElement('span');
+          p.className = 'field__error';
+          p.textContent = meddelande;
+          wrap.appendChild(p);
+        }
+
+        function rensaFel(falt) {
+          var wrap = falt.closest('.field') || falt.closest('.contact-form__check');
+          if (!wrap) return;
+          wrap.classList.remove('field--error');
+          var p = wrap.querySelector('.field__error');
+          if (p) p.remove();
+        }
+
+        function validera() {
+          var fel = [];
+          var namn = form.elements.name;
+          var epost = form.elements.email;
+          var samtycke = form.elements.consent;
+
+          [namn, epost, samtycke].forEach(rensaFel);
+
+          if (!namn.value.trim()) {
+            visaFel(namn, 'Fyll i ditt namn.');
+            fel.push(namn);
+          }
+          if (!epost.value.trim()) {
+            visaFel(epost, 'Fyll i din e-postadress.');
+            fel.push(epost);
+          } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(epost.value.trim())) {
+            visaFel(epost, 'Kontrollera e-postadressen.');
+            fel.push(epost);
+          }
+          if (!samtycke.checked) {
+            visaFel(samtycke, 'Du behöver godkänna att vi kontaktar dig.');
+            fel.push(samtycke);
+          }
+          return fel;
+        }
+
+        function visaStatus(text, typ) {
+          status.textContent = text;
+          status.className = 'contact-form__status contact-form__status--' + typ;
+          status.hidden = false;
+        }
+
+        function byggMailto() {
+          var v = function (namn) {
+            var f = form.elements[namn];
+            return f && f.value ? f.value.trim() : '';
+          };
+          var rader = [
+            'Namn: ' + v('name'),
+            'E-post: ' + v('email'),
+            'Telefon: ' + (v('phone') || '-'),
+            'Ort: ' + (v('city') || '-'),
+            '',
+            v('message') || '(inget meddelande)'
+          ];
+          return 'mailto:' + FORM_MOTTAGARE +
+            '?subject=' + encodeURIComponent('Förfrågan från idealhus.se – ' + v('name')) +
+            '&body=' + encodeURIComponent(rader.join('\n'));
+        }
+
+        ['name', 'email', 'consent'].forEach(function (namn) {
+          var falt = form.elements[namn];
+          if (falt) {
+            falt.addEventListener('input', function () { rensaFel(falt); });
+            falt.addEventListener('change', function () { rensaFel(falt); });
+          }
+        });
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          var fel = validera();
+          if (fel.length) {
+            visaStatus('Kontrollera de markerade fälten.', 'fail');
+            fel[0].focus();
+            return;
+          }
+
+          // Boten fyllde i lockbetet - las tyst som skickat.
+          if (form.elements._honey && form.elements._honey.value) {
+            visaStatus('Tack! Vi hör av oss inom kort.', 'ok');
+            return;
+          }
+
+          if (!FORM_ENDPOINT) {
+            window.location.href = byggMailto();
+            visaStatus(
+              'Ditt e-postprogram öppnas med förfrågan ifylld – tryck skicka där. ' +
+              'Händer inget kan du mejla ' + FORM_MOTTAGARE + ' direkt.',
+              'ok'
+            );
+            return;
+          }
+
+          button.disabled = true;
+          button.textContent = 'Skickar …';
+          status.hidden = true;
+
+          fetch(FORM_ENDPOINT, {
+            method: 'POST',
+            headers: { Accept: 'application/json' },
+            body: new FormData(form)
+          })
+            .then(function (svar) {
+              if (!svar.ok) throw new Error('HTTP ' + svar.status);
+              form.reset();
+              visaStatus('Tack! Din förfrågan är skickad – vi hör av oss inom kort.', 'ok');
+            })
+            .catch(function () {
+              visaStatus(
+                'Något gick fel när förfrågan skulle skickas. Mejla oss gärna på ' +
+                FORM_MOTTAGARE + ' så tar vi det därifrån.',
+                'fail'
+              );
+            })
+            .then(function () {
+              button.disabled = false;
+              button.textContent = knappText;
+            });
+        });
+      })();
+
       (function () {
         var button = document.querySelector('.menu-button');
         var panel = document.getElementById('mobile-nav');

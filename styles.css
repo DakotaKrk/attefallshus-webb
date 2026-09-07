@@ -1073,6 +1073,68 @@ textarea:focus-visible {
   resize: vertical;
 }
 
+.contact-form__honey {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.field__error {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #ffb3a7;
+}
+
+.field--error label {
+  color: #ffb3a7;
+}
+
+.field--error input,
+.field--error textarea {
+  border-bottom-color: #ffb3a7;
+}
+
+.contact-form__check.field--error span {
+  color: #ffb3a7;
+}
+
+.contact-form__check.field--error {
+  flex-wrap: wrap;
+}
+
+.contact-form__check.field--error .field__error {
+  flex-basis: 100%;
+  margin-left: 29px;
+}
+
+.contact-form__status {
+  margin: 0;
+  padding: 15px 18px;
+  font-size: 14px;
+  line-height: 1.55;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-form__status--ok {
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.contact-form__status--fail {
+  border-color: rgba(255, 179, 167, 0.55);
+  color: #ffd5cd;
+}
+
+.contact-form button[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+}
+
 .contact-form__bottom {
   margin-top: 6px;
   padding-top: 28px;
