@@ -3709,3 +3709,35 @@ p,
     font-size: 24px;
   }
 }
+
+/* Vem som gor vad i varje steg. Det ar den fraga folk faktiskt har
+   nar de laser en process - inte vad som hander, utan vem som ska
+   gora det. */
+.process__vem {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.process__vem--vi {
+  background: var(--forest);
+  color: #ffffff;
+}
+
+.process__vem--du {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-faint);
+}
+
+.process__vem--bada {
+  background: var(--sand);
+  color: var(--ink-soft);
+}
