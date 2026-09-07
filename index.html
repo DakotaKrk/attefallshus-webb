@@ -18,9 +18,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
     <link rel="preload" as="image" href="images/hero-lakeside-house.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260907j">
+    <link rel="stylesheet" href="styles.css?v=20260907l">
   </head>
   <body>
     <header class="site-header">
@@ -319,39 +319,38 @@
       <section class="contact-section" id="kontakt">
         <div class="contact-section__inner">
           <div class="contact-section__intro">
-            <p class="section-label section-label--light">Kontakt</p>
-            <h2 class="contact-section__title">Låt oss börja<br>med din plats.</h2>
+            <p class="section-label section-label--accent">Första steget</p>
+            <h2 class="contact-section__title">Låt oss börja med <em>din plats</em>.</h2>
             <p class="contact-section__text">
               Berätta vad du funderar på, så återkommer vi med nästa tydliga
               steg – utan krav och utan säljsnack.
             </p>
 
-            <dl class="contact-section__meta">
+            <div class="contact-section__meta">
               <div>
-                <dt>Ahmed</dt>
-                <dd><a href="mailto:ahmed@idealhus.se">ahmed@idealhus.se</a></dd>
+                <span class="contact-section__meta-label">Ahmed</span>
+                <a class="contact-section__meta-value" href="mailto:ahmed@idealhus.se">ahmed@idealhus.se</a>
               </div>
               <div>
-                <dt>Sahand</dt>
-                <dd><a href="mailto:sahand@idealhus.se">sahand@idealhus.se</a></dd>
+                <span class="contact-section__meta-label">Sahand</span>
+                <a class="contact-section__meta-value" href="mailto:sahand@idealhus.se">sahand@idealhus.se</a>
               </div>
               <div>
-                <dt>Telefon</dt>
-                <dd><a href="tel:+46701234567">070-123 45 67</a></dd>
+                <span class="contact-section__meta-label">Telefon</span>
+                <a class="contact-section__meta-value" href="tel:+46701234567">070-123 45 67</a>
               </div>
               <div>
-                <dt>Plats</dt>
-                <dd>Stockholm, Sverige</dd>
+                <span class="contact-section__meta-label">Plats</span>
+                <span class="contact-section__meta-value contact-section__meta-value--tyst">Stockholm, Sverige</span>
               </div>
-            </dl>
+            </div>
           </div>
 
-          <div class="contact-panel">
-            <form class="contact-form" id="kontaktformular" method="post" novalidate>
+          <form class="contact-form" id="kontaktformular" method="post" novalidate>
             <div class="contact-form__row">
               <p class="field">
                 <label for="field-name">Namn</label>
-                <input id="field-name" type="text" name="name" autocomplete="name" required placeholder="För- och efternamn">
+                <input id="field-name" type="text" name="name" autocomplete="name" required placeholder="Vad heter du?">
               </p>
               <p class="field">
                 <label for="field-email">E-postadress</label>
@@ -365,10 +364,22 @@
                 <input id="field-phone" type="tel" name="phone" autocomplete="tel" placeholder="070-000 00 00">
               </p>
               <p class="field">
-                <label for="field-city">Stad / ort</label>
-                <input id="field-city" type="text" name="city" autocomplete="address-level2" placeholder="Där huset ska stå">
+                <label for="field-city">Kommun / ort</label>
+                <input id="field-city" type="text" name="city" autocomplete="address-level2" placeholder="Var ska huset byggas?">
               </p>
             </div>
+
+            <p class="field">
+              <label for="field-model">Intresserad modell</label>
+              <select id="field-model" name="model">
+                <option value="">Välj modell …</option>
+                <option>Attefallshus</option>
+                <option>Fritidshus</option>
+                <option>Fjällstuga</option>
+                <option>Eget projekt – egna ritningar</option>
+                <option>Hjälp mig välja</option>
+              </select>
+            </p>
 
             <p class="field">
               <label for="field-message">Ditt projekt</label>
@@ -379,17 +390,16 @@
             <input class="contact-form__honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 
             <div class="contact-form__bottom">
+              <button type="submit">Skicka förfrågan</button>
+
               <label class="contact-form__check">
                 <input type="checkbox" name="consent" required>
-                <span>Jag godkänner att Idealhus kontaktar mig om min förfrågan.</span>
+                <span>Genom att skicka godkänner du att Idealhus kontaktar dig om din förfrågan.</span>
               </label>
-
-              <button type="submit">Skicka förfrågan</button>
             </div>
 
             <p class="contact-form__status" role="status" aria-live="polite" hidden></p>
-            </form>
-          </div>
+          </form>
         </div>
       </section>
     </main>
