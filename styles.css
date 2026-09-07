@@ -984,81 +984,40 @@ textarea:focus-visible {
 }
 
 .contact-section__title {
-  margin: 0 0 22px;
+  margin: 0 0 24px;
   font-family: var(--serif);
-  font-size: clamp(38px, 3.4vw, 56px);
+  font-size: clamp(42px, 3.9vw, 62px);
   font-weight: 400;
   line-height: 1.04;
 }
 
 .contact-section__text {
-  max-width: 380px;
-  margin: 0 0 46px;
-  font-size: 16px;
+  max-width: 400px;
+  margin: 0 0 52px;
+  font-size: 17px;
   line-height: 1.7;
-  color: rgba(233, 237, 232, 0.7);
+  color: rgba(233, 237, 232, 0.72);
 }
 
-.contact-steps {
-  max-width: 380px;
-  margin: 0 0 42px;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 22px;
-  counter-reset: none;
-}
-
-.contact-steps li {
-  display: grid;
-  grid-template-columns: 34px 1fr;
-  gap: 16px;
-  align-items: start;
-}
-
-.contact-steps__nr {
-  font-family: var(--serif);
-  font-size: 20px;
-  line-height: 1.15;
-  color: rgba(255, 255, 255, 0.42);
-}
-
-.contact-steps__text {
-  font-size: 14px;
-  line-height: 1.55;
-  color: rgba(233, 237, 232, 0.66);
-}
-
-.contact-steps__text strong {
-  display: block;
-  margin-bottom: 2px;
-  font-size: 15px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.94);
-}
-
-/* Formularet ligger i en egen panel sa att det laser som sektionens
-   handling, inte som falt som svavar i bakgrunden.
-   Det negativa toppmarginalen motsvarar panelens egen toppadding, sa att
-   "Namn" inne i panelen hamnar pa exakt samma rad som "Kontakt" i
-   kolumnen bredvid - panelens kant far ligga nagot hogre. */
+/* Ett gradduksfargat kort pa den morka grunden. Den tidigare varianten
+   var 4,5 % vitt pa morkt gront - den lastes inte som ett kort utan som
+   en grafisk skavank. Antingen syns ett kort, eller sa finns det inget. */
 .contact-panel {
-  margin-top: -40px;
-  padding: 40px 40px 36px;
-  background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(255, 255, 255, 0.11);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  padding: 46px 46px 40px;
+  background: #f6f4ef;
+  color: var(--ink);
+  box-shadow: 0 34px 70px rgba(0, 0, 0, 0.3);
 }
 
 .contact-section__meta {
-  max-width: 340px;
+  max-width: 380px;
   margin: 0;
   display: grid;
-  gap: 16px;
+  gap: 20px;
 }
 
 .contact-section__meta div {
-  padding-top: 14px;
+  padding-top: 18px;
   display: grid;
   grid-template-columns: 84px 1fr;
   align-items: baseline;
@@ -1076,8 +1035,8 @@ textarea:focus-visible {
 
 .contact-section__meta dd {
   margin: 0;
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.92);
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.94);
 }
 
 .contact-section__meta a {
@@ -1112,12 +1071,12 @@ textarea:focus-visible {
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.48);
+  color: var(--ink-faint);
   transition: color 0.3s var(--ease);
 }
 
 .field:focus-within label {
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
 }
 
 .contact-form input,
@@ -1125,10 +1084,10 @@ textarea:focus-visible {
   width: 100%;
   padding: 8px 0 13px;
   border: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 1px solid rgba(31, 36, 32, 0.22);
   border-radius: 0;
   background: transparent;
-  color: #ffffff;
+  color: var(--ink);
   font: inherit;
   font-size: 16px;
   transition: border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
@@ -1136,14 +1095,14 @@ textarea:focus-visible {
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(31, 36, 32, 0.38);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-bottom-color: #ffffff;
-  box-shadow: 0 1px 0 0 #ffffff;
+  border-bottom-color: var(--ink);
+  box-shadow: 0 1px 0 0 var(--ink);
 }
 
 .contact-form textarea {
@@ -1165,20 +1124,20 @@ textarea:focus-visible {
   margin-top: 2px;
   font-size: 12px;
   line-height: 1.45;
-  color: #ffb3a7;
+  color: #a33f2c;
 }
 
 .field--error label {
-  color: #ffb3a7;
+  color: #a33f2c;
 }
 
 .field--error input,
 .field--error textarea {
-  border-bottom-color: #ffb3a7;
+  border-bottom-color: #a33f2c;
 }
 
 .contact-form__check.field--error span {
-  color: #ffb3a7;
+  color: #a33f2c;
 }
 
 .contact-form__check.field--error {
@@ -1195,12 +1154,12 @@ textarea:focus-visible {
   padding: 15px 18px;
   font-size: 14px;
   line-height: 1.55;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(31, 36, 32, 0.16);
 }
 
 .contact-form__status--ok {
-  background: rgba(255, 255, 255, 0.07);
-  color: rgba(255, 255, 255, 0.92);
+  background: rgba(38, 44, 39, 0.05);
+  color: var(--ink);
 }
 
 .contact-form__status a {
@@ -1214,8 +1173,9 @@ textarea:focus-visible {
 }
 
 .contact-form__status--fail {
-  border-color: rgba(255, 179, 167, 0.55);
-  color: #ffd5cd;
+  border-color: rgba(163, 63, 44, 0.4);
+  background: rgba(163, 63, 44, 0.06);
+  color: #8f3625;
 }
 
 .contact-form button[disabled] {
@@ -1223,24 +1183,24 @@ textarea:focus-visible {
   cursor: progress;
 }
 
+/* Samtycket pa egen rad over en knapp i full bredd. Tidigare stod de
+   sida vid sida och texten brots i fyra tranga rader intill knappen. */
 .contact-form__bottom {
-  margin-top: 6px;
-  padding-top: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: 10px;
+  padding-top: 26px;
+  display: grid;
+  gap: 22px;
+  border-top: 1px solid rgba(31, 36, 32, 0.13);
 }
 
 .contact-form__check {
-  max-width: 340px;
+  max-width: none;
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 13px;
   line-height: 1.55;
-  color: rgba(233, 237, 232, 0.7);
+  color: var(--ink-soft);
   cursor: pointer;
 }
 
@@ -1248,22 +1208,22 @@ textarea:focus-visible {
   width: 17px;
   height: 17px;
   flex: 0 0 auto;
-  accent-color: #f8f7f2;
+  accent-color: var(--forest);
 }
 
 .contact-form button {
-  flex: 0 0 auto;
-  height: 52px;
+  width: 100%;
+  height: 56px;
   padding: 0 34px;
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  border: 1px solid #f8f7f2;
+  border: 1px solid var(--forest);
   border-radius: 999px;
-  background: #f8f7f2;
-  color: var(--ink);
+  background: var(--forest);
+  color: #ffffff;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -1281,7 +1241,7 @@ textarea:focus-visible {
 
 .contact-form button:hover {
   background: transparent;
-  color: #f8f7f2;
+  color: var(--forest);
 }
 
 .contact-form button:hover::after {
@@ -1626,17 +1586,6 @@ textarea:focus-visible {
     gap: 48px;
   }
 
-  /* Kolumnerna ar staplade har, sa det finns inget att rata upp mot -
-     utan detta ater panelen 40 px av mellanrummet ovanfor sig. */
-  .contact-panel {
-    margin-top: 0;
-  }
-
-  .contact-steps {
-    max-width: 520px;
-    margin-bottom: 34px;
-  }
-
   .contact-section__text {
     max-width: 520px;
     margin-bottom: 34px;
@@ -1812,16 +1761,7 @@ textarea:focus-visible {
   }
 
   .contact-panel {
-    padding: 24px 20px 22px;
-  }
-
-  .contact-steps li {
-    grid-template-columns: 28px 1fr;
-    gap: 12px;
-  }
-
-  .contact-steps__nr {
-    font-size: 18px;
+    padding: 28px 22px 26px;
   }
 
   .contact-section__meta {
