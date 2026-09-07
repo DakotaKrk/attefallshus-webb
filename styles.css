@@ -6,6 +6,7 @@
   --sand: #f3f1ed;
   --line: #dedbd3;
   --forest: #262c27;
+  --logo: #82776b;
   --serif: "Instrument Serif", Baskerville, "Times New Roman", serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -82,9 +83,11 @@ textarea:focus-visible {
   line-height: 1;
 }
 
+/* Logotypen har proportionen 3,66:1, sa den mats pa hojden mot
+   headerns 84 px - inte pa bredden, da blir den for hog. */
 .logo__svg {
-  width: clamp(158px, 14vw, 196px);
-  height: auto;
+  width: auto;
+  height: clamp(32px, 3.2vw, 42px);
   display: block;
   overflow: visible;
   transition: opacity 0.35s var(--ease);
@@ -95,13 +98,13 @@ textarea:focus-visible {
 }
 
 .logo__svg [data-draw] {
-  fill: #3a3a3a;
+  fill: var(--logo);
 }
 
 /* Ritas upp en gang vid sidladdning: hairline-kontur forst, fyllning sedan. */
 .logo__svg--drawing [data-draw] {
   fill-opacity: 0;
-  stroke: #3a3a3a;
+  stroke: var(--logo);
   /* Anges i anvandarenheter, inte px, sa att streckmonstret matchar
      getTotalLength() i samma koordinatsystem. */
   stroke-width: 7;
