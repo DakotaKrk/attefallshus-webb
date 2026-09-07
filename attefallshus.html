@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
     <link rel="preload" as="image" href="images/hero-lakeside-house.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260908c">
+    <link rel="stylesheet" href="styles.css?v=20260908f">
     <link rel="stylesheet" href="exempel.css?v=1">
   </head>
   <body>
@@ -632,6 +632,83 @@
         document.addEventListener('click', function (e) {
           if (!item.contains(e.target)) satt(false);
         });
+      })();
+    </script>
+    <script>
+      // Sektioner tonas in nar de kommer i vy. Skriptet satter sjalv
+      // .js-reveal pa <html> - CSS:en doljer ingenting utan den klassen,
+      // sa sidan star kvar synlig aven om JavaScript uteblir.
+      (function () {
+        if (!window.IntersectionObserver) return;
+
+        var valjare = [
+          '.house-types__header', '.house-card',
+          '.quiet-break__inner',
+          '.feature-cards__header', '.feature-card',
+          '.production__content', '.production__media',
+          '.about-text__inner',
+          '.reference-projects__header', '.reference-projects__grid figure',
+          '.category-filter', '.category__head', '.model-card',
+          '.model-intro__inner', '.model-price__intro', '.model-price__card',
+          '.model-plan__inner',
+          '.contact-section__intro', '.contact-form'
+        ].join(',');
+
+        var element = Array.prototype.slice.call(document.querySelectorAll(valjare));
+        if (!element.length) return;
+
+        document.documentElement.classList.add('js-reveal');
+
+        // Syskon i samma grupp trappas, sa kort kommer in efter varandra
+        // i stallet for alla pa en gang.
+        var raknare = new Map();
+        element.forEach(function (el) {
+          el.classList.add('reveal');
+          var f = el.parentElement;
+          var i = raknare.get(f) || 0;
+          raknare.set(f, i + 1);
+          if (i) el.style.setProperty('--reveal-delay', (i * 0.07).toFixed(2) + 's');
+        });
+
+        // Allt som redan syns vid inladdning visas direkt, utan att
+        // vanta pa observatoren - forsta bildrutan ska vara komplett.
+        element.forEach(function (el) {
+          if (el.getBoundingClientRect().top < window.innerHeight) {
+            el.style.setProperty('--reveal-delay', '0s');
+            el.classList.add('reveal--inne');
+          }
+        });
+
+        var observator = new IntersectionObserver(function (poster) {
+          poster.forEach(function (post) {
+            if (!post.isIntersecting) return;
+            post.target.classList.add('reveal--inne');
+            observator.unobserve(post.target);
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+
+        element.forEach(function (el) { observator.observe(el); });
+
+        // Skyddsnat: hoppar man i sidan, till exempel via "Begar offert",
+        // hinner observatoren inte alltid se allt man passerar. Vid varje
+        // scroll kontrolleras darfor om nagot synligt fortfarande ar dolt.
+        var vantar = false;
+        window.addEventListener('scroll', function () {
+          if (vantar) return;
+          vantar = true;
+          window.requestAnimationFrame(function () {
+            vantar = false;
+            for (var i = element.length - 1; i >= 0; i--) {
+              var el = element[i];
+              if (el.classList.contains('reveal--inne')) continue;
+              var r = el.getBoundingClientRect();
+              if (r.top < window.innerHeight && r.bottom > 0) {
+                el.classList.add('reveal--inne');
+                observator.unobserve(el);
+              }
+            }
+          });
+        }, { passive: true });
       })();
     </script>
   </body>

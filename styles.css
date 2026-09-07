@@ -281,7 +281,6 @@ textarea:focus-visible {
   display: block;
   object-fit: cover;
   object-position: center center;
-  animation: heroSlowMove 24s ease-in-out infinite alternate;
 }
 
 .hero__content-wrap {
@@ -1383,16 +1382,6 @@ a.contact-section__meta-value:hover {
 
   .cta-bar__button {
     flex: 1 1 auto;
-  }
-}
-
-@keyframes heroSlowMove {
-  from {
-    transform: scale(1);
-  }
-
-  to {
-    transform: scale(1.07);
   }
 }
 
@@ -2771,5 +2760,124 @@ a.contact-section__meta-value:hover {
   .model-grid {
     grid-template-columns: 1fr;
     gap: 34px;
+  }
+}
+
+/* ============================================================
+   Finputsning: det som skiljer en gjord sida fran en byggd.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. Bilderna kommer fran olika generationer och drar at olika
+   hall i farg. En gemensam, mycket lag gradering far dem att
+   lasa som en och samma fotografering.
+   ------------------------------------------------------------ */
+.hero__image,
+.house-card__image,
+.feature-card__image,
+.production__image,
+.reference-projects__grid img,
+.subpage-hero__image,
+.model-card__media img {
+  filter: saturate(0.93) contrast(1.03);
+}
+
+/* ------------------------------------------------------------
+   2. Typografiska detaljer.
+   balance hindrar rubriker fran att sluta pa ett ensamt ord,
+   pretty tar bort horungar i brodtexten, och siffror i tabellara
+   siffror sa matt och priser star i lod under varandra.
+   ------------------------------------------------------------ */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+.house-card__text,
+.feature-card__text {
+  text-wrap: pretty;
+}
+
+.model-card__facts,
+.model-card__price,
+.model-specs dd,
+.subpage-hero__meta,
+.contact-section__meta dd {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Stora antikvarubriker vill ha nagot tightare spårning. */
+.hero__title,
+.subpage-hero__title {
+  letter-spacing: -0.012em;
+}
+
+::selection {
+  background: var(--logo);
+  color: #ffffff;
+}
+
+/* ------------------------------------------------------------
+   3. Heron. Den gamla rorelsen pendlade fram och tillbaka i
+   oandlighet, vilket drar blicken hela tiden. Nu ar det en enda
+   langsam rorelse som landar och blir stilla.
+   ------------------------------------------------------------ */
+.hero__image {
+  animation: heroSettle 22s var(--ease) forwards;
+}
+
+@keyframes heroSettle {
+  from {
+    transform: scale(1.07);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+/* ------------------------------------------------------------
+   4. Korten lyfter nagra pixlar vid hovring.
+   ------------------------------------------------------------ */
+.house-card,
+.feature-card {
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+
+.house-card:hover,
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(16, 20, 17, 0.13);
+}
+
+/* ------------------------------------------------------------
+   5. Sektioner tonas in nar de kommer i vy.
+   Grundlaget ar SYNLIGT. Doljningen sker bara nar skriptet har
+   satt .js-reveal pa <html>, sa sidan aldrig blir tom om
+   JavaScript uteblir eller fallerar.
+   ------------------------------------------------------------ */
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.js-reveal .reveal--inne {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero__image {
+    animation: none;
   }
 }
