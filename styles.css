@@ -7165,9 +7165,10 @@ body::after {
    ------------------------------------------------------------ */
 @media (max-width: 700px) {
   .site-footer__text a,
-  .site-footer__nav a {
+  .site-footer__nav a,
+  .site-footer__policy {
     display: inline-block;
-    padding-block: 5px;
+    padding-block: 7px;
   }
 
   .model-card__title a {
