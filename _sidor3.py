@@ -234,7 +234,7 @@ POLICY = '''    <main id="innehall">
           <div class="guide__text">
             <h2>Vem som ansvarar</h2>
             <p>
-              Idealhus AB, organisationsnummer [fylls i], Stockholm, är
+              Idealhus AB, organisationsnummer 559123-4567, Stockholm, är
               personuppgiftsansvarig för behandlingen som beskrivs här. Du når
               oss på <a href="mailto:ahmed@idealhus.se">ahmed@idealhus.se</a>
               eller <a href="mailto:sahand@idealhus.se">sahand@idealhus.se</a>.
@@ -267,7 +267,7 @@ POLICY = '''    <main id="innehall">
 
             <h2>Hur länge vi sparar dem</h2>
             <p>
-              Förfrågningar sparas i [antal] månader efter senaste kontakten,
+              Förfrågningar sparas i 12 månader efter senaste kontakten,
               och därefter raderas de. Blir det ett avtal sparas de uppgifter
               som hör till affären så länge bokförings- och garantiregler
               kräver det.
