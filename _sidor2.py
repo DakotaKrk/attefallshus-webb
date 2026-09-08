@@ -89,7 +89,7 @@ skriv("proffs.html", "Proffs | Idealhus",
 STEG = [
     ("Första samtalet", "Du berättar om tomten, hur huset ska användas och ungefär när du vill vara i gång. Vi säger vad som är möjligt och vad som inte är det."),
     ("Modell och anpassning", "Vi går igenom modellerna tillsammans och gör de anpassningar som betyder något för just din plats. Du får en tydlig offert."),
-    ("Bygglov eller anmälan", "Attefallshus kräver anmälan, övriga hus bygglov. Vi tar fram underlaget och du lämnar in till din kommun."),
+    ("Bygglov eller anmälan", "Mindre komplementhus är sedan december 2025 lov- och anmälningsfria, övriga hus kräver bygglov. Vi tar fram underlaget och du lämnar in till din kommun."),
     ("Tillverkning", "Huset byggs i Sverige, under tak. Du får veta var i processen det befinner sig."),
     ("Leverans och montage", "Huset kommer till tomten och monteras. Grund och anslutningar ska vara förberedda innan dess."),
     ("Inflyttning", "Slutbesiktning, genomgång och överlämning. Du har haft samma kontakt hela vägen."),

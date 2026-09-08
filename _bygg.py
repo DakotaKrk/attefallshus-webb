@@ -3,7 +3,7 @@
 import re, io, os
 
 BAS = "https://dakotakrk.github.io/idealhus/"
-CSS_V = "20260910q"
+CSS_V = "20260910r"
 
 KATEGORIER = [
     ("Attefallshus", "attefallshus.html"),
@@ -194,6 +194,7 @@ SIDFOT = '''    <footer class="site-footer">
             <a href="referensprojekt.html">Referensprojekt</a>
             <a href="om-oss.html">Om oss</a>
             <a href="kontakt.html">Kontakt</a>
+            <a href="attefallshus-regler.html">Attefallshus: reglerna</a>
           </nav>
         </div>
 
@@ -218,6 +219,7 @@ SIDFOT = '''    <footer class="site-footer">
 
       <div class="site-footer__bottom">
         <span>© 2026 Idealhus AB. Alla rättigheter förbehållna.</span>
+        <a class="site-footer__policy" href="integritetspolicy.html">Integritetspolicy</a>
       </div>
     </footer>
 '''

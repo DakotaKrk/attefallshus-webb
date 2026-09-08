@@ -12,9 +12,10 @@ STEG = [
      "just din plats. Du får en offert där det står vad som ingår och vad som "
      "tillkommer."),
     ("Bygglov eller anmälan", "Du lämnar in", "du",
-     "Attefallshus kräver anmälan, övriga hus bygglov. Vi tar fram ritningar "
-     "och underlag, men det är du som är byggherre och lämnar in till din "
-     "kommun. Handläggningstiden varierar mellan kommuner."),
+     "Mindre komplementhus behöver sedan december 2025 varken bygglov eller "
+     "anmälan för själva byggnaden, men installationerna anmäls ändå. Övriga "
+     "hus kräver bygglov. Vi tar fram ritningar och underlag, men det är du "
+     "som är byggherre och lämnar in till din kommun."),
     ("Tillverkning", "Vi", "vi",
      "Huset byggs i Sverige, under tak. Väggar, golv och tak monteras i jämn "
      "temperatur och fuktnivå i stället för ute i väder och vind. Du får veta "
