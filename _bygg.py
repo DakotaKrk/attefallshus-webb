@@ -3,7 +3,7 @@
 import re, io, os
 
 BAS = "https://dakotakrk.github.io/idealhus/"
-CSS_V = "20260910z"
+CSS_V = "20260911d"
 
 KATEGORIER = [
     ("Attefallshus", "attefallshus.html"),
@@ -191,11 +191,11 @@ SIDFOT = '''    <footer class="site-footer">
           <nav class="site-footer__nav" aria-label="Sidfot navigation">
             <a href="index.html">Hem</a>
             <a href="attefallshus.html">Våra hus</a>
+            <a href="priser.html">Priser</a>
             <a href="sa-fungerar-det.html">Så fungerar det</a>
             <a href="referensprojekt.html">Referensprojekt</a>
             <a href="om-oss.html">Om oss</a>
             <a href="kontakt.html">Kontakt</a>
-            <a href="priser.html">Priser</a>
             <a href="attefallshus-regler.html">Attefallshus: reglerna</a>
           </nav>
         </div>
