@@ -7590,8 +7590,10 @@ body::after {
   text-decoration-color: var(--knapp);
 }
 
-/* Priskolumnen i tabellen ar det man kommit for. */
-.matt tbody td:last-child {
+/* Priskolumnen ska inte brytas. Cellen som spanner over flera
+   kolumner ar en hel mening och maste daremot fa brytas - utan
+   undantaget blev guidens matt-tabell bredare an skarmen. */
+.matt tbody td:last-child:not([colspan]) {
   white-space: nowrap;
 }
 
@@ -7915,5 +7917,44 @@ body::after {
 
   .vidare__kort {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------------------------------------
+   Mattbilden pa mobil (2026-09-08)
+   Ritningen ar 660 enheter bred. Pa en telefon ritas den i knappt
+   halva den bredden, sa 15 enheters text blev omkring 7 px pa
+   skarmen - laslig for ingen. Texten och linjerna skalas darfor
+   upp i ritningens egna enheter, inte i pixlar.
+   ------------------------------------------------------------ */
+@media (max-width: 700px) {
+  .mb-text {
+    font-size: 27px;
+  }
+
+  .mb-text--grans {
+    font-size: 22px;
+  }
+
+  .mb-matt {
+    stroke-width: 3;
+  }
+
+  .mb-grans {
+    stroke-width: 3;
+    stroke-dasharray: 12 9;
+  }
+
+  .mb-hus,
+  .mb-mark {
+    stroke-width: 4;
+  }
+
+  .mb-tunn {
+    stroke-width: 3;
+  }
+
+  .mattbild {
+    padding: 16px 14px;
   }
 }
