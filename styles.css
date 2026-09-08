@@ -7958,3 +7958,31 @@ body::after {
     padding: 16px 14px;
   }
 }
+
+/* ------------------------------------------------------------
+   Tabellerna pa mobil (2026-09-08)
+   "15-30 m²" brots mitt itu sa att enheten hamnade pa egen rad.
+   Cellerna far mindre sidopadding och en aning mindre siffror,
+   och da ryms alla tre kolumner utan brytning inuti ett varde.
+   Cellen som spanner over flera kolumner ar en mening och far
+   fortfarande brytas.
+   ------------------------------------------------------------ */
+@media (max-width: 700px) {
+  .matt th,
+  .matt td {
+    padding: 12px 10px;
+  }
+
+  .matt tbody td {
+    font-size: 18px;
+  }
+
+  .matt tbody td:not([colspan]) {
+    white-space: nowrap;
+  }
+
+  .matt thead th {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+}
