@@ -7080,3 +7080,108 @@ body::after {
 .skede__yta:hover .rok {
   animation-duration: 2.6s;
 }
+
+/* ============================================================
+   Mobilputs (2026-09-08)
+   Genomgang pa 375 px: ingen sidoscroll pa nagon sida, men tva
+   traffytor var for sma for en tumme och skedeskorten tog mer
+   hojd an de behovde.
+   ============================================================ */
+
+/* Hamburgaren var 32x32. Riktmarket ar 44x44 - ikonen ar kvar i
+   samma storlek, det ar bara ytan runt den som vaxer, och den
+   negativa marginalen haller knappen pa samma plats i raden. */
+.menu-button {
+  width: 44px;
+  height: 44px;
+  margin-right: -6px;
+}
+
+/* Loggan ar 32 px hog pa mobil och alltsa ocksa en liten traffyta.
+   Padding ger den hojd utan att bilden andras. */
+.logo {
+  padding-block: 6px;
+}
+
+@media (max-width: 700px) {
+  /* Skedeskorten: samma innehall, mindre luft. Tre kort i rad
+     nedanfor varandra blev nastan tva skarmhojder. */
+  .skede__bild {
+    padding: 14px 16px 10px;
+  }
+
+  .skede__yta {
+    padding-bottom: 20px;
+  }
+
+  .skede__titel {
+    margin: 18px 20px 8px;
+  }
+
+  .skede__text {
+    margin: 0 20px 16px;
+  }
+
+  .skede__steg {
+    margin: 0 20px;
+    padding-top: 14px;
+    gap: 11px;
+  }
+
+  /* Stegraderna far lite mer hojd - de ar lankar i praktiken nar
+     man laser med tummen pa dem. */
+  .skede__steg > span {
+    min-height: 24px;
+  }
+
+  .skede__nr {
+    top: 14px;
+    right: 14px;
+  }
+}
+
+/* E-postadresserna i kontaktkortet ar lankar med radhojd 22 px.
+   Lite luft under gor dem lattare att traffa utan att raden
+   flyttar sig. */
+@media (max-width: 700px) {
+  .contact-section__meta-value {
+    display: inline-block;
+    padding-block: 4px;
+  }
+
+  .kontakt-direkt__lankar a {
+    display: inline-block;
+    padding-block: 4px;
+  }
+}
+
+/* ------------------------------------------------------------
+   Traffytor pa mobil (2026-09-08)
+   Kvar efter forra rundan: lankar som ar egna rader men bara har
+   textens hojd - sidfotens adresser, modellkortens rubriker,
+   404-sidans huslankar och "Sa tanker vi". De far luft over och
+   under sa tummen har nagot att sikta pa. Raden flyttar sig inte,
+   det ar bara traffytan som vaxer.
+   ------------------------------------------------------------ */
+@media (max-width: 700px) {
+  .site-footer__text a,
+  .site-footer__nav a {
+    display: inline-block;
+    padding-block: 5px;
+  }
+
+  .model-card__title a {
+    display: inline-block;
+    padding-block: 3px;
+  }
+
+  .quiet-break__link,
+  .about-text__link,
+  .fyrafyra__hus a {
+    padding-block: 5px;
+  }
+
+  .fyrafyra__hus a {
+    display: inline-block;
+  }
+}

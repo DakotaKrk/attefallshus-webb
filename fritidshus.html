@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap">
     <link rel="preload" as="image" href="images/generated-category-fritidshus-wide-01.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260910o">
+    <link rel="stylesheet" href="styles.css?v=20260910q">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -374,6 +374,17 @@
         }, { threshold: 0.15 });
 
         Array.prototype.forEach.call(teckningar, function (svg) { obs.observe(svg); });
+
+        // Skyddsnat: en teckning som inte hunnit bli uppritad ska inte
+        // sta kvar som en tom ruta. Det som syns ritas anda.
+        window.setTimeout(function () {
+          Array.prototype.forEach.call(teckningar, function (svg) {
+            var r = svg.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0) {
+              svg.classList.add('teckning--ritad');
+            }
+          });
+        }, 2500);
       })();
     </script>
     <script>

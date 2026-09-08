@@ -3,7 +3,7 @@
 import re, io, os
 
 BAS = "https://dakotakrk.github.io/idealhus/"
-CSS_V = "20260910o"
+CSS_V = "20260910q"
 
 KATEGORIER = [
     ("Attefallshus", "attefallshus.html"),
@@ -258,6 +258,17 @@ def skript(extra=""):
         }, { threshold: 0.15 });
 
         Array.prototype.forEach.call(teckningar, function (svg) { obs.observe(svg); });
+
+        // Skyddsnat: en teckning som inte hunnit bli uppritad ska inte
+        // sta kvar som en tom ruta. Det som syns ritas anda.
+        window.setTimeout(function () {
+          Array.prototype.forEach.call(teckningar, function (svg) {
+            var r = svg.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0) {
+              svg.classList.add('teckning--ritad');
+            }
+          });
+        }, 2500);
       })();
     </script>
     <script>
