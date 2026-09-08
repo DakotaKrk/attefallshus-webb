@@ -3,7 +3,7 @@
 import re, io, os
 
 BAS = "https://dakotakrk.github.io/idealhus/"
-CSS_V = "20260910l"
+CSS_V = "20260910m"
 
 KATEGORIER = [
     ("Attefallshus", "attefallshus.html"),

@@ -6,6 +6,10 @@
   --sand: #f3f1ed;
   --line: #ded8cd;
   --forest: #2c2820;
+  /* Knappfargen ar loggans kulor, nedmorkad tills vit text klarar
+     kontrastkravet (5,9:1). Sjalva loggfargen ger bara 4,2:1. */
+  --knapp: #6d6355;
+  --knapp-morkare: #5b5247;
   --logo: #82776b;
   --serif: "EB Garamond", Georgia, "Times New Roman", serif;
   --sans: "Source Sans 3", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -225,8 +229,8 @@ textarea:focus-visible {
 .site-footer__button,
 .contact-page-hero__button,
 .cta-bar__button {
-  background: var(--forest);
-  border-color: var(--forest);
+  background: var(--knapp);
+  border-color: var(--knapp);
   color: #ffffff;
   box-shadow: 0 1px 2px rgba(26, 22, 15, 0.16),
     0 12px 26px -14px rgba(26, 22, 15, 0.62),
@@ -238,8 +242,8 @@ textarea:focus-visible {
 .site-footer__button:hover,
 .contact-page-hero__button:hover,
 .cta-bar__button:hover {
-  background: #3b352b;
-  border-color: #3b352b;
+  background: var(--knapp-morkare);
+  border-color: var(--knapp-morkare);
   color: #ffffff;
   transform: translateY(-1px);
   box-shadow: 0 2px 5px rgba(26, 22, 15, 0.2),
@@ -1493,7 +1497,7 @@ a.contact-section__meta-value:hover {
   margin-top: 1px;
   flex: 0 0 auto;
   border-radius: 4px;
-  accent-color: var(--forest);
+  accent-color: var(--knapp);
 }
 
 .contact-form__status {
@@ -1745,10 +1749,10 @@ a.contact-section__meta-value:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--forest);
-    border-bottom: 1px solid var(--forest);
+    border: 1px solid var(--knapp);
+    border-bottom: 1px solid var(--knapp);
     border-radius: 999px;
-    background: var(--forest);
+    background: var(--knapp);
     color: #ffffff;
     font-size: 15px;
     font-weight: 500;
@@ -2898,8 +2902,8 @@ a.contact-section__meta-value:hover {
 }
 
 .category-filter a[aria-current="page"] {
-  background: var(--forest);
-  border-color: var(--forest);
+  background: var(--knapp);
+  border-color: var(--knapp);
   color: #ffffff;
 }
 
@@ -3249,8 +3253,8 @@ p,
 }
 
 .site-footer__social a:hover {
-  background: var(--forest);
-  border-color: var(--forest);
+  background: var(--knapp);
+  border-color: var(--knapp);
   color: #ffffff;
 }
 
@@ -3328,8 +3332,8 @@ p,
 }
 
 .filter button[aria-pressed="true"] {
-  background: var(--forest);
-  border-color: var(--forest);
+  background: var(--knapp);
+  border-color: var(--knapp);
   color: #ffffff;
   box-shadow: 0 1px 2px rgba(26, 22, 15, 0.16),
     0 10px 20px -12px rgba(26, 22, 15, 0.6);
@@ -5490,7 +5494,7 @@ p,
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
-  background: var(--forest);
+  background: var(--knapp);
   color: #ffffff;
   font-size: 14px;
   font-weight: 500;
@@ -5998,9 +6002,9 @@ p,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--forest);
+  border: 1px solid var(--knapp);
   border-radius: 999px;
-  background: var(--forest);
+  background: var(--knapp);
   color: #ffffff;
   font-size: 15px;
   font-weight: 500;
@@ -6014,8 +6018,8 @@ p,
 }
 
 .kontaktkort__knapp:hover {
-  background: #3b352b;
-  border-color: #3b352b;
+  background: var(--knapp-morkare);
+  border-color: var(--knapp-morkare);
   transform: translateY(-1px);
   box-shadow: 0 2px 5px rgba(26, 22, 15, 0.2),
     0 20px 38px -16px rgba(26, 22, 15, 0.68),
@@ -6476,7 +6480,7 @@ body::after {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: var(--forest);
+  background: var(--knapp);
   color: #ffffff;
   font-family: var(--serif);
   font-size: 17px;
@@ -6816,7 +6820,7 @@ body::after {
 }
 
 .fassteg__kort:hover .fassteg__nr {
-  background: var(--forest);
+  background: var(--knapp);
   color: #ffffff;
 }
 
