@@ -7004,29 +7004,32 @@ body::after {
 
 @keyframes pennaVilar {
   from {
-    transform: translate(0, 0) rotate(0deg);
+    translate: 0 0;
+    rotate: 0deg;
   }
 
   to {
-    transform: translate(-5px, 5px) rotate(-2deg);
+    translate: -5px 5px;
+    rotate: -2deg;
   }
 }
 
 @keyframes grundVaxer {
   0%,
   100% {
-    transform: scaleX(0.7);
+    scale: 0.7 1;
   }
 
   55% {
-    transform: scaleX(1);
+    scale: 1 1;
   }
 }
 
 @keyframes rokStiger {
   0% {
     opacity: 0;
-    transform: translateY(6px) scaleX(0.9);
+    translate: 0 6px;
+    scale: 0.9 1;
   }
 
   25% {
@@ -7035,28 +7038,45 @@ body::after {
 
   100% {
     opacity: 0;
-    transform: translateY(-16px) scaleX(1.15);
+    translate: 0 -16px;
+    scale: 1.15 1;
   }
 }
 
 @keyframes tradSvajar {
   from {
-    transform: rotate(-1.4deg);
+    rotate: -1.4deg;
   }
 
   to {
-    transform: rotate(1.4deg);
+    rotate: 1.4deg;
   }
 }
 
-/* Hovringen ar kvar som en forstarkning: pennan tar i, grunden gar
-   hela vagen ut. Rok och granar sköter sig sjalva. */
+/* Hovringen ligger OVANPA den standiga rorelsen: den anvander
+   transform, slingorna anvander translate/rotate/scale, och
+   webblasaren lagger ihop dem. Forut pausade jag slingan i stallet,
+   och da vann den animerade transformen - hovringen syntes inte alls. */
+.skede__penna {
+  transition: transform 0.5s var(--ease);
+}
+
 .skede__yta:hover .skede__penna {
-  animation-play-state: paused;
-  transform: translate(-14px, 14px);
+  transform: translate(-11px, 11px) rotate(-3deg);
+}
+
+/* Grunden ar undantaget: bade slingan och hovringen vill at skalan,
+   sa har stangs slingan av och overgangen tar over mjukt. */
+.skede__bild .accentlinje {
+  transition: transform 0.5s var(--ease), scale 0.5s var(--ease);
 }
 
 .skede__yta:hover .accentlinje {
-  animation-play-state: paused;
+  animation: none;
   transform: scaleX(1);
+}
+
+/* Roken tar fart nar man pekar - elden har fatt luft. */
+.skede__yta:hover .rok {
+  animation-duration: 2.6s;
 }
