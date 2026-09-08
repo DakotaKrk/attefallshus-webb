@@ -49,7 +49,7 @@ POLICY = '''    <main id="innehall">
             <h2>Vilka uppgifter vi behandlar</h2>
             <p>
               Om du fyller i kontaktformuläret lämnar du namn, e-postadress
-              och — om du vill — telefonnummer, ort, vilken husmodell du är
+              och, om du vill, telefonnummer, ort, vilken husmodell du är
               intresserad av och det du skriver i meddelandet. Vi behandlar
               bara det du själv skriver.
             </p>
@@ -60,7 +60,7 @@ POLICY = '''    <main id="innehall">
               på skicka öppnas ditt eget e-postprogram med meddelandet ifyllt,
               och du skickar det som ett vanligt mejl. Uppgifterna sparas
               alltså inte på webbplatsen och passerar ingen tredje part på
-              vägen — de hamnar i vår inkorg, hos vår e-postleverantör.
+              vägen. De hamnar i vår inkorg, hos vår e-postleverantör.
             </p>
 
             <h2>Varför vi behandlar dem</h2>
@@ -174,91 +174,121 @@ def pristabell():
 
 
 PRISSIDA = f'''    <main id="innehall">
-      <section class="guide-topp">
-        <div class="guide-topp__inner">
-          <p class="section-label">Priser</p>
-          <h1 class="guide-topp__titel">Vad ett hus fr\u00e5n oss kostar</h1>
-          <p class="guide-topp__lead">
-            Ett hus har inget listpris p\u00e5 samma s\u00e4tt som en bil. Men det g\u00e5r
-            att s\u00e4ga vad som ing\u00e5r, vad som tillkommer och vad som f\u00e5r
-            summan att r\u00f6ra sig \u2014 s\u00e5 att du vet vad du j\u00e4mf\u00f6r n\u00e4r du f\u00e5r
-            offerten.
-          </p>
+      <section class="subpage-hero">
+        <img class="subpage-hero__image" src="images/generated-materials-01.webp" width="1600" height="900" fetchpriority="high" decoding="async" alt="Materialprover med träpanel och fönsterdetalj">
+
+        <div class="subpage-hero__content-wrap">
+          <div class="subpage-hero__content">
+            <h1 class="subpage-hero__title">Vad ett hus kostar</h1>
+            <p class="subpage-hero__meta">Vad som ingår, vad som tillkommer och vad som styr summan</p>
+          </div>
         </div>
       </section>
 
       <section class="guide">
         <div class="guide__inner">
-          <aside class="guide__snabbsvar">
-            <p class="guide__snabbsvar-etikett">Kort svar</p>
-            <p>
-              Husets pris \u00e4r en del av totalen. Grund, anslutningar och
-              markarbete ligger utanf\u00f6r och betalas till andra \u00e4n oss \u2014
-              r\u00e4kna med dem fr\u00e5n b\u00f6rjan, s\u00e5 blir det inga \u00f6verraskningar.
-            </p>
+          <aside class="guide__rail">
+            <div class="guide__snabbsvar">
+              <p class="guide__snabbsvar-etikett">Kort svar</p>
+              <p>
+                Husets pris är en del av totalen. Grund, anslutningar och
+                markarbete ligger utanför och betalas till andra än oss.
+                Räkna med dem från början, så blir det inga överraskningar.
+              </p>
+            </div>
+
+            <nav class="guide__toc" aria-label="Innehåll på sidan">
+              <p class="guide__toc-etikett">På den här sidan</p>
+              <ol>
+                <li><a href="#prisnivaer">Prisnivåer</a></li>
+                <li><a href="#ingar">Det här ingår</a></li>
+                <li><a href="#tillkommer">Det här tillkommer</a></li>
+                <li><a href="#styr">Vad som styr priset</a></li>
+                <li><a href="#offert">När du får ett pris</a></li>
+              </ol>
+            </nav>
           </aside>
 
           <div class="guide__text">
-            <h2>Prisniv\u00e5er</h2>
-            <p>
-              Priserna nedan \u00e4r startpriser f\u00f6r respektive kategori. Vad just
-              ditt hus kostar st\u00e5r i offerten, och den skriver vi n\u00e4r vi vet
-              hur tomten ser ut.
+            <p class="guide__ingress">
+              Ett hus har inget listpris på samma sätt som en bil. Men det går
+              att säga vad som ingår, vad som tillkommer och vad som får
+              summan att röra sig, så att du vet vad du jämför när du får
+              offerten.
             </p>
 
-            <div class="matt">
-              <table>
-                <thead>
-                  <tr>
-                    <th scope="col">Kategori</th>
-                    <th scope="col">Storlek</th>
-                    <th scope="col">Pris</th>
-                  </tr>
-                </thead>
-                <tbody>
+            <section class="guide__sektion" id="prisnivaer">
+              <h2>Prisnivåer</h2>
+              <p>
+                Priserna nedan är startpriser för respektive kategori. Vad just
+                ditt hus kostar står i offerten, och den skriver vi när vi vet
+                hur tomten ser ut.
+              </p>
+
+              <div class="matt">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">Kategori</th>
+                      <th scope="col">Storlek</th>
+                      <th scope="col">Pris</th>
+                    </tr>
+                  </thead>
+                  <tbody>
 {pristabell()}
-                </tbody>
-              </table>
-            </div>
+                  </tbody>
+                </table>
+              </div>
+            </section>
 
-            <h2>Det h\u00e4r ing\u00e5r</h2>
-            <div class="prisrader">
+            <section class="guide__sektion" id="ingar">
+              <h2>Det här ingår</h2>
+              <div class="prisrader">
 {rader(INGAR)}
-            </div>
+              </div>
+            </section>
 
-            <h2>Det h\u00e4r tillkommer</h2>
-            <p>
-              Posterna nedan h\u00f6r till bygget men betalas till andra \u00e4n oss.
-              Vi s\u00e4ger vad som kr\u00e4vs och n\u00e4r, s\u00e5 att ingenting st\u00e5r och
-              v\u00e4ntar p\u00e5 varandra.
-            </p>
-            <div class="prisrader prisrader--tillkommer">
+            <section class="guide__sektion" id="tillkommer">
+              <h2>Det här tillkommer</h2>
+              <p>
+                Posterna nedan hör till bygget men betalas till andra än oss.
+                Vi säger vad som krävs och när, så att ingenting står och
+                väntar på varandra.
+              </p>
+              <div class="prisrader prisrader--tillkommer">
 {rader(TILLKOMMER)}
-            </div>
+              </div>
+            </section>
 
-            <h2>Vad som styr priset</h2>
-            <div class="prisrader">
+            <section class="guide__sektion" id="styr">
+              <h2>Vad som styr priset</h2>
+              <div class="prisrader">
 {rader(STYR)}
-            </div>
+              </div>
+            </section>
 
-            <h2>N\u00e4r du f\u00e5r ett pris</h2>
-            <p>
-              Efter f\u00f6rsta samtalet och valet av modell skriver vi en offert
-              d\u00e4r det st\u00e5r vad som ing\u00e5r och vad som tillkommer, post f\u00f6r
-              post. Hela ordningen finns p\u00e5
-              <a href="sa-fungerar-det.html">S\u00e5 fungerar det</a>.
-            </p>
+            <section class="guide__sektion" id="offert">
+              <h2>När du får ett pris</h2>
+              <p>
+                Efter första samtalet och valet av modell skriver vi en offert
+                där det står vad som ingår och vad som tillkommer, post för
+                post. Hela ordningen finns på
+                <a href="sa-fungerar-det.html">Så fungerar det</a>.
+              </p>
 
-            <p class="guide__vidare">
-              <a class="model-price__button" href="kontakt.html">Beg\u00e4r offert</a>
-              <a class="site-footer__button" href="attefallshus.html">Se husmodellerna</a>
-            </p>
+              <p class="guide__vidare">
+                <a class="knapp-fylld" href="kontakt.html">Begär offert</a>
+                <a class="knapp-linje" href="attefallshus.html">Se husmodellerna</a>
+              </p>
+            </section>
           </div>
         </div>
       </section>
-    </main>
+
+''' + io.open("_kontaktsektion.inc", encoding="utf-8").read() + '''    </main>
 
 '''
+
 
 def bygg():
     ut = []
@@ -280,9 +310,9 @@ def bygg():
     sida = (B.head("Priser | Idealhus",
                    "Vad ett hus fr\u00e5n Idealhus kostar: vad som ing\u00e5r, vad som "
                    "tillkommer och vad som styr priset.",
-                   None, fil="priser.html")
-            + "\n" + B.header("") + "\n" + PRISSIDA + B.SIDFOT + "\n"
-            + B.skript(""))
+                   "generated-materials-01.webp", fil="priser.html")
+            + "\n" + B.header("Priser") + "\n" + PRISSIDA + B.SIDFOT + "\n"
+            + B.skript(TOC_SKRIPT))
     io.open("priser.html", "w", encoding="utf-8",
             newline="").write(sida.replace("\n", "\r\n"))
     ut.append("priser.html")

@@ -14,14 +14,15 @@
     <meta property="og:site_name" content="Idealhus">
     <meta property="og:title" content="Priser | Idealhus">
     <meta property="og:description" content="Vad ett hus från Idealhus kostar: vad som ingår, vad som tillkommer och vad som styr priset.">
-    <meta property="og:image" content="https://dakotakrk.github.io/idealhus/images/hero-video-poster.webp">
+    <meta property="og:image" content="https://dakotakrk.github.io/idealhus/images/generated-materials-01.webp">
     <meta property="og:url" content="https://dakotakrk.github.io/idealhus/priser.html">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap">
-    <link rel="stylesheet" href="styles.css?v=20260911d">
+    <link rel="preload" as="image" href="images/generated-materials-01.webp" fetchpriority="high">
+    <link rel="stylesheet" href="styles.css?v=20260911e">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -89,7 +90,7 @@
               <a class="main-nav__sub-alla" href="attefallshus.html">Se alla modeller</a>
             </div>
           </div>
-          <a class="main-nav__link" href="priser.html">Priser</a>
+          <a class="main-nav__link main-nav__link--active" href="priser.html">Priser</a>
           <a class="main-nav__link" href="sa-fungerar-det.html">Så fungerar det</a>
           <a class="main-nav__link" href="referensprojekt.html">Referensprojekt</a>
           <a class="main-nav__link" href="om-oss.html">Om oss</a>
@@ -127,48 +128,67 @@
     </header>
 
     <main id="innehall">
-      <section class="guide-topp">
-        <div class="guide-topp__inner">
-          <p class="section-label">Priser</p>
-          <h1 class="guide-topp__titel">Vad ett hus från oss kostar</h1>
-          <p class="guide-topp__lead">
-            Ett hus har inget listpris på samma sätt som en bil. Men det går
-            att säga vad som ingår, vad som tillkommer och vad som får
-            summan att röra sig — så att du vet vad du jämför när du får
-            offerten.
-          </p>
+      <section class="subpage-hero">
+        <img class="subpage-hero__image" src="images/generated-materials-01.webp" width="1600" height="900" fetchpriority="high" decoding="async" alt="Materialprover med träpanel och fönsterdetalj">
+
+        <div class="subpage-hero__content-wrap">
+          <div class="subpage-hero__content">
+            <h1 class="subpage-hero__title">Vad ett hus kostar</h1>
+            <p class="subpage-hero__meta">Vad som ingår, vad som tillkommer och vad som styr summan</p>
+          </div>
         </div>
       </section>
 
       <section class="guide">
         <div class="guide__inner">
-          <aside class="guide__snabbsvar">
-            <p class="guide__snabbsvar-etikett">Kort svar</p>
-            <p>
-              Husets pris är en del av totalen. Grund, anslutningar och
-              markarbete ligger utanför och betalas till andra än oss —
-              räkna med dem från början, så blir det inga överraskningar.
-            </p>
+          <aside class="guide__rail">
+            <div class="guide__snabbsvar">
+              <p class="guide__snabbsvar-etikett">Kort svar</p>
+              <p>
+                Husets pris är en del av totalen. Grund, anslutningar och
+                markarbete ligger utanför och betalas till andra än oss.
+                Räkna med dem från början, så blir det inga överraskningar.
+              </p>
+            </div>
+
+            <nav class="guide__toc" aria-label="Innehåll på sidan">
+              <p class="guide__toc-etikett">På den här sidan</p>
+              <ol>
+                <li><a href="#prisnivaer">Prisnivåer</a></li>
+                <li><a href="#ingar">Det här ingår</a></li>
+                <li><a href="#tillkommer">Det här tillkommer</a></li>
+                <li><a href="#styr">Vad som styr priset</a></li>
+                <li><a href="#offert">När du får ett pris</a></li>
+              </ol>
+            </nav>
           </aside>
 
           <div class="guide__text">
-            <h2>Prisnivåer</h2>
-            <p>
-              Priserna nedan är startpriser för respektive kategori. Vad just
-              ditt hus kostar står i offerten, och den skriver vi när vi vet
-              hur tomten ser ut.
+            <p class="guide__ingress">
+              Ett hus har inget listpris på samma sätt som en bil. Men det går
+              att säga vad som ingår, vad som tillkommer och vad som får
+              summan att röra sig, så att du vet vad du jämför när du får
+              offerten.
             </p>
 
-            <div class="matt">
-              <table>
-                <thead>
-                  <tr>
-                    <th scope="col">Kategori</th>
-                    <th scope="col">Storlek</th>
-                    <th scope="col">Pris</th>
-                  </tr>
-                </thead>
-                <tbody>
+            <section class="guide__sektion" id="prisnivaer">
+              <h2>Prisnivåer</h2>
+              <p>
+                Priserna nedan är startpriser för respektive kategori. Vad just
+                ditt hus kostar står i offerten, och den skriver vi när vi vet
+                hur tomten ser ut.
+              </p>
+
+              <div class="matt">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">Kategori</th>
+                      <th scope="col">Storlek</th>
+                      <th scope="col">Pris</th>
+                    </tr>
+                  </thead>
+                  <tbody>
                   <tr>
                     <th scope="row"><a href="attefallshus.html">Attefallshus</a></th>
                     <td>15–30 m²</td>
@@ -189,12 +209,14 @@
                     <td>95–170 m²</td>
                     <td>Från X kr</td>
                   </tr>
-                </tbody>
-              </table>
-            </div>
+                  </tbody>
+                </table>
+              </div>
+            </section>
 
-            <h2>Det här ingår</h2>
-            <div class="prisrader">
+            <section class="guide__sektion" id="ingar">
+              <h2>Det här ingår</h2>
+              <div class="prisrader">
               <div class="prisrad">
                 <h3>Ritningar och underlag</h3>
                 <p>Det vi tar fram för att du ska kunna anmäla eller söka lov.</p>
@@ -215,15 +237,17 @@
                 <h3>Slutbesiktning</h3>
                 <p>Genomgång av huset, punktlista och överlämning.</p>
               </div>
-            </div>
+              </div>
+            </section>
 
-            <h2>Det här tillkommer</h2>
-            <p>
-              Posterna nedan hör till bygget men betalas till andra än oss.
-              Vi säger vad som krävs och när, så att ingenting står och
-              väntar på varandra.
-            </p>
-            <div class="prisrader prisrader--tillkommer">
+            <section class="guide__sektion" id="tillkommer">
+              <h2>Det här tillkommer</h2>
+              <p>
+                Posterna nedan hör till bygget men betalas till andra än oss.
+                Vi säger vad som krävs och när, så att ingenting står och
+                väntar på varandra.
+              </p>
+              <div class="prisrader prisrader--tillkommer">
               <div class="prisrad">
                 <h3>Grunden</h3>
                 <p>Platta eller plintar ska vara gjuten innan huset kommer. Vad den kostar beror på marken.</p>
@@ -244,10 +268,12 @@
                 <h3>Tillval</h3>
                 <p>Ändringar i planlösning, ytskikt och inredning utöver det som ingår.</p>
               </div>
-            </div>
+              </div>
+            </section>
 
-            <h2>Vad som styr priset</h2>
-            <div class="prisrader">
+            <section class="guide__sektion" id="styr">
+              <h2>Vad som styr priset</h2>
+              <div class="prisrader">
               <div class="prisrad">
                 <h3>Storleken</h3>
                 <p>Den enskilt största posten. Priset per kvadratmeter sjunker något med större hus, men totalen stiger.</p>
@@ -268,20 +294,61 @@
                 <h3>Avståndet</h3>
                 <p>Transporten är en verklig kostnad, och den växer med milen.</p>
               </div>
+              </div>
+            </section>
+
+            <section class="guide__sektion" id="offert">
+              <h2>När du får ett pris</h2>
+              <p>
+                Efter första samtalet och valet av modell skriver vi en offert
+                där det står vad som ingår och vad som tillkommer, post för
+                post. Hela ordningen finns på
+                <a href="sa-fungerar-det.html">Så fungerar det</a>.
+              </p>
+
+              <p class="guide__vidare">
+                <a class="knapp-fylld" href="kontakt.html">Begär offert</a>
+                <a class="knapp-linje" href="attefallshus.html">Se husmodellerna</a>
+              </p>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="kontakt">
+        <div class="contact-section__inner">
+          <div class="contact-section__intro">
+            <p class="section-label section-label--accent">Första steget</p>
+            <h2 class="contact-section__title">Låt oss börja med <em>din plats</em>.</h2>
+            <p class="contact-section__text">
+              Berätta vad du funderar på, så återkommer vi med nästa tydliga
+              steg. Utan krav och utan säljsnack.
+            </p>
+          </div>
+
+          <div class="kontaktkort">
+            <p class="kontaktkort__rubrik">Hör av dig direkt</p>
+
+            <div class="contact-section__meta">
+              <div>
+                <span class="contact-section__meta-label">Ahmed</span>
+                <a class="contact-section__meta-value" href="mailto:ahmed@idealhus.se">ahmed@idealhus.se</a>
+              </div>
+              <div>
+                <span class="contact-section__meta-label">Sahand</span>
+                <a class="contact-section__meta-value" href="mailto:sahand@idealhus.se">sahand@idealhus.se</a>
+              </div>
+              <div>
+                <span class="contact-section__meta-label">Telefon</span>
+                <a class="contact-section__meta-value" href="tel:+46701234567">070-123 45 67</a>
+              </div>
+              <div>
+                <span class="contact-section__meta-label">Plats</span>
+                <span class="contact-section__meta-value contact-section__meta-value--tyst">Stockholm, Sverige</span>
+              </div>
             </div>
 
-            <h2>När du får ett pris</h2>
-            <p>
-              Efter första samtalet och valet av modell skriver vi en offert
-              där det står vad som ingår och vad som tillkommer, post för
-              post. Hela ordningen finns på
-              <a href="sa-fungerar-det.html">Så fungerar det</a>.
-            </p>
-
-            <p class="guide__vidare">
-              <a class="model-price__button" href="kontakt.html">Begär offert</a>
-              <a class="site-footer__button" href="attefallshus.html">Se husmodellerna</a>
-            </p>
+            <a class="kontaktkort__knapp" href="kontakt.html">Till kontaktformuläret</a>
           </div>
         </div>
       </section>
@@ -311,7 +378,7 @@
         </div>
 
         <div>
-          <h3 class="site-footer__heading">Navigation</h3>
+          <h2 class="site-footer__heading">Navigation</h2>
           <nav class="site-footer__nav" aria-label="Sidfot navigation">
             <a href="index.html">Hem</a>
             <a href="attefallshus.html">Våra hus</a>
@@ -325,7 +392,7 @@
         </div>
 
         <div>
-          <h3 class="site-footer__heading">Våra hus</h3>
+          <h2 class="site-footer__heading">Våra hus</h2>
           <nav class="site-footer__nav" aria-label="Sidfot husmodeller">
             <a href="attefallshus.html">Attefallshus</a>
             <a href="fritidshus.html">Fritidshus</a>
@@ -336,7 +403,7 @@
         </div>
 
         <div>
-          <h3 class="site-footer__heading">Kontakta oss</h3>
+          <h2 class="site-footer__heading">Kontakta oss</h2>
           <p class="site-footer__text">
             <a href="mailto:ahmed@idealhus.se">ahmed@idealhus.se</a><br>
             <a href="mailto:sahand@idealhus.se">sahand@idealhus.se</a><br>
@@ -681,6 +748,29 @@
         });
       })();
 
+      // Innehallsforteckningen markerar det avsnitt man ar i. Observatoren
+      // tittar pa ett smalt band mitt i vyn, sa markeringen byter nar
+      // rubriken passerar mitten - inte nar den nuddar kanten.
+      (function () {
+        var lankar = document.querySelectorAll('.guide__toc a');
+        if (!lankar.length || !window.IntersectionObserver) return;
+
+        var karta = {};
+        Array.prototype.forEach.call(lankar, function (a) {
+          karta[a.getAttribute('href').slice(1)] = a;
+        });
+
+        var obs = new IntersectionObserver(function (poster) {
+          poster.forEach(function (p) {
+            var a = karta[p.target.id];
+            if (a) a.classList.toggle('guide__toc--i', p.isIntersecting);
+          });
+        }, { rootMargin: '-45% 0px -45% 0px' });
+
+        document.querySelectorAll('.guide__sektion').forEach(function (s) {
+          obs.observe(s);
+        });
+      })();
     </script>
   </body>
 </html>

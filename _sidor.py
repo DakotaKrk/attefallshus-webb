@@ -58,7 +58,7 @@ def hero(bild, rubrik, meta, alt):
 
 def kategorisida(fil, namn, herobild, meta, rubrik, ingress, modeller, spann):
     guidelank = ('\n          <p class="category__guide">'
-                 '<a href="attefallshus-regler.html">Reglerna för attefallshus ändrades i december 2025 — så fungerar de nu</a></p>'
+                 '<a href="attefallshus-regler.html">Reglerna för attefallshus ändrades i december 2025: så fungerar de nu</a></p>'
                  ) if fil == 'attefallshus.html' else ''
     piller = "\n".join(
         f'          <a href="{f}"{" aria-current=\"page\"" if n == namn else ""}>{n}</a>'
@@ -167,7 +167,7 @@ sidor.append(kategorisida(
     "attefallshus.html", "Attefallshus", "generated-category-attefallshus-wide-01.webp",
     "Bygglovsbefriat · upp till 30 m² · gästhus, kontor eller uthyrning",
     "Modeller i attefallsstorlek",
-    "Sedan december 2025 krävs varken bygglov eller anmälan för själva byggnaden inom måtten — men installationer som vatten och avlopp anmäls fortfarande. Det gör dem till den snabbaste vägen till ett extra hus på tomten.",
+    "Sedan december 2025 krävs varken bygglov eller anmälan för själva byggnaden inom måtten, men installationer som vatten och avlopp anmäls fortfarande. Det gör dem till den snabbaste vägen till ett extra hus på tomten.",
     [("Huskort 1", "generated-category-attefallshus-card.webp", 25, 1, 10),
      ("Huskort 2", "generated-house-forest-01.webp", 27, 2, 10),
      ("Huskort 3", "generated-house-coast-01.webp", 28, 2, 12),

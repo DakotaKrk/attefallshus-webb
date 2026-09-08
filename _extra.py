@@ -34,8 +34,8 @@ KROPP = '''    <main id="innehall">
           </p>
 
           <div class="fyrafyra__lankar">
-            <a class="model-price__button" href="index.html">Till startsidan</a>
-            <a class="site-footer__button" href="kontakt.html">Kontakta oss</a>
+            <a class="knapp-fylld" href="kontakt.html">Kontakta oss</a>
+            <a class="knapp-linje" href="index.html">Till startsidan</a>
           </div>
 
           <div class="fyrafyra__hus">

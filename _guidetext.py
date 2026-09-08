@@ -6,7 +6,7 @@ förteckningen i vänsterkanten och rubrikerna i texten byggs ur samma
 lista, så de kan aldrig säga olika saker.
 
 Reglerna är kontrollerade 2026-09-08. Ändra dem inte utan att kontrollera
-mot en aktuell källa — de skrevs om 1 december 2025 och kan skrivas om igen.
+mot en aktuell källa. De skrevs om 1 december 2025 och kan skrivas om igen.
 """
 
 FRAGOR = [
@@ -150,7 +150,7 @@ SEKTIONER = [
 
     ("anmalan", "När det ändå krävs en anmälan", '''
             <p>
-              Anmälningsplikten är borta för byggnaden — men inte för det som
+              Anmälningsplikten är borta för byggnaden, men inte för det som
               händer inuti den. Anmälan krävs fortfarande om åtgärden berör den
               bärande konstruktionen, påverkar brandskyddet väsentligt,
               innehåller eldstad eller rökkanal, eller berör installationer för
@@ -160,7 +160,7 @@ SEKTIONER = [
             <blockquote class="citat">
               Ett hus med kök och badrum har per definition vatten och avlopp.
               I praktiken passerar de flesta hus man ska kunna bo i alltså ändå
-              kommunen — men för installationerna, inte för byggnaden.
+              kommunen, men för installationerna och inte för byggnaden.
             </blockquote>'''),
 
     ("bygglov", "När det krävs bygglov som vanligt", '''
@@ -206,7 +206,7 @@ SEKTIONER = [
             <p class="guide__kallor">
               Uppgifterna är kontrollerade den 8 september 2026 mot kommunala och
               branschgemensamma sammanställningar av regeländringen. Reglerna kan
-              ändras och kommunen avgör i det enskilda fallet — stäm alltid av med
+              ändras och kommunen avgör i det enskilda fallet. Stäm alltid av med
               din byggnadsnämnd innan du börjar bygga.
             </p>'''),
 ]
@@ -271,7 +271,7 @@ GUIDE = f'''    <main id="innehall">
               <p>
                 Inom måtten behövs varken bygglov eller anmälan för byggnaden.
                 Ska den ha vatten, avlopp, ventilation eller eldstad krävs ändå
-                anmälan för installationerna — och det gör nästan alla hus man
+                anmälan för installationerna, och det gör nästan alla hus man
                 ska kunna bo i.
               </p>
             </div>

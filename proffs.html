@@ -7,7 +7,7 @@
     <meta name="description" content="Utfackningsväggar, husblock och moduler från Idealhus för byggföretag och entreprenörer.">
     <meta name="theme-color" content="#2c2820">
     <link rel="icon" href="images/idealhus.svg" type="image/svg+xml">
-    <link rel="canonical" href="https://dakotakrk.github.io/idealhus/proffs.html">
+    <link rel="canonical" href="https://dakotakrk.github.io/idealhus/">
 
     <meta property="og:type" content="website">
     <meta property="og:locale" content="sv_SE">
@@ -15,14 +15,14 @@
     <meta property="og:title" content="Proffs | Idealhus">
     <meta property="og:description" content="Utfackningsväggar, husblock och moduler från Idealhus för byggföretag och entreprenörer.">
     <meta property="og:image" content="https://dakotakrk.github.io/idealhus/images/generated-production-yard-01.webp">
-    <meta property="og:url" content="https://dakotakrk.github.io/idealhus/proffs.html">
+    <meta property="og:url" content="https://dakotakrk.github.io/idealhus/">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap">
     <link rel="preload" as="image" href="images/generated-production-yard-01.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260911d">
+    <link rel="stylesheet" href="styles.css?v=20260911e">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -127,7 +127,7 @@
       </nav>
     </header>
 
-    <main id="innehall">
+    <main>
       <section class="subpage-hero">
         <img class="subpage-hero__image" src="images/generated-production-yard-01.webp" width="1600" height="900" fetchpriority="high" decoding="async" alt="Idealhus produktion med trävirke och husblock">
 
@@ -151,7 +151,7 @@
       </section>
 
       <section class="segment">
-        <article class="segment__block" id="utfackningsvaggar">
+        <article class="segment__block">
           <div>
             <h2>Utfackningsväggar</h2>
             <p>Färdiga väggblock som levereras till byggarbetsplatsen och monteras på plats. Isolering, ångspärr och beklädnad är gjorda under tak, i jämn temperatur och fuktnivå.</p>
@@ -168,7 +168,7 @@
           </div>
         </article>
 
-        <article class="segment__block" id="husblock">
+        <article class="segment__block">
           <div>
             <h2>Husblock</h2>
             <p>Större volymelement där stomme, ytskikt och delar av installationerna sitter på plats redan vid leverans. Blocken lyfts på plats och kopplas samman.</p>
@@ -185,7 +185,7 @@
           </div>
         </article>
 
-        <article class="segment__block" id="moduler">
+        <article class="segment__block">
           <div>
             <h2>Moduler</h2>
             <p>Kompletta enheter för projekt där samma utförande upprepas: personalbostäder, uthyrning eller etappvis utbyggnad. Modulerna kan flyttas och byggas om.</p>
@@ -266,7 +266,7 @@
         </div>
 
         <div>
-          <h3 class="site-footer__heading">Navigation</h3>
+          <h2 class="site-footer__heading">Navigation</h2>
           <nav class="site-footer__nav" aria-label="Sidfot navigation">
             <a href="index.html">Hem</a>
             <a href="attefallshus.html">Våra hus</a>
@@ -275,11 +275,12 @@
             <a href="referensprojekt.html">Referensprojekt</a>
             <a href="om-oss.html">Om oss</a>
             <a href="kontakt.html">Kontakt</a>
+            <a href="attefallshus-regler.html">Attefallshus: reglerna</a>
           </nav>
         </div>
 
         <div>
-          <h3 class="site-footer__heading">Våra hus</h3>
+          <h2 class="site-footer__heading">Våra hus</h2>
           <nav class="site-footer__nav" aria-label="Sidfot husmodeller">
             <a href="attefallshus.html">Attefallshus</a>
             <a href="fritidshus.html">Fritidshus</a>
@@ -290,7 +291,7 @@
         </div>
 
         <div>
-          <h3 class="site-footer__heading">Kontakta oss</h3>
+          <h2 class="site-footer__heading">Kontakta oss</h2>
           <p class="site-footer__text">
             <a href="mailto:ahmed@idealhus.se">ahmed@idealhus.se</a><br>
             <a href="mailto:sahand@idealhus.se">sahand@idealhus.se</a><br>
@@ -303,9 +304,69 @@
 
       <div class="site-footer__bottom">
         <span>© 2026 Idealhus AB. Alla rättigheter förbehållna.</span>
+        <a class="site-footer__policy" href="integritetspolicy.html">Integritetspolicy</a>
       </div>
     </footer>
 
+    <script>
+      // Teckningarna i skedeskorten ritar upp sig nar de kommer i vy.
+      // Langden mats per linje, annars drar korta och langa streck i
+      // olika takt. Fyllda delar tonas in i stallet.
+      (function () {
+        if (!window.IntersectionObserver) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        var teckningar = document.querySelectorAll('.skede__bild svg, .fas__bild svg');
+        if (!teckningar.length) return;
+
+        Array.prototype.forEach.call(teckningar, function (svg) {
+          var nr = 0;
+          Array.prototype.forEach.call(svg.querySelectorAll('path, rect'), function (el) {
+            el.style.setProperty('--i', nr);
+            nr += 1;
+            if (el.classList.contains('accentfyll')) return;
+            var langd = 0;
+            try { langd = el.getTotalLength(); } catch (e) { langd = 0; }
+            if (langd) el.style.setProperty('--len', Math.ceil(langd));
+          });
+          svg.classList.add('teckning');
+        });
+
+        // Ritas en gang, men vaken-klassen foljer med in och ut ur vyn:
+        // evighetsrorelsen ska inte rulla nar teckningen inte syns.
+        var obs = new IntersectionObserver(function (poster) {
+          poster.forEach(function (p) {
+            p.target.classList.toggle('teckning--vaken', p.isIntersecting);
+            if (p.isIntersecting) p.target.classList.add('teckning--ritad');
+          });
+        }, { threshold: 0.15 });
+
+        Array.prototype.forEach.call(teckningar, function (svg) { obs.observe(svg); });
+
+        // Skyddsnat: en teckning som inte hunnit bli uppritad ska inte
+        // sta kvar som en tom ruta. Det som syns ritas anda.
+        window.setTimeout(function () {
+          Array.prototype.forEach.call(teckningar, function (svg) {
+            var r = svg.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0) {
+              svg.classList.add('teckning--ritad');
+            }
+          });
+        }, 2500);
+      })();
+    </script>
+    <script>
+      // En sidovergang som hoppas over avvisar sina loften. Utan
+      // detta hamnar "Transition was skipped" i konsolen pa varje
+      // sidbyte som webblasaren valjer bort.
+      (function () {
+        function tyst(e) {
+          if (e.viewTransition) e.viewTransition.finished.catch(function () {});
+        }
+        window.addEventListener('pageswap', tyst);
+        window.addEventListener('pagereveal', tyst);
+      })();
+    </script>
     <script>
       (function () {
         var item = document.querySelector('[data-dropdown]');
@@ -385,7 +446,9 @@
         }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
         element.forEach(function (el) { obs.observe(el); });
         // Skyddsnatet mater bara det som ar kvar, hogst fyra ganger i
-        // sekunden, och kopplar bort sig sjalvt nar allt ar framme.
+        // sekunden, och kopplar bort sig sjalvt nar allt ar framme. Att
+        // mata alla element i varje bildruta tvingade fram en layout per
+        // bildruta - det var det som hackade under rullning.
         var kvar = element.filter(function (el) {
           return !el.classList.contains('reveal--inne');
         });
@@ -573,18 +636,6 @@
         });
       })();
 
-    </script>
-    <script>
-      // En sidovergang som hoppas over avvisar sina loften. Utan
-      // detta hamnar "Transition was skipped" i konsolen pa varje
-      // sidbyte som webblasaren valjer bort.
-      (function () {
-        function tyst(e) {
-          if (e.viewTransition) e.viewTransition.finished.catch(function () {});
-        }
-        window.addEventListener('pageswap', tyst);
-        window.addEventListener('pagereveal', tyst);
-      })();
     </script>
   </body>
 </html>
