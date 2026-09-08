@@ -98,6 +98,8 @@ def head(titel, beskrivning, forladdad=None, fil=None):
     <meta name="description" content="{beskrivning}">
     <meta name="theme-color" content="#2c2820">
     <link rel="icon" href="images/idealhus.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="canonical" href="{BAS}{fil or ''}">
 
     <meta property="og:type" content="website">
