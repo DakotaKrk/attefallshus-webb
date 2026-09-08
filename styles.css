@@ -1,11 +1,11 @@
 :root {
-  --ink: #1f2420;
-  --ink-soft: #545b55;
-  --ink-faint: #6a706b;
+  --ink: #232019;
+  --ink-soft: #5a5348;
+  --ink-faint: #7a7267;
   --paper: #ffffff;
   --sand: #f3f1ed;
-  --line: #dedbd3;
-  --forest: #262c27;
+  --line: #ded8cd;
+  --forest: #2c2820;
   --logo: #82776b;
   --serif: "EB Garamond", Georgia, "Times New Roman", serif;
   --sans: "Source Sans 3", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -228,8 +228,8 @@ textarea:focus-visible {
   background: var(--forest);
   border-color: var(--forest);
   color: #ffffff;
-  box-shadow: 0 1px 2px rgba(18, 24, 19, 0.16),
-    0 12px 26px -14px rgba(18, 24, 19, 0.62),
+  box-shadow: 0 1px 2px rgba(26, 22, 15, 0.16),
+    0 12px 26px -14px rgba(26, 22, 15, 0.62),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
@@ -238,12 +238,12 @@ textarea:focus-visible {
 .site-footer__button:hover,
 .contact-page-hero__button:hover,
 .cta-bar__button:hover {
-  background: #333c34;
-  border-color: #333c34;
+  background: #3b352b;
+  border-color: #3b352b;
   color: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0 2px 5px rgba(18, 24, 19, 0.2),
-    0 20px 38px -16px rgba(18, 24, 19, 0.68),
+  box-shadow: 0 2px 5px rgba(26, 22, 15, 0.2),
+    0 20px 38px -16px rgba(26, 22, 15, 0.68),
     inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
@@ -255,7 +255,7 @@ textarea:focus-visible {
 .contact-page-hero__button:active,
 .cta-bar__button:active {
   transform: translateY(0);
-  box-shadow: 0 1px 2px rgba(18, 24, 19, 0.22);
+  box-shadow: 0 1px 2px rgba(26, 22, 15, 0.22);
 }
 
 /* Linje. Alternativet bredvid den fyllda, eller ensam dar sidan redan
@@ -267,7 +267,7 @@ textarea:focus-visible {
 }
 
 .model-price__button:hover {
-  background: rgba(31, 36, 32, 0.05);
+  background: rgba(35, 32, 25, 0.05);
   border-color: var(--ink);
   color: var(--ink);
   transform: translateY(-1px);
@@ -296,8 +296,8 @@ textarea:focus-visible {
   color: var(--ink);
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
-  box-shadow: 0 2px 6px rgba(10, 14, 11, 0.18),
-    0 16px 34px -16px rgba(10, 14, 11, 0.7);
+  box-shadow: 0 2px 6px rgba(18, 15, 10, 0.18),
+    0 16px 34px -16px rgba(18, 15, 10, 0.7);
 }
 
 .hero__link--solid:hover {
@@ -397,14 +397,14 @@ textarea:focus-visible {
   background:
     linear-gradient(
       90deg,
-      rgba(16, 20, 17, 0.58) 0%,
-      rgba(16, 20, 17, 0.3) 44%,
-      rgba(16, 20, 17, 0.04) 100%
+      rgba(24, 20, 14, 0.58) 0%,
+      rgba(24, 20, 14, 0.3) 44%,
+      rgba(24, 20, 14, 0.04) 100%
     ),
     linear-gradient(
       180deg,
-      rgba(16, 20, 17, 0.22) 0%,
-      rgba(16, 20, 17, 0) 34%
+      rgba(24, 20, 14, 0.22) 0%,
+      rgba(24, 20, 14, 0) 34%
     );
 }
 
@@ -452,7 +452,7 @@ textarea:focus-visible {
   line-height: 1;
   letter-spacing: -0.005em;
   color: #ffffff;
-  text-shadow: 0 2px 30px rgba(10, 14, 11, 0.3);
+  text-shadow: 0 2px 30px rgba(18, 15, 10, 0.3);
   animation-delay: 0.12s;
 }
 
@@ -462,7 +462,7 @@ textarea:focus-visible {
   font-size: 15px;
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.88);
-  text-shadow: 0 1px 18px rgba(10, 14, 11, 0.35);
+  text-shadow: 0 1px 18px rgba(18, 15, 10, 0.35);
   animation-delay: 0.26s;
 }
 
@@ -559,10 +559,10 @@ textarea:focus-visible {
      ljusa bilderna. */
   background: linear-gradient(
     180deg,
-    rgba(12, 16, 13, 0.06) 0%,
-    rgba(12, 16, 13, 0.1) 34%,
-    rgba(12, 16, 13, 0.68) 76%,
-    rgba(12, 16, 13, 0.9) 100%
+    rgba(20, 17, 12, 0.06) 0%,
+    rgba(20, 17, 12, 0.1) 34%,
+    rgba(20, 17, 12, 0.68) 76%,
+    rgba(20, 17, 12, 0.9) 100%
   );
   transition: opacity 0.5s var(--ease);
 }
@@ -600,7 +600,7 @@ textarea:focus-visible {
   font-size: clamp(30px, 2.5vw, 38px);
   font-weight: 400;
   line-height: 1.05;
-  text-shadow: 0 1px 16px rgba(10, 14, 11, 0.35);
+  text-shadow: 0 1px 16px rgba(18, 15, 10, 0.35);
 }
 
 .house-card__text {
@@ -628,8 +628,8 @@ textarea:focus-visible {
   letter-spacing: -0.004em;
   line-height: 1;
   text-transform: none;
-  box-shadow: 0 2px 6px rgba(10, 14, 11, 0.16),
-    0 14px 30px -16px rgba(10, 14, 11, 0.6);
+  box-shadow: 0 2px 6px rgba(18, 15, 10, 0.16),
+    0 14px 30px -16px rgba(18, 15, 10, 0.6);
   transition: background 0.4s var(--ease), color 0.4s var(--ease),
     transform 0.28s var(--ease), box-shadow 0.4s var(--ease);
 }
@@ -775,9 +775,9 @@ textarea:focus-visible {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(12, 16, 13, 0.02) 0%,
-    rgba(12, 16, 13, 0.16) 45%,
-    rgba(12, 16, 13, 0.62) 100%
+    rgba(20, 17, 12, 0.02) 0%,
+    rgba(20, 17, 12, 0.16) 45%,
+    rgba(20, 17, 12, 0.62) 100%
   );
   transition: opacity 0.5s var(--ease);
 }
@@ -814,7 +814,7 @@ textarea:focus-visible {
   font-size: clamp(24px, 2.2vw, 32px);
   font-weight: 400;
   line-height: 1.08;
-  text-shadow: 0 1px 16px rgba(10, 14, 11, 0.3);
+  text-shadow: 0 1px 16px rgba(18, 15, 10, 0.3);
 }
 
 .feature-card__text {
@@ -917,9 +917,9 @@ textarea:focus-visible {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(12, 16, 13, 0.02) 0%,
-    rgba(12, 16, 13, 0.2) 50%,
-    rgba(12, 16, 13, 0.6) 100%
+    rgba(20, 17, 12, 0.02) 0%,
+    rgba(20, 17, 12, 0.2) 50%,
+    rgba(20, 17, 12, 0.6) 100%
   );
 }
 
@@ -1225,7 +1225,7 @@ a.contact-section__meta-value:hover {
 .contact-form textarea:focus {
   outline: none;
   border-color: var(--ink);
-  box-shadow: 0 0 0 3px rgba(31, 36, 32, 0.1);
+  box-shadow: 0 0 0 3px rgba(35, 32, 25, 0.1);
 }
 
 .contact-form textarea {
@@ -1362,7 +1362,7 @@ a.contact-section__meta-value:hover {
 .contact-form .valj__knapp:focus-visible {
   outline: none;
   border-color: var(--ink);
-  box-shadow: 0 0 0 3px rgba(31, 36, 32, 0.1);
+  box-shadow: 0 0 0 3px rgba(35, 32, 25, 0.1);
   transform: none;
 }
 
@@ -1403,8 +1403,8 @@ a.contact-section__meta-value:hover {
   background: #ffffff;
   border: 1px solid var(--line);
   border-radius: var(--radie-kort);
-  box-shadow: 0 26px 52px -20px rgba(16, 20, 17, 0.32),
-    0 2px 6px rgba(16, 20, 17, 0.06);
+  box-shadow: 0 26px 52px -20px rgba(24, 20, 14, 0.32),
+    0 2px 6px rgba(24, 20, 14, 0.06);
   animation: valjIn 0.22s var(--ease) both;
 }
 
@@ -1613,7 +1613,7 @@ a.contact-section__meta-value:hover {
     background: rgba(255, 255, 255, 0.93);
     backdrop-filter: saturate(180%) blur(14px);
     -webkit-backdrop-filter: saturate(180%) blur(14px);
-    box-shadow: 0 -1px 0 var(--line), 0 -12px 32px rgba(16, 20, 17, 0.07);
+    box-shadow: 0 -1px 0 var(--line), 0 -12px 32px rgba(24, 20, 14, 0.07);
     transform: translateY(100%);
     visibility: hidden;
     transition: transform 0.45s var(--ease), visibility 0s linear 0.45s;
@@ -1755,8 +1755,8 @@ a.contact-section__meta-value:hover {
     letter-spacing: -0.004em;
     line-height: 1;
     text-transform: none;
-    box-shadow: 0 1px 2px rgba(18, 24, 19, 0.16),
-      0 12px 26px -14px rgba(18, 24, 19, 0.62);
+    box-shadow: 0 1px 2px rgba(26, 22, 15, 0.16),
+      0 12px 26px -14px rgba(26, 22, 15, 0.62);
   }
 
 }
@@ -2016,9 +2016,9 @@ a.contact-section__meta-value:hover {
   .hero::after {
     background: linear-gradient(
       180deg,
-      rgba(16, 20, 17, 0.5) 0%,
-      rgba(16, 20, 17, 0.26) 50%,
-      rgba(16, 20, 17, 0.16) 100%
+      rgba(24, 20, 14, 0.5) 0%,
+      rgba(24, 20, 14, 0.26) 50%,
+      rgba(24, 20, 14, 0.16) 100%
     );
   }
 
@@ -2082,7 +2082,7 @@ a.contact-section__meta-value:hover {
   font-size: 13px;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 12px rgba(10, 14, 11, 0.5);
+  text-shadow: 0 1px 12px rgba(18, 15, 10, 0.5);
 }
 
 /* Textlank i stallet for piller - en 168 px bred knapp far inte
@@ -2126,9 +2126,9 @@ a.contact-section__meta-value:hover {
 .house-card--list::after {
   background: linear-gradient(
     180deg,
-    rgba(20, 25, 21, 0.62) 0%,
-    rgba(20, 25, 21, 0.8) 42%,
-    rgba(20, 25, 21, 0.93) 100%
+    rgba(28, 24, 17, 0.62) 0%,
+    rgba(28, 24, 17, 0.8) 42%,
+    rgba(28, 24, 17, 0.93) 100%
   );
 }
 
@@ -2212,7 +2212,7 @@ a.contact-section__meta-value:hover {
   background: #ffffff;
   border: 1px solid var(--line);
   border-radius: var(--radie-kort);
-  box-shadow: 0 30px 60px rgba(16, 20, 17, 0.16);
+  box-shadow: 0 30px 60px rgba(24, 20, 14, 0.16);
   transform: translate(-50%, -8px);
   opacity: 0;
   visibility: hidden;
@@ -2485,10 +2485,10 @@ a.contact-section__meta-value:hover {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(16, 20, 17, 0.34) 0%,
-    rgba(16, 20, 17, 0) 32%,
-    rgba(16, 20, 17, 0.24) 62%,
-    rgba(16, 20, 17, 0.76) 100%
+    rgba(24, 20, 14, 0.34) 0%,
+    rgba(24, 20, 14, 0) 32%,
+    rgba(24, 20, 14, 0.24) 62%,
+    rgba(24, 20, 14, 0.76) 100%
   );
 }
 
@@ -2516,7 +2516,7 @@ a.contact-section__meta-value:hover {
   line-height: 0.98;
   letter-spacing: -0.008em;
   color: #ffffff;
-  text-shadow: 0 2px 34px rgba(10, 14, 11, 0.36);
+  text-shadow: 0 2px 34px rgba(18, 15, 10, 0.36);
 }
 
 .subpage-hero__meta {
@@ -2526,7 +2526,7 @@ a.contact-section__meta-value:hover {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.82);
-  text-shadow: 0 1px 16px rgba(10, 14, 11, 0.4);
+  text-shadow: 0 1px 16px rgba(18, 15, 10, 0.4);
 }
 
 .subpage-hero__actions {
@@ -2676,7 +2676,7 @@ a.contact-section__meta-value:hover {
 
 .model-price__card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 22px 46px rgba(16, 20, 17, 0.09);
+  box-shadow: 0 22px 46px rgba(24, 20, 14, 0.09);
 }
 
 .model-price__card span {
@@ -2737,7 +2737,7 @@ a.contact-section__meta-value:hover {
   content: "";
   position: absolute;
   inset: 16px;
-  border: 1px dashed rgba(31, 36, 32, 0.15);
+  border: 1px dashed rgba(35, 32, 25, 0.15);
   pointer-events: none;
 }
 
@@ -3152,7 +3152,7 @@ p,
 .house-card:hover,
 .feature-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 20px 40px rgba(16, 20, 17, 0.13);
+  box-shadow: 0 20px 40px rgba(24, 20, 14, 0.13);
 }
 
 /* ------------------------------------------------------------
@@ -3331,8 +3331,8 @@ p,
   background: var(--forest);
   border-color: var(--forest);
   color: #ffffff;
-  box-shadow: 0 1px 2px rgba(18, 24, 19, 0.16),
-    0 10px 20px -12px rgba(18, 24, 19, 0.6);
+  box-shadow: 0 1px 2px rgba(26, 22, 15, 0.16),
+    0 10px 20px -12px rgba(26, 22, 15, 0.6);
 }
 
 .model-card[hidden] {
@@ -3932,11 +3932,11 @@ p,
 
 .kontakt-tips li {
   padding: 18px 0;
-  border-top: 1px solid rgba(31, 36, 32, 0.14);
+  border-top: 1px solid rgba(35, 32, 25, 0.14);
 }
 
 .kontakt-tips li:last-child {
-  border-bottom: 1px solid rgba(31, 36, 32, 0.14);
+  border-bottom: 1px solid rgba(35, 32, 25, 0.14);
 }
 
 .kontakt-tips strong {
@@ -4077,7 +4077,7 @@ p,
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(35, 32, 25, 0.1);
   pointer-events: none;
 }
 
@@ -4218,7 +4218,7 @@ p,
   align-items: center;
   gap: 10px;
   padding-bottom: 5px;
-  border-bottom: 1px solid rgba(31, 36, 32, 0.28);
+  border-bottom: 1px solid rgba(35, 32, 25, 0.28);
   font-size: 16px;
   font-weight: 500;
   letter-spacing: -0.004em;
@@ -4323,16 +4323,16 @@ p,
   background:
     linear-gradient(
       90deg,
-      rgba(16, 20, 17, 0.62) 0%,
-      rgba(16, 20, 17, 0.32) 46%,
-      rgba(16, 20, 17, 0.02) 100%
+      rgba(24, 20, 14, 0.62) 0%,
+      rgba(24, 20, 14, 0.32) 46%,
+      rgba(24, 20, 14, 0.02) 100%
     ),
     linear-gradient(
       180deg,
-      rgba(16, 20, 17, 0.26) 0%,
-      rgba(16, 20, 17, 0) 30%,
-      rgba(16, 20, 17, 0) 58%,
-      rgba(16, 20, 17, 0.46) 100%
+      rgba(24, 20, 14, 0.26) 0%,
+      rgba(24, 20, 14, 0) 30%,
+      rgba(24, 20, 14, 0) 58%,
+      rgba(24, 20, 14, 0.46) 100%
     );
 }
 
@@ -4420,10 +4420,10 @@ p,
   .hero::after {
     background: linear-gradient(
       180deg,
-      rgba(16, 20, 17, 0.34) 0%,
-      rgba(16, 20, 17, 0.06) 20%,
-      rgba(16, 20, 17, 0.58) 52%,
-      rgba(16, 20, 17, 0.88) 100%
+      rgba(24, 20, 14, 0.34) 0%,
+      rgba(24, 20, 14, 0.06) 20%,
+      rgba(24, 20, 14, 0.58) 52%,
+      rgba(24, 20, 14, 0.88) 100%
     );
   }
 
@@ -4466,8 +4466,8 @@ p,
   height: 130px;
   background: linear-gradient(
     180deg,
-    rgba(12, 16, 13, 0.42) 0%,
-    rgba(12, 16, 13, 0) 100%
+    rgba(20, 17, 12, 0.42) 0%,
+    rgba(20, 17, 12, 0) 100%
   );
 }
 
@@ -4763,8 +4763,8 @@ p,
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(12, 16, 13, 0) 55%,
-    rgba(12, 16, 13, 0.28) 100%
+    rgba(20, 17, 12, 0) 55%,
+    rgba(20, 17, 12, 0.28) 100%
   );
   opacity: 0;
   transition: opacity 0.5s var(--ease);
@@ -4797,8 +4797,8 @@ p,
    ------------------------------------------------------------ */
 .hero,
 .subpage-hero {
-  background: #0f1310;
-  box-shadow: inset 0 0 0 1px #0f1310;
+  background: #16130d;
+  box-shadow: inset 0 0 0 1px #16130d;
 }
 
 /* ============================================================
@@ -4833,21 +4833,21 @@ p,
 .house-card::after {
   background: linear-gradient(
     180deg,
-    rgba(12, 16, 13, 0.62) 0%,
-    rgba(12, 16, 13, 0.34) 26%,
-    rgba(12, 16, 13, 0.06) 52%,
-    rgba(12, 16, 13, 0.02) 74%,
-    rgba(12, 16, 13, 0.16) 100%
+    rgba(20, 17, 12, 0.62) 0%,
+    rgba(20, 17, 12, 0.34) 26%,
+    rgba(20, 17, 12, 0.06) 52%,
+    rgba(20, 17, 12, 0.02) 74%,
+    rgba(20, 17, 12, 0.16) 100%
   );
 }
 
 .house-card--list::after {
   background: linear-gradient(
     180deg,
-    rgba(20, 25, 21, 0.72) 0%,
-    rgba(20, 25, 21, 0.55) 34%,
-    rgba(20, 25, 21, 0.4) 62%,
-    rgba(20, 25, 21, 0.52) 100%
+    rgba(28, 24, 17, 0.72) 0%,
+    rgba(28, 24, 17, 0.55) 34%,
+    rgba(28, 24, 17, 0.4) 62%,
+    rgba(28, 24, 17, 0.52) 100%
   );
 }
 
@@ -4887,8 +4887,8 @@ p,
   color: var(--ink);
   font-size: 15px;
   font-weight: 500;
-  box-shadow: 0 2px 6px rgba(10, 14, 11, 0.18),
-    0 16px 34px -18px rgba(10, 14, 11, 0.75);
+  box-shadow: 0 2px 6px rgba(18, 15, 10, 0.18),
+    0 16px 34px -18px rgba(18, 15, 10, 0.75);
   transition: background 0.4s var(--ease), transform 0.4s var(--ease),
     box-shadow 0.4s var(--ease);
 }
@@ -4900,8 +4900,8 @@ p,
 .house-card:hover .house-card__link {
   background: #f2efe9;
   transform: translateY(-2px);
-  box-shadow: 0 3px 8px rgba(10, 14, 11, 0.2),
-    0 22px 40px -18px rgba(10, 14, 11, 0.8);
+  box-shadow: 0 3px 8px rgba(18, 15, 10, 0.2),
+    0 22px 40px -18px rgba(18, 15, 10, 0.8);
 }
 
 /* Texten lyfter vid hovring; pillret har sin egen rorelse och ska
@@ -5082,8 +5082,8 @@ p,
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
-  box-shadow: 0 2px 6px rgba(10, 14, 11, 0.16),
-    0 14px 30px -16px rgba(10, 14, 11, 0.6);
+  box-shadow: 0 2px 6px rgba(18, 15, 10, 0.16),
+    0 14px 30px -16px rgba(18, 15, 10, 0.6);
   opacity: 0;
   transform: translateY(6px);
   transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
@@ -5314,8 +5314,8 @@ p,
   border-color: #f2efe9;
   color: var(--ink);
   transform: translateY(-2px);
-  box-shadow: 0 3px 8px rgba(10, 14, 11, 0.2),
-    0 22px 40px -18px rgba(10, 14, 11, 0.8);
+  box-shadow: 0 3px 8px rgba(18, 15, 10, 0.2),
+    0 22px 40px -18px rgba(18, 15, 10, 0.8);
 }
 
 .house-card__link:active,
@@ -5450,7 +5450,7 @@ p,
 
 .model-card:hover .model-card__media {
   transform: translateY(-4px);
-  box-shadow: 0 18px 36px -22px rgba(16, 20, 17, 0.55);
+  box-shadow: 0 18px 36px -22px rgba(24, 20, 14, 0.55);
 }
 
 .model-card:active .model-card__media {
@@ -5494,7 +5494,7 @@ p,
   color: #ffffff;
   font-size: 14px;
   font-weight: 500;
-  box-shadow: 0 12px 30px -14px rgba(18, 24, 19, 0.7);
+  box-shadow: 0 12px 30px -14px rgba(26, 22, 15, 0.7);
   transition: top 0.3s var(--ease);
 }
 
@@ -5617,11 +5617,11 @@ p,
 /* Rummen far en aning ton sa de laser som ytor, terrassen mindre
    an huset - den ar utomhus. */
 .plan-yta rect {
-  fill: rgba(31, 36, 32, 0.035);
+  fill: rgba(35, 32, 25, 0.035);
 }
 
 .plan-terrass rect {
-  fill: rgba(31, 36, 32, 0.015);
+  fill: rgba(35, 32, 25, 0.015);
   stroke: var(--ink-faint);
   stroke-width: 3;
   stroke-dasharray: 12 9;
@@ -5809,7 +5809,7 @@ p,
   margin: 0;
   overflow: hidden;
   border-radius: var(--radie-kort);
-  background: rgba(31, 36, 32, 0.04);
+  background: rgba(35, 32, 25, 0.04);
 }
 
 .quiet-break__bild img {
@@ -5951,8 +5951,8 @@ p,
   align-content: start;
   border-radius: 20px;
   background: var(--paper);
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.06),
-    0 26px 54px -38px rgba(16, 20, 17, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(35, 32, 25, 0.06),
+    0 26px 54px -38px rgba(24, 20, 14, 0.55);
 }
 
 .kontaktkort__rubrik {
@@ -6006,19 +6006,19 @@ p,
   font-weight: 500;
   letter-spacing: -0.004em;
   line-height: 1;
-  box-shadow: 0 1px 2px rgba(18, 24, 19, 0.16),
-    0 12px 26px -14px rgba(18, 24, 19, 0.62),
+  box-shadow: 0 1px 2px rgba(26, 22, 15, 0.16),
+    0 12px 26px -14px rgba(26, 22, 15, 0.62),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: background 0.4s var(--ease), border-color 0.4s var(--ease),
     transform 0.28s var(--ease), box-shadow 0.4s var(--ease);
 }
 
 .kontaktkort__knapp:hover {
-  background: #333c34;
-  border-color: #333c34;
+  background: #3b352b;
+  border-color: #3b352b;
   transform: translateY(-1px);
-  box-shadow: 0 2px 5px rgba(18, 24, 19, 0.2),
-    0 20px 38px -16px rgba(18, 24, 19, 0.68),
+  box-shadow: 0 2px 5px rgba(26, 22, 15, 0.2),
+    0 20px 38px -16px rgba(26, 22, 15, 0.68),
     inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
@@ -6089,7 +6089,7 @@ p,
   border-color: var(--ink);
   color: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0 14px 28px -18px rgba(18, 24, 19, 0.7);
+  box-shadow: 0 14px 28px -18px rgba(26, 22, 15, 0.7);
 }
 
 .house-types__all:active,
@@ -6143,7 +6143,7 @@ p,
 }
 
 .kontakt-direkt__rad:hover {
-  background: rgba(31, 36, 32, 0.03);
+  background: rgba(35, 32, 25, 0.03);
 }
 
 @media (max-width: 900px) {
@@ -6374,15 +6374,15 @@ body::after {
   padding: 0 0 26px;
   border-radius: 20px;
   background: var(--paper);
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(35, 32, 25, 0.06);
   overflow: hidden;
   transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
 }
 
 .skede__yta:hover {
   transform: translateY(-4px);
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.08),
-    0 26px 50px -30px rgba(16, 20, 17, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(35, 32, 25, 0.08),
+    0 26px 50px -30px rgba(24, 20, 14, 0.55);
 }
 
 .skede__yta:active {
@@ -6395,7 +6395,7 @@ body::after {
   display: block;
   padding: 22px 20px 18px;
   background: linear-gradient(180deg, var(--sand), rgba(243, 241, 237, 0.35));
-  border-bottom: 1px solid rgba(31, 36, 32, 0.06);
+  border-bottom: 1px solid rgba(35, 32, 25, 0.06);
 }
 
 .skede__bild svg {
@@ -6596,7 +6596,7 @@ body::after {
   .skede--tre .skede__bild {
     height: 100%;
     border-bottom: 0;
-    border-right: 1px solid rgba(31, 36, 32, 0.06);
+    border-right: 1px solid rgba(35, 32, 25, 0.06);
     display: flex;
     align-items: center;
   }
@@ -6627,7 +6627,7 @@ body::after {
 
   .skede--tre .skede__bild {
     border-right: 0;
-    border-bottom: 1px solid rgba(31, 36, 32, 0.06);
+    border-bottom: 1px solid rgba(35, 32, 25, 0.06);
   }
 }
 
@@ -6704,7 +6704,7 @@ body::after {
   padding: 20px 22px;
   border-radius: 18px;
   background: var(--paper);
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(35, 32, 25, 0.06);
 }
 
 .fas__bild svg {
@@ -6789,14 +6789,14 @@ body::after {
   padding: clamp(20px, 2vw, 26px);
   border-radius: 18px;
   background: var(--paper);
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(35, 32, 25, 0.05);
   transition: transform 0.42s var(--ease), box-shadow 0.42s var(--ease);
 }
 
 .fassteg__kort:hover {
   transform: translateY(-3px);
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.07),
-    0 24px 46px -30px rgba(16, 20, 17, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(35, 32, 25, 0.07),
+    0 24px 46px -30px rgba(24, 20, 14, 0.5);
 }
 
 .fassteg__nr {
@@ -6919,4 +6919,42 @@ body::after {
 .prick--du {
   background: transparent;
   box-shadow: inset 0 0 0 1px var(--ink-faint);
+}
+
+/* ------------------------------------------------------------
+   Teckningarna ritas upp (2026-09-08)
+   Skriptet mater varje linje och satter --len och --i; harifran
+   ar det bara stroke-dashoffset som andras. Rorelsen sker en
+   gang per teckning, nar den kommer i vy - inte per bildruta.
+   ------------------------------------------------------------ */
+.teckning path,
+.teckning rect {
+  stroke-dasharray: var(--len, 500);
+  stroke-dashoffset: var(--len, 500);
+  transition: stroke-dashoffset 0.9s var(--ease);
+  transition-delay: calc(var(--i, 0) * 0.11s);
+}
+
+/* Fyllda delar gar inte att rita med streck - de tonas in. */
+.teckning .accentfyll {
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease);
+  transition-delay: calc(var(--i, 0) * 0.11s);
+}
+
+.teckning--ritad path,
+.teckning--ritad rect {
+  stroke-dashoffset: 0;
+}
+
+.teckning--ritad .accentfyll {
+  opacity: 1;
+}
+
+/* Roken har sin egen regi: den kommer forst vid hovring. */
+.teckning .rok {
+  transition: opacity 0.5s var(--ease), transform 0.7s var(--ease),
+    stroke-dashoffset 0.9s var(--ease);
 }

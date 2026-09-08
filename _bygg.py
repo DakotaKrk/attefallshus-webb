@@ -3,7 +3,7 @@
 import re, io, os
 
 BAS = "https://dakotakrk.github.io/idealhus/"
-CSS_V = "20260910j"
+CSS_V = "20260910l"
 
 KATEGORIER = [
     ("Attefallshus", "attefallshus.html"),
@@ -95,7 +95,7 @@ def head(titel, beskrivning, forladdad=None, fil=None):
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{titel}</title>
     <meta name="description" content="{beskrivning}">
-    <meta name="theme-color" content="#262c27">
+    <meta name="theme-color" content="#2c2820">
     <link rel="icon" href="images/idealhus.svg" type="image/svg+xml">
     <link rel="canonical" href="{BAS}{fil or ''}">
 
@@ -225,6 +225,41 @@ SIDFOT = '''    <footer class="site-footer">
 
 def skript(extra=""):
     return '''    <script>
+      // Teckningarna i skedeskorten ritar upp sig nar de kommer i vy.
+      // Langden mats per linje, annars drar korta och langa streck i
+      // olika takt. Fyllda delar tonas in i stallet.
+      (function () {
+        if (!window.IntersectionObserver) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        var teckningar = document.querySelectorAll('.skede__bild svg, .fas__bild svg');
+        if (!teckningar.length) return;
+
+        Array.prototype.forEach.call(teckningar, function (svg) {
+          var nr = 0;
+          Array.prototype.forEach.call(svg.querySelectorAll('path, rect'), function (el) {
+            el.style.setProperty('--i', nr);
+            nr += 1;
+            if (el.classList.contains('accentfyll')) return;
+            var langd = 0;
+            try { langd = el.getTotalLength(); } catch (e) { langd = 0; }
+            if (langd) el.style.setProperty('--len', Math.ceil(langd));
+          });
+          svg.classList.add('teckning');
+        });
+
+        var obs = new IntersectionObserver(function (poster) {
+          poster.forEach(function (p) {
+            if (!p.isIntersecting) return;
+            p.target.classList.add('teckning--ritad');
+            obs.unobserve(p.target);
+          });
+        }, { threshold: 0.3 });
+
+        Array.prototype.forEach.call(teckningar, function (svg) { obs.observe(svg); });
+      })();
+    </script>
+    <script>
       // En sidovergang som hoppas over avvisar sina loften. Utan
       // detta hamnar "Transition was skipped" i konsolen pa varje
       // sidbyte som webblasaren valjer bort.
