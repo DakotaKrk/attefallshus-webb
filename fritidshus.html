@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap">
     <link rel="preload" as="image" href="images/generated-category-fritidshus-wide-01.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260910m">
+    <link rel="stylesheet" href="styles.css?v=20260910n">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -364,13 +364,14 @@
           svg.classList.add('teckning');
         });
 
+        // Ritas en gang, men vaken-klassen foljer med in och ut ur vyn:
+        // evighetsrorelsen ska inte rulla nar teckningen inte syns.
         var obs = new IntersectionObserver(function (poster) {
           poster.forEach(function (p) {
-            if (!p.isIntersecting) return;
-            p.target.classList.add('teckning--ritad');
-            obs.unobserve(p.target);
+            p.target.classList.toggle('teckning--vaken', p.isIntersecting);
+            if (p.isIntersecting) p.target.classList.add('teckning--ritad');
           });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.15 });
 
         Array.prototype.forEach.call(teckningar, function (svg) { obs.observe(svg); });
       })();

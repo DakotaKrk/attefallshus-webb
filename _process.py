@@ -31,7 +31,20 @@ STEG = [
      "Du har haft samma kontakt hela vägen och vet vem du ringer."),
 ]
 
-TECKNINGAR = ['<svg viewBox="0 0 320 150" aria-hidden="true" focusable="false">\n          <!-- Ritningen pa bordet -->\n          <rect class="linje" x="54" y="26" width="176" height="106" rx="5"/>\n          <path class="linje" d="M78 52h128v56H78z"/>\n          <path class="linje" d="M142 52v56M142 82h64"/>\n          <path class="hartunn" d="M78 68h26M170 52v12M78 118h60"/>\n          <!-- Pennan -->\n          <g class="skede__penna">\n            <path class="accentfyll" d="M232 108l44-44 13 13-44 44-19 6z"/>\n            <path class="linje" d="M226 127l19-6"/>\n          </g>\n        </svg>', '<svg viewBox="0 0 320 150" aria-hidden="true" focusable="false">\n          <!-- Taket over verkstaden -->\n          <path class="linje" d="M20 56L160 14l140 42"/>\n          <path class="hartunn" d="M26 56v76M294 56v76M20 132h280"/>\n          <!-- Huset som byggs, tydligt innanfor -->\n          <path class="linje" d="M102 128V90l58-24 58 24v38"/>\n          <path class="hartunn" d="M130 128v-30M160 128V88M190 128v-30"/>\n          <!-- Grunden -->\n          <path class="accentlinje" d="M88 128h144"/>\n        </svg>', '<svg viewBox="0 0 320 150" aria-hidden="true" focusable="false">\n          <!-- Huset -->\n          <path class="linje" d="M96 132V80l64-30 64 30v52"/>\n          <path class="linje" d="M142 132v-32h36v32"/>\n          <path class="hartunn" d="M196 68V48h13v26"/>\n          <!-- Roken kommer nar man pekar pa kortet -->\n          <path class="rok accentlinje" d="M202 40c7-7 0-14 7-21"/>\n          <!-- Mark -->\n          <path class="linje" d="M22 132h276"/>\n          <!-- Granar -->\n          <path class="hartunn" d="M52 132v-30M38 106l14-20 14 20M42 118l10-14 10 14"/>\n          <path class="hartunn" d="M270 132v-22M259 114l11-16 11 16"/>\n        </svg>']
+import re as _re
+
+
+def _teckningar():
+    """Hamtar de tre teckningarna ur startsidan. En kopia har i filen
+    slutade folja med sa fort nagot andrades i index.html."""
+    html = open("index.html", encoding="utf-8").read().replace("\r\n", "\n")
+    svgar = _re.findall(r'<svg viewBox="0 0 320 150".*?</svg>', html, _re.S)
+    assert len(svgar) == 3, "hittade %d teckningar i index.html" % len(svgar)
+    return ["\n".join(rad[10:] if rad.startswith(" " * 10) else rad
+                      for rad in svg.split("\n")) for svg in svgar]
+
+
+TECKNINGAR = _teckningar()
 
 FASER = [('Innan bygget', (1, 3), 'Vi ritar, räknar och tar fram underlaget. Du är byggherre och lämnar in till kommunen — vi säger vad som ska med.'), ('Medan huset byggs', (4, 5), 'Huset växer fram inomhus, i jämn temperatur. Under tiden ska marken vara redo när det kommer.'), ('På plats', (6, 7), 'Huset kommer på lastbil och monteras. Sedan går vi igenom det tillsammans, rum för rum.')]
 

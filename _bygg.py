@@ -3,7 +3,7 @@
 import re, io, os
 
 BAS = "https://dakotakrk.github.io/idealhus/"
-CSS_V = "20260910m"
+CSS_V = "20260910n"
 
 KATEGORIER = [
     ("Attefallshus", "attefallshus.html"),
@@ -248,13 +248,14 @@ def skript(extra=""):
           svg.classList.add('teckning');
         });
 
+        // Ritas en gang, men vaken-klassen foljer med in och ut ur vyn:
+        // evighetsrorelsen ska inte rulla nar teckningen inte syns.
         var obs = new IntersectionObserver(function (poster) {
           poster.forEach(function (p) {
-            if (!p.isIntersecting) return;
-            p.target.classList.add('teckning--ritad');
-            obs.unobserve(p.target);
+            p.target.classList.toggle('teckning--vaken', p.isIntersecting);
+            if (p.isIntersecting) p.target.classList.add('teckning--ritad');
           });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.15 });
 
         Array.prototype.forEach.call(teckningar, function (svg) { obs.observe(svg); });
       })();

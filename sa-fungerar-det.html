@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap">
     <link rel="preload" as="image" href="images/generated-craft-cladding-01.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260910m">
+    <link rel="stylesheet" href="styles.css?v=20260910n">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -303,9 +303,10 @@
           <path class="rok accentlinje" d="M202 40c7-7 0-14 7-21"/>
           <!-- Mark -->
           <path class="linje" d="M22 132h276"/>
-          <!-- Granar -->
-          <path class="hartunn" d="M52 132v-30M38 106l14-20 14 20M42 118l10-14 10 14"/>
-          <path class="hartunn" d="M270 132v-22M259 114l11-16 11 16"/>
+          <!-- Granar: slutna trianglar laser som trad, tva
+               vinklar over varandra laste som pilar -->
+          <path class="hartunn trad trad--ett" d="M52 132v-11M34 121h36L52 91zM40 99h24L52 77z"/>
+          <path class="hartunn trad trad--tva" d="M270 132v-9M255 123h30L270 99zM261 105h18L270 85z"/>
         </svg>
             </span>
 
@@ -490,13 +491,14 @@
           svg.classList.add('teckning');
         });
 
+        // Ritas en gang, men vaken-klassen foljer med in och ut ur vyn:
+        // evighetsrorelsen ska inte rulla nar teckningen inte syns.
         var obs = new IntersectionObserver(function (poster) {
           poster.forEach(function (p) {
-            if (!p.isIntersecting) return;
-            p.target.classList.add('teckning--ritad');
-            obs.unobserve(p.target);
+            p.target.classList.toggle('teckning--vaken', p.isIntersecting);
+            if (p.isIntersecting) p.target.classList.add('teckning--ritad');
           });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.15 });
 
         Array.prototype.forEach.call(teckningar, function (svg) { obs.observe(svg); });
       })();

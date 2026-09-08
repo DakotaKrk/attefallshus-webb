@@ -6448,16 +6448,12 @@ body::after {
 
 /* Roken ur skorstenen kommer nar man pekar - kortet sager
    "inflyttat" utan att behova skriva det. */
-.skede__bild .rok {
+.skede__bild .rok,
+.fas__bild .rok {
   opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.5s var(--ease), transform 0.7s var(--ease);
 }
 
-.skede__yta:hover .rok {
-  opacity: 1;
-  transform: translateY(0);
-}
+
 
 .skede--tva .accentlinje {
   transform-origin: center;
@@ -6961,4 +6957,106 @@ body::after {
 .teckning .rok {
   transition: opacity 0.5s var(--ease), transform 0.7s var(--ease),
     stroke-dashoffset 0.9s var(--ease);
+}
+
+/* ============================================================
+   Teckningarna lever (2026-09-08)
+   Efter att linjerna ritats fortsatter tre sma rorelser i evighet:
+   pennan vilar aldrig riktigt still, grunden dras ut och tillbaka,
+   och roken stiger ur skorstenen medan granarna svajar.
+   Allt ar transform och opacity, alltsa kompositorarbete, och
+   allt ligger bakom .teckning--vaken - klassen som observatoren
+   satter och tar bort. Ingen teckning rullar utanfor vyn.
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  /* Pennan hallen i handen: en langsam vaggning. */
+  .teckning--vaken .skede__penna,
+  .teckning--vaken.teckning .skede__penna {
+    animation: pennaVilar 6.5s ease-in-out infinite alternate;
+  }
+
+  /* Grunden: dras ut och tillbaka, som ett arbete som pagar. */
+  .teckning--vaken .accentlinje {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: grundVaxer 7s ease-in-out infinite;
+  }
+
+  /* Roken stiger, hela tiden - det ar den som gor huset bebott. */
+  .teckning--vaken .rok {
+    animation: rokStiger 5s ease-out infinite;
+  }
+
+  /* Granarna svajar, var och en i sin takt. */
+  .teckning--vaken .trad {
+    transform-box: fill-box;
+    transform-origin: bottom center;
+  }
+
+  .teckning--vaken .trad--ett {
+    animation: tradSvajar 8s ease-in-out infinite alternate;
+  }
+
+  .teckning--vaken .trad--tva {
+    animation: tradSvajar 6.4s ease-in-out 0.8s infinite alternate;
+  }
+}
+
+@keyframes pennaVilar {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-5px, 5px) rotate(-2deg);
+  }
+}
+
+@keyframes grundVaxer {
+  0%,
+  100% {
+    transform: scaleX(0.7);
+  }
+
+  55% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rokStiger {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scaleX(0.9);
+  }
+
+  25% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-16px) scaleX(1.15);
+  }
+}
+
+@keyframes tradSvajar {
+  from {
+    transform: rotate(-1.4deg);
+  }
+
+  to {
+    transform: rotate(1.4deg);
+  }
+}
+
+/* Hovringen ar kvar som en forstarkning: pennan tar i, grunden gar
+   hela vagen ut. Rok och granar sköter sig sjalva. */
+.skede__yta:hover .skede__penna {
+  animation-play-state: paused;
+  transform: translate(-14px, 14px);
+}
+
+.skede__yta:hover .accentlinje {
+  animation-play-state: paused;
+  transform: scaleX(1);
 }
