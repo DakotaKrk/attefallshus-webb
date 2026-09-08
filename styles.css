@@ -5786,270 +5786,6 @@ p,
   }
 }
 
-/* ============================================================
-   "Ett hus for dina planer" byggs om (2026-09-07)
-   Sektionen var en rubrik, ett stycke och en knapp i en 720 px
-   spalt - halva bredden stod tom och man fick inte veta nagot
-   nytt. Nu star pastaendet till vanster och sajtens faktiska
-   process till hoger: sju steg med vem som gor vad, samma
-   markning som pa sa-fungerar-det. Det ar sidans enda stalle
-   dar man ser hela vagen pa en gang.
-   ============================================================ */
-
-.vagen__inner {
-  max-width: none;
-  width: min(100%, 1200px);
-  display: grid;
-  grid-template-columns: 1fr 1.02fr;
-  gap: clamp(40px, 6vw, 92px);
-  align-items: start;
-}
-
-.vagen__text .about-text__title {
-  margin-bottom: 24px;
-}
-
-.vagen__text .about-text__lead {
-  margin-bottom: 20px;
-}
-
-.vagen__brod {
-  max-width: 46ch;
-  margin: 0 0 30px;
-  font-size: 16px;
-  line-height: 1.8;
-  color: var(--ink-soft);
-}
-
-.vagen__text .about-text__link {
-  margin-top: 4px;
-}
-
-/* Stegen ar en tabell utan att se ut som en: nummer, namn och
-   vem - tre kolumner i lod, harfina linjer emellan. */
-.vagen__steg {
-  margin: 6px 0 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--line);
-}
-
-.vagen__steg li {
-  border-bottom: 1px solid var(--line);
-}
-
-.vagen__steg a {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 20px;
-  padding: 15px 14px;
-  margin-inline: -14px;
-  border-radius: 10px;
-  transition: background 0.35s var(--ease);
-}
-
-.vagen__steg a:hover {
-  background: rgba(255, 255, 255, 0.72);
-}
-
-.vagen__nr {
-  font-family: var(--serif);
-  font-size: 17px;
-  line-height: 1;
-  color: var(--ink-faint);
-  font-variant-numeric: tabular-nums;
-}
-
-.vagen__namn {
-  display: inline-block;
-  font-size: 16px;
-  color: var(--ink);
-  transition: transform 0.35s var(--ease);
-}
-
-.vagen__steg a:hover .vagen__namn {
-  transform: translateX(3px);
-}
-
-/* Markningen ar densamma som pa processidan, men "tillsammans"
-   ligger dar i sandfarg - och sektionen ar sand. Den far en ljus
-   platta har i stallet, annars forsvinner den i botten. */
-.vagen .process__vem {
-  margin-top: 0;
-  white-space: nowrap;
-}
-
-.vagen .process__vem--bada {
-  background: rgba(255, 255, 255, 0.8);
-  color: var(--ink-soft);
-}
-
-@media (max-width: 900px) {
-  .vagen__inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .vagen__steg {
-    margin-top: 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .vagen__steg a {
-    grid-template-columns: auto 1fr;
-    gap: 6px 16px;
-    padding-block: 13px;
-  }
-
-  .vagen .process__vem {
-    grid-column: 2;
-  }
-}
-
-/* ------------------------------------------------------------
-   Steglistan, andra omgangen (2026-09-07)
-   Forsta versionen laste som en tabell av brickor: sju heldragna
-   linjer och sju fyllda piller, dar "TILLSAMMANS" upprepades tre
-   ganger och blev det starkaste pa hela sidan.
-   Nu ar det ett tidsspar: en harfin linje som gar ner genom
-   numren, numren star som stationer pa den, och vem-markningen
-   ar en liten punkt med text i stallet for ett piller. Samma
-   fargsprak som pa processidan - fylld mork = vi, ring = du,
-   varmgra = tillsammans - men det viskar i stallet for att ropa.
-   ------------------------------------------------------------ */
-.vagen__steg {
-  position: relative;
-  margin-top: 10px;
-  border-top: 0;
-}
-
-/* Sparet. Slutar vid forsta och sista numret, inte vid listans
-   ytterkanter - annars pekar det ut i tomma intet. */
-.vagen__steg::before {
-  content: "";
-  position: absolute;
-  left: 21px;
-  top: 30px;
-  bottom: 30px;
-  width: 1px;
-  background: var(--line);
-}
-
-.vagen__steg li {
-  border-bottom: 0;
-}
-
-/* Avdelaren borjar dar texten borjar, sa den aldrig korsar sparet. */
-.vagen__steg li + li > a::before {
-  content: "";
-  position: absolute;
-  left: 58px;
-  right: 0;
-  top: 0;
-  height: 1px;
-  background: rgba(31, 36, 32, 0.08);
-}
-
-.vagen__steg a {
-  position: relative;
-  display: grid;
-  grid-template-columns: 42px 1fr auto;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 2px;
-  margin-inline: 0;
-  border-radius: 0;
-  background: none;
-  transition: none;
-}
-
-.vagen__steg a:hover {
-  background: none;
-}
-
-.vagen__nr {
-  position: relative;
-  z-index: 1;
-  width: 42px;
-  padding: 6px 0;
-  text-align: center;
-  background: var(--sand);
-  font-size: 16px;
-  color: var(--ink-faint);
-  transition: color 0.35s var(--ease);
-}
-
-.vagen__steg a:hover .vagen__nr {
-  color: var(--ink);
-}
-
-.vagen__namn {
-  font-size: 17px;
-  letter-spacing: -0.004em;
-}
-
-/* Markningen: punkt plus ord, ingen platta. */
-.vagen .process__vem {
-  height: auto;
-  margin: 0;
-  padding: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  border: 0;
-  border-radius: 0;
-  background: none;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  color: var(--ink-faint);
-  white-space: nowrap;
-}
-
-.vagen .process__vem::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  flex: none;
-}
-
-.vagen .process__vem--vi {
-  color: var(--ink-soft);
-}
-
-.vagen .process__vem--vi::before {
-  background: var(--forest);
-}
-
-.vagen .process__vem--bada::before {
-  background: var(--logo);
-}
-
-.vagen .process__vem--du::before {
-  background: transparent;
-  box-shadow: inset 0 0 0 1px var(--ink-faint);
-}
-
-@media (max-width: 480px) {
-  .vagen__steg a {
-    grid-template-columns: 42px 1fr;
-    gap: 4px 16px;
-    padding-block: 14px;
-  }
-
-  .vagen__steg li + li > a::before {
-    left: 58px;
-  }
-
-  .vagen .process__vem {
-    grid-column: 2;
-    margin-top: 2px;
-  }
-}
-
 /* ------------------------------------------------------------
    "Mindre yta. Mer att leva i." (2026-09-07)
    Var ett centrerat textblock mitt i en tom sandyta - stark
@@ -6134,217 +5870,6 @@ p,
   }
 }
 
-/* ============================================================
-   Stegen som oppningsbara kort (2026-09-07)
-   Tredje versionen. Forst brickor i en tabell, sedan ett strikt
-   tidsspar - bada laste som en innehallsforteckning. Nu ar varje
-   steg ett kort man kan oppna: klick fram texten, ett steg i
-   taget (name-attributet pa <details> gor dem omsesidigt
-   uteslutande). Numret ar en bricka som fylls nar steget ar
-   oppet, och en linje binder ihop dem.
-   ============================================================ */
-
-:root {
-  /* Kravs for att kunna tona hojden mellan 0 och auto. */
-  interpolate-size: allow-keywords;
-}
-
-.steg {
-  position: relative;
-  margin: 8px 0 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 8px;
-}
-
-/* Linjen mellan brickorna. Ligger bakom korten och slutar vid
-   forsta och sista numret. */
-.steg::before {
-  content: "";
-  position: absolute;
-  left: 32px;
-  top: 34px;
-  bottom: 34px;
-  width: 1px;
-  background: var(--line);
-}
-
-.steg__kort {
-  position: relative;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.55);
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.05);
-  transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease),
-    transform 0.35s var(--ease);
-}
-
-.steg__kort:hover {
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.08),
-    0 12px 26px -20px rgba(16, 20, 17, 0.5);
-}
-
-.steg__kort[open] {
-  background: #ffffff;
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.07),
-    0 18px 40px -26px rgba(16, 20, 17, 0.6);
-}
-
-.steg__kort summary {
-  display: grid;
-  grid-template-columns: 34px 1fr auto auto;
-  align-items: center;
-  gap: 16px;
-  padding: 13px 16px 13px 15px;
-  cursor: pointer;
-  list-style: none;
-}
-
-.steg__kort summary::-webkit-details-marker {
-  display: none;
-}
-
-.steg__kort summary:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 2px;
-  border-radius: 16px;
-}
-
-/* Bricka i stallet for lost nummer: den star pa linjen och fylls
-   nar steget oppnas. */
-.steg__nr {
-  width: 34px;
-  height: 34px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--paper);
-  box-shadow: inset 0 0 0 1px var(--line);
-  font-family: var(--serif);
-  font-size: 15px;
-  line-height: 1;
-  color: var(--ink-faint);
-  font-variant-numeric: tabular-nums;
-  transition: background 0.35s var(--ease), color 0.35s var(--ease),
-    box-shadow 0.35s var(--ease), transform 0.35s var(--ease);
-}
-
-.steg__kort:hover .steg__nr {
-  transform: scale(1.06);
-  color: var(--ink);
-}
-
-.steg__kort[open] .steg__nr {
-  background: var(--forest);
-  box-shadow: inset 0 0 0 1px var(--forest);
-  color: #ffffff;
-}
-
-.steg__namn {
-  font-size: 16.5px;
-  letter-spacing: -0.004em;
-  color: var(--ink);
-}
-
-/* Vem-brickorna. Sma och mjuka - de ska ge farg at raden, inte ta
-   over den. */
-.steg__vem {
-  height: 24px;
-  padding: 0 11px;
-  display: inline-flex;
-  align-items: center;
-  border-radius: 999px;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.steg__vem--vi {
-  background: var(--forest);
-  color: #ffffff;
-}
-
-.steg__vem--bada {
-  background: rgba(130, 119, 107, 0.16);
-  color: #6f6558;
-}
-
-.steg__vem--du {
-  background: transparent;
-  box-shadow: inset 0 0 0 1px var(--line);
-  color: var(--ink-faint);
-}
-
-/* Pilen: en enkel vinkel som vander sig nar kortet oppnas. */
-.steg__pil {
-  width: 9px;
-  height: 9px;
-  margin-right: 4px;
-  border-right: 1.5px solid var(--ink-faint);
-  border-bottom: 1.5px solid var(--ink-faint);
-  transform: rotate(45deg) translate(-2px, -2px);
-  transition: transform 0.4s var(--ease), border-color 0.35s var(--ease);
-}
-
-.steg__kort[open] .steg__pil {
-  transform: rotate(-135deg) translate(-3px, -3px);
-  border-color: var(--ink);
-}
-
-.steg__kort p {
-  margin: 0;
-  padding: 0 18px 18px 65px;
-  max-width: 52ch;
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--ink-soft);
-}
-
-/* Oppningen tonas i stallet for att hoppa. ::details-content och
-   interpolate-size finns i nyare webblasare; i aldre oppnas kortet
-   direkt, vilket ar precis lika anvandbart. */
-@media (prefers-reduced-motion: no-preference) {
-  .steg__kort::details-content {
-    block-size: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: block-size 0.42s var(--ease), opacity 0.35s var(--ease),
-      content-visibility 0.42s allow-discrete;
-  }
-
-  .steg__kort[open]::details-content {
-    block-size: auto;
-    opacity: 1;
-  }
-}
-
-@media (max-width: 520px) {
-  .steg__kort summary {
-    grid-template-columns: 34px 1fr auto;
-    gap: 6px 14px;
-    padding: 12px 14px;
-  }
-
-  .steg__vem {
-    grid-column: 2;
-    margin-top: 2px;
-  }
-
-  .steg__pil {
-    grid-row: 1;
-    grid-column: 3;
-  }
-
-  .steg__kort p {
-    padding-left: 62px;
-    font-size: 14.5px;
-  }
-}
-
 /* ------------------------------------------------------------
    Listan i proffsrutan ar klickbar (2026-09-07)
    Raderna sag ut som lankar men var text. Nu gar var och en till
@@ -6407,156 +5932,6 @@ p,
 @media (prefers-reduced-motion: reduce) {
   .house-card__list a::after {
     transition: none;
-  }
-}
-
-/* ------------------------------------------------------------
-   Stegkorten, puts (2026-09-07)
-   Linjen mellan numren ar borta - korten ar redan en foljd, och
-   strecket band ihop dem till en tabell igen. I stallet far varje
-   kort en egen accentstapel i vansterkanten som vaxer nedat: en
-   tredjedel nar man pekar, hela vagen nar kortet ar oppet. Korten
-   kommer ocksa in ett i taget nar sektionen nar vyn.
-   ------------------------------------------------------------ */
-.steg::before {
-  display: none;
-}
-
-.steg {
-  gap: 10px;
-}
-
-.steg__kort {
-  overflow: hidden;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.62);
-  transition: transform 0.42s var(--ease), background 0.42s var(--ease),
-    box-shadow 0.42s var(--ease);
-}
-
-/* Accentstapeln. Gar fran varmgratt till skogsgront, sa den knyter
-   ihop de tva fargerna markningen redan anvander. */
-.steg__kort::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: linear-gradient(180deg, var(--logo), var(--forest));
-  transform: scaleY(0);
-  transform-origin: top center;
-  transition: transform 0.5s var(--ease);
-}
-
-.steg__kort:hover {
-  transform: translateY(-2px);
-  background: #ffffff;
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.07),
-    0 18px 34px -24px rgba(16, 20, 17, 0.55);
-}
-
-.steg__kort:hover::before {
-  transform: scaleY(0.34);
-}
-
-.steg__kort[open] {
-  background: #ffffff;
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.07),
-    0 24px 48px -30px rgba(16, 20, 17, 0.6);
-}
-
-.steg__kort[open]::before {
-  transform: scaleY(1);
-}
-
-/* Brickan far ett litet ryck nar kortet oppnas - den ar det som
-   byter tillstand, sa det ar den som ska markera det. */
-.steg__kort[open] .steg__nr {
-  animation: brickaIn 0.5s var(--ease);
-}
-
-@keyframes brickaIn {
-  40% {
-    transform: scale(1.14);
-  }
-
-  to {
-    transform: scale(1);
-  }
-}
-
-.steg__kort:hover .steg__nr {
-  box-shadow: inset 0 0 0 1px #c9c3b6;
-}
-
-/* Texten skjuts upp en aning nar den kommer fram, i takt med att
-   hojden tonas. */
-.steg__kort p {
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: opacity 0.35s var(--ease), transform 0.4s var(--ease);
-}
-
-.steg__kort[open] p {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.1s;
-}
-
-/* Korten kommer in ett i taget nar sektionen nar vyn. Animation och
-   inte transition: en fordrojning pa en transition skulle ocksa
-   fordroja hovringen. */
-@media (prefers-reduced-motion: no-preference) {
-  .js-reveal .reveal:not(.reveal--inne) .steg__kort {
-    opacity: 0;
-  }
-
-  .js-reveal .reveal--inne .steg__kort {
-    animation: stegIn 0.62s var(--ease) backwards;
-  }
-
-  .steg li:nth-child(1) .steg__kort { animation-delay: 0.06s; }
-  .steg li:nth-child(2) .steg__kort { animation-delay: 0.12s; }
-  .steg li:nth-child(3) .steg__kort { animation-delay: 0.18s; }
-  .steg li:nth-child(4) .steg__kort { animation-delay: 0.24s; }
-  .steg li:nth-child(5) .steg__kort { animation-delay: 0.30s; }
-  .steg li:nth-child(6) .steg__kort { animation-delay: 0.36s; }
-  .steg li:nth-child(7) .steg__kort { animation-delay: 0.42s; }
-}
-
-@keyframes stegIn {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* Namnet flyttar sig en gnutta at hallet man ska - samma sprak som
-   pilarna i textlankarna. */
-.steg__namn {
-  display: inline-block;
-  transition: transform 0.4s var(--ease);
-}
-
-.steg__kort:hover .steg__namn {
-  transform: translateX(3px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .steg__kort:hover,
-  .steg__kort:hover .steg__namn {
-    transform: none;
-  }
-
-  .steg__kort p {
-    opacity: 1;
-    transform: none;
   }
 }
 
@@ -7416,5 +6791,190 @@ body::after {
       animation-timeline: --heroyta;
       animation-range: exit 84% exit 100%;
     }
+  }
+}
+
+/* ============================================================
+   "Vagen dit" - helt ny form (2026-09-08)
+   Bort fran en staplad lista med rutor i hoger spalt. Nu ett
+   brett uppslag: rubrik och ingress pa var sin sida overst, och
+   darunder processen i TRE skeden bredvid varandra, med en
+   harfin linje over varje spalt som i en tidning.
+   Sju steg i en kolumn blev sju likadana element att lasa uppifran
+   och ner; tre skeden ar tre saker att forsta. Stegen finns kvar
+   som namn under varje skede, med en punkt som sager vem som gor
+   det - samma fargsprak som pa processidan.
+   Inga rutor, inga skuggor, inga oppna-stang. Bara text, linjer
+   och luft.
+   ============================================================ */
+.vagen__inner {
+  display: block;
+  max-width: none;
+  width: min(100%, 1200px);
+}
+
+.vagen__topp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 5vw, 80px);
+  align-items: end;
+  padding-bottom: clamp(38px, 4.5vw, 62px);
+}
+
+.vagen__topp .about-text__title {
+  margin: 0;
+  max-width: 12ch;
+}
+
+.vagen__ord {
+  padding-bottom: 4px;
+}
+
+.vagen__ord .about-text__lead {
+  max-width: 44ch;
+  margin: 0 0 26px;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.vagen__ord .about-text__link {
+  margin: 0;
+}
+
+/* --- Skedena ------------------------------------------------ */
+.skeden {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(28px, 4vw, 64px);
+}
+
+.skede {
+  position: relative;
+  padding-top: 26px;
+}
+
+/* Spaltlinjen. Den ritas ut nar sektionen kommer i vy - det ar
+   den enda rorelsen i avsnittet. */
+.skede::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: var(--ink);
+  opacity: 0.24;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1s var(--ease), opacity 0.5s var(--ease);
+}
+
+.js-reveal .reveal--inne .skede::before,
+html:not(.js-reveal) .skede::before {
+  transform: scaleX(1);
+}
+
+.skede:nth-child(2)::before {
+  transition-delay: 0.12s;
+}
+
+.skede:nth-child(3)::before {
+  transition-delay: 0.24s;
+}
+
+.skede__spann {
+  margin: 0 0 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--logo);
+  font-variant-numeric: tabular-nums;
+}
+
+.skede__titel {
+  margin: 0 0 14px;
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.1vw, 31px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: normal;
+  color: var(--ink);
+}
+
+.skede__text {
+  margin: 0 0 26px;
+  max-width: 34ch;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+
+/* Stegen: namn med en punkt som sager vem. Ingen ruta omkring. */
+.skede__steg {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.skede__steg li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.skeden__teckenforklaring {
+  margin: clamp(34px, 4vw, 54px) 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 30px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--ink-faint);
+}
+
+.skeden__teckenforklaring > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .vagen__topp {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    align-items: start;
+  }
+
+  .vagen__topp .about-text__title {
+    max-width: none;
+  }
+
+  .skeden {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .skede {
+    padding: 24px 0 30px;
+  }
+
+  .skede__text {
+    max-width: 46ch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skede::before {
+    transform: scaleX(1);
+    transition: none;
   }
 }

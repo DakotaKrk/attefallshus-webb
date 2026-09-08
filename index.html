@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap">
     <link rel="preload" as="image" href="images/hero-video-poster.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260910b">
+    <link rel="stylesheet" href="styles.css?v=20260910d">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -358,101 +358,68 @@
 
       <section class="about-text vagen">
         <div class="about-text__inner vagen__inner">
-          <div class="vagen__text">
-            <p class="section-label">Vägen dit</p>
-            <h2 class="about-text__title">Ett hus för dina planer.</h2>
-            <p class="about-text__lead">
-              Att välja och bygga ett hus innebär många beslut. Vi gör det
-              enklare att hitta rätt bland modellerna, anpassa dem efter din
-              plats och veta vad som händer när.
-            </p>
-            <p class="vagen__brod">
-              Processen är sju steg lång. Vid varje steg står det vem som gör
-              vad, för det är den frågan som brukar vara otydlig när man bygger
-              för första gången.
-            </p>
-            <a class="about-text__link" href="sa-fungerar-det.html">Se hela processen</a>
+          <div class="vagen__topp">
+            <div>
+              <p class="section-label">Vägen dit</p>
+              <h2 class="about-text__title">Ett hus för dina planer.</h2>
+            </div>
+
+            <div class="vagen__ord">
+              <p class="about-text__lead">
+                Att bygga är många beslut i rad. Vi delar upp dem i tre skeden,
+                och säger i förväg vem som gör vad i varje.
+              </p>
+              <a class="about-text__link" href="sa-fungerar-det.html">Se hela processen</a>
+            </div>
           </div>
 
-          <ol class="steg">
-            <li>
-              <details class="steg__kort" name="steg">
-                <summary>
-                  <span class="steg__nr">01</span>
-                  <span class="steg__namn">Första samtalet</span>
-                  <span class="steg__vem steg__vem--bada">Tillsammans</span>
-                  <span class="steg__pil" aria-hidden="true"></span>
-                </summary>
-                <p>Du berättar om tomten, hur huset ska användas och ungefär när du vill vara i gång. Vi säger vad som är möjligt. Kostar ingenting och förpliktigar inte till något.</p>
-              </details>
+          <ol class="skeden">
+            <li class="skede">
+              <p class="skede__spann">01 — 03</p>
+              <h3 class="skede__titel">Innan bygget</h3>
+              <p class="skede__text">
+                Vi ritar, räknar och tar fram underlaget. Du är byggherre och
+                lämnar in till kommunen.
+              </p>
+              <ul class="skede__steg">
+                <li><span class="prick prick--bada"></span>Första samtalet</li>
+                <li><span class="prick prick--bada"></span>Modell och anpassning</li>
+                <li><span class="prick prick--du"></span>Bygglov eller anmälan</li>
+              </ul>
             </li>
-            <li>
-              <details class="steg__kort" name="steg">
-                <summary>
-                  <span class="steg__nr">02</span>
-                  <span class="steg__namn">Modell och anpassning</span>
-                  <span class="steg__vem steg__vem--bada">Tillsammans</span>
-                  <span class="steg__pil" aria-hidden="true"></span>
-                </summary>
-                <p>Vi går igenom modellerna och gör de anpassningar som betyder något för just din plats. Du får en offert där det står vad som ingår och vad som tillkommer.</p>
-              </details>
+
+            <li class="skede">
+              <p class="skede__spann">04 — 05</p>
+              <h3 class="skede__titel">Medan huset byggs</h3>
+              <p class="skede__text">
+                Huset växer fram inomhus, i jämn temperatur. Under tiden ska
+                marken vara redo när det kommer.
+              </p>
+              <ul class="skede__steg">
+                <li><span class="prick prick--vi"></span>Tillverkning</li>
+                <li><span class="prick prick--du"></span>Grund och anslutningar</li>
+              </ul>
             </li>
-            <li>
-              <details class="steg__kort" name="steg">
-                <summary>
-                  <span class="steg__nr">03</span>
-                  <span class="steg__namn">Bygglov eller anmälan</span>
-                  <span class="steg__vem steg__vem--du">Du lämnar in</span>
-                  <span class="steg__pil" aria-hidden="true"></span>
-                </summary>
-                <p>Attefallshus kräver anmälan, övriga hus bygglov. Vi tar fram ritningar och underlag, men det är du som är byggherre och lämnar in till din kommun.</p>
-              </details>
-            </li>
-            <li>
-              <details class="steg__kort" name="steg">
-                <summary>
-                  <span class="steg__nr">04</span>
-                  <span class="steg__namn">Tillverkning</span>
-                  <span class="steg__vem steg__vem--vi">Vi</span>
-                  <span class="steg__pil" aria-hidden="true"></span>
-                </summary>
-                <p>Huset byggs i Sverige, under tak. Väggar, golv och tak monteras i jämn temperatur och fuktnivå i stället för ute i väder och vind.</p>
-              </details>
-            </li>
-            <li>
-              <details class="steg__kort" name="steg">
-                <summary>
-                  <span class="steg__nr">05</span>
-                  <span class="steg__namn">Grund och anslutningar</span>
-                  <span class="steg__vem steg__vem--du">Du ordnar</span>
-                  <span class="steg__pil" aria-hidden="true"></span>
-                </summary>
-                <p>Grunden ska vara gjuten och el, vatten och avlopp framdragna innan huset kommer. Vi säger vad som krävs och när det ska vara klart.</p>
-              </details>
-            </li>
-            <li>
-              <details class="steg__kort" name="steg">
-                <summary>
-                  <span class="steg__nr">06</span>
-                  <span class="steg__namn">Leverans och montage</span>
-                  <span class="steg__vem steg__vem--vi">Vi</span>
-                  <span class="steg__pil" aria-hidden="true"></span>
-                </summary>
-                <p>Huset transporteras till tomten och monteras. Framkomlighet för lastbil och kranbil är det vanligaste som behöver lösas i förväg.</p>
-              </details>
-            </li>
-            <li>
-              <details class="steg__kort" name="steg">
-                <summary>
-                  <span class="steg__nr">07</span>
-                  <span class="steg__namn">Slutbesiktning</span>
-                  <span class="steg__vem steg__vem--bada">Tillsammans</span>
-                  <span class="steg__pil" aria-hidden="true"></span>
-                </summary>
-                <p>Genomgång av huset, punktlista på det som ska rättas, och överlämning. Du har haft samma kontakt hela vägen och vet vem du ringer.</p>
-              </details>
+
+            <li class="skede">
+              <p class="skede__spann">06 — 07</p>
+              <h3 class="skede__titel">På plats</h3>
+              <p class="skede__text">
+                Huset kommer på lastbil och monteras. Sedan går vi igenom det
+                tillsammans, rum för rum.
+              </p>
+              <ul class="skede__steg">
+                <li><span class="prick prick--vi"></span>Leverans och montage</li>
+                <li><span class="prick prick--bada"></span>Slutbesiktning</li>
+              </ul>
             </li>
           </ol>
+
+          <p class="skeden__teckenforklaring">
+            <span><span class="prick prick--vi"></span>Vi gör det</span>
+            <span><span class="prick prick--du"></span>Du gör det</span>
+            <span><span class="prick prick--bada"></span>Tillsammans</span>
+          </p>
         </div>
       </section>
 
