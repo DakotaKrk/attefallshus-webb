@@ -1208,7 +1208,7 @@ a.contact-section__meta-value:hover {
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--ink-soft);
   transition: color 0.3s var(--ease);
 }
 
@@ -7159,7 +7159,9 @@ body::after {
 @media (max-width: 700px) {
   .site-footer__text a,
   .site-footer__nav a,
-  .site-footer__policy {
+  .site-footer__policy,
+  .category__prisrad a,
+  .model-price__lank {
     display: inline-block;
     padding-block: 7px;
   }
@@ -8738,12 +8740,13 @@ body::after {
   color: var(--ink);
 }
 
-/* "frivilligt" i etiketten: samma rad, mindre tyngd. */
+/* "(frivilligt)" i etiketten. Tidigare bars skillnaden av en ljusare
+   ton - den lag pa 1,89:1 mot sanden och gick inte att lasa. Nu ar det
+   parentesen och tyngden som skiljer, och fargen ar densamma. */
 .field label em {
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.1em;
-  color: #b8b1a5;
 }
 
 @media (max-width: 620px) {
