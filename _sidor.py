@@ -1,5 +1,6 @@
 # Bygger undersidorna. Kor: python _sidor.py
 import _bygg as B
+import _modeller as M
 
 MODELLFILTER = '''
       (function () {
@@ -56,7 +57,8 @@ def hero(bild, rubrik, meta, alt):
 '''
 
 
-def kategorisida(fil, namn, herobild, meta, rubrik, ingress, modeller, spann):
+def kategorisida(fil, namn, herobild, meta, rubrik, ingress, spann):
+    modeller = M.modeller(fil)
     guidelank = ('\n          <p class="category__guide">'
                  '<a href="attefallshus-regler.html">Reglerna för attefallshus ändrades i december 2025: så fungerar de nu</a></p>'
                  ) if fil == 'attefallshus.html' else ''
@@ -69,18 +71,22 @@ def kategorisida(fil, namn, herobild, meta, rubrik, ingress, modeller, spann):
         f'{" aria-pressed=\"true\"" if i == 0 else " aria-pressed=\"false\""}>{txt}</button>'
         for i, (txt, a, b) in enumerate(spann))
 
+    # Varje kort barde tidigare till samma huskort.html utan parameter, sa
+    # alla tjugofyra landade pa "Huskort 1". Adressen bar nu kategorin och
+    # modellens nummer; huskortssidan slar upp resten i samma tabell.
+    typ = M.slug(fil)
     kort = "\n".join(f'''          <article class="model-card" data-yta="{yta}" data-rum="{rum}">
-            <a class="model-card__media" href="huskort.html">
+            <a class="model-card__media" href="huskort.html?typ={typ}&amp;modell={i}">
               <img src="images/{bild}" loading="lazy" decoding="async" alt="{titel}, {namn.lower()} i svensk natur">
               <span class="model-card__pill" aria-hidden="true">Se huskortet</span>
             </a>
             <div class="model-card__rad">
-              <h3 class="model-card__title"><a href="huskort.html">{titel}</a></h3>
+              <h3 class="model-card__title"><a href="huskort.html?typ={typ}&amp;modell={i}">{titel}</a></h3>
               <p class="model-card__yta">{yta}<span>m²</span></p>
             </div>
             <p class="model-card__facts"><span>{rum} rum</span><span>Leverans {lev} v</span></p>
             <p class="model-card__price">Från X kr</p>
-          </article>''' for titel, bild, yta, rum, lev in modeller)
+          </article>''' for i, (titel, bild, yta, rum, lev) in enumerate(modeller, 1))
 
     kropp = f'''    <main id="innehall">
 {hero(herobild, namn, meta, namn + " i svensk natur")}
@@ -146,47 +152,27 @@ sidor.append(kategorisida(
     "För helger och långa somrar · från X m²",
     "Modeller för fritidsboende",
     "Fritidshus ger mer plats på tomten än ett attefallshus och kräver bygglov. Här samlar vi modellerna som är gjorda för att bo i över helger, lov och långa somrar.",
-    [("Huskort 1", "generated-category-fritidshus-card.webp", 45, 2, 12),
-     ("Huskort 2", "generated-house-forest-01.webp", 55, 3, 14),
-     ("Huskort 3", "generated-house-coast-01.webp", 62, 3, 14),
-     ("Huskort 4", "generated-house-garden-01.webp", 70, 4, 16),
-     ("Huskort 5", "generated-house-meadow-01.webp", 78, 4, 16),
-     ("Huskort 6", "generated-house-gabled-01.webp", 85, 4, 18)], SPANN))
+    SPANN))
 
 sidor.append(kategorisida(
     "fjallstugor.html", "Fjällstugor", "generated-category-fjallstuga-wide-01.webp",
     "Byggda för snölast och kalla vintrar · från X m²",
     "Modeller för fjällmiljö",
     "Fjällstugor byggs för hårdare klimat: snölast, vind och stora temperaturskillnader. Konstruktionen och isoleringen skiljer sig därför från våra övriga modeller.",
-    [("Huskort 1", "generated-category-fjallstuga-card.webp", 38, 2, 14),
-     ("Huskort 2", "generated-house-winter-01.webp", 48, 2, 14),
-     ("Huskort 3", "generated-category-fjallstuga-01.webp", 56, 3, 16),
-     ("Huskort 4", "generated-house-forest-01.webp", 64, 3, 16),
-     ("Huskort 5", "generated-house-gabled-01.webp", 72, 4, 18),
-     ("Huskort 6", "generated-house-coast-01.webp", 80, 4, 18)], SPANN))
+    SPANN))
 
 sidor.append(kategorisida(
     "villor.html", "Villor", "generated-house-meadow-01.webp",
     "Permanentboende med full planlösning · från X m²",
     "Modeller för permanentboende",
     "Villorna är ritade för att bo i året om. Full planlösning, plats för hela hushållet och de tekniska krav som ställs på ett permanentbostadshus.",
-    [("Huskort 1", "generated-house-gabled-01.webp", 95, 4, 20),
-     ("Huskort 2", "generated-house-garden-01.webp", 110, 5, 20),
-     ("Huskort 3", "generated-house-meadow-01.webp", 125, 5, 22),
-     ("Huskort 4", "generated-house-coast-01.webp", 140, 6, 22),
-     ("Huskort 5", "generated-house-forest-01.webp", 155, 6, 24),
-     ("Huskort 6", "generated-house-winter-01.webp", 170, 7, 24)], SPANN))
+    SPANN))
 
 sidor.append(kategorisida(
     "attefallshus.html", "Attefallshus", "generated-category-attefallshus-wide-01.webp",
     "Bygglovsbefriat · upp till 30 m² · gästhus, kontor eller uthyrning",
     "Modeller i attefallsstorlek",
     "Sedan december 2025 krävs varken bygglov eller anmälan för själva byggnaden inom måtten, men installationer som vatten och avlopp anmäls fortfarande. Det gör dem till den snabbaste vägen till ett extra hus på tomten.",
-    [("Huskort 1", "generated-category-attefallshus-card.webp", 25, 1, 10),
-     ("Huskort 2", "generated-house-forest-01.webp", 27, 2, 10),
-     ("Huskort 3", "generated-house-coast-01.webp", 28, 2, 12),
-     ("Huskort 4", "generated-house-garden-01.webp", 30, 2, 12),
-     ("Huskort 5", "generated-category-attefallshus-02.webp", 30, 2, 14),
-     ("Huskort 6", "generated-house-winter-01.webp", 30, 3, 14)], SPANN))
+    SPANN))
 
 print("\n".join(sidor))

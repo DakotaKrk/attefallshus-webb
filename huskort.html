@@ -567,30 +567,105 @@
         });
       })();
 
+      /* MODELLER:START - skrivs av _huskort.py, andra inte for hand */
       (function () {
-        var nummer = new URLSearchParams(window.location.search).get('modell');
-        if (!/^[1-4]$/.test(nummer || '')) return;
-
-        var namn = 'Huskort ' + nummer;
-        var bilder = {
-          1: 'images/generated-category-attefallshus-wide-01.webp',
-          2: 'images/generated-house-forest-01.webp',
-          3: 'images/generated-house-coast-01.webp',
-          4: 'images/generated-house-garden-01.webp'
+        var MODELLER = {
+          attefallshus: {
+            namn: 'Attefallshus',
+            modeller: [
+              { namn: 'Huskort 1', bild: 'generated-category-attefallshus-card.webp', yta: 25, rum: 1, lev: 10 },
+              { namn: 'Huskort 2', bild: 'generated-house-forest-01.webp', yta: 27, rum: 2, lev: 10 },
+              { namn: 'Huskort 3', bild: 'generated-house-coast-01.webp', yta: 28, rum: 2, lev: 12 },
+              { namn: 'Huskort 4', bild: 'generated-house-garden-01.webp', yta: 30, rum: 2, lev: 12 },
+              { namn: 'Huskort 5', bild: 'generated-category-attefallshus-02.webp', yta: 30, rum: 2, lev: 14 },
+              { namn: 'Huskort 6', bild: 'generated-house-winter-01.webp', yta: 30, rum: 3, lev: 14 },
+            ]
+          },
+          fritidshus: {
+            namn: 'Fritidshus',
+            modeller: [
+              { namn: 'Huskort 1', bild: 'generated-category-fritidshus-card.webp', yta: 45, rum: 2, lev: 12 },
+              { namn: 'Huskort 2', bild: 'generated-house-forest-01.webp', yta: 55, rum: 3, lev: 14 },
+              { namn: 'Huskort 3', bild: 'generated-house-coast-01.webp', yta: 62, rum: 3, lev: 14 },
+              { namn: 'Huskort 4', bild: 'generated-house-garden-01.webp', yta: 70, rum: 4, lev: 16 },
+              { namn: 'Huskort 5', bild: 'generated-house-meadow-01.webp', yta: 78, rum: 4, lev: 16 },
+              { namn: 'Huskort 6', bild: 'generated-house-gabled-01.webp', yta: 85, rum: 4, lev: 18 },
+            ]
+          },
+          fjallstugor: {
+            namn: 'Fjällstugor',
+            modeller: [
+              { namn: 'Huskort 1', bild: 'generated-category-fjallstuga-card.webp', yta: 38, rum: 2, lev: 14 },
+              { namn: 'Huskort 2', bild: 'generated-house-winter-01.webp', yta: 48, rum: 2, lev: 14 },
+              { namn: 'Huskort 3', bild: 'generated-category-fjallstuga-01.webp', yta: 56, rum: 3, lev: 16 },
+              { namn: 'Huskort 4', bild: 'generated-house-forest-01.webp', yta: 64, rum: 3, lev: 16 },
+              { namn: 'Huskort 5', bild: 'generated-house-gabled-01.webp', yta: 72, rum: 4, lev: 18 },
+              { namn: 'Huskort 6', bild: 'generated-house-coast-01.webp', yta: 80, rum: 4, lev: 18 },
+            ]
+          },
+          villor: {
+            namn: 'Villor',
+            modeller: [
+              { namn: 'Huskort 1', bild: 'generated-house-gabled-01.webp', yta: 95, rum: 4, lev: 20 },
+              { namn: 'Huskort 2', bild: 'generated-house-garden-01.webp', yta: 110, rum: 5, lev: 20 },
+              { namn: 'Huskort 3', bild: 'generated-house-meadow-01.webp', yta: 125, rum: 5, lev: 22 },
+              { namn: 'Huskort 4', bild: 'generated-house-coast-01.webp', yta: 140, rum: 6, lev: 22 },
+              { namn: 'Huskort 5', bild: 'generated-house-forest-01.webp', yta: 155, rum: 6, lev: 24 },
+              { namn: 'Huskort 6', bild: 'generated-house-winter-01.webp', yta: 170, rum: 7, lev: 24 },
+            ]
+          },
         };
 
-        document.title = namn + ' - Idealhus';
+        // Korten pa kategorisidorna lankar hit med kategori och nummer.
+        // Utan parametrar star sidan kvar som den exempelsida den ar.
+        var p = new URLSearchParams(window.location.search);
+        var typ = MODELLER[p.get('typ')];
+        var nr = parseInt(p.get('modell'), 10);
+        if (!typ || !(nr >= 1 && nr <= typ.modeller.length)) return;
+
+        var m = typ.modeller[nr - 1];
+
+        document.title = m.namn + ' | Idealhus';
+
         document.querySelectorAll('[data-model-title]').forEach(function (element) {
           var gemener = element.tagName === 'EM' || element.tagName === 'SPAN';
-          element.textContent = gemener ? namn.toLowerCase() : namn;
+          element.textContent = gemener ? m.namn.toLowerCase() : m.namn;
         });
 
         var heroBild = document.querySelector('.subpage-hero__image');
         if (heroBild) {
-          heroBild.src = bilder[nummer];
-          heroBild.alt = namn + ' i svensk natur';
+          heroBild.src = 'images/' + m.bild;
+          heroBild.alt = m.namn + ', ' + typ.namn.toLowerCase() + ' i svensk natur';
         }
+
+        // Rubriken sager bara "Huskort 3" - metaraden far bara kategorin,
+        // annars gar det inte att se vilken av de fyra man tittar pa.
+        var meta = document.querySelector('.subpage-hero__meta');
+        if (meta) {
+          meta.textContent = typ.namn + ' \u00b7 ' + m.yta + ' m\u00b2 \u00b7 '
+            + m.rum + ' rum \u00b7 leverans ' + m.lev + ' veckor';
+        }
+
+        // Bara de varden listan faktiskt har. Byggnadsarea och nockhojd
+        // star kvar som X tills de ar bestamda.
+        var varden = {
+          'Boyta': m.yta + ' m\u00b2',
+          'Rum': m.rum + ' rum'
+        };
+        document.querySelectorAll('.model-specs dt').forEach(function (dt) {
+          var varde = varden[dt.textContent.trim()];
+          if (varde && dt.nextElementSibling) dt.nextElementSibling.textContent = varde;
+        });
+
+        document.querySelectorAll('.model-price__card').forEach(function (kort) {
+          var etikett = kort.querySelector('span');
+          var rubrik = kort.querySelector('h3');
+          if (etikett && rubrik && etikett.textContent.trim() === 'Leverans') {
+            rubrik.textContent = m.lev + ' veckor';
+          }
+        });
       })();
+      /* MODELLER:SLUT */
 
       (function () {
         var bar = document.getElementById('cta-bar');
