@@ -31,16 +31,46 @@ STEG = [
      "Du har haft samma kontakt hela vägen och vet vem du ringer."),
 ]
 
-steg = "\n".join(f'''            <li class="stegspar__rad">
-              <span class="stegspar__nr">{i:02d}</span>
-              <div class="stegspar__kort">
-                <div class="stegspar__topp">
+TECKNINGAR = ['<svg viewBox="0 0 320 150" aria-hidden="true" focusable="false">\n          <!-- Ritningen pa bordet -->\n          <rect class="linje" x="54" y="26" width="176" height="106" rx="5"/>\n          <path class="linje" d="M78 52h128v56H78z"/>\n          <path class="linje" d="M142 52v56M142 82h64"/>\n          <path class="hartunn" d="M78 68h26M170 52v12M78 118h60"/>\n          <!-- Pennan -->\n          <g class="skede__penna">\n            <path class="accentfyll" d="M232 108l44-44 13 13-44 44-19 6z"/>\n            <path class="linje" d="M226 127l19-6"/>\n          </g>\n        </svg>', '<svg viewBox="0 0 320 150" aria-hidden="true" focusable="false">\n          <!-- Taket over verkstaden -->\n          <path class="linje" d="M20 56L160 14l140 42"/>\n          <path class="hartunn" d="M26 56v76M294 56v76M20 132h280"/>\n          <!-- Huset som byggs, tydligt innanfor -->\n          <path class="linje" d="M102 128V90l58-24 58 24v38"/>\n          <path class="hartunn" d="M130 128v-30M160 128V88M190 128v-30"/>\n          <!-- Grunden -->\n          <path class="accentlinje" d="M88 128h144"/>\n        </svg>', '<svg viewBox="0 0 320 150" aria-hidden="true" focusable="false">\n          <!-- Huset -->\n          <path class="linje" d="M96 132V80l64-30 64 30v52"/>\n          <path class="linje" d="M142 132v-32h36v32"/>\n          <path class="hartunn" d="M196 68V48h13v26"/>\n          <!-- Roken kommer nar man pekar pa kortet -->\n          <path class="rok accentlinje" d="M202 40c7-7 0-14 7-21"/>\n          <!-- Mark -->\n          <path class="linje" d="M22 132h276"/>\n          <!-- Granar -->\n          <path class="hartunn" d="M52 132v-30M38 106l14-20 14 20M42 118l10-14 10 14"/>\n          <path class="hartunn" d="M270 132v-22M259 114l11-16 11 16"/>\n        </svg>']
+
+FASER = [('Innan bygget', (1, 3), 'Vi ritar, räknar och tar fram underlaget. Du är byggherre och lämnar in till kommunen — vi säger vad som ska med.'), ('Medan huset byggs', (4, 5), 'Huset växer fram inomhus, i jämn temperatur. Under tiden ska marken vara redo när det kommer.'), ('På plats', (6, 7), 'Huset kommer på lastbil och monteras. Sedan går vi igenom det tillsammans, rum för rum.')]
+
+
+def fas(namn, spann, ingress, teckning, steg):
+    kort = "\n".join(f'''            <li class="fassteg__kort">
+              <span class="fassteg__nr">{i:02d}</span>
+              <div class="fassteg__kropp">
+                <div class="fassteg__topp">
                   <h3>{rubrik}</h3>
                   <span class="process__vem process__vem--{klass}">{vem}</span>
                 </div>
                 <p>{text}</p>
               </div>
-            </li>''' for i, (rubrik, vem, klass, text) in enumerate(STEG, 1))
+            </li>''' for i, (rubrik, vem, klass, text) in steg)
+
+    return f'''        <section class="fas">
+          <div class="fas__huvud">
+            <span class="fas__bild">
+{teckning}
+            </span>
+
+            <div>
+              <p class="fas__spann">Steg {spann[0]:02d}–{spann[1]:02d}</p>
+              <h2 class="fas__titel">{namn}</h2>
+              <p class="fas__text">{ingress}</p>
+            </div>
+          </div>
+
+          <ol class="fassteg">
+{kort}
+          </ol>
+        </section>'''
+
+
+faser = "\n\n".join(
+    fas(namn, spann, ingress, TECKNINGAR[n],
+        [(i, STEG[i - 1]) for i in range(spann[0], spann[1] + 1)])
+    for n, (namn, spann, ingress) in enumerate(FASER))
 
 KROPP = f'''    <main id="innehall">
       <section class="subpage-hero">
@@ -96,27 +126,15 @@ KROPP = f'''    <main id="innehall">
         </div>
       </section>
 
-      <section class="process process--spar">
-        <div class="process__grid">
-          <div class="process__rail">
-            <p class="section-label">Steg för steg</p>
-            <p class="process__rail-text">
-              Färgen visar vem som håller i steget. Ordningen är densamma
-              oavsett vilket hus det gäller.
-            </p>
+      <section class="process process--faser">
+        <div class="process__inre">
+          <p class="process__teckenforklaring">
+            <span><i class="prick prick--vi"></i>Vi gör det</span>
+            <span><i class="prick prick--du"></i>Du gör det</span>
+            <span><i class="prick prick--bada"></i>Tillsammans</span>
+          </p>
 
-            <div class="process__matare" aria-hidden="true"><span></span></div>
-
-            <ul class="process__legend">
-              <li><span class="prick prick--vi"></span>Vi gör det</li>
-              <li><span class="prick prick--du"></span>Du gör det</li>
-              <li><span class="prick prick--bada"></span>Tillsammans</li>
-            </ul>
-          </div>
-
-          <ol class="stegspar">
-{steg}
-          </ol>
+{faser}
         </div>
       </section>
 

@@ -6040,284 +6040,6 @@ p,
 }
 
 /* ============================================================
-   sa-fungerar-det: steglistan blir ett spar (2026-09-07)
-   Forklaringen star kvar i vansterkanten medan stegen rullar
-   forbi. Linjen mellan korten fylls i takt med rullningen, och
-   varje steg tanker upp sitt nummer nar det ar det man laser.
-   Allt drivs av rullningen sjalv (view()-tidslinjer) - ingen
-   scroll-lyssnare, inget skript.
-   ============================================================ */
-.process__grid {
-  display: grid;
-  grid-template-columns: 0.62fr 1fr;
-  gap: clamp(32px, 5vw, 88px);
-  align-items: start;
-}
-
-.process__rail {
-  position: sticky;
-  top: 120px;
-}
-
-.process__rail-text {
-  margin: 0 0 26px;
-  max-width: 34ch;
-  font-size: 16px;
-  line-height: 1.8;
-  color: var(--ink-soft);
-}
-
-.process__legend {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 12px;
-}
-
-.process__legend li {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  font-size: 13px;
-  color: var(--ink-soft);
-}
-
-.prick {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  flex: none;
-}
-
-.prick--vi {
-  background: var(--forest);
-}
-
-.prick--bada {
-  background: var(--logo);
-}
-
-.prick--du {
-  box-shadow: inset 0 0 0 1px var(--ink-faint);
-}
-
-/* --- Sparet ------------------------------------------------- */
-.stegspar {
-  position: relative;
-  margin: 0;
-  padding: 0 0 0 66px;
-  list-style: none;
-  display: grid;
-  gap: 14px;
-}
-
-/* Bana och fyllning ligger som pseudoelement, sa listan slipper
-   extra element som inte betyder nagot. */
-.stegspar::before,
-.stegspar::after {
-  content: "";
-  position: absolute;
-  left: 21px;
-  top: 26px;
-  bottom: 26px;
-  width: 2px;
-  border-radius: 2px;
-}
-
-.stegspar::before {
-  background: var(--line);
-}
-
-.stegspar::after {
-  background: linear-gradient(180deg, var(--logo), var(--forest));
-  transform: scaleY(0);
-  transform-origin: top center;
-}
-
-.stegspar__rad {
-  position: relative;
-}
-
-.stegspar__nr {
-  position: absolute;
-  left: -66px;
-  top: 22px;
-  width: 44px;
-  height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--paper);
-  box-shadow: inset 0 0 0 1px var(--line);
-  font-family: var(--serif);
-  font-size: 17px;
-  line-height: 1;
-  color: var(--ink-faint);
-  font-variant-numeric: tabular-nums;
-  transition: background 0.4s var(--ease), color 0.4s var(--ease),
-    box-shadow 0.4s var(--ease);
-}
-
-.stegspar__kort {
-  padding: clamp(20px, 2.2vw, 30px);
-  border-radius: 18px;
-  background: var(--paper);
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.06);
-  transition: transform 0.42s var(--ease), box-shadow 0.42s var(--ease);
-}
-
-.stegspar__rad:hover .stegspar__kort {
-  transform: translateY(-2px);
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.08),
-    0 22px 44px -30px rgba(16, 20, 17, 0.55);
-}
-
-.stegspar__topp {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 16px;
-  margin-bottom: 12px;
-}
-
-.stegspar__kort h3 {
-  margin: 0;
-  font-family: var(--serif);
-  font-size: clamp(22px, 1.9vw, 27px);
-  font-weight: 400;
-  line-height: 1.15;
-  color: var(--ink);
-}
-
-.stegspar__kort p {
-  margin: 0;
-  max-width: 62ch;
-  font-size: 15.5px;
-  line-height: 1.8;
-  color: var(--ink-soft);
-}
-
-.stegspar .process__vem {
-  margin: 0;
-}
-
-/* --- Rorelsen ------------------------------------------------
-   Fyllningen foljer listans vag genom vyn. Numret tands nar dess
-   kort ar i lasbandet och slocknar nar det passerat - keyframes
-   med bada tillstanden, eftersom en rullningsdriven animering
-   alltid gar framat.
-   ------------------------------------------------------------ */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .stegspar::after {
-      animation: sparFyll linear both;
-      animation-duration: auto;
-      animation-timeline: view();
-      animation-range: cover 8% cover 78%;
-    }
-
-    .stegspar__nr {
-      animation: nrTand linear both;
-      animation-duration: auto;
-      animation-timeline: view();
-      animation-range: cover 25% cover 85%;
-    }
-
-    .stegspar__kort {
-      animation: kortIn linear both;
-      animation-duration: auto;
-      animation-timeline: view();
-      animation-range: entry 8% entry 62%;
-    }
-  }
-}
-
-@keyframes sparFyll {
-  from {
-    transform: scaleY(0);
-  }
-
-  to {
-    transform: scaleY(1);
-  }
-}
-
-@keyframes nrTand {
-  0% {
-    background: var(--paper);
-    color: var(--ink-faint);
-    box-shadow: inset 0 0 0 1px var(--line);
-  }
-
-  32%,
-  62% {
-    background: var(--forest);
-    color: #ffffff;
-    box-shadow: inset 0 0 0 1px var(--forest);
-  }
-
-  100% {
-    background: var(--paper);
-    color: var(--ink-soft);
-    box-shadow: inset 0 0 0 1px var(--line);
-  }
-}
-
-@keyframes kortIn {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (max-width: 900px) {
-  .process__grid {
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
-
-  .process__rail {
-    position: static;
-  }
-
-  .process__legend {
-    grid-auto-flow: column;
-    justify-content: start;
-    gap: 20px;
-  }
-}
-
-@media (max-width: 620px) {
-  .stegspar {
-    padding-left: 52px;
-  }
-
-  .stegspar::before,
-  .stegspar::after {
-    left: 17px;
-  }
-
-  .stegspar__nr {
-    left: -52px;
-    width: 36px;
-    height: 36px;
-    font-size: 15px;
-  }
-
-  .process__legend {
-    grid-auto-flow: row;
-    gap: 10px;
-  }
-}
-
-/* ============================================================
    Inga pilar pa knappar och lankar (2026-09-07)
    Pilen satt pa sex olika stallen och betydde inte samma sak pa
    nagot av dem. Knapparna klarar sig utan: formen sager redan att
@@ -6410,143 +6132,6 @@ p,
 .model-card__link:hover::before {
   opacity: 0.9;
   transform: scaleX(1.06);
-}
-
-/* ------------------------------------------------------------
-   Sparet, puts (2026-09-08)
-   Tre saker: sektionen far sandbotten sa de vita korten far nagot
-   att ligga pa (de var vita mot vitt och bars bara av en 1 px ram),
-   railen far en matare som fylls i takt med sparet, och rorelsen
-   delas upp pa translate/scale i stallet for transform - da kan
-   inhopp och aktivt lage ligga pa samma element utan att slass om
-   samma egenskap.
-   Modifieraren --spar behovs for att proffs.html anvander samma
-   .process-klass med den gamla listan.
-   ------------------------------------------------------------ */
-.process--spar {
-  width: 100%;
-  margin: 0;
-  padding: var(--sekt) 24px;
-  background: var(--sand);
-}
-
-.process--spar .process__grid {
-  width: min(100%, 1200px);
-  margin: 0 auto;
-  timeline-scope: --stegspar;
-}
-
-.process--spar .stegspar__kort {
-  background: var(--paper);
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.05),
-    0 1px 2px rgba(16, 20, 17, 0.03);
-}
-
-.process--spar .stegspar__rad:hover .stegspar__kort {
-  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.07),
-    0 24px 46px -32px rgba(16, 20, 17, 0.5);
-}
-
-/* Brickan star pa sandbotten, inte pa vitt. */
-.process--spar .stegspar__nr {
-  background: var(--sand);
-}
-
-.stegspar__rad {
-  scroll-margin-top: 120px;
-}
-
-/* Rubrik till vanster, markning mot kortets hogerkant. */
-.stegspar__topp {
-  justify-content: space-between;
-  gap: 12px 20px;
-}
-
-/* Mataren i railen. Den delar tidslinje med sparet via
-   timeline-scope, sa den visar exakt hur langt i listan man kommit. */
-.process__matare {
-  height: 3px;
-  margin: 0 0 26px;
-  max-width: 220px;
-  border-radius: 3px;
-  background: var(--line);
-  overflow: hidden;
-}
-
-.process__matare span {
-  display: block;
-  height: 100%;
-  border-radius: 3px;
-  background: linear-gradient(90deg, var(--logo), var(--forest));
-  transform: scaleX(0);
-  transform-origin: left center;
-}
-
-/* Rorelsen. translate och scale ar egna egenskaper - dar kan
-   inhoppet bo utan att kollidera med nagot annat som ror transform. */
-@keyframes kortIn {
-  from {
-    opacity: 0;
-    translate: 0 26px;
-    scale: 0.986;
-  }
-
-  to {
-    opacity: 1;
-    translate: 0 0;
-    scale: 1;
-  }
-}
-
-/* Brickan tands mjukare an forut: den vaxer en gnutta och far en
-   ring omkring sig nar steget ar det man laser. */
-@keyframes nrTand {
-  0% {
-    background: var(--sand);
-    color: var(--ink-faint);
-    box-shadow: inset 0 0 0 1px var(--line), 0 0 0 0 rgba(38, 44, 39, 0);
-    scale: 1;
-  }
-
-  30%,
-  64% {
-    background: var(--forest);
-    color: #ffffff;
-    box-shadow: inset 0 0 0 1px var(--forest), 0 0 0 6px rgba(38, 44, 39, 0.07);
-    scale: 1.06;
-  }
-
-  100% {
-    background: var(--sand);
-    color: var(--ink-soft);
-    box-shadow: inset 0 0 0 1px var(--line), 0 0 0 0 rgba(38, 44, 39, 0);
-    scale: 1;
-  }
-}
-
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .stegspar {
-      view-timeline-name: --stegspar;
-    }
-
-    .process__matare span {
-      animation: matareFyll linear both;
-      animation-duration: auto;
-      animation-timeline: --stegspar;
-      animation-range: cover 8% cover 78%;
-    }
-  }
-}
-
-@keyframes matareFyll {
-  from {
-    transform: scaleX(0);
-  }
-
-  to {
-    transform: scaleX(1);
-  }
 }
 
 /* ------------------------------------------------------------
@@ -6659,93 +6244,6 @@ body::after {
   }
 }
 
-/* --- 2. Nummerbrickan: bara opacitet och skala -------------- */
-.stegspar__nr {
-  position: relative;
-  background: var(--sand);
-  color: var(--ink);
-  box-shadow: inset 0 0 0 1px var(--line);
-}
-
-.process--spar .stegspar__nr {
-  background: var(--sand);
-}
-
-.stegspar__nr::before {
-  content: "";
-  position: absolute;
-  inset: -5px;
-  border-radius: 50%;
-  border: 2px solid var(--forest);
-  opacity: 0;
-  transform: scale(0.86);
-}
-
-.stegspar__nr::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: var(--logo);
-  opacity: 0;
-  z-index: -1;
-}
-
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .stegspar__nr {
-      animation: none;
-    }
-
-    .stegspar__nr::before {
-      animation: ringTand linear both;
-      animation-duration: auto;
-      animation-timeline: view();
-      animation-range: cover 25% cover 85%;
-    }
-
-    .stegspar__nr::after {
-      animation: skivaTand linear both;
-      animation-duration: auto;
-      animation-timeline: view();
-      animation-range: cover 25% cover 85%;
-    }
-  }
-}
-
-@keyframes ringTand {
-  0% {
-    opacity: 0;
-    transform: scale(0.86);
-  }
-
-  30%,
-  64% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(1.12);
-  }
-}
-
-@keyframes skivaTand {
-  0% {
-    opacity: 0;
-  }
-
-  30%,
-  64% {
-    opacity: 0.18;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
 /* ------------------------------------------------------------
    Hero-filmen: graderingen ar bakad i filen (2026-09-08)
    Ett CSS-filter pa en film maste rakna om VARJE avkodad bildruta,
@@ -6842,102 +6340,192 @@ body::after {
 }
 
 /* --- Skedena ------------------------------------------------ */
+
+/* ============================================================
+   "Vagen dit", fjarde versionen (2026-09-08)
+   De tre tidigare var alla avskalade: brickor, spar, spalter. Nu
+   ar det tre kort som VISAR skedena i stallet for att bara namna
+   dem - ritningen pa bordet, huset som byggs under tak, huset som
+   star fardigt pa marken. Teckningarna ar i samma linjesprak som
+   planritningen pa huskortet, sa de hor ihop med sajten och inte
+   med ett ikonbibliotek.
+   Varje kort ar en lank och svarar pa muspekaren: pennan ritar,
+   grunden dras ut, kroken sanks.
+   ============================================================ */
 .skeden {
   margin: 0;
   padding: 0;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(28px, 4vw, 64px);
+  gap: clamp(16px, 1.8vw, 26px);
+  counter-reset: skede;
 }
 
 .skede {
+  display: flex;
+}
+
+.skede__yta {
   position: relative;
-  padding-top: 26px;
+  flex: 1;
+  display: grid;
+  align-content: start;
+  padding: 0 0 26px;
+  border-radius: 20px;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.06);
+  overflow: hidden;
+  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
 }
 
-/* Spaltlinjen. Den ritas ut nar sektionen kommer i vy - det ar
-   den enda rorelsen i avsnittet. */
-.skede::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 1px;
-  background: var(--ink);
-  opacity: 0.24;
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 1s var(--ease), opacity 0.5s var(--ease);
+.skede__yta:hover {
+  transform: translateY(-4px);
+  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.08),
+    0 26px 50px -30px rgba(16, 20, 17, 0.55);
 }
 
-.js-reveal .reveal--inne .skede::before,
-html:not(.js-reveal) .skede::before {
+.skede__yta:active {
+  transform: translateY(-1px) scale(0.995);
+  transition-duration: 0.09s;
+}
+
+/* --- Teckningen ---------------------------------------------- */
+.skede__bild {
+  display: block;
+  padding: 22px 20px 18px;
+  background: linear-gradient(180deg, var(--sand), rgba(243, 241, 237, 0.35));
+  border-bottom: 1px solid rgba(31, 36, 32, 0.06);
+}
+
+.skede__bild svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.skede__bild .linje {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.skede__bild .hartunn {
+  fill: none;
+  stroke: var(--ink-faint);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.skede__bild .accentlinje {
+  fill: none;
+  stroke: var(--logo);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.skede__bild .accentfyll {
+  fill: var(--logo);
+  stroke: none;
+}
+
+/* Pennan ritar, grunden dras ut, roken stiger - en rorelse per
+   kort, och bara nar man pekar pa det. */
+.skede__penna {
+  transition: transform 0.55s var(--ease);
+}
+
+.skede__yta:hover .skede__penna {
+  transform: translate(-14px, 14px);
+}
+
+/* Roken ur skorstenen kommer nar man pekar - kortet sager
+   "inflyttat" utan att behova skriva det. */
+.skede__bild .rok {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s var(--ease), transform 0.7s var(--ease);
+}
+
+.skede__yta:hover .rok {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skede--tva .accentlinje {
+  transform-origin: center;
+  transform: scaleX(0.72);
+  transition: transform 0.55s var(--ease);
+}
+
+.skede__yta:hover .accentlinje {
   transform: scaleX(1);
 }
 
-.skede:nth-child(2)::before {
-  transition-delay: 0.12s;
+/* --- Texten --------------------------------------------------- */
+.skede__nr {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--forest);
+  color: #ffffff;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1;
+  transition: transform 0.45s var(--ease);
 }
 
-.skede:nth-child(3)::before {
-  transition-delay: 0.24s;
-}
-
-.skede__spann {
-  margin: 0 0 14px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  color: var(--logo);
-  font-variant-numeric: tabular-nums;
+.skede__yta:hover .skede__nr {
+  transform: scale(1.08);
 }
 
 .skede__titel {
-  margin: 0 0 14px;
+  margin: 22px 26px 10px;
   font-family: var(--serif);
-  font-size: clamp(24px, 2.1vw, 31px);
+  font-size: clamp(23px, 1.9vw, 28px);
   font-weight: 400;
   line-height: 1.15;
-  letter-spacing: normal;
   color: var(--ink);
 }
 
 .skede__text {
-  margin: 0 0 26px;
-  max-width: 34ch;
-  font-size: 15.5px;
-  line-height: 1.75;
+  margin: 0 26px 20px;
+  font-size: 15px;
+  line-height: 1.7;
   color: var(--ink-soft);
 }
 
-/* Stegen: namn med en punkt som sager vem. Ingen ruta omkring. */
 .skede__steg {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  margin: 0 26px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
   display: grid;
-  gap: 10px;
+  gap: 9px;
 }
 
-.skede__steg li {
+.skede__steg > span {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 15px;
+  gap: 11px;
+  font-size: 14.5px;
   color: var(--ink);
 }
 
 .skeden__teckenforklaring {
-  margin: clamp(34px, 4vw, 54px) 0 0;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
+  margin: clamp(26px, 3vw, 40px) 0 0;
   display: flex;
   flex-wrap: wrap;
   gap: 10px 30px;
   font-size: 12px;
-  letter-spacing: 0.02em;
   color: var(--ink-faint);
 }
 
@@ -6947,34 +6535,388 @@ html:not(.js-reveal) .skede::before {
   gap: 10px;
 }
 
-@media (max-width: 900px) {
-  .vagen__topp {
-    grid-template-columns: 1fr;
-    gap: 26px;
-    align-items: start;
+/* Punkten anvands bade har och pa processidan. */
+.skede__steg .prick,
+.skeden__teckenforklaring .prick {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+}
+
+/* Korten kommer in ett i taget. */
+@media (prefers-reduced-motion: no-preference) {
+  .js-reveal .reveal:not(.reveal--inne) .skede__yta {
+    opacity: 0;
   }
 
-  .vagen__topp .about-text__title {
-    max-width: none;
+  .js-reveal .reveal--inne .skede__yta {
+    animation: skedeIn 0.7s var(--ease) backwards;
   }
 
+  .skede--tva .skede__yta {
+    animation-delay: 0.1s;
+  }
+
+  .skede--tre .skede__yta {
+    animation-delay: 0.2s;
+  }
+}
+
+@keyframes skedeIn {
+  from {
+    opacity: 0;
+    translate: 0 20px;
+    scale: 0.985;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+@media (max-width: 1040px) {
+  .skeden {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .skede--tre {
+    grid-column: span 2;
+  }
+
+  .skede--tre .skede__yta {
+    display: grid;
+    grid-template-columns: 0.9fr 1fr;
+    align-items: center;
+    padding-bottom: 0;
+  }
+
+  .skede--tre .skede__bild {
+    height: 100%;
+    border-bottom: 0;
+    border-right: 1px solid rgba(31, 36, 32, 0.06);
+    display: flex;
+    align-items: center;
+  }
+
+  .skede--tre .skede__titel {
+    margin-top: 26px;
+  }
+
+  .skede--tre .skede__steg {
+    margin-bottom: 26px;
+  }
+}
+
+@media (max-width: 700px) {
   .skeden {
     grid-template-columns: 1fr;
-    gap: 0;
   }
 
-  .skede {
-    padding: 24px 0 30px;
+  .skede--tre {
+    grid-column: span 1;
   }
 
-  .skede__text {
-    max-width: 46ch;
+  .skede--tre .skede__yta {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-bottom: 26px;
+  }
+
+  .skede--tre .skede__bild {
+    border-right: 0;
+    border-bottom: 1px solid rgba(31, 36, 32, 0.06);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .skede::before {
-    transform: scaleX(1);
-    transition: none;
+  .skede__yta:hover {
+    transform: none;
   }
+
+  .skede--tva .accentlinje {
+    transform: scaleX(1);
+  }
+}
+
+/* ============================================================
+   sa-fungerar-det: samma tre skeden som pa startsidan (2026-09-08)
+   Sparet med sma brickor ar borta. Sidan ar nu tre skeden, vart
+   och ett med sin teckning och sina steg som kort - startsidan
+   visar skedena, den har sidan oppnar dem. Samma teckningar
+   hamtas ur index.html nar sidan byggs, sa de inte kan glida isar.
+   ============================================================ */
+.process--faser {
+  width: 100%;
+  margin: 0;
+  padding: var(--sekt) 24px;
+  background: var(--sand);
+}
+
+.process__inre {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(46px, 6vw, 88px);
+}
+
+.process__teckenforklaring {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 30px;
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.process__teckenforklaring > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.process__teckenforklaring .prick {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+}
+
+/* --- Skedets huvud ------------------------------------------- */
+.fas {
+  display: grid;
+  gap: clamp(22px, 2.6vw, 34px);
+}
+
+.fas__huvud {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: clamp(24px, 3.4vw, 54px);
+  align-items: center;
+  padding-bottom: clamp(20px, 2.4vw, 30px);
+  border-bottom: 1px solid var(--line);
+}
+
+.fas__bild {
+  display: block;
+  padding: 20px 22px;
+  border-radius: 18px;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.06);
+}
+
+.fas__bild svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.fas__bild .linje {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.fas__bild .hartunn {
+  fill: none;
+  stroke: var(--ink-faint);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.fas__bild .accentlinje {
+  fill: none;
+  stroke: var(--logo);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.fas__bild .accentfyll {
+  fill: var(--logo);
+  stroke: none;
+}
+
+.fas__bild .rok {
+  opacity: 0.55;
+}
+
+.fas__spann {
+  margin: 0 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--logo);
+  font-variant-numeric: tabular-nums;
+}
+
+.fas__titel {
+  margin: 0 0 14px;
+  font-family: var(--serif);
+  font-size: clamp(30px, 3vw, 46px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: normal;
+  color: var(--ink);
+}
+
+.fas__text {
+  margin: 0;
+  max-width: 52ch;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+
+/* --- Stegen i skedet ----------------------------------------- */
+.fassteg {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(14px, 1.6vw, 22px);
+}
+
+.fassteg__kort {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  padding: clamp(20px, 2vw, 26px);
+  border-radius: 18px;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.05);
+  transition: transform 0.42s var(--ease), box-shadow 0.42s var(--ease);
+}
+
+.fassteg__kort:hover {
+  transform: translateY(-3px);
+  box-shadow: inset 0 0 0 1px rgba(31, 36, 32, 0.07),
+    0 24px 46px -30px rgba(16, 20, 17, 0.5);
+}
+
+.fassteg__nr {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--sand);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.fassteg__kort:hover .fassteg__nr {
+  background: var(--forest);
+  color: #ffffff;
+}
+
+.fassteg__topp {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin-bottom: 10px;
+}
+
+.fassteg__kort h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(21px, 1.7vw, 25px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: normal;
+  color: var(--ink);
+}
+
+.fassteg__kort p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+
+.fassteg .process__vem {
+  margin: 0;
+}
+
+/* Korten kommer in ett i taget nar skedet nar vyn. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .fassteg__kort {
+      animation: fasstegIn linear both;
+      animation-duration: auto;
+      animation-timeline: view();
+      animation-range: entry 6% entry 58%;
+    }
+
+    .fas__bild {
+      animation: fasstegIn linear both;
+      animation-duration: auto;
+      animation-timeline: view();
+      animation-range: entry 4% entry 50%;
+    }
+  }
+}
+
+@keyframes fasstegIn {
+  from {
+    opacity: 0;
+    translate: 0 22px;
+    scale: 0.985;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+@media (max-width: 860px) {
+  .fas__huvud {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .fas__bild {
+    max-width: 320px;
+  }
+}
+
+/* ------------------------------------------------------------
+   Punkten som sager vem som gor vad. Den anvands nu bade pa
+   startsidans skeden och pa sa-fungerar-det, sa den ar en egen
+   liten komponent i stallet for att bo inuti nagon av dem.
+   (Fargerna forsvann en stund nar sparets CSS togs bort - de
+   lag inbakade dar.)
+   ------------------------------------------------------------ */
+.prick {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+  display: inline-block;
+}
+
+.prick--vi {
+  background: var(--forest);
+}
+
+.prick--bada {
+  background: var(--logo);
+}
+
+.prick--du {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--ink-faint);
 }
