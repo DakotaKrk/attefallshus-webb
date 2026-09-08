@@ -3,7 +3,7 @@
 import re, io, os
 
 BAS = "https://dakotakrk.github.io/idealhus/"
-CSS_V = "20260910v"
+CSS_V = "20260910w"
 
 KATEGORIER = [
     ("Attefallshus", "attefallshus.html"),
@@ -31,6 +31,7 @@ KATEGORI_INFO = {
 MENY = [
     ("Hem", "index.html"),
     ("__DROPDOWN__", None),
+    ("Priser", "priser.html"),
     ("Så fungerar det", "sa-fungerar-det.html"),
     ("Referensprojekt", "referensprojekt.html"),
     ("Om oss", "om-oss.html"),
