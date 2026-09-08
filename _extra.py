@@ -17,6 +17,7 @@ SIDOR = [
     ("referensprojekt.html", "0.7"),
     ("om-oss.html", "0.6"),
     ("kontakt.html", "0.8"),
+    ("priser.html", "0.8"),
     ("attefallshus-regler.html", "0.8"),
     ("integritetspolicy.html", "0.3"),
 ]

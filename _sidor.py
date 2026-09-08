@@ -104,6 +104,11 @@ def kategorisida(fil, namn, herobild, meta, rubrik, ingress, modeller, spann):
           <div class="model-grid">
 {kort}
           </div>
+
+          <p class="category__prisrad">
+            Priserna sätts i offert efter din tomt.
+            <a href="priser.html">Så sätts priset</a>
+          </p>
         </div>
       </section>
 

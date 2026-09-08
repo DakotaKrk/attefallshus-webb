@@ -7171,9 +7171,10 @@ body::after {
     padding-block: 7px;
   }
 
-  .model-card__title a {
+  .model-card__title a,
+  .matt tbody th a {
     display: inline-block;
-    padding-block: 3px;
+    padding-block: 5px;
   }
 
   .quiet-break__link,
@@ -7510,4 +7511,93 @@ body::after {
 
 .site-footer__policy:hover {
   text-decoration-color: var(--ink);
+}
+
+/* ------------------------------------------------------------
+   Prissidan (2026-09-08)
+   Raderna under "det har ingar" och "det har tillkommer" ar
+   rubrik plus en mening. De ligger i en enkel lista med harfina
+   linjer - listan ska ga att skumma, inte lasas som brodtext.
+   ------------------------------------------------------------ */
+.prisrader {
+  margin: 0 0 26px;
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+
+.prisrad {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.prisrad h3 {
+  margin: 0 0 5px;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.004em;
+  color: var(--ink);
+}
+
+.prisrad p {
+  margin: 0 !important;
+  font-size: 15.5px !important;
+  line-height: 1.7 !important;
+}
+
+/* Det som tillkommer betalas till andra an oss - markeringen i
+   kanten sager det utan att en enda rad text behover gora det. */
+.prisrader--tillkommer .prisrad {
+  padding-left: 16px;
+  border-left: 2px solid var(--logo);
+}
+
+.prisrader--tillkommer .prisrad:first-child {
+  padding-top: 14px;
+}
+
+/* Prisraden under modellrutnatet pa kategorisidorna. */
+.category__prisrad {
+  margin: 26px 0 0;
+  font-size: 15px;
+  color: var(--ink-faint);
+}
+
+.category__prisrad a {
+  color: var(--knapp);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(109, 99, 85, 0.4);
+  transition: text-decoration-color 0.3s var(--ease);
+}
+
+.category__prisrad a:hover {
+  text-decoration-color: var(--knapp);
+}
+
+/* Lanken bredvid huskortets prisknapp. */
+.model-price__lank {
+  margin-left: 18px;
+  font-size: 15px;
+  color: var(--knapp);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(109, 99, 85, 0.4);
+  transition: text-decoration-color 0.3s var(--ease);
+}
+
+.model-price__lank:hover {
+  text-decoration-color: var(--knapp);
+}
+
+/* Priskolumnen i tabellen ar det man kommit for. */
+.matt tbody td:last-child {
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .model-price__lank {
+    display: inline-block;
+    margin: 12px 0 0;
+  }
 }

@@ -315,6 +315,145 @@ POLICY = '''    <main id="innehall">
 '''
 
 
+
+# ---------------------------------------------------------------------------
+# Prissidan. FYLL I HÄR när priserna är satta - inget annat på sidan behöver
+# röras. Skriv hela strängen, till exempel "Från 450 000 kr".
+# ---------------------------------------------------------------------------
+PRISER = [
+    ("Attefallshus", "attefallshus.html", "15–30 m²", "Från X kr"),
+    ("Fritidshus", "fritidshus.html", "40–120 m²", "Från X kr"),
+    ("Fjällstugor", "fjallstugor.html", "38–80 m²", "Från X kr"),
+    ("Villor", "villor.html", "95–170 m²", "Från X kr"),
+]
+
+INGAR = [
+    ("Ritningar och underlag", "Det vi tar fram för att du ska kunna anmäla eller söka lov."),
+    ("Själva huset", "Tillverkat i Sverige, under tak, med de material och den nivå ni kommit överens om."),
+    ("Leverans till tomten", "Transport och lyft på plats, när framkomligheten är löst."),
+    ("Montage", "Huset monteras av oss när det kommit fram."),
+    ("Slutbesiktning", "Genomgång av huset, punktlista och överlämning."),
+]
+
+TILLKOMMER = [
+    ("Grunden", "Platta eller plintar ska vara gjuten innan huset kommer. Vad den kostar beror på marken."),
+    ("El, vatten och avlopp", "Framdragning till huset, och anslutningsavgifter till kommunen eller föreningen."),
+    ("Markarbete", "Röjning, schakt och infart om det behövs för att lastbil och kran ska komma fram."),
+    ("Kommunens avgifter", "Avgift för anmälan eller bygglov, och för eventuell strandskyddsdispens."),
+    ("Tillval", "Ändringar i planlösning, ytskikt och inredning utöver det som ingår."),
+]
+
+STYR = [
+    ("Storleken", "Den enskilt största posten. Priset per kvadratmeter sjunker något med större hus, men totalen stiger."),
+    ("Planlösningen", "Fler väggar, fler våtrum och fler öppningar kostar mer än en öppen yta."),
+    ("Nivån på material", "Kök, badrum och ytskikt är där spannet mellan lägsta och högsta nivå är störst."),
+    ("Tomten", "Lutning, mark och framkomlighet för lastbil och kranbil avgör både grund och montage."),
+    ("Avståndet", "Transporten är en verklig kostnad, och den växer med milen."),
+]
+
+
+def rader(lista):
+    return "\n".join(f'''              <div class="prisrad">
+                <h3>{a}</h3>
+                <p>{b}</p>
+              </div>''' for a, b in lista)
+
+
+def pristabell():
+    return "\n".join(f'''                  <tr>
+                    <th scope="row"><a href="{lank}">{namn}</a></th>
+                    <td>{yta}</td>
+                    <td>{pris}</td>
+                  </tr>''' for namn, lank, yta, pris in PRISER)
+
+
+PRISSIDA = f'''    <main id="innehall">
+      <section class="guide-topp">
+        <div class="guide-topp__inner">
+          <p class="section-label">Priser</p>
+          <h1 class="guide-topp__titel">Vad ett hus fr\u00e5n oss kostar</h1>
+          <p class="guide-topp__lead">
+            Ett hus har inget listpris p\u00e5 samma s\u00e4tt som en bil. Men det g\u00e5r
+            att s\u00e4ga vad som ing\u00e5r, vad som tillkommer och vad som f\u00e5r
+            summan att r\u00f6ra sig \u2014 s\u00e5 att du vet vad du j\u00e4mf\u00f6r n\u00e4r du f\u00e5r
+            offerten.
+          </p>
+        </div>
+      </section>
+
+      <section class="guide">
+        <div class="guide__inner">
+          <aside class="guide__snabbsvar">
+            <p class="guide__snabbsvar-etikett">Kort svar</p>
+            <p>
+              Husets pris \u00e4r en del av totalen. Grund, anslutningar och
+              markarbete ligger utanf\u00f6r och betalas till andra \u00e4n oss \u2014
+              r\u00e4kna med dem fr\u00e5n b\u00f6rjan, s\u00e5 blir det inga \u00f6verraskningar.
+            </p>
+          </aside>
+
+          <div class="guide__text">
+            <h2>Prisniv\u00e5er</h2>
+            <p>
+              Priserna nedan \u00e4r startpriser f\u00f6r respektive kategori. Vad just
+              ditt hus kostar st\u00e5r i offerten, och den skriver vi n\u00e4r vi vet
+              hur tomten ser ut.
+            </p>
+
+            <div class="matt">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Storlek</th>
+                    <th scope="col">Pris</th>
+                  </tr>
+                </thead>
+                <tbody>
+{pristabell()}
+                </tbody>
+              </table>
+            </div>
+
+            <h2>Det h\u00e4r ing\u00e5r</h2>
+            <div class="prisrader">
+{rader(INGAR)}
+            </div>
+
+            <h2>Det h\u00e4r tillkommer</h2>
+            <p>
+              Posterna nedan h\u00f6r till bygget men betalas till andra \u00e4n oss.
+              Vi s\u00e4ger vad som kr\u00e4vs och n\u00e4r, s\u00e5 att ingenting st\u00e5r och
+              v\u00e4ntar p\u00e5 varandra.
+            </p>
+            <div class="prisrader prisrader--tillkommer">
+{rader(TILLKOMMER)}
+            </div>
+
+            <h2>Vad som styr priset</h2>
+            <div class="prisrader">
+{rader(STYR)}
+            </div>
+
+            <h2>N\u00e4r du f\u00e5r ett pris</h2>
+            <p>
+              Efter f\u00f6rsta samtalet och valet av modell skriver vi en offert
+              d\u00e4r det st\u00e5r vad som ing\u00e5r och vad som tillkommer, post f\u00f6r
+              post. Hela ordningen finns p\u00e5
+              <a href="sa-fungerar-det.html">S\u00e5 fungerar det</a>.
+            </p>
+
+            <p class="guide__vidare">
+              <a class="model-price__button" href="kontakt.html">Beg\u00e4r offert</a>
+              <a class="site-footer__button" href="attefallshus.html">Se husmodellerna</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+'''
+
 def bygg():
     ut = []
 
@@ -331,6 +470,16 @@ def bygg():
     io.open("attefallshus-regler.html", "w", encoding="utf-8",
             newline="").write(sida.replace("\n", "\r\n"))
     ut.append("attefallshus-regler.html")
+
+    sida = (B.head("Priser | Idealhus",
+                   "Vad ett hus fr\u00e5n Idealhus kostar: vad som ing\u00e5r, vad som "
+                   "tillkommer och vad som styr priset.",
+                   None, fil="priser.html")
+            + "\n" + B.header("") + "\n" + PRISSIDA + B.SIDFOT + "\n"
+            + B.skript(""))
+    io.open("priser.html", "w", encoding="utf-8",
+            newline="").write(sida.replace("\n", "\r\n"))
+    ut.append("priser.html")
 
     sida = (B.head("Integritetspolicy | Idealhus",
                    "Så behandlar Idealhus personuppgifter. Inga kakor, ingen "
