@@ -62,9 +62,15 @@ def kategorisida(fil, namn, herobild, meta, rubrik, ingress, spann):
     guidelank = ('\n          <p class="category__guide">'
                  '<a href="attefallshus-regler.html">Reglerna för attefallshus ändrades i december 2025: så fungerar de nu</a></p>'
                  ) if fil == 'attefallshus.html' else ''
+    # Proffs skiljs av med en linje. Den som jamfor attefallshus mot
+    # fritidshus jamfor inte utfackningsvaggar i samma rad.
+    def pill(n, f):
+        return f'          <a href="{f}"{" aria-current=\"page\"" if n == namn else ""}>{n}</a>'
+
     piller = "\n".join(
-        f'          <a href="{f}"{" aria-current=\"page\"" if n == namn else ""}>{n}</a>'
-        for n, f in B.KATEGORIER)
+        [pill(n, f) for n, f in B.KATEGORIER_PRIVAT]
+        + ['          <span class="category-filter__delare" aria-hidden="true"></span>']
+        + [pill(n, f) for n, f in B.KATEGORIER_PROFFS])
 
     knappar = "\n".join(
         f'          <button type="button" data-min="{a}" data-max="{b}"'

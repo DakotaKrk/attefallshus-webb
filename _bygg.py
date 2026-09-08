@@ -3,15 +3,26 @@
 import re, io, os
 
 BAS = "https://dakotakrk.github.io/idealhus/"
-CSS_V = "20260911f"
+CSS_V = "20260911j"
 
-KATEGORIER = [
+# Husen for den som ska bo i dem, och det vi levererar till andra som
+# bygger. De sag likadana ut i menyn tidigare, som fem jamnstallda val.
+KATEGORIER_PRIVAT = [
     ("Attefallshus", "attefallshus.html"),
     ("Fritidshus", "fritidshus.html"),
     ("Fjällstugor", "fjallstugor.html"),
     ("Villor", "villor.html"),
+]
+
+KATEGORIER_PROFFS = [
     ("Proffs", "proffs.html"),
 ]
+
+# Sammanslagen, for det som fortfarande vill ha hela listan.
+KATEGORIER = KATEGORIER_PRIVAT + KATEGORIER_PROFFS
+
+PRIVAT_ETIKETT = "För dig som ska bo"
+PROFFS_ETIKETT = "För dig som bygger"
 
 # Bild och en rad om varje kategori. En rullgardin med bara namn
 # tvingar besokaren att gissa vad skillnaden ar.
@@ -39,20 +50,26 @@ MENY = [
 ]
 
 
-def dropdown(aktiv):
-    rader = []
-    for namn, fil in KATEGORIER:
-        bild, text = KATEGORI_INFO[namn]
-        rader.append(
-            f'              <a href="{fil}">\n'
+def kategorirad(namn, fil):
+    bild, text = KATEGORI_INFO[namn]
+    return (f'              <a href="{fil}">\n'
             f'                <img src="images/{bild}" alt="" loading="lazy" decoding="async">\n'
             f'                <span>\n'
             f'                  <strong>{namn}</strong>\n'
             f'                  <em>{text}</em>\n'
             f'                </span>\n'
             f'              </a>')
-    rader.append('              <a class="main-nav__sub-alla" '
-                 'href="attefallshus.html">Se alla modeller</a>')
+
+
+def dropdown(aktiv):
+    # Raden "Se alla modeller" ar borta. Den gick till attefallshus.html,
+    # alltsa en av kategorierna - inte till alla - och stod dessutom
+    # direkt under samma lank.
+    rader = [f'              <p class="main-nav__sub-etikett">{PRIVAT_ETIKETT}</p>']
+    rader += [kategorirad(n, f) for n, f in KATEGORIER_PRIVAT]
+    rader.append('              <p class="main-nav__sub-etikett '
+                 f'main-nav__sub-etikett--delad">{PROFFS_ETIKETT}</p>')
+    rader += [kategorirad(n, f) for n, f in KATEGORIER_PROFFS]
     val = "\n".join(rader)
     klass = "main-nav__link main-nav__toggle"
     if aktiv == "Våra hus":
@@ -76,7 +93,10 @@ def huvudmeny(aktiv):
 
 
 def mobilmeny():
-    val = "\n".join(f'          <a href="{fil}">{namn}</a>' for namn, fil in KATEGORIER)
+    val = "\n".join(
+        [f'          <a href="{fil}">{namn}</a>' for namn, fil in KATEGORIER_PRIVAT]
+        + [f'          <span class="mobile-nav__under">{PROFFS_ETIKETT}</span>']
+        + [f'          <a href="{fil}">{namn}</a>' for namn, fil in KATEGORIER_PROFFS])
     rader = []
     for namn, fil in MENY:
         if namn == "__DROPDOWN__":
@@ -205,7 +225,10 @@ SIDFOT = '''    <footer class="site-footer">
         <div>
           <h2 class="site-footer__heading">Våra hus</h2>
           <nav class="site-footer__nav" aria-label="Sidfot husmodeller">
-''' + "\n".join(f'            <a href="{fil}">{namn}</a>' for namn, fil in KATEGORIER) + '''
+''' + "\n".join(
+    [f'            <a href="{fil}">{namn}</a>' for namn, fil in KATEGORIER_PRIVAT]
+    + [f'            <span class="site-footer__etikett">{PROFFS_ETIKETT}</span>']
+    + [f'            <a href="{fil}">{namn}</a>' for namn, fil in KATEGORIER_PROFFS]) + '''
           </nav>
         </div>
 

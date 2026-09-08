@@ -60,22 +60,22 @@
             <p class="section-label section-label--accent">Förfrågan</p>
             <h2 class="contact-section__title">Berätta kort om <em>ditt projekt</em>.</h2>
             <p class="contact-section__text">
-              Ju mer du får med, desto mer konkret kan vi svara. Det här hjälper
-              oss mest:
+              Tre frågor först, kontaktuppgifterna sedan. Vet du inte svaret än
+              spelar det ingen roll — gå vidare ändå.
             </p>
 
             <ul class="kontakt-tips">
               <li>
-                <strong>Var huset ska stå</strong>
-                <span>Kommun räcker. Sluttande tomt, berg i dagen eller trång infart är bra att nämna.</span>
+                <strong>Du får svar av oss två</strong>
+                <span>Ahmed eller Sahand läser förfrågan. Ingen växel emellan.</span>
               </li>
               <li>
-                <strong>Vad det ska användas till</strong>
-                <span>Gästhus, kontor, uthyrning eller permanentboende styr både modell och regler.</span>
+                <strong>Första samtalet</strong>
+                <span>Du behöver inte ha bestämt modell eller budget. Utan krav och utan säljsnack.</span>
               </li>
               <li>
-                <strong>Ungefär när</strong>
-                <span>Även ett löst årtal hjälper oss säga något om leverans.</span>
+                <strong>Sedan vet du var du står</strong>
+                <span>Vi säger vad som gäller för din tomt och vilka modeller som passar den.</span>
               </li>
             </ul>
           </div>

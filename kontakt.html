@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap">
     <link rel="preload" as="image" href="images/generated-house-garden-01.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=20260911f">
+    <link rel="stylesheet" href="styles.css?v=20260911j">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -54,6 +54,7 @@
           <div class="main-nav__item" data-dropdown>
             <button class="main-nav__link main-nav__toggle" type="button" aria-expanded="false" aria-controls="undermeny-hus">Våra hus<span class="main-nav__pil" aria-hidden="true"></span></button>
             <div class="main-nav__sub" id="undermeny-hus">
+              <p class="main-nav__sub-etikett">För dig som ska bo</p>
               <a href="attefallshus.html">
                 <img src="images/generated-category-attefallshus-card.webp" alt="" loading="lazy" decoding="async">
                 <span>
@@ -82,6 +83,7 @@
                   <em>Permanentboende, full planlösning</em>
                 </span>
               </a>
+              <p class="main-nav__sub-etikett main-nav__sub-etikett--delad">För dig som bygger</p>
               <a href="proffs.html">
                 <img src="images/generated-production-yard-01.webp" alt="" loading="lazy" decoding="async">
                 <span>
@@ -89,7 +91,6 @@
                   <em>Väggar, block och moduler</em>
                 </span>
               </a>
-              <a class="main-nav__sub-alla" href="attefallshus.html">Se alla modeller</a>
             </div>
           </div>
           <a class="main-nav__link" href="priser.html">Priser</a>
@@ -118,6 +119,7 @@
           <a href="fritidshus.html">Fritidshus</a>
           <a href="fjallstugor.html">Fjällstugor</a>
           <a href="villor.html">Villor</a>
+          <span class="mobile-nav__under">För dig som bygger</span>
           <a href="proffs.html">Proffs</a>
         </div>
         <a href="priser.html">Priser</a>
@@ -191,76 +193,105 @@
             <p class="section-label section-label--accent">Förfrågan</p>
             <h2 class="contact-section__title">Berätta kort om <em>ditt projekt</em>.</h2>
             <p class="contact-section__text">
-              Ju mer du får med, desto mer konkret kan vi svara. Det här hjälper
-              oss mest:
+              Tre frågor först, kontaktuppgifterna sedan. Vet du inte svaret än
+              spelar det ingen roll — gå vidare ändå.
             </p>
 
             <ul class="kontakt-tips">
               <li>
-                <strong>Var huset ska stå</strong>
-                <span>Kommun räcker. Sluttande tomt, berg i dagen eller trång infart är bra att nämna.</span>
+                <strong>Du får svar av oss två</strong>
+                <span>Ahmed eller Sahand läser förfrågan. Ingen växel emellan.</span>
               </li>
               <li>
-                <strong>Vad det ska användas till</strong>
-                <span>Gästhus, kontor, uthyrning eller permanentboende styr både modell och regler.</span>
+                <strong>Första samtalet</strong>
+                <span>Du behöver inte ha bestämt modell eller budget. Utan krav och utan säljsnack.</span>
               </li>
               <li>
-                <strong>Ungefär när</strong>
-                <span>Även ett löst årtal hjälper oss säga något om leverans.</span>
+                <strong>Sedan vet du var du står</strong>
+                <span>Vi säger vad som gäller för din tomt och vilka modeller som passar den.</span>
               </li>
             </ul>
           </div>
 
           <form class="contact-form" id="kontaktformular" method="post" novalidate>
-            <div class="contact-form__row">
-              <p class="field">
-                <label for="field-name">Namn</label>
-                <input id="field-name" type="text" name="name" autocomplete="name" required placeholder="Vad heter du?">
-              </p>
-              <p class="field">
-                <label for="field-email">E-postadress</label>
-                <input id="field-email" type="email" name="email" autocomplete="email" required placeholder="namn@exempel.se">
-              </p>
+            <p class="contact-form__steg" data-raknare hidden>Steg <span>1</span> av 2</p>
+
+            <div class="contact-form__del" data-del="1">
+              <fieldset class="valgrupp">
+                <legend>Vad funderar du på?</legend>
+                <div class="valgrupp__rad">
+                <label class="val"><input type="radio" name="hustyp" value="Attefallshus"><span>Attefallshus</span></label>
+                <label class="val"><input type="radio" name="hustyp" value="Fritidshus"><span>Fritidshus</span></label>
+                <label class="val"><input type="radio" name="hustyp" value="Fjällstuga"><span>Fjällstuga</span></label>
+                <label class="val"><input type="radio" name="hustyp" value="Villa"><span>Villa</span></label>
+                <label class="val"><input type="radio" name="hustyp" value="Vet inte än"><span>Vet inte än</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="valgrupp">
+                <legend>Vad ska huset användas till?</legend>
+                <div class="valgrupp__rad">
+                <label class="val"><input type="radio" name="anvandning" value="Bo året runt"><span>Bo året runt</span></label>
+                <label class="val"><input type="radio" name="anvandning" value="Gästhus"><span>Gästhus</span></label>
+                <label class="val"><input type="radio" name="anvandning" value="Uthyrning"><span>Uthyrning</span></label>
+                <label class="val"><input type="radio" name="anvandning" value="Kontor"><span>Kontor</span></label>
+                <label class="val"><input type="radio" name="anvandning" value="Annat"><span>Annat</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="valgrupp valgrupp--falt">
+                <legend>Var ska det stå?</legend>
+                <p class="field">
+                  <label class="field__dold" for="field-city">Kommun eller ort</label>
+                  <input id="field-city" type="text" name="city" autocomplete="address-level2" placeholder="Kommun eller ort räcker">
+                </p>
+              </fieldset>
+
+              <div class="contact-form__vidare">
+                <button class="contact-form__nasta" type="button" data-nasta>Nästa</button>
+                <p class="contact-form__hjalp">
+                  Inget här är obligatoriskt. Vet du inte än går det bra att gå vidare.
+                </p>
+              </div>
             </div>
 
-            <div class="contact-form__row">
+            <div class="contact-form__del" data-del="2">
+              <p class="contact-form__tillbaka">
+                <button type="button" data-tillbaka>Tillbaka</button>
+              </p>
+
+              <div class="contact-form__row">
+                <p class="field">
+                  <label for="field-name">Namn</label>
+                  <input id="field-name" type="text" name="name" autocomplete="name" required placeholder="Vad heter du?">
+                </p>
+                <p class="field">
+                  <label for="field-email">E-postadress</label>
+                  <input id="field-email" type="email" name="email" autocomplete="email" required placeholder="namn@exempel.se">
+                </p>
+              </div>
+
               <p class="field">
-                <label for="field-phone">Telefonnummer</label>
+                <label for="field-phone">Telefonnummer <em>frivilligt</em></label>
                 <input id="field-phone" type="tel" name="phone" autocomplete="tel" placeholder="070-000 00 00">
               </p>
+
               <p class="field">
-                <label for="field-city">Kommun / ort</label>
-                <input id="field-city" type="text" name="city" autocomplete="address-level2" placeholder="Var ska huset byggas?">
+                <label for="field-message">Något mer vi bör veta? <em>frivilligt</em></label>
+                <textarea id="field-message" name="message" placeholder="Sluttande tomt, trång infart, ungefär när det ska stå klart..."></textarea>
               </p>
-            </div>
 
-            <p class="field">
-              <label for="field-model">Intresserad modell</label>
-              <select id="field-model" name="model">
-                <option value="">Välj modell …</option>
-                <option>Attefallshus</option>
-                <option>Fritidshus</option>
-                <option>Fjällstuga</option>
-                <option>Eget projekt med egna ritningar</option>
-                <option>Hjälp mig välja</option>
-              </select>
-            </p>
+              <!-- Lockbete for spambottar: doljs for besokare, ska alltid vara tom. -->
+              <input class="contact-form__honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-            <p class="field">
-              <label for="field-message">Ditt projekt</label>
-              <textarea id="field-message" name="message" placeholder="Berätta kort om huset du funderar på..."></textarea>
-            </p>
+              <div class="contact-form__bottom">
+                <button type="submit">Skicka förfrågan</button>
 
-            <!-- Lockbete for spambottar: doljs for besokare, ska alltid vara tom. -->
-            <input class="contact-form__honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-            <div class="contact-form__bottom">
-              <button type="submit">Skicka förfrågan</button>
-
-              <label class="contact-form__check">
-                <input type="checkbox" name="consent" required>
-                <span>Genom att skicka godkänner du att Idealhus kontaktar dig om din förfrågan. Se vår <a href="integritetspolicy.html">integritetspolicy</a>.</span>
-              </label>
+                <label class="contact-form__check">
+                  <input type="checkbox" name="consent" required>
+                  <span>Genom att skicka godkänner du att Idealhus kontaktar dig om din förfrågan. Se vår <a href="integritetspolicy.html">integritetspolicy</a>.</span>
+                </label>
+              </div>
             </div>
 
             <p class="contact-form__status" role="status" aria-live="polite" hidden></p>
@@ -313,6 +344,7 @@
             <a href="fritidshus.html">Fritidshus</a>
             <a href="fjallstugor.html">Fjällstugor</a>
             <a href="villor.html">Villor</a>
+            <span class="site-footer__etikett">För dig som bygger</span>
             <a href="proffs.html">Proffs</a>
           </nav>
         </div>
@@ -686,6 +718,35 @@
         var status = form.querySelector('.contact-form__status');
         var knappText = button.textContent;
 
+        // Tva steg. Utan skript star bada oppna, sa formularet fungerar
+        // anda - doljningen gors har, inte i markupen.
+        var delar = form.querySelectorAll('.contact-form__del');
+        var raknare = form.querySelector('[data-raknare]');
+        var knappNasta = form.querySelector('[data-nasta]');
+        var knappTillbaka = form.querySelector('[data-tillbaka]');
+
+        function visaSteg(nr) {
+          delar[0].hidden = nr !== 1;
+          delar[1].hidden = nr !== 2;
+          if (raknare) {
+            raknare.hidden = false;
+            raknare.querySelector('span').textContent = nr;
+          }
+        }
+
+        if (delar.length === 2 && knappNasta) {
+          visaSteg(1);
+          knappNasta.addEventListener('click', function () {
+            visaSteg(2);
+            form.elements.name.focus();
+          });
+          if (knappTillbaka) {
+            knappTillbaka.addEventListener('click', function () {
+              visaSteg(1);
+            });
+          }
+        }
+
         function visaFel(falt, meddelande) {
           var wrap = falt.closest('.field') || falt.closest('.contact-form__check');
           if (!wrap) return;
@@ -757,6 +818,8 @@
             'E-post: ' + v('email'),
             'Telefon: ' + (v('phone') || '-'),
             'Ort: ' + (v('city') || '-'),
+            'Funderar pa: ' + (v('hustyp') || '-'),
+            'Ska anvandas till: ' + (v('anvandning') || '-'),
             '',
             v('message') || '(inget meddelande)'
           ];

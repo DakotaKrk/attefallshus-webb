@@ -196,6 +196,7 @@ textarea:focus-visible {
 .header-button,
 .hero__link,
 .contact-form button[type="submit"],
+.contact-form__nasta,
 .site-footer__button,
 .model-price__button,
 .contact-page-hero__button,
@@ -228,6 +229,7 @@ textarea:focus-visible {
    for platt fyllning. */
 .header-button,
 .contact-form button[type="submit"],
+.contact-form__nasta,
 .site-footer__button,
 .contact-page-hero__button,
 .cta-bar__button,
@@ -242,6 +244,7 @@ textarea:focus-visible {
 
 .header-button:hover,
 .contact-form button[type="submit"]:hover,
+.contact-form__nasta:hover,
 .site-footer__button:hover,
 .contact-page-hero__button:hover,
 .cta-bar__button:hover,
@@ -258,6 +261,7 @@ textarea:focus-visible {
 .header-button:active,
 .hero__link:active,
 .contact-form button[type="submit"]:active,
+.contact-form__nasta:active,
 .site-footer__button:active,
 .model-price__button:active,
 .contact-page-hero__button:active,
@@ -2297,37 +2301,6 @@ a.contact-section__meta-value:hover {
   color: var(--logo);
 }
 
-/* Sista raden ar en vanlig lank, utan bild. */
-.main-nav__sub .main-nav__sub-alla {
-  margin-top: 6px;
-  padding: 14px 12px 6px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  grid-template-columns: none;
-  border-top: 1px solid var(--line);
-  border-radius: 0;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink);
-}
-
-.main-nav__sub .main-nav__sub-alla::after {
-  content: "\2192";
-  font-size: 13px;
-  letter-spacing: 0;
-  transition: transform 0.35s var(--ease);
-}
-
-.main-nav__sub .main-nav__sub-alla:hover {
-  background: transparent;
-}
-
-.main-nav__sub .main-nav__sub-alla:hover::after {
-  transform: translateX(4px);
-}
 
 
 /* ------------------------------------------------------------
@@ -5258,7 +5231,8 @@ p,
 .site-footer__button,
 .category-filter a,
 .filter button,
-.contact-form button[type="submit"] {
+.contact-form button[type="submit"],
+.contact-form__nasta {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -5274,7 +5248,8 @@ p,
 .site-footer__button:active,
 .category-filter a:active,
 .filter button:active,
-.contact-form button[type="submit"]:active {
+.contact-form button[type="submit"]:active,
+.contact-form__nasta:active {
   transform: translateY(1px) scale(0.985);
   transition-duration: 0.09s;
 }
@@ -6073,7 +6048,6 @@ p,
 .house-types__all::after,
 .reference-projects__all::after,
 .house-card__link::after,
-.main-nav__sub .main-nav__sub-alla::after,
 .model-card__link::after,
 .quiet-break__link::after,
 .house-card__list a::after {
@@ -8126,6 +8100,7 @@ body::after {
    ------------------------------------------------------------ */
 .header-button,
 .contact-form button[type="submit"],
+.contact-form__nasta,
 .site-footer__button,
 .contact-page-hero__button,
 .cta-bar__button,
@@ -8140,7 +8115,9 @@ body::after {
 .header-button,
 .header-button:hover,
 .contact-form button[type="submit"],
+.contact-form__nasta,
 .contact-form button[type="submit"]:hover,
+.contact-form__nasta:hover,
 .site-footer__button,
 .site-footer__button:hover,
 .contact-page-hero__button,
@@ -8158,6 +8135,7 @@ body::after {
 /* 2. Skenet. Ligger bakom texten men framfor fyllningen. */
 .header-button::after,
 .contact-form button[type="submit"]::after,
+.contact-form__nasta::after,
 .site-footer__button::after,
 .contact-page-hero__button::after,
 .cta-bar__button::after {
@@ -8182,6 +8160,7 @@ body::after {
 /* 3. Nedtrycket. Ljuset vaxer ur mitten och slocknar langsamt. */
 .header-button::before,
 .contact-form button[type="submit"]::before,
+.contact-form__nasta::before,
 .site-footer__button::before,
 .contact-page-hero__button::before,
 .cta-bar__button::before,
@@ -8203,6 +8182,7 @@ body::after {
 
 .header-button:active::before,
 .contact-form button[type="submit"]:active::before,
+.contact-form__nasta:active::before,
 .site-footer__button:active::before,
 .contact-page-hero__button:active::before,
 .cta-bar__button:active::before,
@@ -8475,5 +8455,314 @@ body::after {
   html:active-view-transition .site-header__actions > *,
   html:active-view-transition .header-button::after {
     animation: none;
+  }
+}
+
+/* ------------------------------------------------------------
+   Delad meny: privat och foretag (2026-09-08)
+   Attefallshus, Fritidshus, Fjallstugor, Villor och Proffs stod som
+   fem jamnstallda val. Men Proffs saljer utfackningsvaggar, husblock
+   och moduler till andra som bygger - inte ett hus att bo i. Nu bar
+   listan tva etiketter i stallet, pa alla tre stallen den visas.
+   ------------------------------------------------------------ */
+.main-nav__sub-etikett {
+  margin: 2px 0 4px;
+  padding: 4px 12px 4px 9px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.main-nav__sub-etikett--delad {
+  margin-top: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+/* Sidfotens huslista ar ett rutnat - etiketten blir en egen rad. */
+.site-footer__etikett {
+  margin: 14px 0 4px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* Pillerraden pa kategorisidorna: en lodrat linje i stallet for en
+   etikett. Raden ar smal och rullar i sidled pa mobil - en rubrik mitt
+   i den hade brutit den. */
+.category-filter__delare {
+  align-self: center;
+  width: 1px;
+  height: 22px;
+  margin: 0 4px;
+  background: var(--line);
+}
+
+@media (max-width: 1040px) {
+  .mobile-nav__grupp > .mobile-nav__under {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(222, 219, 211, 0.6);
+  }
+}
+
+/* ------------------------------------------------------------
+   Kontaktformularet i tva steg (2026-09-08)
+   Sex falt lag oppna pa en gang. Bara tre var obligatoriska, men det
+   syns inte pa ett formular - det ser ut som en blankett, och en
+   blankett skjuter man upp. Forsta steget ar nu tre fragor man svarar
+   pa genom att trycka.
+
+   Andra rundan: forsta forsoket var tio sma piller i tva hogar. Det
+   ar en enkat, och det ar det billigaste formsprak som finns. Fragorna
+   ar numrerade som processavsnittets steg, rubrikerna ar serif, och
+   svaren ar brickor stora nog att lasa - med en ring till hoger som
+   fylls nar man valt, sa valet syns aven for den som inte ser fargen.
+   ------------------------------------------------------------ */
+.contact-form__steg {
+  margin: 0 0 4px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.contact-form__del {
+  display: grid;
+  gap: clamp(26px, 3vw, 38px);
+}
+
+/* display i en egen regel slar ut webblasarens [hidden] - utan den har
+   raden ligger steg tva kvar synligt under steg ett. */
+.contact-form__del[hidden] {
+  display: none;
+}
+
+/* --- Fragorna ------------------------------------------------ */
+.contact-form__del[data-del="1"] {
+  counter-reset: fraga;
+}
+
+.valgrupp {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  counter-increment: fraga;
+}
+
+.valgrupp + .valgrupp {
+  padding-top: clamp(26px, 3vw, 38px);
+  border-top: 1px solid rgba(35, 32, 25, 0.09);
+}
+
+.valgrupp legend {
+  padding: 0;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-family: var(--serif);
+  font-size: clamp(20px, 1.9vw, 24px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.valgrupp legend::before {
+  content: "0" counter(fraga);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--logo);
+}
+
+/* --- Brickorna ----------------------------------------------- */
+.valgrupp__rad {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+  gap: 10px;
+}
+
+/* Radioknappen ar kvar for tangentbord och skarmlasare men ritas inte.
+   Den far inte doljas med display:none - da forsvinner den ur
+   tabbordningen och ur formularets varden. */
+.val input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.val span {
+  position: relative;
+  min-height: 62px;
+  padding: 14px 46px 14px 18px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd8ce;
+  border-radius: 14px;
+  background: #ffffff;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.25;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.35s var(--ease), background 0.35s var(--ease),
+    box-shadow 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+/* Ringen till hoger. Den bar valet aven for den som inte ser
+   skillnaden mellan vit och sandfargad platta. */
+.val span::before {
+  content: "";
+  position: absolute;
+  right: 17px;
+  top: 50%;
+  width: 19px;
+  height: 19px;
+  translate: 0 -50%;
+  border: 1px solid #d6d0c4;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.val span::after {
+  content: "";
+  position: absolute;
+  right: 22.5px;
+  top: 50%;
+  width: 8px;
+  height: 4px;
+  translate: 0 -75%;
+  rotate: -45deg;
+  border-left: 1.6px solid #ffffff;
+  border-bottom: 1.6px solid #ffffff;
+  opacity: 0;
+  transition: opacity 0.25s var(--ease);
+}
+
+.val span:hover {
+  border-color: #c9c2b4;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px -20px rgba(24, 20, 14, 0.6);
+}
+
+.val input:focus-visible + span {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.val input:checked + span {
+  border-color: var(--knapp);
+  background: #ffffff;
+  box-shadow: inset 0 0 0 1px var(--knapp);
+}
+
+.val input:checked + span::before {
+  background: var(--knapp);
+  border-color: var(--knapp);
+}
+
+.val input:checked + span::after {
+  opacity: 1;
+}
+
+/* Fraga tre ar ett skrivfalt i stallet for brickor. Etiketten sitter
+   redan i legenden, sa faltets egen etikett ar bara for skarmlasare. */
+.valgrupp--falt .field {
+  max-width: 340px;
+}
+
+.field__dold {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --- Vagen vidare -------------------------------------------- */
+.contact-form__vidare {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+}
+
+.contact-form__hjalp {
+  flex: 1 1 240px;
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-faint);
+}
+
+/* Vagen tillbaka till steg ett. En textlank, inte en knapp - den ska
+   inte tavla med Skicka. */
+.contact-form__tillbaka {
+  margin: 0;
+}
+
+.contact-form__tillbaka button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: color 0.3s var(--ease);
+}
+
+.contact-form__tillbaka button::before {
+  content: "←";
+  margin-right: 7px;
+}
+
+.contact-form__tillbaka button:hover {
+  color: var(--ink);
+}
+
+/* "frivilligt" i etiketten: samma rad, mindre tyngd. */
+.field label em {
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: #b8b1a5;
+}
+
+@media (max-width: 620px) {
+  .valgrupp__rad {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 8px;
+  }
+
+  .val span {
+    min-height: 58px;
+    padding: 12px 42px 12px 15px;
+    font-size: 16px;
+  }
+
+  .valgrupp--falt .field {
+    max-width: none;
+  }
+
+  .contact-form__nasta {
+    width: 100%;
   }
 }
