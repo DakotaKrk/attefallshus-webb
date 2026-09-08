@@ -115,13 +115,27 @@ def kategorisida(fil, namn, herobild, meta, rubrik, ingress, modeller, spann):
 {KONTAKT_SEKTION}    </main>
 
 '''
+    # Ingressen ar brodtext och blir 190-240 tecken i ett description-falt,
+    # dar Google klipper vid ~160. Sidorna har darfor en egen kort text.
+    kort_text = KORTA_BESKRIVNINGAR.get(fil, ingress)
     ut = (B.head(f"{namn} | Idealhus",
-                 f"{namn} från Idealhus. {ingress}", herobild, fil=fil)
+                 f"{namn} från Idealhus. {kort_text}", herobild, fil=fil)
           + "\n" + B.header("Våra hus") + "\n" + kropp + B.SIDFOT + "\n"
           + B.skript(MODELLFILTER))
     open(fil, "w", encoding="utf-8", newline="").write(ut.replace("\n", "\r\n"))
     return fil
 
+
+KORTA_BESKRIVNINGAR = {
+    "attefallshus.html":
+        "Sedan december 2025 behövs varken bygglov eller anmälan för själva byggnaden – den snabbaste vägen till ett hus till på tomten.",
+    "fritidshus.html":
+        "Mer plats på tomten än ett attefallshus, byggda för att bo i över helger, lov och långa somrar. Kräver bygglov.",
+    "fjallstugor.html":
+        "Byggda för snölast, vind och stora temperaturskillnader – konstruktion och isolering anpassade för fjällklimat.",
+    "villor.html":
+        "Ritade för att bo i året om: full planlösning, plats för hela hushållet och kraven som ställs på ett permanentbostadshus.",
+}
 
 SPANN = [("Alla", 0, 99999), ("Under 30 m²", 0, 29), ("30–60 m²", 30, 60), ("Över 60 m²", 61, 99999)]
 
