@@ -7389,3 +7389,32 @@ body::after {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
+
+/* ------------------------------------------------------------
+   Toningen under headern lag over heron (2026-09-08)
+   Den ar fast placerad vid headerns underkant och tandes redan
+   efter 120 px rullning - alltsa mitt over herons overkant, dar
+   den lade en ljus slojja over bildens rundade horn. Det var den
+   "kanten" som kom tillbaka.
+   Nu ar den kopplad till HERONS egen tidslinje och tonas in forst
+   nar heron nastan har lamnat vyn. Over bilden finns den inte alls.
+   ------------------------------------------------------------ */
+:root {
+  timeline-scope: --heroyta;
+}
+
+.hero,
+.subpage-hero {
+  view-timeline-name: --heroyta;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    body::after {
+      animation: headerLinje linear both;
+      animation-duration: auto;
+      animation-timeline: --heroyta;
+      animation-range: exit 84% exit 100%;
+    }
+  }
+}
